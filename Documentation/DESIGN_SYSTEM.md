@@ -1,6 +1,6 @@
 # HanguStep Design System
 
-Version 0.1 · Phase 2 specification · Status: awaiting approval before implementation
+Version 0.2 · Phase 2 · Status: spec approved 2026-11-02, components implemented, in review
 
 ## 1. Design principles
 
@@ -232,3 +232,14 @@ Not in Phase 2: real data for S2 to S9 (Phase 4 and 5), charts (Phase 5), TTS (P
 | D2 | Khmer shown above or below English when Khmer is primary gloss? | Primary gloss always on top, larger |
 | D3 | Quiz option labels A/B/C/D or ①②③④ (TOPIK style)? | ①②③④, matches the real exam |
 | D4 | Tab count: keep 5 or merge Quiz into Learn? | Keep 5 |
+
+## 9. Implementation notes (Phase 2 result)
+
+- Tokens: `Spacing`, `Radius`, `Layout`, `Typography`, `Script`, `HSColor` + `Colors.xcassets` (11 color sets, light and dark).
+- State: `ViewState<T>`, `AsyncStateView`, `EmptyStateView`, `ErrorStateView`.
+- Components: `HSButton` + `HSButtonStyle` (primary, secondary, destructive, loading), `HSCard`, `SectionHeader`, `StatTile`, `ProgressRing`, `LevelBadge`, `StreakBadge`, `SyncStatusBadge` (6 states), `HangulText`, `GlossText`, `OptionRow` (5 states, ①②③④ labels).
+- `ComponentGalleryView` (DEBUG only) reachable from Settings → Developer, or by launching with `--component-gallery`.
+- Dashboard migrated to tokens and `AsyncStateView`; Settings shell added with static preferences and `SyncStatusBadge(.disabled)`.
+- Global tint set to `HSColor.accent` in `RootView`.
+- Speech language: SwiftUI has no public speech-language modifier. `HangulText` and `GlossText` tag labels with `languageIdentifier`. Whether VoiceOver switches voice must be verified on device in Phase 9; fallback is `UIAccessibilitySpeechAttributeLanguage` through a UIKit bridge.
+- Deferred to Phase 4/5: `SearchField` wrapper (plain `.searchable` is enough so far), charts, keyboard shortcuts on Mac.
