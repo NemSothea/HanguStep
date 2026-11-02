@@ -1,3 +1,4 @@
+import DesignSystem
 import Domain
 import Foundation
 import Observation
@@ -5,14 +6,7 @@ import Observation
 @MainActor
 @Observable
 public final class DashboardViewModel {
-    public enum State: Equatable {
-        case idle
-        case loading
-        case loaded(DashboardSummary)
-        case failed(message: String)
-    }
-
-    public private(set) var state: State = .idle
+    public private(set) var state: ViewState<DashboardSummary> = .idle
 
     private let loadSummary: any LoadDashboardSummaryUseCase
 

@@ -1,3 +1,4 @@
+import DesignSystem
 import Domain
 import Features
 import XCTest

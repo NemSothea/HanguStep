@@ -1,3 +1,4 @@
+import DesignSystem
 import Features
 import SwiftUI
 
@@ -7,7 +8,15 @@ struct HanguStepApp: App {
 
     var body: some Scene {
         WindowGroup {
+            #if DEBUG
+            if CommandLine.arguments.contains("--component-gallery") {
+                NavigationStack { ComponentGalleryView() }
+            } else {
+                RootView(dependencies: container.dependencies)
+            }
+            #else
             RootView(dependencies: container.dependencies)
+            #endif
         }
     }
 }

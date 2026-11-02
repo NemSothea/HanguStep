@@ -16,6 +16,11 @@ public struct RootView: View {
     }
 
     public var body: some View {
+        shell.tint(HSColor.accent)
+    }
+
+    @ViewBuilder
+    private var shell: some View {
         #if os(iOS)
         if horizontalSizeClass == .compact {
             tabLayout

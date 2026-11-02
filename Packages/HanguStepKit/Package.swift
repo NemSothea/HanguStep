@@ -17,12 +17,13 @@ let package = Package(
         // Repository implementations. Depends on Domain only.
         .target(name: "Persistence", dependencies: ["Domain"]),
         // Tokens and reusable SwiftUI components. No domain knowledge.
-        .target(name: "DesignSystem"),
+        .target(name: "DesignSystem", resources: [.process("Resources")]),
         // Screens and view models. Talks to Domain through use cases.
         .target(name: "Features", dependencies: ["Domain", "DesignSystem"]),
 
         .testTarget(name: "DomainTests", dependencies: ["Domain"]),
         .testTarget(name: "PersistenceTests", dependencies: ["Persistence"]),
+        .testTarget(name: "DesignSystemTests", dependencies: ["DesignSystem"]),
         .testTarget(name: "FeaturesTests", dependencies: ["Features"]),
     ],
     swiftLanguageModes: [.v6]
