@@ -4,8 +4,8 @@ One phase at a time. A phase is done only when reviewed and approved.
 
 | # | Phase | Deliverable | Status |
 |---|-------|-------------|--------|
-| 0 | Product discovery | PRD | In review |
-| 1 | Technical architecture | ADRs, project skeleton that builds | Not started |
+| 0 | Product discovery | PRD | Approved |
+| 1 | Technical architecture | ADRs, project skeleton that builds | Approved |
 | 2 | UI/UX design system | Design tokens, components, screen specs | Not started |
 | 3 | Database and domain models | Core Data schema, repositories, tests | Not started |
 | 4 | Core learning features | Offline MVP: vocab, grammar, quiz, mistakes | Not started |

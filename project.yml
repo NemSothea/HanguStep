@@ -1,0 +1,48 @@
+name: HanguStep
+options:
+  bundleIdPrefix: com.nemsothea
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+packages:
+  HanguStepKit:
+    path: Packages/HanguStepKit
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    CODE_SIGN_STYLE: Automatic
+targets:
+  HanguStep:
+    type: application
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: App
+    dependencies:
+      - package: HanguStepKit
+        product: Domain
+      - package: HanguStepKit
+        product: Persistence
+      - package: HanguStepKit
+        product: DesignSystem
+      - package: HanguStepKit
+        product: Features
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nemsothea.hangustep
+        PRODUCT_NAME: HanguStep
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.education
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ENABLE_PREVIEWS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+    scheme:
+      testTargets: []
