@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="v1">
+    <!-- ======================= Content store ======================= -->
+    <entity name="CDVocabulary" representedClassName="CDVocabulary" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="hangul" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="romanization" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="hanja" optional="YES" attributeType="String"/>
+        <attribute name="partOfSpeech" optional="YES" attributeType="String" defaultValueString="other"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="meaningEnglish" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="meaningKhmer" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="searchText" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceOrigin" optional="YES" attributeType="String" defaultValueString="curated"/>
+        <attribute name="sourceName" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceLicense" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceURL" optional="YES" attributeType="String"/>
+        <attribute name="contentVersion" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isRetired" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="examples" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDExampleSentence" inverseName="vocabulary" inverseEntity="CDExampleSentence"/>
+        <fetchIndex name="byID"><fetchIndexElement property="id" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="byLevelAndPOS"><fetchIndexElement property="level" type="Binary" order="ascending"/><fetchIndexElement property="partOfSpeech" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="bySearchText"><fetchIndexElement property="searchText" type="Binary" order="ascending"/></fetchIndex>
+    </entity>
+    <entity name="CDGrammar" representedClassName="CDGrammar" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="pattern" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="explanationEnglish" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="explanationKhmer" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="formationEnglish" optional="YES" attributeType="String"/>
+        <attribute name="formationKhmer" optional="YES" attributeType="String"/>
+        <attribute name="relatedPatternIDs" optional="YES" attributeType="String" defaultValueString="[]"/>
+        <attribute name="sourceOrigin" optional="YES" attributeType="String" defaultValueString="curated"/>
+        <attribute name="sourceName" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceLicense" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceURL" optional="YES" attributeType="String"/>
+        <attribute name="contentVersion" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isRetired" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="examples" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDExampleSentence" inverseName="grammar" inverseEntity="CDExampleSentence"/>
+        <fetchIndex name="byID"><fetchIndexElement property="id" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="byLevel"><fetchIndexElement property="level" type="Binary" order="ascending"/></fetchIndex>
+    </entity>
+    <entity name="CDExampleSentence" representedClassName="CDExampleSentence" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="korean" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="english" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="khmer" optional="YES" attributeType="String" defaultValueString=""/>
+        <relationship name="vocabulary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDVocabulary" inverseName="examples" inverseEntity="CDVocabulary"/>
+        <relationship name="grammar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGrammar" inverseName="examples" inverseEntity="CDGrammar"/>
+    </entity>
+    <entity name="CDQuestion" representedClassName="CDQuestion" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="kind" optional="YES" attributeType="String" defaultValueString="vocabularyMeaning"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="prompt" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="passage" optional="YES" attributeType="String"/>
+        <attribute name="correctOptionID" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="explanationEnglish" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="explanationKhmer" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="relatedVocabularyID" optional="YES" attributeType="String"/>
+        <attribute name="relatedGrammarID" optional="YES" attributeType="String"/>
+        <attribute name="sourceOrigin" optional="YES" attributeType="String" defaultValueString="curated"/>
+        <attribute name="sourceName" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceLicense" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceURL" optional="YES" attributeType="String"/>
+        <attribute name="contentVersion" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isRetired" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="options" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDQuestionOption" inverseName="question" inverseEntity="CDQuestionOption"/>
+        <fetchIndex name="byID"><fetchIndexElement property="id" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="byLevelAndKind"><fetchIndexElement property="level" type="Binary" order="ascending"/><fetchIndexElement property="kind" type="Binary" order="ascending"/></fetchIndex>
+    </entity>
+    <entity name="CDQuestionOption" representedClassName="CDQuestionOption" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" defaultValueString=""/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDQuestion" inverseName="options" inverseEntity="CDQuestion"/>
+    </entity>
+    <entity name="CDContentManifest" representedClassName="CDContentManifest" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString="manifest"/>
+        <attribute name="version" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="importedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="vocabularyCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="grammarCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="questionCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <!-- ======================= Learner store ======================= -->
+    <entity name="CDStudySession" representedClassName="CDStudySession" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="mode" optional="YES" attributeType="String" defaultValueString="quiz"/>
+        <attribute name="startedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="questionIDs" optional="YES" attributeType="String" defaultValueString="[]"/>
+        <attribute name="currentIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="deviceName" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <fetchIndex name="byID"><fetchIndexElement property="id" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="byStartedAt"><fetchIndexElement property="startedAt" type="Binary" order="descending"/></fetchIndex>
+    </entity>
+    <entity name="CDAttempt" representedClassName="CDAttempt" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="sessionID" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="questionID" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="selectedOptionID" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="isCorrect" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="answeredAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="responseTime" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="targetKind" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="targetID" optional="YES" attributeType="String" defaultValueString=""/>
+        <fetchIndex name="byID"><fetchIndexElement property="id" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="bySessionAndQuestion"><fetchIndexElement property="sessionID" type="Binary" order="ascending"/><fetchIndexElement property="questionID" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="byTarget"><fetchIndexElement property="targetKind" type="Binary" order="ascending"/><fetchIndexElement property="targetID" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="byAnsweredAt"><fetchIndexElement property="answeredAt" type="Binary" order="descending"/></fetchIndex>
+    </entity>
+    <entity name="CDBookmark" representedClassName="CDBookmark" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="targetKind" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="targetID" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <fetchIndex name="byTarget"><fetchIndexElement property="targetKind" type="Binary" order="ascending"/><fetchIndexElement property="targetID" type="Binary" order="ascending"/></fetchIndex>
+    </entity>
+    <entity name="CDReviewSchedule" representedClassName="CDReviewSchedule" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="targetKind" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="targetID" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="easeFactor" optional="YES" attributeType="Double" defaultValueString="2.5" usesScalarValueType="YES"/>
+        <attribute name="intervalDays" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="repetitions" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nextReviewDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastReviewedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <fetchIndex name="byTarget"><fetchIndexElement property="targetKind" type="Binary" order="ascending"/><fetchIndexElement property="targetID" type="Binary" order="ascending"/></fetchIndex>
+        <fetchIndex name="byNextReview"><fetchIndexElement property="nextReviewDate" type="Binary" order="ascending"/></fetchIndex>
+    </entity>
+    <entity name="CDLearnerNote" representedClassName="CDLearnerNote" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="targetKind" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="targetID" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="text" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <fetchIndex name="byTarget"><fetchIndexElement property="targetKind" type="Binary" order="ascending"/><fetchIndexElement property="targetID" type="Binary" order="ascending"/></fetchIndex>
+    </entity>
+    <entity name="CDLearnerSettings" representedClassName="CDLearnerSettings" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString="settings"/>
+        <attribute name="glossLanguage" optional="YES" attributeType="String" defaultValueString="en"/>
+        <attribute name="dailyGoal" optional="YES" attributeType="Integer 32" defaultValueString="20" usesScalarValueType="YES"/>
+        <attribute name="reviewLimit" optional="YES" attributeType="Integer 32" defaultValueString="50" usesScalarValueType="YES"/>
+        <attribute name="pronunciationEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <configuration name="Content">
+        <memberEntity name="CDVocabulary"/>
+        <memberEntity name="CDGrammar"/>
+        <memberEntity name="CDExampleSentence"/>
+        <memberEntity name="CDQuestion"/>
+        <memberEntity name="CDQuestionOption"/>
+        <memberEntity name="CDContentManifest"/>
+    </configuration>
+    <configuration name="Learner">
+        <memberEntity name="CDStudySession"/>
+        <memberEntity name="CDAttempt"/>
+        <memberEntity name="CDBookmark"/>
+        <memberEntity name="CDReviewSchedule"/>
+        <memberEntity name="CDLearnerNote"/>
+        <memberEntity name="CDLearnerSettings"/>
+    </configuration>
+</model>

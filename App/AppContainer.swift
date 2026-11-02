@@ -1,24 +1,46 @@
 import Domain
 import Features
+import Foundation
+import Observation
 import Persistence
 
 /// Composition root. The only place that knows concrete repository types.
-/// Phase 3 swaps the in-memory repositories for Core Data without touching Features.
 @MainActor
+@Observable
 final class AppContainer {
-    let dependencies: AppDependencies
+    enum State {
+        case starting
+        case ready(AppDependencies)
+        case failed(String)
+    }
 
-    init() {
-        let vocabulary = InMemoryVocabularyRepository(items: SampleContent.vocabulary)
-        let grammar = InMemoryGrammarRepository(patterns: SampleContent.grammar)
-        let attempts = InMemoryAttemptRepository()
+    private(set) var state: State = .starting
 
-        dependencies = AppDependencies(
-            loadDashboardSummary: LoadDashboardSummary(
-                vocabulary: vocabulary,
-                grammar: grammar,
-                attempts: attempts
+    /// Opens the stores, imports bundled content if newer, and builds the dependency graph.
+    func bootstrap() async {
+        do {
+            let controller = try PersistenceController(mode: .onDisk(directory: Self.storeDirectory()))
+            let contentStore = CoreDataContentStore(controller: controller)
+            _ = try await contentStore.apply(SampleContent.package)
+
+            let questions = CoreDataQuestionRepository(controller: controller)
+            let dependencies = AppDependencies(
+                loadDashboardSummary: LoadDashboardSummary(
+                    vocabulary: CoreDataVocabularyRepository(controller: controller),
+                    grammar: CoreDataGrammarRepository(controller: controller),
+                    attempts: CoreDataAttemptRepository(controller: controller, questions: questions)
+                )
             )
-        )
+            state = .ready(dependencies)
+        } catch {
+            state = .failed(String(describing: error))
+        }
+    }
+
+    private static func storeDirectory() throws -> URL {
+        let base = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let directory = base.appendingPathComponent("HanguStep", isDirectory: true)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        return directory
     }
 }
