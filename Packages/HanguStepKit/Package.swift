@@ -15,14 +15,14 @@ let package = Package(
         // Pure business rules. No UI, no persistence framework.
         .target(name: "Domain"),
         // Repository implementations. Depends on Domain only.
-        .target(name: "Persistence", dependencies: ["Domain"]),
+        .target(name: "Persistence", dependencies: ["Domain"], resources: [.process("Resources")]),
         // Tokens and reusable SwiftUI components. No domain knowledge.
         .target(name: "DesignSystem", resources: [.process("Resources")]),
         // Screens and view models. Talks to Domain through use cases.
         .target(name: "Features", dependencies: ["Domain", "DesignSystem"]),
 
         .testTarget(name: "DomainTests", dependencies: ["Domain"]),
-        .testTarget(name: "PersistenceTests", dependencies: ["Persistence"]),
+        .testTarget(name: "PersistenceTests", dependencies: ["Persistence"], resources: [.copy("Fixtures")]),
         .testTarget(name: "DesignSystemTests", dependencies: ["DesignSystem"]),
         .testTarget(name: "FeaturesTests", dependencies: ["Features"]),
     ],

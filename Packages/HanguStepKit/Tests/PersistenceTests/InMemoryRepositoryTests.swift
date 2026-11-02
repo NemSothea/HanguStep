@@ -24,7 +24,7 @@ final class InMemoryRepositoryTests: XCTestCase {
         let level2 = try await repository.items(matching: VocabularyFilter(levels: [.level2]))
         XCTAssertTrue(level2.isEmpty)
         let nouns = try await repository.items(matching: VocabularyFilter(partsOfSpeech: [.noun]))
-        XCTAssertEqual(nouns.count, 3)
+        XCTAssertEqual(nouns.count, SampleContent.vocabulary.filter { $0.partOfSpeech == .noun }.count)
     }
 
     func testDuplicateAttemptInSameSessionIsRejected() async throws {

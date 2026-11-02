@@ -4,7 +4,7 @@ import SwiftUI
 
 @main
 struct HanguStepApp: App {
-    private let container = AppContainer()
+    @State private var container = AppContainer()
 
     var body: some Scene {
         WindowGroup {
@@ -12,11 +12,24 @@ struct HanguStepApp: App {
             if CommandLine.arguments.contains("--component-gallery") {
                 NavigationStack { ComponentGalleryView() }
             } else {
-                RootView(dependencies: container.dependencies)
+                root
             }
             #else
-            RootView(dependencies: container.dependencies)
+            root
             #endif
+        }
+    }
+
+    @ViewBuilder
+    private var root: some View {
+        switch container.state {
+        case .starting:
+            ProgressView("Preparing your library")
+                .task { await container.bootstrap() }
+        case let .ready(dependencies):
+            RootView(dependencies: dependencies)
+        case let .failed(message):
+            ErrorStateView(message: message)
         }
     }
 }

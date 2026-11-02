@@ -62,3 +62,43 @@ public actor InMemoryReviewScheduleRepository: ReviewScheduleRepository {
         )
     }
 }
+
+public actor InMemoryStudySessionRepository: StudySessionRepository {
+    private var sessions: [StudySessionID: StudySession] = [:]
+
+    public init() {}
+
+    public func save(_ session: StudySession) async throws { sessions[session.id] = session }
+    public func session(id: StudySessionID) async throws -> StudySession? { sessions[id] }
+    public func unfinishedSession() async throws -> StudySession? {
+        sessions.values.filter { !$0.isFinished }.max { $0.startedAt < $1.startedAt }
+    }
+    public func sessions(limit: Int) async throws -> [StudySession] {
+        Array(sessions.values.sorted { $0.startedAt > $1.startedAt }.prefix(limit))
+    }
+}
+
+public actor InMemoryLearnerNoteRepository: LearnerNoteRepository {
+    private var notes: [LearningTarget: LearnerNote] = [:]
+
+    public init() {}
+
+    public func note(for target: LearningTarget) async throws -> LearnerNote? { notes[target] }
+    public func upsert(_ note: LearnerNote) async throws {
+        if note.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            notes[note.target] = nil
+        } else {
+            notes[note.target] = note
+        }
+    }
+    public func remove(target: LearningTarget) async throws { notes[target] = nil }
+}
+
+public actor InMemoryLearnerSettingsRepository: LearnerSettingsRepository {
+    private var settings: LearnerSettings = .default
+
+    public init() {}
+
+    public func load() async throws -> LearnerSettings { settings }
+    public func save(_ settings: LearnerSettings) async throws { self.settings = settings }
+}

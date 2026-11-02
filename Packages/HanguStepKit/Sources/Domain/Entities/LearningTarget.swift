@@ -48,3 +48,27 @@ public struct ReviewSchedule: Identifiable, Hashable, Sendable, Codable {
         self.lastReviewedAt = lastReviewedAt
     }
 }
+
+public extension LearningTarget {
+    var kind: String {
+        switch self {
+        case .vocabulary: return "vocabulary"
+        case .grammar: return "grammar"
+        }
+    }
+
+    var contentID: String {
+        switch self {
+        case let .vocabulary(id): return id.rawValue
+        case let .grammar(id): return id.rawValue
+        }
+    }
+
+    init?(kind: String, contentID: String) {
+        switch kind {
+        case "vocabulary": self = .vocabulary(VocabularyID(contentID))
+        case "grammar": self = .grammar(GrammarID(contentID))
+        default: return nil
+        }
+    }
+}
