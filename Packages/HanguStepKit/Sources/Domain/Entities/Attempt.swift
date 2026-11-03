@@ -10,6 +10,9 @@ public struct Attempt: Identifiable, Hashable, Sendable, Codable {
     public let isCorrect: Bool
     public let answeredAt: Date
     public let responseTime: TimeInterval
+    /// The word or pattern this question practises, copied from the question at
+    /// answer time so mistake and weakness queries never touch the content store.
+    public let target: LearningTarget?
 
     public init(
         id: AttemptID,
@@ -18,7 +21,8 @@ public struct Attempt: Identifiable, Hashable, Sendable, Codable {
         selectedOptionID: OptionID,
         isCorrect: Bool,
         answeredAt: Date,
-        responseTime: TimeInterval
+        responseTime: TimeInterval,
+        target: LearningTarget? = nil
     ) {
         self.id = id
         self.sessionID = sessionID
@@ -27,6 +31,7 @@ public struct Attempt: Identifiable, Hashable, Sendable, Codable {
         self.isCorrect = isCorrect
         self.answeredAt = answeredAt
         self.responseTime = responseTime
+        self.target = target
     }
 }
 

@@ -31,6 +31,10 @@ public actor InMemoryAttemptRepository: AttemptRepository {
     public func summary() async throws -> AttemptSummary {
         AttemptSummary(total: attempts.count, correct: attempts.filter(\.isCorrect).count)
     }
+
+    public func allAttempts() async throws -> [Attempt] {
+        attempts.sorted { $0.answeredAt < $1.answeredAt }
+    }
 }
 
 public actor InMemoryBookmarkRepository: BookmarkRepository {

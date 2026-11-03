@@ -125,7 +125,18 @@ Declared in `Sources/Domain/Repositories`. All are `Sendable` protocols with `as
 | `BookmarkRepository` | Learner | `add`, `remove(target:)`, `contains(target:)`, `all()` |
 | `ReviewScheduleRepository` | Learner | `schedule(for:)`, `upsert`, `due(onOrBefore:limit:)` |
 
-Phase 3 adds `StudySessionRepository` and `ContentImporter`. Phase 5 adds `LearnerSettingsRepository`.
+Phase 3 added `StudySessionRepository`, `LearnerNoteRepository`, `LearnerSettingsRepository` and the `ContentStore` write side. All are implemented twice: in memory (previews, tests) and Core Data (app).
+
+### Use cases (Phase 4)
+
+| Area | Use cases |
+|---|---|
+| Library | `BrowseVocabulary`, `GetVocabularyDetail`, `BrowseGrammar`, `GetGrammarDetail`, `ToggleBookmark`, `ListBookmarks`, `SaveNote` |
+| Quiz | `StartQuizSession`, `ResumeQuizSession`, `SubmitAnswer`, `FinishQuizSession` (+ `QuizScoring`) |
+| Review | `ListMistakes` (+ pure `MistakeDerivation`), `ListQuizHistory` |
+| Settings | `LoadSettings`, `SaveSettings` |
+
+Each is a protocol plus a default struct. Randomness (`Shuffler`), ids (`IDGenerator`) and time (`DateProvider`) are injected so every use case is deterministic under test.
 
 ## 6. Dependency injection
 
@@ -145,6 +156,8 @@ Trade-off: `AppDependencies` grows one field per use case. Accepted; it stays a 
 - iPad regular width and macOS: `NavigationSplitView` with a sidebar `List` bound to the same `AppSection` selection.
 - In-feature navigation (Phase 4 onward): each feature defines a `Hashable` route enum and uses `navigationDestination(for:)` inside its own stack. Deep links map to `(AppSection, [Route])`.
 - No global router object. Routes are values; the stack owns the path.
+- The quiz runs in a modal sheet (`quizSheet`) with interactive dismissal disabled. Closing early finishes the session and keeps answered questions; the view model owns the state machine (`loading → answering → feedback → finished`).
+- `LearnerPreferences` (`@Observable`, main actor) is injected through the environment and is the single reader of settings for gloss order and pronunciation.
 
 ## 8. Concurrency
 

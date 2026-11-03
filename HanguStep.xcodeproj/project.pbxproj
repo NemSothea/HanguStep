@@ -9,17 +9,30 @@
 /* Begin PBXBuildFile section */
 		A7F1ADC3C144673F03AAA439 /* HanguStepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD04EC0413D84A1A867432 /* HanguStepApp.swift */; };
 		A80BDE2D0820EA5834307E5B /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 336D7E11C1CEF1A77B5A0DC7 /* Domain */; };
+		AD1FF7D6B7E14AFCB7D0FE00 /* QuizFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADE268FD7CA67DE9CFC816 /* QuizFlowUITests.swift */; };
 		C825EE1F1308F1A2743338A3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 603B4E5E05440EB738A36FB9 /* DesignSystem */; };
 		CC1F7B2DF641F1BC6947A3C3 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = F6214BA6BDFA1CD40B5345EE /* Features */; };
 		F5A9A87F44CC365CA3709F0A /* Persistence in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2F754A887FF652697B3E3B /* Persistence */; };
 		FA02B4801FEF8BDFD378717A /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6EC25BB9A5F3688EEDA3E /* AppContainer.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1B41717E44EBE58E6A6F2737 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 571F1C69C34ACEC7DC862320 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95151957A30BD8E555F9A14C;
+			remoteInfo = HanguStep;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		059146A4DA0F5DB268DC8575 /* HanguStep.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HanguStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		432A27091087C1CDC0EB0943 /* HanguStepKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HanguStepKit; path = Packages/HanguStepKit; sourceTree = SOURCE_ROOT; };
 		5AAD04EC0413D84A1A867432 /* HanguStepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanguStepApp.swift; sourceTree = "<group>"; };
 		65D6EC25BB9A5F3688EEDA3E /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		F628183CBE528A27BF082665 /* HanguStepUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HanguStepUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDADE268FD7CA67DE9CFC816 /* QuizFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFlowUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +71,17 @@
 			isa = PBXGroup;
 			children = (
 				059146A4DA0F5DB268DC8575 /* HanguStep.app */,
+				F628183CBE528A27BF082665 /* HanguStepUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C2B1745EF857C66C92AD50AC /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				FDADE268FD7CA67DE9CFC816 /* QuizFlowUITests.swift */,
+			);
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		EDE8CD714D41642B8C1229EF = {
@@ -67,6 +89,7 @@
 			children = (
 				97B08E4F161039076C6455F9 /* App */,
 				949B0EA12A3C309140520578 /* Packages */,
+				C2B1745EF857C66C92AD50AC /* UITests */,
 				9F07F7E3CF339637EEB34C83 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,6 +119,24 @@
 			productReference = 059146A4DA0F5DB268DC8575 /* HanguStep.app */;
 			productType = "com.apple.product-type.application";
 		};
+		ED749DEA00BBC54C8ADF386E /* HanguStepUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 939ACF87484C95B1978E46D5 /* Build configuration list for PBXNativeTarget "HanguStepUITests" */;
+			buildPhases = (
+				EE8D35B98FD3259C1BFC8DE8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93B35F4F3AE5E97B43B4FE54 /* PBXTargetDependency */,
+			);
+			name = HanguStepUITests;
+			packageProductDependencies = (
+			);
+			productName = HanguStepUITests;
+			productReference = F628183CBE528A27BF082665 /* HanguStepUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +148,10 @@
 				TargetAttributes = {
 					95151957A30BD8E555F9A14C = {
 						ProvisioningStyle = Automatic;
+					};
+					ED749DEA00BBC54C8ADF386E = {
+						ProvisioningStyle = Automatic;
+						TestTargetID = 95151957A30BD8E555F9A14C;
 					};
 				};
 			};
@@ -128,6 +173,7 @@
 			projectRoot = "";
 			targets = (
 				95151957A30BD8E555F9A14C /* HanguStep */,
+				ED749DEA00BBC54C8ADF386E /* HanguStepUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -142,7 +188,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE8D35B98FD3259C1BFC8DE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD1FF7D6B7E14AFCB7D0FE00 /* QuizFlowUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		93B35F4F3AE5E97B43B4FE54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95151957A30BD8E555F9A14C /* HanguStep */;
+			targetProxy = 1B41717E44EBE58E6A6F2737 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2A5C122437365A160DDFEC4F /* Debug */ = {
@@ -233,7 +295,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -268,6 +329,23 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6FD599620A9A0F26F7842285 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nemsothea.hangustep.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HanguStep;
 			};
 			name = Release;
 		};
@@ -322,13 +400,29 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
+		};
+		F1258C1AD7871F8A73B3D764 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nemsothea.hangustep.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HanguStep;
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -338,6 +432,15 @@
 			buildConfigurations = (
 				33FB078E6835044BAFE8F7E4 /* Debug */,
 				796EB46F65E7FC2A56A27DAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		939ACF87484C95B1978E46D5 /* Build configuration list for PBXNativeTarget "HanguStepUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1258C1AD7871F8A73B3D764 /* Debug */,
+				6FD599620A9A0F26F7842285 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

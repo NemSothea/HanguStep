@@ -39,6 +39,17 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ED749DEA00BBC54C8ADF386E"
+               BuildableName = "HanguStepUITests.xctest"
+               BlueprintName = "HanguStepUITests"
+               ReferencedContainer = "container:HanguStep.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>

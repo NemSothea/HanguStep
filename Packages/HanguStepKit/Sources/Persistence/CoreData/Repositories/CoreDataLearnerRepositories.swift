@@ -4,20 +4,13 @@ import Foundation
 
 public struct CoreDataAttemptRepository: AttemptRepository {
     private let context: NSManagedObjectContext
-    private let questions: any QuestionRepository
 
-    /// `questions` is used to denormalize the learning target onto each attempt.
-    public init(controller: PersistenceController, questions: any QuestionRepository) {
+    public init(controller: PersistenceController) {
         context = controller.newBackgroundContext()
-        self.questions = questions
     }
 
     public func record(_ attempt: Attempt) async throws {
-        let target = try await questions.question(id: attempt.questionID).flatMap { question -> LearningTarget? in
-            if let id = question.relatedVocabularyID { return .vocabulary(id) }
-            if let id = question.relatedGrammarID { return .grammar(id) }
-            return nil
-        }
+        let target = attempt.target
         try await context.perform {
             let duplicate = NSFetchRequest<CDAttempt>(entityName: "CDAttempt")
             duplicate.predicate = NSPredicate(format: "sessionID == %@ AND questionID == %@", attempt.sessionID.rawValue, attempt.questionID.rawValue)
@@ -46,6 +39,14 @@ public struct CoreDataAttemptRepository: AttemptRepository {
         try await fetch(field: "questionID", value: questionID.rawValue)
     }
 
+    public func allAttempts() async throws -> [Attempt] {
+        try await context.perform {
+            let request = NSFetchRequest<CDAttempt>(entityName: "CDAttempt")
+            request.sortDescriptors = [NSSortDescriptor(key: "answeredAt", ascending: true)]
+            return try context.fetch(request).map(Self.map)
+        }
+    }
+
     public func summary() async throws -> AttemptSummary {
         try await context.perform {
             let all = NSFetchRequest<CDAttempt>(entityName: "CDAttempt")
@@ -61,18 +62,21 @@ public struct CoreDataAttemptRepository: AttemptRepository {
             let request = NSFetchRequest<CDAttempt>(entityName: "CDAttempt")
             request.predicate = NSPredicate(format: "%K == %@", field, value)
             request.sortDescriptors = [NSSortDescriptor(key: "answeredAt", ascending: true)]
-            return try context.fetch(request).map {
-                Attempt(
-                    id: AttemptID($0.id),
-                    sessionID: StudySessionID($0.sessionID),
-                    questionID: QuestionID($0.questionID),
-                    selectedOptionID: OptionID($0.selectedOptionID),
-                    isCorrect: $0.isCorrect,
-                    answeredAt: $0.answeredAt ?? .distantPast,
-                    responseTime: $0.responseTime
-                )
-            }
+            return try context.fetch(request).map(Self.map)
         }
+    }
+
+    static func map(_ row: CDAttempt) -> Attempt {
+        Attempt(
+            id: AttemptID(row.id),
+            sessionID: StudySessionID(row.sessionID),
+            questionID: QuestionID(row.questionID),
+            selectedOptionID: OptionID(row.selectedOptionID),
+            isCorrect: row.isCorrect,
+            answeredAt: row.answeredAt ?? .distantPast,
+            responseTime: row.responseTime,
+            target: LearningTarget(kind: row.targetKind, contentID: row.targetID)
+        )
     }
 }
 

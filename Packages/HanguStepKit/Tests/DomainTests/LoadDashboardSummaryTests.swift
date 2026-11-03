@@ -23,6 +23,7 @@ final class LoadDashboardSummaryTests: XCTestCase {
         func attempts(inSession sessionID: StudySessionID) async throws -> [Attempt] { [] }
         func attempts(forQuestion questionID: QuestionID) async throws -> [Attempt] { [] }
         func summary() async throws -> AttemptSummary { summaryValue }
+        func allAttempts() async throws -> [Attempt] { [] }
     }
 
     private struct FailingAttempts: AttemptRepository {
@@ -30,6 +31,7 @@ final class LoadDashboardSummaryTests: XCTestCase {
         func attempts(inSession sessionID: StudySessionID) async throws -> [Attempt] { [] }
         func attempts(forQuestion questionID: QuestionID) async throws -> [Attempt] { [] }
         func summary() async throws -> AttemptSummary { throw DomainError.storage(description: "disk") }
+        func allAttempts() async throws -> [Attempt] { [] }
     }
 
     func testCombinesCountsFromAllRepositories() async throws {

@@ -76,10 +76,11 @@ final class CoreDataRepositoryTests: XCTestCase {
     func testAttemptDuplicateGuardAndDenormalizedTarget() async throws {
         _ = try await importSample()
         let questions = CoreDataQuestionRepository(controller: controller)
-        let repository = CoreDataAttemptRepository(controller: controller, questions: questions)
+        let repository = CoreDataAttemptRepository(controller: controller)
         let attempt = Attempt(
             id: AttemptID("a1"), sessionID: StudySessionID("s1"), questionID: QuestionID("question.sample.0001"),
-            selectedOptionID: OptionID("o1"), isCorrect: true, answeredAt: Date(), responseTime: 2.5
+            selectedOptionID: OptionID("o1"), isCorrect: true, answeredAt: Date(), responseTime: 2.5,
+            target: .vocabulary(VocabularyID("vocab.sample.0001"))
         )
         try await repository.record(attempt)
 
@@ -103,6 +104,7 @@ final class CoreDataRepositoryTests: XCTestCase {
         let forQuestion = try await repository.attempts(forQuestion: QuestionID("question.sample.0001"))
         XCTAssertEqual(forQuestion.count, 2)
         XCTAssertEqual(forQuestion.first?.responseTime, 2.5)
+        XCTAssertEqual(forQuestion.first?.target, .vocabulary(VocabularyID("vocab.sample.0001")), "target survives the round trip")
 
         let context = controller.newBackgroundContext()
         let target: (String, String) = try await context.perform {
@@ -186,7 +188,7 @@ final class CoreDataRepositoryTests: XCTestCase {
         XCTAssertTrue(again.skipped)
 
         let questions = CoreDataQuestionRepository(controller: controller)
-        let attempts = CoreDataAttemptRepository(controller: controller, questions: questions)
+        let attempts = CoreDataAttemptRepository(controller: controller)
         try await attempts.record(Attempt(
             id: AttemptID("a1"), sessionID: StudySessionID("s1"), questionID: QuestionID("question.sample.0007"),
             selectedOptionID: OptionID("o1"), isCorrect: true, answeredAt: Date(), responseTime: 1
