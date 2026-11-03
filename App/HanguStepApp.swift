@@ -26,8 +26,8 @@ struct HanguStepApp: App {
         case .starting:
             ProgressView("Preparing your library")
                 .task { await container.bootstrap() }
-        case let .ready(dependencies):
-            RootView(dependencies: dependencies)
+        case let .ready(dependencies, preferences):
+            RootView(dependencies: dependencies, preferences: preferences)
         case let .failed(message):
             ErrorStateView(message: message)
         }

@@ -117,4 +117,11 @@ public struct Question: Identifiable, Hashable, Sendable, Codable {
     }
 
     public var isValid: Bool { validate().isEmpty }
+
+    /// The learning target this question practises, if any. Vocabulary wins when both are set.
+    public var learningTarget: LearningTarget? {
+        if let relatedVocabularyID { return .vocabulary(relatedVocabularyID) }
+        if let relatedGrammarID { return .grammar(relatedGrammarID) }
+        return nil
+    }
 }

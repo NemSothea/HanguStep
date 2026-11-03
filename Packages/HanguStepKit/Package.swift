@@ -21,10 +21,10 @@ let package = Package(
         // Screens and view models. Talks to Domain through use cases.
         .target(name: "Features", dependencies: ["Domain", "DesignSystem"]),
 
-        .testTarget(name: "DomainTests", dependencies: ["Domain"]),
+        .testTarget(name: "DomainTests", dependencies: ["Domain", "Persistence"]),
         .testTarget(name: "PersistenceTests", dependencies: ["Persistence"], resources: [.copy("Fixtures")]),
         .testTarget(name: "DesignSystemTests", dependencies: ["DesignSystem"]),
-        .testTarget(name: "FeaturesTests", dependencies: ["Features"]),
+        .testTarget(name: "FeaturesTests", dependencies: ["Features", "Persistence"]),
     ],
     swiftLanguageModes: [.v6]
 )

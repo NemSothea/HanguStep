@@ -8,4 +8,6 @@ public protocol AttemptRepository: Sendable {
     func attempts(inSession sessionID: StudySessionID) async throws -> [Attempt]
     func attempts(forQuestion questionID: QuestionID) async throws -> [Attempt]
     func summary() async throws -> AttemptSummary
+    /// Every attempt, oldest first. Statistics and mistakes derive from this.
+    func allAttempts() async throws -> [Attempt]
 }

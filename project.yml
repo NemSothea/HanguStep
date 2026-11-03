@@ -45,4 +45,17 @@ targets:
         ENABLE_PREVIEWS: YES
         SWIFT_EMIT_LOC_STRINGS: YES
     scheme:
-      testTargets: []
+      testTargets:
+        - HanguStepUITests
+  HanguStepUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: UITests
+    dependencies:
+      - target: HanguStep
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nemsothea.hangustep.uitests
+        TEST_TARGET_NAME: HanguStep
+        GENERATE_INFOPLIST_FILE: YES

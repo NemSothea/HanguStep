@@ -4,17 +4,27 @@ import SwiftUI
 
 struct DashboardView: View {
     @State private var viewModel: DashboardViewModel
+    let dependencies: AppDependencies
+    @State private var launch: QuizLaunch?
 
-    init(viewModel: DashboardViewModel) {
+    init(viewModel: DashboardViewModel, dependencies: AppDependencies) {
         _viewModel = State(initialValue: viewModel)
+        self.dependencies = dependencies
     }
 
     var body: some View {
-        AsyncStateView(viewModel.state, retry: { Task { await viewModel.load() } }) { summary in
+        AsyncStateView(viewModel.state, retry: { Task { await viewModel.load() } }) { content in
             ScrollView {
                 VStack(alignment: .leading, spacing: Spacing.lg) {
                     header
-                    statGrid(summary)
+                    if let unfinished = content.unfinished {
+                        ContinueSessionCard(snapshot: unfinished) {
+                            launch = QuizLaunch(resume: unfinished)
+                        } discard: {
+                            Task { await viewModel.discardUnfinished() }
+                        }
+                    }
+                    statGrid(content.summary)
                     actions
                 }
                 .padding(Spacing.md)
@@ -26,20 +36,16 @@ struct DashboardView: View {
         .navigationTitle("Home")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    Label("Settings", systemImage: "gearshape")
-                }
+                NavigationLink { SettingsView(dependencies: dependencies) } label: { Label("Settings", systemImage: "gearshape") }
             }
         }
+        .quizSheet(launch: $launch, dependencies: dependencies) { Task { await viewModel.load() } }
         .task { await viewModel.load() }
     }
 
     private var header: some View {
         HStack {
-            Text("Today")
-                .font(Typography.title)
+            Text("Today").font(Typography.title)
             Spacer()
             StreakBadge(days: 0)
         }
@@ -50,13 +56,7 @@ struct DashboardView: View {
             StatTile(title: "Vocabulary", value: summary.vocabularyCount.formatted(), caption: "words", systemImage: "character.book.closed")
             StatTile(title: "Grammar", value: summary.grammarCount.formatted(), caption: "patterns", systemImage: "text.book.closed")
             StatTile(title: "Answered", value: summary.attempts.total.formatted(), caption: "all time", systemImage: "checkmark.circle")
-            StatTile(
-                title: "Accuracy",
-                value: summary.attempts.accuracy.formatted(.percent.precision(.fractionLength(0))),
-                caption: "all time",
-                systemImage: "target",
-                tint: HSColor.success
-            )
+            StatTile(title: "Accuracy", value: summary.attempts.accuracy.formatted(.percent.precision(.fractionLength(0))), caption: "all time", systemImage: "target", tint: HSColor.success)
         }
     }
 
@@ -64,11 +64,10 @@ struct DashboardView: View {
         VStack(spacing: Spacing.sm) {
             HSButton("Start review", systemImage: "play.fill") {}
                 .disabled(true)
-            HSButton("Quick quiz", systemImage: "bolt.fill", variant: .secondary) {}
-                .disabled(true)
-            Text("Review and quizzes arrive in Phase 4.")
-                .font(Typography.caption)
-                .foregroundStyle(HSColor.textSecondary)
+            HSButton("Quick quiz", systemImage: "bolt.fill", variant: .secondary) {
+                launch = QuizLaunch(configuration: QuizConfiguration(pool: .mixed, count: 10))
+            }
+            Text("Spaced review arrives in Phase 5.").font(Typography.caption).foregroundStyle(HSColor.textSecondary)
         }
     }
 }

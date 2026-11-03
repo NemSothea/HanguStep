@@ -1,21 +1,22 @@
 import DesignSystem
+import Domain
 import SwiftUI
 
-/// Static shell. Preferences persist from Phase 5, sync status becomes live in Phase 6.
 struct SettingsView: View {
-    @State private var glossLanguage = "en"
-    @State private var dailyGoal = 20
-    @State private var pronunciationEnabled = true
+    let dependencies: AppDependencies
+    @Environment(LearnerPreferences.self) private var preferences
+    @State private var errorMessage: String?
 
     var body: some View {
         Form {
             Section("Learning") {
-                Picker("Show meanings first in", selection: $glossLanguage) {
-                    Text("English").tag("en")
-                    Text("Khmer · ខ្មែរ").tag("km")
+                Picker("Show meanings first in", selection: binding(\.glossLanguage)) {
+                    Text("English").tag(GlossLanguage.english)
+                    Text("Khmer · ខ្មែរ").tag(GlossLanguage.khmer)
                 }
-                Stepper("Daily goal: \(dailyGoal) questions", value: $dailyGoal, in: 5...200, step: 5)
-                Toggle("Pronunciation", isOn: $pronunciationEnabled)
+                Stepper("Daily goal: \(preferences.settings.dailyGoal) questions", value: binding(\.dailyGoal), in: 5...200, step: 5)
+                Stepper("Review limit: \(preferences.settings.reviewLimit)", value: binding(\.reviewLimit), in: 10...200, step: 10)
+                Toggle("Pronunciation", isOn: binding(\.pronunciationEnabled))
             }
             Section("iCloud") {
                 SyncStatusBadge(status: .disabled)
@@ -37,12 +38,24 @@ struct SettingsView: View {
             Section("About") {
                 LabeledContent("Version", value: "0.1.0")
             }
+            if let errorMessage {
+                Section { Text(errorMessage).foregroundStyle(HSColor.danger) }
+            }
         }
         .formStyle(.grouped)
         .navigationTitle("Settings")
     }
-}
 
-#Preview {
-    NavigationStack { SettingsView() }
+    /// Writes through `LearnerPreferences`, which persists via the save use case.
+    private func binding<Value>(_ keyPath: WritableKeyPath<LearnerSettings, Value>) -> Binding<Value> {
+        Binding(
+            get: { preferences.settings[keyPath: keyPath] },
+            set: { newValue in
+                Task {
+                    do { try await preferences.update { $0[keyPath: keyPath] = newValue } }
+                    catch { errorMessage = error.localizedDescription }
+                }
+            }
+        )
+    }
 }
