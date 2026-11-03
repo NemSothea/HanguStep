@@ -31,6 +31,7 @@
 		432A27091087C1CDC0EB0943 /* HanguStepKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HanguStepKit; path = Packages/HanguStepKit; sourceTree = SOURCE_ROOT; };
 		5AAD04EC0413D84A1A867432 /* HanguStepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanguStepApp.swift; sourceTree = "<group>"; };
 		65D6EC25BB9A5F3688EEDA3E /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		6D19B4A42441A2AEC03A0711 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
 		F628183CBE528A27BF082665 /* HanguStepUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HanguStepUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDADE268FD7CA67DE9CFC816 /* QuizFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFlowUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		568636188D3F7B8F911DCFAE /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				6D19B4A42441A2AEC03A0711 /* Signing.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		949B0EA12A3C309140520578 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				97B08E4F161039076C6455F9 /* App */,
+				568636188D3F7B8F911DCFAE /* Configs */,
 				949B0EA12A3C309140520578 /* Packages */,
 				C2B1745EF857C66C92AD50AC /* UITests */,
 				9F07F7E3CF339637EEB34C83 /* Products */,
@@ -147,9 +157,11 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					95151957A30BD8E555F9A14C = {
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 					ED749DEA00BBC54C8ADF386E = {
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 95151957A30BD8E555F9A14C;
 					};
@@ -211,10 +223,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/HanguStep.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "App/HanguStep-macOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -239,6 +254,7 @@
 		};
 		33FB078E6835044BAFE8F7E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D19B4A42441A2AEC03A0711 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -270,7 +286,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -306,10 +321,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/HanguStep.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "App/HanguStep-macOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -351,6 +369,7 @@
 		};
 		796EB46F65E7FC2A56A27DAA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D19B4A42441A2AEC03A0711 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -382,7 +401,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

@@ -177,7 +177,7 @@ Each entity belongs to exactly one configuration. Core Data refuses relationship
 - `CDStudySession.questionIDs` is the frozen question list for resume. `currentIndex` plus the attempt rows restore the exact position.
 - `CDStudySession.attempts` is an optional to-many with nullify delete. `CDAttempt` has no inverse back to the session as a required field; `sessionID` string is the source of truth so a session row arriving from CloudKit after its attempts still links.
 - `modifiedAt` on every mutable learner entity. Phase 6 merge policy uses it.
-- No uniqueness constraints. Repositories check before insert and deduplicate after CloudKit import by `(targetKind, targetID)` keeping the row with the latest `modifiedAt`.
+- No uniqueness constraints. Repositories check before insert; `LearnerDeduplicator` runs after CloudKit imports with the per-entity policy in `CLOUDKIT_SYNC.md` §5 (schedules keep the latest `lastReviewedAt`, attempts the earliest `answeredAt`, everything else the latest `modifiedAt`).
 
 ## 5. Mapping to domain
 

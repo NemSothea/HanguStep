@@ -9,17 +9,26 @@ options:
 packages:
   HanguStepKit:
     path: Packages/HanguStepKit
+configFiles:
+  Debug: Configs/Signing.xcconfig
+  Release: Configs/Signing.xcconfig
 settings:
   base:
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
-    CODE_SIGN_STYLE: Automatic
 targets:
   HanguStep:
     type: application
     supportedDestinations: [iOS, macOS]
     sources:
       - path: App
+        excludes:
+          - "*.entitlements"
+          - Info.plist
+    info:
+      path: App/Info.plist
+      properties:
+        UIBackgroundModes: [remote-notification]
     dependencies:
       - package: HanguStepKit
         product: Domain
@@ -41,6 +50,8 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.education
+        CODE_SIGN_ENTITLEMENTS: App/HanguStep.entitlements
+        "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": App/HanguStep-macOS.entitlements
         TARGETED_DEVICE_FAMILY: "1,2"
         ENABLE_PREVIEWS: YES
         SWIFT_EMIT_LOC_STRINGS: YES

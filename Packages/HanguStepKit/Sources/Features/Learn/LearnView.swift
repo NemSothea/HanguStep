@@ -33,7 +33,7 @@ struct LearnView: View {
                 case .grammar:
                     GrammarListView(viewModel: GrammarListViewModel(browse: dependencies.browseGrammar))
                 case .bookmarks:
-                    BookmarksView(viewModel: BookmarksViewModel(list: dependencies.listBookmarks))
+                    BookmarksView(viewModel: BookmarksViewModel(list: dependencies.listBookmarks), changes: dependencies.learnerChanges)
                 }
             }
             .safeAreaInset(edge: .top) {

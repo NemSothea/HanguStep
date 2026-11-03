@@ -143,7 +143,11 @@ Phase 3 added `StudySessionRepository`, `LearnerNoteRepository`, `LearnerSetting
 | Spaced repetition | pure `SM2` + `ReviewQuality`; schedule update inside `SubmitAnswer`; `QuizPool.review` in `StartQuizSession`; `ListReviewQueue` |
 | Progress | pure `ProgressStatistics` (totals, today, 7/30-day activity, streaks, weak items); `LoadDashboardSummary` (extended), `LoadProgressReport` |
 
-Rules for quality mapping, due dates, mastery and streaks are in ADR-006. `ReviewScheduleRepository.all()` was added so due and mastered counts derive from rows rather than a cached counter.
+Rules for quality mapping, due dates, mastery and streaks are in ADR-006.
+
+### Sync (Phase 6)
+
+`SyncState` and `LearnerChangeSource` live in Domain. Persistence adds `PersistenceController.SyncOption`, `SyncMonitor` (CloudKit events, account status, debounced change stream, dedupe trigger) and `LearnerDeduplicator`. Features adds `SyncStatusModel` (main-actor mirror for Settings) and `reloadOnLearnerChange`. The composition root decides the sync option from a device-local preference. See `CLOUDKIT_SYNC.md`. `ReviewScheduleRepository.all()` was added so due and mastered counts derive from rows rather than a cached counter.
 
 Each is a protocol plus a default struct. Randomness (`Shuffler`), ids (`IDGenerator`) and time (`DateProvider`) are injected so every use case is deterministic under test.
 

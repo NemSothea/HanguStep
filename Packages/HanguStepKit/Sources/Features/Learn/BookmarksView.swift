@@ -23,7 +23,12 @@ struct BookmarksView: View {
     @State private var viewModel: BookmarksViewModel
     @Environment(LearnerPreferences.self) private var preferences
 
-    init(viewModel: BookmarksViewModel) { _viewModel = State(initialValue: viewModel) }
+    var changes: any LearnerChangeSource = NoLearnerChanges()
+
+    init(viewModel: BookmarksViewModel, changes: any LearnerChangeSource = NoLearnerChanges()) {
+        _viewModel = State(initialValue: viewModel)
+        self.changes = changes
+    }
 
     var body: some View {
         AsyncStateView(viewModel.state, emptyTitle: "No bookmarks", emptyMessage: "Tap the bookmark icon on any word or pattern.", emptySystemImage: "bookmark", retry: { Task { await viewModel.load() } }) { entries in
@@ -35,6 +40,7 @@ struct BookmarksView: View {
             .listStyle(.plain)
         }
         .task { await viewModel.load() }
+        .reloadOnLearnerChange(changes) { await viewModel.load() }
     }
 
     private func route(for target: LearningTarget) -> LearnRoute {

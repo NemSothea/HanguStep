@@ -68,6 +68,7 @@ struct ReviewQueueView: View {
         }
         .quizSheet(launch: $launch, dependencies: dependencies) { Task { await viewModel.load() } }
         .task { await viewModel.load() }
+        .reloadOnLearnerChange(dependencies.learnerChanges) { await viewModel.load() }
     }
 
     private func overdueBadge(_ entry: ReviewQueueEntry) -> some View {

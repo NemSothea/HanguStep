@@ -10,17 +10,55 @@ import Persistence
 final class AppContainer {
     enum State {
         case starting
-        case ready(AppDependencies, LearnerPreferences)
+        case ready(AppDependencies, LearnerPreferences, SyncStatusModel)
         case failed(String)
     }
 
-    private(set) var state: State = .starting
+    /// Private CloudKit database container (ADR-003). Must match App/HanguStep.entitlements.
+    static let cloudKitContainerIdentifier = "iCloud.com.nemsothea.hangustep"
+    private static let syncPreferenceKey = "sync.enabled"
 
-    /// Opens the stores, imports bundled content if newer, loads settings and builds the dependency graph.
+    private(set) var state: State = .starting
+    private var monitor: SyncMonitor?
+    private var monitorTask: Task<Void, Never>?
+    private var bootstrapTask: Task<Void, Never>?
+
+    /// Device-local choice. Defaults to on; a learner without iCloud simply sees "not signed in".
+    private static var isSyncPreferred: Bool {
+        get { UserDefaults.standard.object(forKey: syncPreferenceKey) as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: syncPreferenceKey) }
+    }
+
+    private static var isUITesting: Bool { CommandLine.arguments.contains("--ui-testing") }
+
+    /// Opens the stores, imports bundled content if newer, loads settings and builds the
+    /// dependency graph. Single-flight: concurrent callers await the same run.
     func bootstrap() async {
+        if let running = bootstrapTask {
+            await running.value
+            return
+        }
+        let task = Task { await run() }
+        bootstrapTask = task
+        await task.value
+        bootstrapTask = nil
+    }
+
+    private func run() async {
+        // Tear the previous graph down before opening the same files again.
+        monitorTask?.cancel()
+        monitorTask = nil
+        monitor?.stop()
+        monitor = nil
         do {
-            let controller = try PersistenceController(mode: .onDisk(directory: Self.storeDirectory()))
+            // UI tests and the simulator have no iCloud entitlement; keep them local.
+            let sync: PersistenceController.SyncOption = (Self.isSyncPreferred && !Self.isUITesting)
+                ? .cloudKit(containerIdentifier: Self.cloudKitContainerIdentifier)
+                : .off
+            let controller = try PersistenceController(mode: .onDisk(directory: Self.storeDirectory()), sync: sync)
             _ = try await CoreDataContentStore(controller: controller).apply(SampleContent.package)
+            let monitor = SyncMonitor(controller: controller)
+            self.monitor = monitor
 
             let vocabulary = CoreDataVocabularyRepository(controller: controller)
             let grammar = CoreDataGrammarRepository(controller: controller)
@@ -52,11 +90,26 @@ final class AppContainer {
                 listHistory: ListQuizHistory(sessions: sessions, attempts: attempts),
                 loadSettings: LoadSettings(repository: settingsRepository),
                 saveSettings: saveSettings,
-                pronouncer: SpeechPronouncer()
+                pronouncer: SpeechPronouncer(),
+                learnerChanges: monitor
             )
             let settings = try await settingsRepository.load()
             let preferences = LearnerPreferences(settings: settings, save: saveSettings)
-            state = .ready(dependencies, preferences)
+            let syncStatus = SyncStatusModel(state: monitor.currentState, isSyncPreferred: Self.isSyncPreferred) { [weak self] enabled in
+                guard let self else { return }
+                let previous = Self.isSyncPreferred
+                Self.isSyncPreferred = enabled
+                // The container must be rebuilt to add or drop CloudKit mirroring.
+                self.state = .starting
+                await self.bootstrap()
+                if case .failed = self.state {
+                    // Keep the stored preference consistent with what last worked.
+                    Self.isSyncPreferred = previous
+                }
+            }
+            monitor.start()
+            monitorTask = Task { await syncStatus.observe(monitor.states()) }
+            state = .ready(dependencies, preferences, syncStatus)
         } catch {
             state = .failed(String(describing: error))
         }
