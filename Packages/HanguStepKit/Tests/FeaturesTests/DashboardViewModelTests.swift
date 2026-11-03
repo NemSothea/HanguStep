@@ -16,7 +16,7 @@ final class DashboardViewModelTests: XCTestCase {
     }
 
     func testLoadTransitionsToLoaded() async {
-        let summary = DashboardSummary(vocabularyCount: 3, grammarCount: 1, attempts: AttemptSummary(total: 0, correct: 0))
+        let summary = DashboardSummary(vocabularyCount: 3, grammarCount: 1, progress: .empty, dueCount: 2, masteredCount: 0, dailyGoal: 20)
         let viewModel = DashboardViewModel(loadSummary: StubLoad(result: .success(summary)), resume: StubResume())
         XCTAssertEqual(viewModel.state, .idle)
         await viewModel.load()

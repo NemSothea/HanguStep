@@ -48,6 +48,12 @@ final class QuizFlowUITests: XCTestCase {
         snapshot("05-results")
         app.buttons["Done"].tap()
 
+        // Phase 5: today's answers light the streak and the goal ring on Home.
+        app.tabBars.buttons["Home"].tap()
+        XCTAssertTrue(row(startingWith: "1 day streak").waitForExistence(timeout: 5), "streak badge did not update")
+        XCTAssertTrue(row(startingWith: "Daily goal, 5 of").waitForExistence(timeout: 5), "goal tile did not update")
+        snapshot("05b-home-after-quiz")
+
         app.tabBars.buttons["Progress"].tap()
         XCTAssertTrue(app.staticTexts["5 of 5"].firstMatch.waitForExistence(timeout: 5) || app.staticTexts.matching(NSPredicate(format: "label CONTAINS 'of 5'")).firstMatch.waitForExistence(timeout: 5))
         snapshot("06-history")

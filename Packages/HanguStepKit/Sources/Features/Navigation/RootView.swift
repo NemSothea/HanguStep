@@ -72,7 +72,7 @@ public struct RootView: View {
         case .review:
             MistakesView(dependencies: dependencies)
         case .progress:
-            HistoryView(viewModel: HistoryViewModel(list: dependencies.listHistory))
+            ProgressScreen(dependencies: dependencies)
         }
     }
 }

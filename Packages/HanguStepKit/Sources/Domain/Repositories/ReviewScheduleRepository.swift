@@ -5,5 +5,8 @@ public protocol ReviewScheduleRepository: Sendable {
     func schedule(for target: LearningTarget) async throws -> ReviewSchedule?
     /// Insert or replace by target.
     func upsert(_ schedule: ReviewSchedule) async throws
+    /// Due items, earliest review date first.
     func due(onOrBefore date: Date, limit: Int) async throws -> [ReviewSchedule]
+    /// Every schedule. Counts (due, mastered) derive from this.
+    func all() async throws -> [ReviewSchedule]
 }

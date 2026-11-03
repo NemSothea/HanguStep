@@ -9,6 +9,8 @@ public struct StartQuizSession: StartQuizSessionUseCase {
     private let questions: any QuestionRepository
     private let sessions: any StudySessionRepository
     private let attempts: any AttemptRepository
+    private let schedules: any ReviewScheduleRepository
+    private let settings: any LearnerSettingsRepository
     private let shuffler: any Shuffler
     private let ids: any IDGenerator
     private let dates: any DateProvider
@@ -18,6 +20,8 @@ public struct StartQuizSession: StartQuizSessionUseCase {
         questions: any QuestionRepository,
         sessions: any StudySessionRepository,
         attempts: any AttemptRepository,
+        schedules: any ReviewScheduleRepository,
+        settings: any LearnerSettingsRepository,
         shuffler: any Shuffler = SystemShuffler(),
         ids: any IDGenerator = UUIDGenerator(),
         dates: any DateProvider = SystemDateProvider(),
@@ -26,6 +30,8 @@ public struct StartQuizSession: StartQuizSessionUseCase {
         self.questions = questions
         self.sessions = sessions
         self.attempts = attempts
+        self.schedules = schedules
+        self.settings = settings
         self.shuffler = shuffler
         self.ids = ids
         self.dates = dates
@@ -39,9 +45,11 @@ public struct StartQuizSession: StartQuizSessionUseCase {
         guard !valid.isEmpty else { throw DomainError.emptyPool }
 
         let chosen: [Question]
-        if case .questions = configuration.pool {
+        switch configuration.pool {
+        case .questions, .review:
+            // Fixed lists keep their order: lesson order, or most overdue first.
             chosen = valid
-        } else {
+        default:
             chosen = Array(shuffler.shuffle(valid).prefix(configuration.count))
         }
 
@@ -69,16 +77,36 @@ public struct StartQuizSession: StartQuizSessionUseCase {
                 guard let target = $0.learningTarget else { return false }
                 return targets.contains(target)
             }
+        case .review:
+            return try await reviewCandidates()
         case .vocabulary, .grammar, .mixed:
             let filter = QuestionFilter(levels: configuration.levels, kinds: configuration.pool.kinds)
             return try await questions.questions(matching: filter)
         }
     }
+
+    /// One question per due target, most overdue first, capped by the learner's
+    /// daily review limit (PRD FR-R4). Which of a target's questions is asked is random.
+    private func reviewCandidates() async throws -> [Question] {
+        let limit = try await settings.load().reviewLimit
+        let due = try await schedules.due(onOrBefore: dates.now(), limit: Int.max)
+        guard !due.isEmpty else { return [] }
+        var byTarget: [LearningTarget: [Question]] = [:]
+        for question in try await questions.questions(matching: .all) where question.isValid {
+            if let target = question.learningTarget { byTarget[target, default: []].append(question) }
+        }
+        // Targets whose content was retired do not consume a slot of the daily limit.
+        return Array(due.compactMap { schedule in
+            byTarget[schedule.target].flatMap { shuffler.shuffle($0).first }
+        }.prefix(limit))
+    }
 }
 
 extension QuizPool {
     var isFixedList: Bool {
-        if case .questions = self { return true }
-        return false
+        switch self {
+        case .questions, .review: return true
+        default: return false
+        }
     }
 }

@@ -20,8 +20,11 @@ final class QuizSessionViewModelTests: XCTestCase {
         let bookmarks = InMemoryBookmarkRepository()
         let notes = InMemoryLearnerNoteRepository()
         let settings = InMemoryLearnerSettingsRepository()
+        let schedules = InMemoryReviewScheduleRepository()
         dependencies = AppDependencies(
-            loadDashboardSummary: LoadDashboardSummary(vocabulary: vocabulary, grammar: grammar, attempts: attempts),
+            loadDashboardSummary: LoadDashboardSummary(vocabulary: vocabulary, grammar: grammar, attempts: attempts, sessions: sessions, schedules: schedules, settings: settings),
+            loadProgressReport: LoadProgressReport(attempts: attempts, sessions: sessions, schedules: schedules, settings: settings, vocabulary: vocabulary, grammar: grammar),
+            listReviewQueue: ListReviewQueue(schedules: schedules, settings: settings, vocabulary: vocabulary, grammar: grammar),
             browseVocabulary: BrowseVocabulary(vocabulary: vocabulary),
             getVocabularyDetail: GetVocabularyDetail(vocabulary: vocabulary, bookmarks: bookmarks, notes: notes),
             browseGrammar: BrowseGrammar(grammar: grammar),
@@ -29,9 +32,9 @@ final class QuizSessionViewModelTests: XCTestCase {
             toggleBookmark: ToggleBookmark(bookmarks: bookmarks),
             listBookmarks: ListBookmarks(bookmarks: bookmarks, vocabulary: vocabulary, grammar: grammar),
             saveNote: SaveNote(notes: notes),
-            startQuiz: StartQuizSession(questions: questions, sessions: sessions, attempts: attempts, shuffler: IdentityShuffler(), deviceName: "test"),
+            startQuiz: StartQuizSession(questions: questions, sessions: sessions, attempts: attempts, schedules: schedules, settings: settings, shuffler: IdentityShuffler(), deviceName: "test"),
             resumeQuiz: ResumeQuizSession(questions: questions, sessions: sessions, attempts: attempts),
-            submitAnswer: SubmitAnswer(sessions: sessions, attempts: attempts),
+            submitAnswer: SubmitAnswer(sessions: sessions, attempts: attempts, schedules: schedules),
             finishQuiz: FinishQuizSession(sessions: sessions, attempts: attempts, questions: questions),
             listMistakes: ListMistakes(attempts: attempts, vocabulary: vocabulary, grammar: grammar),
             listHistory: ListQuizHistory(sessions: sessions, attempts: attempts),

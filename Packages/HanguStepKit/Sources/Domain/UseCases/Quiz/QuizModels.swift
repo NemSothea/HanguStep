@@ -6,6 +6,8 @@ public enum QuizPool: Hashable, Sendable, Codable {
     case mixed
     /// Questions attached to the learner's current mistakes.
     case mistakes
+    /// Today's spaced-repetition queue (PRD FR-R4). Count and levels are ignored.
+    case review
     /// A fixed list, for example a grammar lesson's practice questions.
     case questions([QuestionID])
 
@@ -13,13 +15,14 @@ public enum QuizPool: Hashable, Sendable, Codable {
         switch self {
         case .vocabulary: return [.vocabularyMeaning, .meaningToWord]
         case .grammar: return [.grammarFillIn, .sentenceCompletion]
-        case .mixed, .mistakes, .questions: return []
+        case .mixed, .mistakes, .review, .questions: return []
         }
     }
 
     var mode: StudyMode {
         switch self {
         case .mistakes: return .mistakes
+        case .review: return .review
         default: return .quiz
         }
     }
@@ -69,14 +72,17 @@ public struct AnswerFeedback: Hashable, Sendable {
     public let explanation: Gloss
     public let nextIndex: Int
     public let isLastQuestion: Bool
+    /// Updated SM-2 schedule for the question's target, nil when the question has none.
+    public let schedule: ReviewSchedule?
 
-    public init(attempt: Attempt, isCorrect: Bool, correctOptionID: OptionID, explanation: Gloss, nextIndex: Int, isLastQuestion: Bool) {
+    public init(attempt: Attempt, isCorrect: Bool, correctOptionID: OptionID, explanation: Gloss, nextIndex: Int, isLastQuestion: Bool, schedule: ReviewSchedule? = nil) {
         self.attempt = attempt
         self.isCorrect = isCorrect
         self.correctOptionID = correctOptionID
         self.explanation = explanation
         self.nextIndex = nextIndex
         self.isLastQuestion = isLastQuestion
+        self.schedule = schedule
     }
 }
 

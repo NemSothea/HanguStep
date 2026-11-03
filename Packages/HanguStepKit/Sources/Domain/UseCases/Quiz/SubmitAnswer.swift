@@ -7,19 +7,25 @@ public protocol SubmitAnswerUseCase: Sendable {
 public struct SubmitAnswer: SubmitAnswerUseCase {
     private let sessions: any StudySessionRepository
     private let attempts: any AttemptRepository
+    private let schedules: any ReviewScheduleRepository
     private let ids: any IDGenerator
     private let dates: any DateProvider
+    private let calendar: Calendar
 
     public init(
         sessions: any StudySessionRepository,
         attempts: any AttemptRepository,
+        schedules: any ReviewScheduleRepository,
         ids: any IDGenerator = UUIDGenerator(),
-        dates: any DateProvider = SystemDateProvider()
+        dates: any DateProvider = SystemDateProvider(),
+        calendar: Calendar = .autoupdatingCurrent
     ) {
         self.sessions = sessions
         self.attempts = attempts
+        self.schedules = schedules
         self.ids = ids
         self.dates = dates
+        self.calendar = calendar
     }
 
     public func execute(session: StudySession, question: Question, selectedOptionID: OptionID, responseTime: TimeInterval) async throws -> AnswerFeedback {
@@ -43,6 +49,24 @@ public struct SubmitAnswer: SubmitAnswerUseCase {
         // Repository rejects a second answer for the same question (PRD FR-Q3).
         try await attempts.record(attempt)
 
+        // Every answer, in any mode, moves the target's SM-2 schedule (PRD FR-R3).
+        // Written before the session advances: if this write fails the session
+        // stays on the question, the retry hits the duplicate guard and moves on,
+        // and the next answer on the target recomputes from the stored state.
+        var schedule: ReviewSchedule?
+        if let target = question.learningTarget {
+            let next = SM2.review(
+                try await schedules.schedule(for: target),
+                target: target,
+                id: ReviewScheduleID(ids.next()),
+                quality: ReviewQuality.forAnswer(isCorrect: isCorrect, responseTime: attempt.responseTime),
+                on: attempt.answeredAt,
+                calendar: calendar
+            )
+            try await schedules.upsert(next)
+            schedule = next
+        }
+
         var updated = session
         updated.currentIndex = max(session.currentIndex, index + 1)
         try await sessions.save(updated)
@@ -53,7 +77,8 @@ public struct SubmitAnswer: SubmitAnswerUseCase {
             correctOptionID: question.correctOptionID,
             explanation: question.explanation,
             nextIndex: updated.currentIndex,
-            isLastQuestion: updated.currentIndex >= session.questionIDs.count
+            isLastQuestion: updated.currentIndex >= session.questionIDs.count,
+            schedule: schedule
         )
     }
 }

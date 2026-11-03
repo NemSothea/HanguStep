@@ -175,6 +175,8 @@ final class CoreDataRepositoryTests: XCTestCase {
         XCTAssertEqual(v0?.repetitions, 2)
         let due = try await repository.due(onOrBefore: today, limit: 1)
         XCTAssertEqual(due.map(\.id.rawValue), ["r1"])
+        let all = try await repository.all()
+        XCTAssertEqual(all.map(\.id.rawValue), ["r1", "r2", "r3", "r0"], "every schedule, earliest review first")
     }
 
     // 9. Content import lifecycle

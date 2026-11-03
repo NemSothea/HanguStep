@@ -65,6 +65,9 @@ public actor InMemoryReviewScheduleRepository: ReviewScheduleRepository {
                 .prefix(limit)
         )
     }
+    public func all() async throws -> [ReviewSchedule] {
+        schedules.values.sorted { $0.nextReviewDate < $1.nextReviewDate }
+    }
 }
 
 public actor InMemoryStudySessionRepository: StudySessionRepository {
