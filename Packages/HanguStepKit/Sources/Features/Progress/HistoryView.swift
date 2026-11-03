@@ -19,41 +19,47 @@ public final class HistoryViewModel {
     }
 }
 
-/// Phase 4 shows quiz history only. Statistics and charts arrive in Phase 5.
+/// Finished sessions, newest first. Pushed from the Progress screen.
 struct HistoryView: View {
     @State private var viewModel: HistoryViewModel
 
     init(viewModel: HistoryViewModel) { _viewModel = State(initialValue: viewModel) }
 
     var body: some View {
-        NavigationStack {
-            AsyncStateView(viewModel.state, emptyTitle: "No sessions yet", emptyMessage: "Finish a quiz and it will show up here.", emptySystemImage: "chart.bar", retry: { Task { await viewModel.load() } }) { sessions in
-                List(sessions) { summary in
-                    HStack(spacing: Spacing.md) {
-                        VStack(alignment: .leading, spacing: Spacing.xxs) {
-                            Text(summary.session.mode == .mistakes ? "Mistake practice" : "Quiz")
-                                .font(Typography.headline)
-                            Text(summary.session.startedAt.formatted(date: .abbreviated, time: .shortened))
-                                .font(Typography.caption)
-                                .foregroundStyle(HSColor.textSecondary)
-                        }
-                        Spacer()
-                        VStack(alignment: .trailing, spacing: Spacing.xxs) {
-                            Text(summary.accuracy.formatted(.percent.precision(.fractionLength(0))))
-                                .font(Typography.statValue)
-                                .foregroundStyle(summary.accuracy >= 0.8 ? HSColor.success : HSColor.textPrimary)
-                            Text("\(summary.correct) of \(summary.answered)")
-                                .font(Typography.caption)
-                                .foregroundStyle(HSColor.textSecondary)
-                        }
+        AsyncStateView(viewModel.state, emptyTitle: "No sessions yet", emptyMessage: "Finish a quiz and it will show up here.", emptySystemImage: "chart.bar", retry: { Task { await viewModel.load() } }) { sessions in
+            List(sessions) { summary in
+                HStack(spacing: Spacing.md) {
+                    VStack(alignment: .leading, spacing: Spacing.xxs) {
+                        Text(title(for: summary.session.mode))
+                            .font(Typography.headline)
+                        Text(summary.session.startedAt.formatted(date: .abbreviated, time: .shortened))
+                            .font(Typography.caption)
+                            .foregroundStyle(HSColor.textSecondary)
                     }
-                    .padding(.vertical, Spacing.xs)
-                    .accessibilityElement(children: .combine)
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: Spacing.xxs) {
+                        Text(summary.accuracy.formatted(.percent.precision(.fractionLength(0))))
+                            .font(Typography.statValue)
+                            .foregroundStyle(summary.accuracy >= 0.8 ? HSColor.success : HSColor.textPrimary)
+                        Text("\(summary.correct) of \(summary.answered)")
+                            .font(Typography.caption)
+                            .foregroundStyle(HSColor.textSecondary)
+                    }
                 }
-                .listStyle(.plain)
+                .padding(.vertical, Spacing.xs)
+                .accessibilityElement(children: .combine)
             }
-            .navigationTitle("Progress")
-            .task { await viewModel.load() }
+            .listStyle(.plain)
+        }
+        .navigationTitle("History")
+        .task { await viewModel.load() }
+    }
+
+    private func title(for mode: StudyMode) -> LocalizedStringKey {
+        switch mode {
+        case .quiz: return "Quiz"
+        case .review: return "Review"
+        case .mistakes: return "Mistake practice"
         }
     }
 }

@@ -136,6 +136,15 @@ Phase 3 added `StudySessionRepository`, `LearnerNoteRepository`, `LearnerSetting
 | Review | `ListMistakes` (+ pure `MistakeDerivation`), `ListQuizHistory` |
 | Settings | `LoadSettings`, `SaveSettings` |
 
+### Use cases (Phase 5)
+
+| Area | Use cases |
+|---|---|
+| Spaced repetition | pure `SM2` + `ReviewQuality`; schedule update inside `SubmitAnswer`; `QuizPool.review` in `StartQuizSession`; `ListReviewQueue` |
+| Progress | pure `ProgressStatistics` (totals, today, 7/30-day activity, streaks, weak items); `LoadDashboardSummary` (extended), `LoadProgressReport` |
+
+Rules for quality mapping, due dates, mastery and streaks are in ADR-006. `ReviewScheduleRepository.all()` was added so due and mastered counts derive from rows rather than a cached counter.
+
 Each is a protocol plus a default struct. Randomness (`Shuffler`), ids (`IDGenerator`) and time (`DateProvider`) are injected so every use case is deterministic under test.
 
 ## 6. Dependency injection
@@ -158,6 +167,7 @@ Trade-off: `AppDependencies` grows one field per use case. Accepted; it stays a 
 - No global router object. Routes are values; the stack owns the path.
 - The quiz runs in a modal sheet (`quizSheet`) with interactive dismissal disabled. Closing early finishes the session and keeps answered questions; the view model owns the state machine (`loading → answering → feedback → finished`).
 - `LearnerPreferences` (`@Observable`, main actor) is injected through the environment and is the single reader of settings for gloss order and pronunciation.
+- Phase 5 screens: `DashboardView` (streak, due tile → `ReviewQueueView`, goal ring, 7-day Swift Charts strip, Start review), `ProgressScreen` (stat grid, 30-day chart, goal card, weak words and grammar, link to `HistoryView`). Charts carry an accessibility label and a plain-text summary.
 
 ## 8. Concurrency
 

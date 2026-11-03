@@ -1,69 +1,84 @@
 import Domain
+@testable import Persistence
 import XCTest
 
 final class LoadDashboardSummaryTests: XCTestCase {
-    private struct StubVocabulary: VocabularyRepository {
-        let total: Int
-        func item(id: VocabularyID) async throws -> VocabularyItem? { nil }
-        func items(matching filter: VocabularyFilter) async throws -> [VocabularyItem] { [] }
-        func search(_ query: String, filter: VocabularyFilter) async throws -> [VocabularyItem] { [] }
-        func count() async throws -> Int { total }
-    }
-
-    private struct StubGrammar: GrammarRepository {
-        let total: Int
-        func pattern(id: GrammarID) async throws -> GrammarPattern? { nil }
-        func patterns(level: TOPIKLevel?) async throws -> [GrammarPattern] { [] }
-        func count() async throws -> Int { total }
-    }
-
-    private struct StubAttempts: AttemptRepository {
-        let summaryValue: AttemptSummary
-        func record(_ attempt: Attempt) async throws {}
-        func attempts(inSession sessionID: StudySessionID) async throws -> [Attempt] { [] }
-        func attempts(forQuestion questionID: QuestionID) async throws -> [Attempt] { [] }
-        func summary() async throws -> AttemptSummary { summaryValue }
-        func allAttempts() async throws -> [Attempt] { [] }
-    }
-
     private struct FailingAttempts: AttemptRepository {
         func record(_ attempt: Attempt) async throws {}
         func attempts(inSession sessionID: StudySessionID) async throws -> [Attempt] { [] }
         func attempts(forQuestion questionID: QuestionID) async throws -> [Attempt] { [] }
         func summary() async throws -> AttemptSummary { throw DomainError.storage(description: "disk") }
-        func allAttempts() async throws -> [Attempt] { [] }
+        func allAttempts() async throws -> [Attempt] { throw DomainError.storage(description: "disk") }
     }
 
-    func testCombinesCountsFromAllRepositories() async throws {
-        let useCase = LoadDashboardSummary(
-            vocabulary: StubVocabulary(total: 120),
-            grammar: StubGrammar(total: 7),
-            attempts: StubAttempts(summaryValue: AttemptSummary(total: 40, correct: 30))
-        )
-        let summary = try await useCase.execute()
-        XCTAssertEqual(summary.vocabularyCount, 120)
-        XCTAssertEqual(summary.grammarCount, 7)
-        XCTAssertEqual(summary.attempts.accuracy, 0.75, accuracy: 0.0001)
-        XCTAssertEqual(summary.attempts.incorrect, 10)
+    private let now = Date(timeIntervalSince1970: 1_700_000_000)
+    private var vocabulary: InMemoryVocabularyRepository!
+    private var grammar: InMemoryGrammarRepository!
+    private var attempts: InMemoryAttemptRepository!
+    private var sessions: InMemoryStudySessionRepository!
+    private var schedules: InMemoryReviewScheduleRepository!
+    private var settings: InMemoryLearnerSettingsRepository!
+
+    override func setUp() {
+        vocabulary = InMemoryVocabularyRepository(items: SampleContent.vocabulary)
+        grammar = InMemoryGrammarRepository(patterns: SampleContent.grammar)
+        attempts = InMemoryAttemptRepository()
+        sessions = InMemoryStudySessionRepository()
+        schedules = InMemoryReviewScheduleRepository()
+        settings = InMemoryLearnerSettingsRepository()
     }
 
-    func testAccuracyIsZeroWithoutAttempts() {
-        XCTAssertEqual(AttemptSummary(total: 0, correct: 0).accuracy, 0)
+    private func useCase(attempts: any AttemptRepository) -> LoadDashboardSummary {
+        LoadDashboardSummary(vocabulary: vocabulary, grammar: grammar, attempts: attempts, sessions: sessions, schedules: schedules, settings: settings, dates: FixedDateProvider(now), calendar: .current)
+    }
+
+    /// AC-4: dashboard totals equal a direct count of attempt records.
+    func testTotalsEqualAttemptRecordsAndCountsComeFromSchedules() async throws {
+        for index in 0..<7 {
+            try await attempts.record(Attempt(id: AttemptID("a\(index)"), sessionID: StudySessionID("s"), questionID: QuestionID("q\(index)"), selectedOptionID: OptionID("o"), isCorrect: index % 2 == 0, answeredAt: now.addingTimeInterval(Double(-index) * 60), responseTime: 1))
+        }
+        try await schedules.upsert(ReviewSchedule(id: ReviewScheduleID("due"), target: .vocabulary(VocabularyID("a")), nextReviewDate: now.addingTimeInterval(-60)))
+        try await schedules.upsert(ReviewSchedule(id: ReviewScheduleID("later"), target: .vocabulary(VocabularyID("b")), nextReviewDate: now.addingTimeInterval(86_400)))
+        try await schedules.upsert(ReviewSchedule(id: ReviewScheduleID("mastered"), target: .grammar(GrammarID("c")), intervalDays: 30, nextReviewDate: now.addingTimeInterval(20 * 86_400)))
+        try await settings.save(LearnerSettings(dailyGoal: 10))
+
+        let summary = try await useCase(attempts: attempts).execute()
+        XCTAssertEqual(summary.vocabularyCount, SampleContent.vocabulary.count)
+        XCTAssertEqual(summary.grammarCount, SampleContent.grammar.count)
+        XCTAssertEqual(summary.attempts.total, 7)
+        XCTAssertEqual(summary.attempts.correct, 4)
+        XCTAssertEqual(summary.progress.answeredToday, 7)
+        XCTAssertEqual(summary.progress.currentStreak, 1)
+        XCTAssertEqual(summary.dueCount, 1)
+        XCTAssertEqual(summary.masteredCount, 1)
+        XCTAssertEqual(summary.dailyGoal, 10)
+        XCTAssertEqual(summary.goalProgress, 0.7, accuracy: 0.0001)
+        XCTAssertFalse(summary.isGoalReached)
+    }
+
+    func testEmptyStoreGivesZeroes() async throws {
+        let summary = try await useCase(attempts: attempts).execute()
+        XCTAssertEqual(summary.attempts.accuracy, 0)
+        XCTAssertEqual(summary.progress, .empty.withWindows(now: now))
+        XCTAssertEqual(summary.dueCount, 0)
+        XCTAssertEqual(summary.goalProgress, 0)
     }
 
     func testRepositoryErrorPropagates() async {
-        let useCase = LoadDashboardSummary(
-            vocabulary: StubVocabulary(total: 0),
-            grammar: StubGrammar(total: 0),
-            attempts: FailingAttempts()
-        )
         do {
-            _ = try await useCase.execute()
+            _ = try await useCase(attempts: FailingAttempts()).execute()
             XCTFail("expected error")
         } catch let error as DomainError {
             XCTAssertEqual(error, .storage(description: "disk"))
         } catch {
             XCTFail("unexpected \(error)")
         }
+    }
+}
+
+private extension ProgressSummary {
+    /// `.empty` has no day windows; a computed summary always has 7 and 30.
+    func withWindows(now: Date) -> ProgressSummary {
+        ProgressStatistics.summary(attempts: [], sessions: [], now: now, calendar: .current)
     }
 }

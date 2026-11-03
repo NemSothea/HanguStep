@@ -178,6 +178,14 @@ public struct CoreDataReviewScheduleRepository: ReviewScheduleRepository {
         }
     }
 
+    public func all() async throws -> [ReviewSchedule] {
+        try await context.perform {
+            let request = NSFetchRequest<CDReviewSchedule>(entityName: "CDReviewSchedule")
+            request.sortDescriptors = [NSSortDescriptor(key: "nextReviewDate", ascending: true)]
+            return try context.fetch(request).compactMap(Self.map)
+        }
+    }
+
     static func row(for target: LearningTarget, in context: NSManagedObjectContext) throws -> CDReviewSchedule? {
         let request = NSFetchRequest<CDReviewSchedule>(entityName: "CDReviewSchedule")
         request.predicate = NSPredicate(format: "targetKind == %@ AND targetID == %@", target.kind, target.contentID)

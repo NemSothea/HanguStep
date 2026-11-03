@@ -105,6 +105,11 @@ struct QuizFlowView: View {
                     showSecondaryGloss.toggle()
                 }
                 .font(Typography.caption)
+                if let schedule = feedback.schedule {
+                    Label("Next review \(schedule.nextReviewDate.formatted(.relative(presentation: .named)))", systemImage: "calendar")
+                        .font(Typography.caption)
+                        .foregroundStyle(HSColor.textSecondary)
+                }
             }
         }
         .transition(.move(edge: .bottom).combined(with: .opacity))

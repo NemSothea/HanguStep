@@ -4,6 +4,8 @@ import Domain
 /// and passed down. Features never construct repositories themselves.
 public struct AppDependencies: Sendable {
     public let loadDashboardSummary: any LoadDashboardSummaryUseCase
+    public let loadProgressReport: any LoadProgressReportUseCase
+    public let listReviewQueue: any ListReviewQueueUseCase
     public let browseVocabulary: any BrowseVocabularyUseCase
     public let getVocabularyDetail: any GetVocabularyDetailUseCase
     public let browseGrammar: any BrowseGrammarUseCase
@@ -23,6 +25,8 @@ public struct AppDependencies: Sendable {
 
     public init(
         loadDashboardSummary: any LoadDashboardSummaryUseCase,
+        loadProgressReport: any LoadProgressReportUseCase,
+        listReviewQueue: any ListReviewQueueUseCase,
         browseVocabulary: any BrowseVocabularyUseCase,
         getVocabularyDetail: any GetVocabularyDetailUseCase,
         browseGrammar: any BrowseGrammarUseCase,
@@ -41,6 +45,8 @@ public struct AppDependencies: Sendable {
         pronouncer: any Pronouncer
     ) {
         self.loadDashboardSummary = loadDashboardSummary
+        self.loadProgressReport = loadProgressReport
+        self.listReviewQueue = listReviewQueue
         self.browseVocabulary = browseVocabulary
         self.getVocabularyDetail = getVocabularyDetail
         self.browseGrammar = browseGrammar

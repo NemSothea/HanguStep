@@ -17,22 +17,27 @@ final class QuizUseCaseTests: XCTestCase {
     private var questions: InMemoryQuestionRepository!
     private var sessions: InMemoryStudySessionRepository!
     private var attempts: InMemoryAttemptRepository!
+    private var schedules: InMemoryReviewScheduleRepository!
+    private var settings: InMemoryLearnerSettingsRepository!
     private let clock = FixedDateProvider(Date(timeIntervalSince1970: 1_700_000_000))
+    private let calendar = Calendar(identifier: .gregorian)
 
     override func setUp() {
         questions = InMemoryQuestionRepository(questions: SampleContent.questions)
         sessions = InMemoryStudySessionRepository()
         attempts = InMemoryAttemptRepository()
+        schedules = InMemoryReviewScheduleRepository()
+        settings = InMemoryLearnerSettingsRepository()
     }
 
     private func start(_ configuration: QuizConfiguration) async throws -> QuizSessionSnapshot {
         try await StartQuizSession(
-            questions: questions, sessions: sessions, attempts: attempts,
+            questions: questions, sessions: sessions, attempts: attempts, schedules: schedules, settings: settings,
             shuffler: IdentityShuffler(), ids: SequentialIDs(), dates: clock, deviceName: "test"
         ).execute(configuration)
     }
 
-    private var submit: SubmitAnswer { SubmitAnswer(sessions: sessions, attempts: attempts, ids: SequentialIDs(), dates: clock) }
+    private var submit: SubmitAnswer { SubmitAnswer(sessions: sessions, attempts: attempts, schedules: schedules, ids: SequentialIDs(), dates: clock, calendar: calendar) }
     private var finish: FinishQuizSession { FinishQuizSession(sessions: sessions, attempts: attempts, questions: questions, dates: clock) }
     private var resume: ResumeQuizSession { ResumeQuizSession(questions: questions, sessions: sessions, attempts: attempts, dates: clock) }
 
@@ -178,5 +183,79 @@ final class QuizUseCaseTests: XCTestCase {
         XCTAssertEqual(mistakes.session.mode, .mistakes)
         XCTAssertTrue(mistakes.questions.allSatisfy { $0.learningTarget == q[0].learningTarget })
         XCTAssertFalse(mistakes.questions.isEmpty)
+    }
+
+    // MARK: Phase 5 — spaced repetition
+
+    func testSubmitUpdatesScheduleWithSM2() async throws {
+        let snapshot = try await start(QuizConfiguration(pool: .vocabulary, count: 1))
+        let question = try XCTUnwrap(snapshot.questions.first)
+        let target = try XCTUnwrap(question.learningTarget)
+        let before = try await schedules.schedule(for: target)
+        XCTAssertNil(before)
+
+        let feedback = try await submit.execute(session: snapshot.session, question: question, selectedOptionID: question.correctOptionID, responseTime: 2)
+        let schedule = try XCTUnwrap(feedback.schedule)
+        XCTAssertEqual(schedule.target, target)
+        XCTAssertEqual(schedule.repetitions, 1)
+        XCTAssertEqual(schedule.intervalDays, 1)
+        XCTAssertEqual(schedule.easeFactor, 2.6, accuracy: 0.0001, "fast correct answer counts as quality 5")
+        XCTAssertEqual(schedule.nextReviewDate, calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: clock.now())))
+        let stored = try await schedules.schedule(for: target)
+        XCTAssertEqual(stored, schedule)
+        let all = try await schedules.all()
+        XCTAssertEqual(all.count, 1)
+    }
+
+    func testWrongAnswerResetsExistingSchedule() async throws {
+        let snapshot = try await start(QuizConfiguration(pool: .vocabulary, count: 1))
+        let question = try XCTUnwrap(snapshot.questions.first)
+        let target = try XCTUnwrap(question.learningTarget)
+        try await schedules.upsert(ReviewSchedule(id: ReviewScheduleID("existing"), target: target, easeFactor: 2.5, intervalDays: 6, repetitions: 2, nextReviewDate: clock.now()))
+        let wrong = try XCTUnwrap(question.options.first { $0.id != question.correctOptionID })
+
+        let feedback = try await submit.execute(session: snapshot.session, question: question, selectedOptionID: wrong.id, responseTime: 3)
+        let schedule = try XCTUnwrap(feedback.schedule)
+        XCTAssertEqual(schedule.id.rawValue, "existing")
+        XCTAssertEqual(schedule.repetitions, 0)
+        XCTAssertEqual(schedule.intervalDays, 1)
+        XCTAssertEqual(schedule.easeFactor, 1.96, accuracy: 0.0001)
+    }
+
+    private func seedDueSchedules() async throws -> [LearningTarget] {
+        // Distinct targets from the sample questions, most overdue first.
+        var seen: Set<LearningTarget> = []
+        let targets = SampleContent.questions.compactMap(\.learningTarget).filter { seen.insert($0).inserted }
+        XCTAssertGreaterThanOrEqual(targets.count, 3, "sample content needs at least three targets")
+        for (index, target) in targets.enumerated() {
+            try await schedules.upsert(ReviewSchedule(id: ReviewScheduleID("r\(index)"), target: target, nextReviewDate: clock.now().addingTimeInterval(Double(index - targets.count) * 86_400)))
+        }
+        return targets
+    }
+
+    func testReviewPoolAsksOneQuestionPerDueTargetMostOverdueFirst() async throws {
+        let targets = try await seedDueSchedules()
+        // One future item must be excluded.
+        try await schedules.upsert(ReviewSchedule(id: ReviewScheduleID("future"), target: targets[0], nextReviewDate: clock.now().addingTimeInterval(86_400)))
+
+        let snapshot = try await start(QuizConfiguration(pool: .review))
+        XCTAssertEqual(snapshot.session.mode, .review)
+        XCTAssertEqual(snapshot.questions.map(\.learningTarget), Array(targets.dropFirst()).map(Optional.some), "ordered by due date, one question per target")
+        XCTAssertEqual(snapshot.requestedCount, snapshot.questions.count)
+        XCTAssertFalse(snapshot.isShortfall)
+    }
+
+    func testReviewPoolHonoursDailyLimitAndThrowsWhenNothingDue() async throws {
+        _ = try await seedDueSchedules()
+        try await settings.save(LearnerSettings(reviewLimit: 1))
+        let limited = try await start(QuizConfiguration(pool: .review))
+        XCTAssertEqual(limited.questions.count, 1)
+
+        schedules = InMemoryReviewScheduleRepository()
+        do {
+            _ = try await start(QuizConfiguration(pool: .review))
+            XCTFail("expected emptyPool")
+        } catch DomainError.emptyPool {
+        }
     }
 }
