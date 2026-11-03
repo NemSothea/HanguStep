@@ -5,6 +5,7 @@ import SwiftUI
 struct SettingsView: View {
     let dependencies: AppDependencies
     @Environment(LearnerPreferences.self) private var preferences
+    @Environment(SyncStatusModel.self) private var syncStatus
     @State private var errorMessage: String?
 
     var body: some View {
@@ -19,7 +20,20 @@ struct SettingsView: View {
                 Toggle("Pronunciation", isOn: binding(\.pronunciationEnabled))
             }
             Section("iCloud") {
-                SyncStatusBadge(status: .disabled)
+                SyncStatusBadge(status: syncStatus.badgeStatus)
+                Toggle("Sync with iCloud", isOn: Binding(
+                    get: { syncStatus.isSyncPreferred },
+                    set: { enabled in Task { await syncStatus.setSyncPreferred(enabled) } }
+                ))
+                .disabled(syncStatus.isApplyingPreference)
+                if syncStatus.isSyncPreferred, syncStatus.state.isEnabled {
+                    if let imported = syncStatus.state.lastImportAt {
+                        LabeledContent("Last import", value: imported.formatted(date: .abbreviated, time: .shortened))
+                    }
+                    if let exported = syncStatus.state.lastExportAt {
+                        LabeledContent("Last export", value: exported.formatted(date: .abbreviated, time: .shortened))
+                    }
+                }
                 DisclosureGroup("What syncs") {
                     Text("Your answers, bookmarks, notes, review schedule and settings. The vocabulary library ships with the app and is never uploaded.")
                         .font(Typography.caption)

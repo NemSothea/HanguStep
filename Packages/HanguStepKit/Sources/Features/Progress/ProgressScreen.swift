@@ -74,6 +74,7 @@ struct ProgressScreen: View {
             }
             .task { await viewModel.refresh() }
             .refreshable { await viewModel.refresh() }
+            .reloadOnLearnerChange(dependencies.learnerChanges) { await viewModel.refresh() }
         }
     }
 

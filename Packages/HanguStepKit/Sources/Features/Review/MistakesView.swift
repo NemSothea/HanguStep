@@ -72,6 +72,7 @@ struct MistakesView: View {
             }
             .quizSheet(launch: $launch, dependencies: dependencies) { Task { await viewModel.load() } }
             .task { await viewModel.load() }
+            .reloadOnLearnerChange(dependencies.learnerChanges) { await viewModel.load() }
         }
     }
 
