@@ -46,7 +46,7 @@ public actor InMemoryGrammarRepository: GrammarRepository {
     public func count() async throws -> Int { patterns.count }
 }
 
-public actor InMemoryQuestionRepository: QuestionRepository {
+public actor InMemoryQuestionRepository: QuestionRepository, GeneratedQuestionStore {
     private var questions: [QuestionID: Question]
 
     public init(questions: [Question]) {
@@ -64,6 +64,28 @@ public actor InMemoryQuestionRepository: QuestionRepository {
     }
 
     public func count() async throws -> Int { questions.count }
+
+    // MARK: GeneratedQuestionStore
+
+    public func save(_ generated: [Question]) async throws {
+        for question in generated { questions[question.id] = question }
+    }
+
+    public func generated(for target: LearningTarget) async throws -> [Question] {
+        questions.values
+            .filter { $0.source.origin == .aiGenerated && $0.learningTarget == target }
+            .sorted { $0.id.rawValue < $1.id.rawValue }
+    }
+
+    public func generatedCount() async throws -> Int {
+        questions.values.filter { $0.source.origin == .aiGenerated }.count
+    }
+
+    public func deleteAllGenerated() async throws -> Int {
+        let ids = questions.values.filter { $0.source.origin == .aiGenerated }.map(\.id)
+        for id in ids { questions[id] = nil }
+        return ids.count
+    }
 }
 
 /// Shared normalization for search. Khmer text must be NFC-normalized because

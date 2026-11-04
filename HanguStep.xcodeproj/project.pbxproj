@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A7F1ADC3C144673F03AAA439 /* HanguStepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD04EC0413D84A1A867432 /* HanguStepApp.swift */; };
 		A80BDE2D0820EA5834307E5B /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 336D7E11C1CEF1A77B5A0DC7 /* Domain */; };
+		A97CB0B31D0F25F8A98BB5D3 /* Assistant in Frameworks */ = {isa = PBXBuildFile; productRef = AA2D20FC7E8EBC2E88ADCB53 /* Assistant */; };
 		AD1FF7D6B7E14AFCB7D0FE00 /* QuizFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADE268FD7CA67DE9CFC816 /* QuizFlowUITests.swift */; };
 		C825EE1F1308F1A2743338A3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 603B4E5E05440EB738A36FB9 /* DesignSystem */; };
 		CC1F7B2DF641F1BC6947A3C3 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = F6214BA6BDFA1CD40B5345EE /* Features */; };
@@ -45,6 +46,7 @@
 				F5A9A87F44CC365CA3709F0A /* Persistence in Frameworks */,
 				C825EE1F1308F1A2743338A3 /* DesignSystem in Frameworks */,
 				CC1F7B2DF641F1BC6947A3C3 /* Features in Frameworks */,
+				A97CB0B31D0F25F8A98BB5D3 /* Assistant in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +126,7 @@
 				7C2F754A887FF652697B3E3B /* Persistence */,
 				603B4E5E05440EB738A36FB9 /* DesignSystem */,
 				F6214BA6BDFA1CD40B5345EE /* Features */,
+				AA2D20FC7E8EBC2E88ADCB53 /* Assistant */,
 			);
 			productName = HanguStep;
 			productReference = 059146A4DA0F5DB268DC8575 /* HanguStep.app */;
@@ -493,6 +496,10 @@
 		7C2F754A887FF652697B3E3B /* Persistence */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Persistence;
+		};
+		AA2D20FC7E8EBC2E88ADCB53 /* Assistant */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Assistant;
 		};
 		F6214BA6BDFA1CD40B5345EE /* Features */ = {
 			isa = XCSwiftPackageProductDependency;

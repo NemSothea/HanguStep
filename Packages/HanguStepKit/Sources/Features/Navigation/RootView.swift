@@ -8,16 +8,18 @@ public struct RootView: View {
     private let dependencies: AppDependencies
     private let preferences: LearnerPreferences
     private let syncStatus: SyncStatusModel
+    private let assistant: AssistantModel
     @State private var selection: AppSection? = .home
 
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     #endif
 
-    public init(dependencies: AppDependencies, preferences: LearnerPreferences, syncStatus: SyncStatusModel? = nil) {
+    public init(dependencies: AppDependencies, preferences: LearnerPreferences, syncStatus: SyncStatusModel? = nil, assistant: AssistantModel? = nil) {
         self.dependencies = dependencies
         self.preferences = preferences
         self.syncStatus = syncStatus ?? SyncStatusModel(state: .disabled, isSyncPreferred: false) { _ in }
+        self.assistant = assistant ?? AssistantModel.disabled()
     }
 
     public var body: some View {
@@ -25,6 +27,7 @@ public struct RootView: View {
             .tint(HSColor.accent)
             .environment(preferences)
             .environment(syncStatus)
+            .environment(assistant)
     }
 
     @ViewBuilder

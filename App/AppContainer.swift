@@ -1,3 +1,4 @@
+import Assistant
 import Domain
 import Features
 import Foundation
@@ -10,7 +11,7 @@ import Persistence
 final class AppContainer {
     enum State {
         case starting
-        case ready(AppDependencies, LearnerPreferences, SyncStatusModel)
+        case ready(AppDependencies, LearnerPreferences, SyncStatusModel, AssistantModel)
         case failed(String)
     }
 
@@ -81,6 +82,19 @@ final class AppContainer {
             let settingsRepository = CoreDataLearnerSettingsRepository(controller: controller)
             let schedules = CoreDataReviewScheduleRepository(controller: controller)
 
+            // Assistant (Phase 8, ADR-008): device-local preference, key in the Keychain,
+            // provider resolved on every call. UI tests get an isolated, cleared store.
+            let assistantSettings = UserDefaultsAssistantSettingsStore(suiteName: Self.isUITesting ? "ui-testing" : nil)
+            let secrets: any SecretStore = Self.isUITesting ? InMemorySecretStore() : KeychainSecretStore()
+            if Self.isUITesting { assistantSettings.save(AssistantSettings()) }
+            let providers = ConfiguredAssistantProviderSource(settings: assistantSettings, secrets: secrets) { kind, apiKey in
+                switch kind {
+                case .mock: return MockAssistantProvider()
+                case .claude: return ClaudeAssistantProvider(apiKey: apiKey ?? "")
+                }
+            }
+            let generatedQuestions = CoreDataGeneratedQuestionStore(controller: controller)
+
             let saveSettings = SaveSettings(repository: settingsRepository)
             let dependencies = AppDependencies(
                 loadDashboardSummary: LoadDashboardSummary(vocabulary: vocabulary, grammar: grammar, attempts: attempts, sessions: sessions, schedules: schedules, settings: settingsRepository),
@@ -103,8 +117,12 @@ final class AppContainer {
                 saveSettings: saveSettings,
                 pronouncer: SpeechPronouncer(),
                 learnerChanges: monitor,
-                contentInfo: contentInfo
+                contentInfo: contentInfo,
+                explainAnswer: ExplainAnswer(providers: providers, vocabulary: vocabulary, grammar: grammar),
+                generatePractice: GeneratePracticeQuestions(providers: providers, vocabulary: vocabulary, grammar: grammar, store: generatedQuestions),
+                generatedQuestions: generatedQuestions
             )
+            let assistant = AssistantModel(store: assistantSettings, secrets: secrets)
             let settings = try await settingsRepository.load()
             let preferences = LearnerPreferences(settings: settings, save: saveSettings)
             let syncStatus = SyncStatusModel(state: monitor.currentState, isSyncPreferred: Self.isSyncPreferred) { [weak self] enabled in
@@ -121,7 +139,7 @@ final class AppContainer {
             }
             monitor.start()
             monitorTask = Task { await syncStatus.observe(monitor.states()) }
-            state = .ready(dependencies, preferences, syncStatus)
+            state = .ready(dependencies, preferences, syncStatus, assistant)
         } catch {
             state = .failed(String(describing: error))
         }

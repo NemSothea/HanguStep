@@ -19,11 +19,14 @@ public final class QuizSessionViewModel {
     public var selectedOptionID: OptionID?
     public private(set) var isSubmitting = false
     public private(set) var shortfallNoticeShown = false
+    /// Assistant explanation for the question currently in feedback (Phase 8).
+    public private(set) var assistantExplanation: ViewState<AssistantExplanation> = .idle
 
     private let launch: QuizLaunch
     private let start: any StartQuizSessionUseCase
     private let submit: any SubmitAnswerUseCase
     private let finish: any FinishQuizSessionUseCase
+    private let explain: any ExplainAnswerUseCase
     private var questionShownAt = Date()
 
     init(launch: QuizLaunch, dependencies: AppDependencies) {
@@ -31,6 +34,7 @@ public final class QuizSessionViewModel {
         start = dependencies.startQuiz
         submit = dependencies.submitAnswer
         finish = dependencies.finishQuiz
+        explain = dependencies.explainAnswer
     }
 
     public var currentQuestion: Question? {
@@ -137,6 +141,18 @@ public final class QuizSessionViewModel {
         }
     }
 
+    /// Asks the assistant about the answer just given. Only valid in feedback.
+    public func explainCurrentAnswer(language: GlossLanguage) async {
+        guard case let .feedback(index, feedback) = phase, let snapshot, !assistantExplanation.isLoading else { return }
+        assistantExplanation = .loading
+        do {
+            let explanation = try await explain.execute(question: snapshot.questions[index], selectedOptionID: feedback.attempt.selectedOptionID, language: language)
+            assistantExplanation = .loaded(explanation)
+        } catch {
+            assistantExplanation = .failed(message: error.localizedDescription)
+        }
+    }
+
     /// Ends the session early. Answered questions are kept (PRD FR-Q4).
     public func close() async {
         await finishSession()
@@ -162,6 +178,7 @@ public final class QuizSessionViewModel {
             return
         }
         selectedOptionID = nil
+        assistantExplanation = .idle
         questionShownAt = Date()
         phase = .answering(index: index)
     }

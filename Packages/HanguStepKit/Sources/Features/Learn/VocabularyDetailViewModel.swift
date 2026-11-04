@@ -9,12 +9,15 @@ public final class VocabularyDetailViewModel {
     public private(set) var state: ViewState<VocabularyDetail> = .idle
     public var noteDraft = ""
     public private(set) var isSavingNote = false
+    public private(set) var isGeneratingPractice = false
+    public private(set) var practiceError: String?
 
     private let id: VocabularyID
     private let getDetail: any GetVocabularyDetailUseCase
     private let toggleBookmark: any ToggleBookmarkUseCase
     private let saveNote: any SaveNoteUseCase
     private let pronouncer: any Pronouncer
+    private let generatePractice: any GeneratePracticeQuestionsUseCase
 
     public init(id: VocabularyID, dependencies: AppDependencies) {
         self.id = id
@@ -22,6 +25,22 @@ public final class VocabularyDetailViewModel {
         toggleBookmark = dependencies.toggleBookmark
         saveNote = dependencies.saveNote
         pronouncer = dependencies.pronouncer
+        generatePractice = dependencies.generatePractice
+    }
+
+    /// Asks the assistant for practice questions on this word (Phase 8). Returns
+    /// the stored questions so the view can start a session with them.
+    public func generatePracticeQuestions(count: Int = 4) async -> [QuestionID] {
+        guard !isGeneratingPractice else { return [] }
+        isGeneratingPractice = true
+        practiceError = nil
+        defer { isGeneratingPractice = false }
+        do {
+            return try await generatePractice.execute(target: .vocabulary(id), count: count).map(\.id)
+        } catch {
+            practiceError = error.localizedDescription
+            return []
+        }
     }
 
     public func load() async {

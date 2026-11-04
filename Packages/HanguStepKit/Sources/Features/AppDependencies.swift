@@ -24,6 +24,9 @@ public struct AppDependencies: Sendable {
     public let pronouncer: any Pronouncer
     public let learnerChanges: any LearnerChangeSource
     public let contentInfo: ContentInfo
+    public let explainAnswer: any ExplainAnswerUseCase
+    public let generatePractice: any GeneratePracticeQuestionsUseCase
+    public let generatedQuestions: any GeneratedQuestionStore
 
     public init(
         loadDashboardSummary: any LoadDashboardSummaryUseCase,
@@ -46,7 +49,10 @@ public struct AppDependencies: Sendable {
         saveSettings: any SaveSettingsUseCase,
         pronouncer: any Pronouncer,
         learnerChanges: any LearnerChangeSource = NoLearnerChanges(),
-        contentInfo: ContentInfo = .unknown
+        contentInfo: ContentInfo = .unknown,
+        explainAnswer: any ExplainAnswerUseCase = UnavailableAssistant(),
+        generatePractice: any GeneratePracticeQuestionsUseCase = UnavailableAssistant(),
+        generatedQuestions: any GeneratedQuestionStore = NoGeneratedQuestions()
     ) {
         self.loadDashboardSummary = loadDashboardSummary
         self.loadProgressReport = loadProgressReport
@@ -69,5 +75,27 @@ public struct AppDependencies: Sendable {
         self.pronouncer = pronouncer
         self.learnerChanges = learnerChanges
         self.contentInfo = contentInfo
+        self.explainAnswer = explainAnswer
+        self.generatePractice = generatePractice
+        self.generatedQuestions = generatedQuestions
     }
+}
+
+/// Default for tests and previews that do not exercise the assistant.
+public struct UnavailableAssistant: ExplainAnswerUseCase, GeneratePracticeQuestionsUseCase {
+    public init() {}
+    public func execute(question: Question, selectedOptionID: OptionID, language: GlossLanguage) async throws -> AssistantExplanation {
+        throw AssistantError.disabled
+    }
+    public func execute(target: LearningTarget, count: Int) async throws -> [Question] {
+        throw AssistantError.disabled
+    }
+}
+
+public struct NoGeneratedQuestions: GeneratedQuestionStore {
+    public init() {}
+    public func save(_ questions: [Question]) async throws {}
+    public func generated(for target: LearningTarget) async throws -> [Question] { [] }
+    public func generatedCount() async throws -> Int { 0 }
+    public func deleteAllGenerated() async throws -> Int { 0 }
 }

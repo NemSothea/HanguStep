@@ -38,6 +38,8 @@ targets:
         product: DesignSystem
       - package: HanguStepKit
         product: Features
+      - package: HanguStepKit
+        product: Assistant
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nemsothea.hangustep

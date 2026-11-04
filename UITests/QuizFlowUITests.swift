@@ -96,4 +96,55 @@ final class QuizFlowUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["How to form it"].waitForExistence(timeout: 5))
         snapshot("10-grammar-detail")
     }
+
+    /// Phase 8: enable the built-in assistant, get an explanation in a quiz, generate
+    /// practice from a word and start it. Offline: the mock provider needs no key.
+    func testAssistantExplainsAndGeneratesPractice() throws {
+        XCTAssertTrue(app.staticTexts["Home"].waitForExistence(timeout: 15))
+        app.buttons["Settings"].firstMatch.tap()
+        let toggle = app.switches["assistant.enabled"].firstMatch
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5), "assistant toggle did not appear")
+        toggle.tap()
+        if (toggle.value as? String) != "1" { toggle.switches.firstMatch.tap() }
+        XCTAssertEqual(toggle.value as? String, "1", "assistant toggle did not switch on")
+        let picker = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH 'Provider'")).firstMatch
+        XCTAssertTrue(picker.waitForExistence(timeout: 3), "provider picker did not appear after enabling")
+        snapshot("11-settings-assistant")
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+
+        app.tabBars.buttons["Quiz"].tap()
+        XCTAssertTrue(app.buttons["Start quiz"].waitForExistence(timeout: 5))
+        app.buttons["Start quiz"].tap()
+        let option = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Option 1'")).firstMatch
+        XCTAssertTrue(option.waitForExistence(timeout: 5))
+        option.tap()
+        app.buttons["Check"].tap()
+        let explain = app.buttons["assistant.explain"].firstMatch
+        XCTAssertTrue(explain.waitForExistence(timeout: 5), "explain button did not appear in feedback")
+        explain.tap()
+        XCTAssertTrue(app.otherElements["assistant.explanation"].firstMatch.waitForExistence(timeout: 10)
+                      || app.staticTexts["Built-in assistant"].waitForExistence(timeout: 1), "explanation did not appear")
+        snapshot("12-assistant-explanation")
+        app.buttons["Close"].tap()
+        app.buttons["End quiz"].tap()
+        XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 5), "results did not appear after ending the quiz")
+        app.buttons["Done"].tap()
+
+        app.tabBars.buttons["Learn"].tap()
+        let search = app.searchFields.firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 5))
+        search.tap()
+        search.typeText("hakgyo")
+        XCTAssertTrue(row(startingWith: "학교").waitForExistence(timeout: 5))
+        row(startingWith: "학교").tap()
+        let generate = app.buttons["assistant.generatePractice"].firstMatch
+        XCTAssertTrue(generate.waitForExistence(timeout: 5), "generate button did not appear")
+        generate.tap()
+        XCTAssertTrue(app.buttons["Check"].waitForExistence(timeout: 10), "generated practice session did not start")
+        snapshot("13-generated-practice")
+        app.buttons["Close"].tap()
+        app.buttons["End quiz"].tap()
+        XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 5), "results did not appear after ending the quiz")
+        app.buttons["Done"].tap()
+    }
 }
