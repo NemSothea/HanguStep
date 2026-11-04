@@ -56,7 +56,18 @@ final class AppContainer {
                 ? .cloudKit(containerIdentifier: Self.cloudKitContainerIdentifier)
                 : .off
             let controller = try PersistenceController(mode: .onDisk(directory: Self.storeDirectory()), sync: sync)
-            _ = try await CoreDataContentStore(controller: controller).apply(SampleContent.package)
+            // Bundled JSON library, validated on load; applied only when newer than the installed version.
+            let library = try BundledContent.load()
+            _ = try await CoreDataContentStore(controller: controller).apply(library.package)
+            let contentInfo = ContentInfo(
+                version: library.package.version,
+                vocabularyCount: library.package.vocabulary.count,
+                grammarCount: library.package.grammar.count,
+                questionCount: library.package.questions.count,
+                sourceName: library.source.name,
+                license: library.source.license,
+                pendingReview: library.pendingReview
+            )
             let monitor = SyncMonitor(controller: controller)
             self.monitor = monitor
 
@@ -91,7 +102,8 @@ final class AppContainer {
                 loadSettings: LoadSettings(repository: settingsRepository),
                 saveSettings: saveSettings,
                 pronouncer: SpeechPronouncer(),
-                learnerChanges: monitor
+                learnerChanges: monitor,
+                contentInfo: contentInfo
             )
             let settings = try await settingsRepository.load()
             let preferences = LearnerPreferences(settings: settings, save: saveSettings)

@@ -73,6 +73,7 @@ HanguStep/
 │   ├── Sources/
 │   │   ├── Domain/
 │   │   │   ├── Entities/         # VocabularyItem, GrammarPattern, Question, Attempt, ...
+│   │   │   ├── Content/          # Phase 7: ContentFile (JSON format), MeaningQuestionGenerator, ContentInfo
 │   │   │   ├── Repositories/     # protocols only
 │   │   │   ├── UseCases/         # one file per use case
 │   │   │   ├── Identifiers.swift # typed IDs
@@ -81,7 +82,10 @@ HanguStep/
 │   │   ├── Persistence/
 │   │   │   ├── InMemory/         # previews, tests, Phase 1 skeleton
 │   │   │   ├── CoreData/         # Phase 3
-│   │   │   └── SampleContent.swift
+│   │   │   ├── Resources/Content/ # Phase 7: bundled JSON library (see CONTENT_FORMAT.md)
+│   │   │   ├── BundledContent.swift
+│   │   │   └── SampleContent.swift # test and preview fixture only
+│   │   ├── ContentLint/          # `swift run content-lint`: validates and generates content
 │   │   ├── DesignSystem/         # Phase 2 fills this
 │   │   └── Features/
 │   │       ├── Navigation/       # AppSection, RootView
@@ -101,7 +105,7 @@ HanguStep/
 
 Three bounded contexts share one Domain target but never share identity:
 
-- **Content** (read-only, bundled): `VocabularyItem`, `GrammarPattern`, `Question`. Identified by authored string IDs such as `vocab.topik1.0001`. Never written by the learner, never synced.
+- **Content** (read-only, bundled): `VocabularyItem`, `GrammarPattern`, `Question`. Identified by authored string IDs such as `vocab.0001`. Never written by the learner, never synced.
 - **Learner** (read-write, synced): `Attempt`, `Bookmark`, `ReviewSchedule`, later `StudySession`, `LearnerNote`, `Settings`. Reference content only through `LearningTarget` or a content ID value. No object graph edges cross from Learner to Content.
 - **Statistics** (derived): `AttemptSummary`, `DashboardSummary`. Always computed from Learner records, never persisted.
 
@@ -200,13 +204,14 @@ Rules: no `DispatchQueue`, no `Task.detached` without a written reason, no manag
 
 ```
 cd Packages/HanguStepKit && swift test
+cd Packages/HanguStepKit && swift run content-lint      # validates the bundled JSON library
 xcodegen generate
 xcodebuild build -project HanguStep.xcodeproj -scheme HanguStep -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO
 xcodebuild build -project HanguStep.xcodeproj -scheme HanguStep -destination 'platform=macOS' CODE_SIGN_IDENTITY=-
 ```
 
-CI runs the first and third on every pull request.
+CI runs the first, second and fourth on every pull request.
 
 ## 11. Decision log
 
-See `ADR/`. Current: ADR-001 architecture and modularization, ADR-002 persistence, ADR-003 cloud sync, ADR-004 concurrency, ADR-005 navigation and DI.
+See `ADR/`. Current: ADR-001 architecture and modularization, ADR-002 persistence, ADR-003 cloud sync, ADR-004 concurrency, ADR-005 navigation and DI, ADR-006 spaced repetition, ADR-007 content format and import.

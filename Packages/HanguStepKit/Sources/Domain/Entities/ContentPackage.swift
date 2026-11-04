@@ -59,9 +59,12 @@ public enum ContentPackageIssue: Sendable, Equatable, CustomStringConvertible {
     case missingRequiredText(kind: String, id: String)
     case invalidQuestion(id: String, issues: [ContentValidationIssue])
     case danglingReference(questionID: String, target: String)
+    /// Field-level problem found while decoding the JSON format (Phase 7).
+    case invalidField(kind: String, id: String, field: String)
 
     public var description: String {
         switch self {
+        case let .invalidField(kind, id, field): return "\(kind) \(id): invalid \(field)"
         case let .duplicateID(kind, id): return "duplicate \(kind) id \(id)"
         case let .missingRequiredText(kind, id): return "\(kind) \(id) is missing required text"
         case let .invalidQuestion(id, issues): return "question \(id): \(issues.map(\.description).joined(separator: ", "))"

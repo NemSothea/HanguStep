@@ -15,11 +15,17 @@ let package = Package(
         // Pure business rules. No UI, no persistence framework.
         .target(name: "Domain"),
         // Repository implementations. Depends on Domain only.
-        .target(name: "Persistence", dependencies: ["Domain"], resources: [.process("Resources")]),
+        .target(
+            name: "Persistence",
+            dependencies: ["Domain"],
+            resources: [.process("Resources/HanguStep.xcdatamodeld"), .copy("Resources/Content")]
+        ),
         // Tokens and reusable SwiftUI components. No domain knowledge.
         .target(name: "DesignSystem", resources: [.process("Resources")]),
         // Screens and view models. Talks to Domain through use cases.
         .target(name: "Features", dependencies: ["Domain", "DesignSystem"]),
+        // Content authoring tool: validates the bundled JSON and generates meaning questions.
+        .executableTarget(name: "content-lint", dependencies: ["Domain", "Persistence"], path: "Sources/ContentLint"),
 
         .testTarget(name: "DomainTests", dependencies: ["Domain", "Persistence"]),
         .testTarget(name: "PersistenceTests", dependencies: ["Persistence"], resources: [.copy("Fixtures")]),
