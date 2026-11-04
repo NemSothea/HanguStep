@@ -80,11 +80,29 @@ public final class GrammarDetailViewModel {
     private let toggleBookmark: any ToggleBookmarkUseCase
     private let saveNote: any SaveNoteUseCase
 
+    public private(set) var isGeneratingPractice = false
+    public private(set) var practiceError: String?
+    private let generatePractice: any GeneratePracticeQuestionsUseCase
     public init(id: GrammarID, dependencies: AppDependencies) {
         self.id = id
         getDetail = dependencies.getGrammarDetail
         toggleBookmark = dependencies.toggleBookmark
         saveNote = dependencies.saveNote
+        generatePractice = dependencies.generatePractice
+    }
+
+    /// Asks the assistant for practice questions on this pattern (Phase 8).
+    public func generatePracticeQuestions(count: Int = 4) async -> [QuestionID] {
+        guard !isGeneratingPractice else { return [] }
+        isGeneratingPractice = true
+        practiceError = nil
+        defer { isGeneratingPractice = false }
+        do {
+            return try await generatePractice.execute(target: .grammar(id), count: count).map(\.id)
+        } catch {
+            practiceError = error.localizedDescription
+            return []
+        }
     }
 
     public func load() async {
@@ -120,6 +138,7 @@ struct GrammarDetailView: View {
     @State private var viewModel: GrammarDetailViewModel
     let dependencies: AppDependencies
     @State private var practice: QuizLaunch?
+    @Environment(AssistantModel.self) private var assistant
 
     init(viewModel: GrammarDetailViewModel, dependencies: AppDependencies) {
         _viewModel = State(initialValue: viewModel)
@@ -172,6 +191,14 @@ struct GrammarDetailView: View {
                             practice = QuizLaunch(configuration: QuizConfiguration(pool: .questions(detail.practiceQuestions.map(\.id)), count: detail.practiceQuestions.count))
                         }
                     }
+                    if assistant.isEnabled {
+                        GeneratePracticeButton(isGenerating: viewModel.isGeneratingPractice, error: viewModel.practiceError) {
+                            Task {
+                                let ids = await viewModel.generatePracticeQuestions()
+                                if !ids.isEmpty { practice = QuizLaunch(configuration: QuizConfiguration(pool: .questions(ids), count: ids.count)) }
+                            }
+                        }
+                    }
                 }
                 .padding(Spacing.md)
                 .frame(maxWidth: Layout.readableWidth)
@@ -190,7 +217,7 @@ struct GrammarDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
-        .quizSheet(launch: $practice, dependencies: dependencies)
+        .quizSheet(launch: $practice, dependencies: dependencies) { Task { await viewModel.load() } }
         .task { await viewModel.load() }
     }
 }

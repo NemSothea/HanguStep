@@ -6,7 +6,10 @@ struct SettingsView: View {
     let dependencies: AppDependencies
     @Environment(LearnerPreferences.self) private var preferences
     @Environment(SyncStatusModel.self) private var syncStatus
+    @Environment(AssistantModel.self) private var assistant
     @State private var errorMessage: String?
+    @State private var claudeKeyDraft = ""
+    @State private var generatedCount: Int?
 
     var body: some View {
         Form {
@@ -40,6 +43,7 @@ struct SettingsView: View {
                         .foregroundStyle(HSColor.textSecondary)
                 }
             }
+            assistantSection
             Section("Content") {
                 LabeledContent("Content version", value: dependencies.contentInfo.version.formatted())
                 LabeledContent("Library", value: "\(dependencies.contentInfo.vocabularyCount) words · \(dependencies.contentInfo.grammarCount) patterns · \(dependencies.contentInfo.questionCount) questions")
@@ -65,6 +69,56 @@ struct SettingsView: View {
         }
         .formStyle(.grouped)
         .navigationTitle("Settings")
+        .task { generatedCount = try? await dependencies.generatedQuestions.generatedCount() }
+    }
+
+    @ViewBuilder
+    private var assistantSection: some View {
+        Section {
+            Toggle("Use the assistant", isOn: Binding(get: { assistant.isEnabled }, set: { assistant.setEnabled($0) }))
+                .accessibilityIdentifier("assistant.enabled")
+            if assistant.isEnabled {
+                Picker("Provider", selection: Binding(get: { assistant.settings.provider }, set: { assistant.setProvider($0) })) {
+                    ForEach(AssistantProviderKind.allCases, id: \.self) { kind in
+                        Text(kind.displayName).tag(kind)
+                    }
+                }
+                if assistant.settings.provider == .claude {
+                    if assistant.hasClaudeKey {
+                        LabeledContent("API key", value: "Saved on this device")
+                        Button("Remove key", role: .destructive) { assistant.removeClaudeKey() }
+                    } else {
+                        SecureField("Anthropic API key", text: $claudeKeyDraft)
+                            .textContentType(.password)
+                            .accessibilityIdentifier("assistant.claudeKey")
+                        Button("Save key") {
+                            assistant.saveClaudeKey(claudeKeyDraft)
+                            claudeKeyDraft = ""
+                        }
+                        .disabled(claudeKeyDraft.trimmingCharacters(in: .whitespaces).isEmpty)
+                    }
+                    if let message = assistant.errorMessage {
+                        Text(message).font(Typography.caption).foregroundStyle(HSColor.danger)
+                    }
+                }
+            }
+            if let count = generatedCount, count > 0 {
+                LabeledContent("Generated questions", value: count.formatted())
+                Button("Delete generated questions", role: .destructive) {
+                    Task {
+                        _ = try? await dependencies.generatedQuestions.deleteAllGenerated()
+                        generatedCount = try? await dependencies.generatedQuestions.generatedCount()
+                    }
+                }
+            }
+        } header: {
+            Text("Assistant")
+        } footer: {
+            Text(assistant.settings.provider == .claude && assistant.isEnabled
+                 ? "Explanations and practice questions are requested from Anthropic using your key, which stays in this device's Keychain and is never synced. Question text and your answer are sent; your progress is not."
+                 : "Explains answers and writes extra practice questions. The built-in assistant works offline using the bundled examples.")
+                .font(Typography.caption)
+        }
     }
 
     /// Writes through `LearnerPreferences`, which persists via the save use case.

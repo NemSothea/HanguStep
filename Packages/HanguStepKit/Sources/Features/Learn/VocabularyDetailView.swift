@@ -6,6 +6,8 @@ struct VocabularyDetailView: View {
     @State private var viewModel: VocabularyDetailViewModel
     let dependencies: AppDependencies
     @Environment(LearnerPreferences.self) private var preferences
+    @Environment(AssistantModel.self) private var assistant
+    @State private var practice: QuizLaunch?
 
     init(viewModel: VocabularyDetailViewModel, dependencies: AppDependencies) {
         _viewModel = State(initialValue: viewModel)
@@ -23,6 +25,14 @@ struct VocabularyDetailView: View {
                     }
                     NoteCard(draft: Binding(get: { viewModel.noteDraft }, set: { viewModel.noteDraft = $0 }), isSaving: viewModel.isSavingNote) {
                         Task { await viewModel.commitNote() }
+                    }
+                    if assistant.isEnabled {
+                        GeneratePracticeButton(isGenerating: viewModel.isGeneratingPractice, error: viewModel.practiceError) {
+                            Task {
+                                let ids = await viewModel.generatePracticeQuestions()
+                                if !ids.isEmpty { practice = QuizLaunch(configuration: QuizConfiguration(pool: .questions(ids), count: ids.count)) }
+                            }
+                        }
                     }
                 }
                 .padding(Spacing.md)
@@ -44,6 +54,7 @@ struct VocabularyDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .quizSheet(launch: $practice, dependencies: dependencies)
         .task { await viewModel.load() }
     }
 
@@ -120,6 +131,25 @@ struct NoteCard: View {
                     .onChange(of: focused) { _, isFocused in
                         if !isFocused { commit() }
                     }
+            }
+        }
+    }
+}
+
+
+/// Shared by the vocabulary and grammar detail screens (Phase 8).
+struct GeneratePracticeButton: View {
+    let isGenerating: Bool
+    let error: String?
+    let action: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Spacing.xs) {
+            HSButton("Generate practice", systemImage: "sparkles", variant: .secondary, isLoading: isGenerating, action: action)
+                .disabled(isGenerating)
+                .accessibilityIdentifier("assistant.generatePractice")
+            if let error {
+                Text(error).font(Typography.caption).foregroundStyle(HSColor.danger)
             }
         }
     }

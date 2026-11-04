@@ -6,6 +6,7 @@ struct QuizFlowView: View {
     @State private var viewModel: QuizSessionViewModel
     @Environment(\.dismiss) private var dismiss
     @Environment(LearnerPreferences.self) private var preferences
+    @Environment(AssistantModel.self) private var assistant
     @State private var showCloseConfirmation = false
     @State private var showSecondaryGloss = false
 
@@ -110,10 +111,52 @@ struct QuizFlowView: View {
                         .font(Typography.caption)
                         .foregroundStyle(HSColor.textSecondary)
                 }
+                if assistant.isEnabled {
+                    assistantPanel
+                }
             }
         }
         .transition(.move(edge: .bottom).combined(with: .opacity))
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .contain)
+    }
+
+    @ViewBuilder
+    private var assistantPanel: some View {
+        switch viewModel.assistantExplanation {
+        case .idle, .empty:
+            Button {
+                Task { await viewModel.explainCurrentAnswer(language: preferences.glossLanguage) }
+            } label: {
+                Label("Explain more", systemImage: "sparkles")
+            }
+            .buttonStyle(.bordered)
+            .font(Typography.caption)
+            .accessibilityIdentifier("assistant.explain")
+        case .loading:
+            HStack(spacing: Spacing.sm) {
+                ProgressView().controlSize(.small)
+                Text("Asking the assistant…").font(Typography.caption).foregroundStyle(HSColor.textSecondary)
+            }
+        case let .loaded(explanation):
+            VStack(alignment: .leading, spacing: Spacing.xs) {
+                Label(explanation.providerName, systemImage: "sparkles")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(HSColor.accent)
+                Text(explanation.text)
+                    .font(Typography.body)
+                    .scriptSpacing(explanation.language == .khmer ? .khmer : .latin)
+                    .textSelection(.enabled)
+            }
+            .padding(Spacing.sm)
+            .background(HSColor.background, in: RoundedRectangle(cornerRadius: Radius.md))
+            .accessibilityIdentifier("assistant.explanation")
+        case let .failed(message):
+            VStack(alignment: .leading, spacing: Spacing.xs) {
+                Text(message).font(Typography.caption).foregroundStyle(HSColor.danger)
+                Button("Try again") { Task { await viewModel.explainCurrentAnswer(language: preferences.glossLanguage) } }
+                    .font(Typography.caption)
+            }
+        }
     }
 
     private var bottomBar: some View {

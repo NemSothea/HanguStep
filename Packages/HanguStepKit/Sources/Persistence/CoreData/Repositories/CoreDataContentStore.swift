@@ -4,6 +4,8 @@ import Foundation
 
 /// Imports a `ContentPackage` into the content store. Upserts by id, retires
 /// ids missing from the package, skips when the installed version is not older.
+/// Rows the assistant generated (`sourceOrigin == aiGenerated`) are never retired
+/// by an import: they belong to the learner, not the package (ADR-008).
 public struct CoreDataContentStore: ContentStore {
     private let context: NSManagedObjectContext
 
@@ -109,6 +111,7 @@ public struct CoreDataContentStore: ContentStore {
         let keep = Set(ids)
         var count = 0
         for (id, row) in rows where !keep.contains(id) {
+            if (row.value(forKey: "sourceOrigin") as? String) == ContentSource.Origin.aiGenerated.rawValue { continue }
             if (row.value(forKey: "isRetired") as? Bool) != true {
                 mark(row)
                 count += 1
@@ -167,7 +170,7 @@ public struct CoreDataContentStore: ContentStore {
         replaceExamples(on: row.examples, with: pattern.examples, context: context) { $0.grammar = row }
     }
 
-    private static func fill(_ row: CDQuestion, from question: Question, context: NSManagedObjectContext) {
+    static func fill(_ row: CDQuestion, from question: Question, context: NSManagedObjectContext) {
         row.kind = question.kind.rawValue
         row.level = Int16(question.level.rawValue)
         row.prompt = question.prompt

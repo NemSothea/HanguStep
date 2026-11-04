@@ -45,10 +45,12 @@ flowchart TB
 graph LR
     App --> Features
     App --> Persistence
+    App --> Assistant
     App --> Domain
     Features --> Domain
     Features --> DesignSystem
     Persistence --> Domain
+    Assistant --> Domain
 ```
 
 | Target | May import | Must never import | Contains |
@@ -56,7 +58,8 @@ graph LR
 | Domain | Foundation | SwiftUI, CoreData, CloudKit, any other target | Entities, repository protocols, use cases, `DomainError`, `DateProvider` |
 | Persistence | Domain, Foundation, CoreData, CloudKit | SwiftUI, Features | Repository implementations, Core Data stack, content importer, sample data |
 | DesignSystem | SwiftUI | Domain, Features | Tokens and reusable components, no business types |
-| Features | Domain, DesignSystem, SwiftUI | Persistence | Views, view models, navigation |
+| Features | Domain, DesignSystem, SwiftUI | Persistence, Assistant | Views, view models, navigation, device-local assistant settings and Keychain store |
+| Assistant | Domain, Foundation | SwiftUI, Features, Persistence | Network-backed `AssistantProvider` implementations (Claude over raw HTTP) |
 | App | everything | — | `@main`, `AppContainer` |
 
 Why not thirty modules: four targets already give compiler-checked layering. Splitting Features per screen only pays off when build times or team size demand it.
@@ -74,6 +77,7 @@ HanguStep/
 │   │   ├── Domain/
 │   │   │   ├── Entities/         # VocabularyItem, GrammarPattern, Question, Attempt, ...
 │   │   │   ├── Content/          # Phase 7: ContentFile (JSON format), MeaningQuestionGenerator, ContentInfo
+│   │   │   ├── Assistant/        # Phase 8: AssistantProvider, MockAssistantProvider, ExplainAnswer, GeneratePracticeQuestions
 │   │   │   ├── Repositories/     # protocols only
 │   │   │   ├── UseCases/         # one file per use case
 │   │   │   ├── Identifiers.swift # typed IDs
@@ -86,10 +90,13 @@ HanguStep/
 │   │   │   ├── BundledContent.swift
 │   │   │   └── SampleContent.swift # test and preview fixture only
 │   │   ├── ContentLint/          # `swift run content-lint`: validates and generates content
+│   │   ├── Assistant/            # Phase 8: ClaudeAssistantProvider over raw HTTP; composed by App, never imported by Features
 │   │   ├── DesignSystem/         # Phase 2 fills this
 │   │   └── Features/
 │   │       ├── Navigation/       # AppSection, RootView
 │   │       ├── Dashboard/        # one folder per feature: View + ViewModel
+│   │       ├── Assistant/        # AssistantModel, device-local settings, provider source
+│   │       ├── Services/         # SpeechPronouncer, KeychainSecretStore
 │   │       └── Placeholders/
 │   └── Tests/
 │       ├── DomainTests/
@@ -214,4 +221,4 @@ CI runs the first, second and fourth on every pull request.
 
 ## 11. Decision log
 
-See `ADR/`. Current: ADR-001 architecture and modularization, ADR-002 persistence, ADR-003 cloud sync, ADR-004 concurrency, ADR-005 navigation and DI, ADR-006 spaced repetition, ADR-007 content format and import.
+See `ADR/`. Current: ADR-001 architecture and modularization, ADR-002 persistence, ADR-003 cloud sync, ADR-004 concurrency, ADR-005 navigation and DI, ADR-006 spaced repetition, ADR-007 content format and import, ADR-008 AI assistant.
