@@ -211,7 +211,7 @@ PersistenceController
 
 Each Core Data repository is an `actor` that owns one background context and runs every operation through `context.perform`. Results are mapped to domain structs inside `perform` so no managed object escapes.
 
-Content import: `ContentImporter` reads the bundled JSON (format defined in Phase 7; Phase 3 ships a minimal version to load `SampleContent`), compares `CDContentManifest.version` with the bundle's version, and on mismatch upserts by `id` and retires missing IDs. Runs once at launch on a background context before the UI reads content.
+Content import: at launch `BundledContent.load()` decodes and validates the bundled JSON library (format in `CONTENT_FORMAT.md`, Phase 7) and `CoreDataContentStore.apply` compares `CDContentManifest.version` with the bundle's version, and on mismatch upserts by `id` and retires missing IDs. Runs once at launch on a background context before the UI reads content.
 
 ## 7. Migration strategy
 

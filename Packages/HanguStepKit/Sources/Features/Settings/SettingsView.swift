@@ -41,8 +41,15 @@ struct SettingsView: View {
                 }
             }
             Section("Content") {
-                LabeledContent("Content version", value: "sample")
-                LabeledContent("License", value: "CC BY 4.0")
+                LabeledContent("Content version", value: dependencies.contentInfo.version.formatted())
+                LabeledContent("Library", value: "\(dependencies.contentInfo.vocabularyCount) words · \(dependencies.contentInfo.grammarCount) patterns · \(dependencies.contentInfo.questionCount) questions")
+                LabeledContent("Source", value: dependencies.contentInfo.sourceName)
+                LabeledContent("License", value: dependencies.contentInfo.license)
+                if dependencies.contentInfo.pendingReview > 0 {
+                    Text("\(dependencies.contentInfo.pendingReview) items await Khmer review.")
+                        .font(Typography.caption)
+                        .foregroundStyle(HSColor.textSecondary)
+                }
             }
             #if DEBUG
             Section("Developer") {

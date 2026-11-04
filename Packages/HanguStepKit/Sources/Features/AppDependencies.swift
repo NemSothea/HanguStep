@@ -23,6 +23,7 @@ public struct AppDependencies: Sendable {
     public let saveSettings: any SaveSettingsUseCase
     public let pronouncer: any Pronouncer
     public let learnerChanges: any LearnerChangeSource
+    public let contentInfo: ContentInfo
 
     public init(
         loadDashboardSummary: any LoadDashboardSummaryUseCase,
@@ -44,7 +45,8 @@ public struct AppDependencies: Sendable {
         loadSettings: any LoadSettingsUseCase,
         saveSettings: any SaveSettingsUseCase,
         pronouncer: any Pronouncer,
-        learnerChanges: any LearnerChangeSource = NoLearnerChanges()
+        learnerChanges: any LearnerChangeSource = NoLearnerChanges(),
+        contentInfo: ContentInfo = .unknown
     ) {
         self.loadDashboardSummary = loadDashboardSummary
         self.loadProgressReport = loadProgressReport
@@ -66,5 +68,6 @@ public struct AppDependencies: Sendable {
         self.saveSettings = saveSettings
         self.pronouncer = pronouncer
         self.learnerChanges = learnerChanges
+        self.contentInfo = contentInfo
     }
 }

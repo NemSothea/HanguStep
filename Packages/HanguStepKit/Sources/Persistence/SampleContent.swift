@@ -1,8 +1,8 @@
 import Domain
 import Foundation
 
-/// Development dataset shipped as a `ContentPackage`. Real content arrives through
-/// the JSON importer in Phase 7; bump `version` whenever this changes.
+/// Small fixture for tests and previews. The app ships `BundledContent` (Phase 7);
+/// keep `version` below the bundled library's so an upgrade from this data imports.
 public enum SampleContent {
     public static let version = 1
 

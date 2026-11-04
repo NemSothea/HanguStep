@@ -16,6 +16,11 @@ jobs:
       - name: Test HanguStepKit
         working-directory: Packages/HanguStepKit
         run: swift test --parallel
+      - name: Lint bundled content
+        working-directory: Packages/HanguStepKit
+        run: |
+          swift run content-lint generate-questions
+          git diff --exit-code -- Sources/Persistence/Resources/Content
 
   app:
     name: App build (iOS Simulator)

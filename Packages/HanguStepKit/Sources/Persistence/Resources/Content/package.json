@@ -1,0 +1,10 @@
+{
+  "formatVersion": 1,
+  "version": 2,
+  "source": {
+    "origin": "curated",
+    "name": "HanguStep content library",
+    "license": "CC BY 4.0",
+    "url": "https://github.com/NemSothea/HanguStep"
+  }
+}

@@ -11,7 +11,7 @@ One phase at a time. A phase is done only when reviewed and approved.
 | 4 | Core learning features | Offline MVP: vocab, grammar, quiz, mistakes | Approved |
 | 5 | Progress and spaced repetition | Dashboard, SM-2 review queue | Approved |
 | 6 | CloudKit synchronization | Cross-device sync verified on devices | In review (device verification pending) |
-| 7 | TOPIK content system | JSON import, validated content library | Not started |
+| 7 | TOPIK content system | JSON import, validated content library | In review |
 | 8 | AI learning assistant | Mock provider, then real provider | Not started |
 | 9 | Quality assurance | QA report, release candidate | Not started |
 | 10 | Security and optimization | Production-readiness report | Not started |
