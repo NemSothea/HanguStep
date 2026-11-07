@@ -4,6 +4,7 @@ import Domain
 import SwiftUI
 
 struct DashboardView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var viewModel: DashboardViewModel
     let dependencies: AppDependencies
     @State private var launch: QuizLaunch?
@@ -40,6 +41,7 @@ struct DashboardView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 NavigationLink { SettingsView(dependencies: dependencies) } label: { Label("Settings", systemImage: "gearshape") }
+                    .accessibilityIdentifier("settings")
             }
         }
         .navigationDestination(for: DashboardRoute.self) { route in
@@ -61,7 +63,7 @@ struct DashboardView: View {
     }
 
     private func todayTiles(_ summary: DashboardSummary) -> some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: Spacing.md)], spacing: Spacing.md) {
+        LazyVGrid(columns: Layout.tileColumns(for: dynamicTypeSize), spacing: Spacing.md) {
             NavigationLink(value: DashboardRoute.reviewQueue) {
                 StatTile(title: "Due today", value: summary.dueCount.formatted(), caption: summary.dueCount == 1 ? "item to review" : "items to review", systemImage: "clock.arrow.circlepath", tint: summary.dueCount > 0 ? HSColor.warning : HSColor.accent)
             }
@@ -91,7 +93,7 @@ struct DashboardView: View {
     }
 
     private func libraryTiles(_ summary: DashboardSummary) -> some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: Spacing.md)], spacing: Spacing.md) {
+        LazyVGrid(columns: Layout.tileColumns(for: dynamicTypeSize), spacing: Spacing.md) {
             StatTile(title: "Vocabulary", value: summary.vocabularyCount.formatted(), caption: "words", systemImage: "character.book.closed")
             StatTile(title: "Grammar", value: summary.grammarCount.formatted(), caption: "patterns", systemImage: "text.book.closed")
             StatTile(title: "Answered", value: summary.attempts.total.formatted(), caption: "all time", systemImage: "checkmark.circle")
@@ -109,10 +111,15 @@ struct GoalTile: View {
     let answered: Int
     let goal: Int
     let reached: Bool
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         HSCard {
-            HStack(spacing: Spacing.md) {
+            // Ring beside the numbers normally; above them at accessibility sizes.
+            let layout = dynamicTypeSize.isAccessibilitySize
+                ? AnyLayout(VStackLayout(alignment: .leading, spacing: Spacing.sm))
+                : AnyLayout(HStackLayout(spacing: Spacing.md))
+            layout {
                 ProgressRing(progress: goal == 0 ? 0 : Double(answered) / Double(goal), lineWidth: 6, tint: reached ? HSColor.success : HSColor.accent) {
                     Image(systemName: reached ? "checkmark" : "flag")
                         .font(.caption.weight(.bold))

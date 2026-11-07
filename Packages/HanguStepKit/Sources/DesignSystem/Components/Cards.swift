@@ -57,18 +57,25 @@ public struct StatTile: View {
         self.tint = tint
     }
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     public var body: some View {
         HSCard {
             VStack(alignment: .leading, spacing: Spacing.xs) {
-                Label {
-                    Text(title)
-                        .foregroundStyle(HSColor.textSecondary)
-                } icon: {
-                    Image(systemName: systemImage)
-                        .foregroundStyle(tint)
-                        .symbolRenderingMode(.hierarchical)
+                if dynamicTypeSize.isAccessibilitySize {
+                    Image(systemName: systemImage).foregroundStyle(tint).symbolRenderingMode(.hierarchical).font(Typography.caption)
+                    Text(title).foregroundStyle(HSColor.textSecondary).font(Typography.caption)
+                } else {
+                    Label {
+                        Text(title)
+                            .foregroundStyle(HSColor.textSecondary)
+                    } icon: {
+                        Image(systemName: systemImage)
+                            .foregroundStyle(tint)
+                            .symbolRenderingMode(.hierarchical)
+                    }
+                    .font(Typography.caption)
                 }
-                .font(Typography.caption)
                 Text(value)
                     .font(Typography.statValue)
                     .foregroundStyle(HSColor.textPrimary)

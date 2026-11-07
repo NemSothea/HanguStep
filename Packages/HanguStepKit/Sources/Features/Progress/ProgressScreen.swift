@@ -22,6 +22,7 @@ public final class ProgressViewModel {
 
 /// S8 Learning progress: evidence the routine works.
 struct ProgressScreen: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let dependencies: AppDependencies
     @State private var viewModel: ProgressViewModel
     @Environment(LearnerPreferences.self) private var preferences
@@ -80,7 +81,7 @@ struct ProgressScreen: View {
 
     private func statGrid(_ report: ProgressReport) -> some View {
         let summary = report.summary
-        return LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: Spacing.md)], spacing: Spacing.md) {
+        return LazyVGrid(columns: Layout.tileColumns(for: dynamicTypeSize), spacing: Spacing.md) {
             StatTile(title: "Answered", value: summary.totals.total.formatted(), caption: "\(summary.totals.correct) correct", systemImage: "checkmark.circle")
             StatTile(title: "Accuracy", value: summary.totals.accuracy.formatted(.percent.precision(.fractionLength(0))), caption: "all time", systemImage: "target", tint: HSColor.success)
             StatTile(title: "Streak", value: summary.currentStreak.formatted(), caption: "best \(summary.longestStreak)", systemImage: "flame", tint: HSColor.danger)

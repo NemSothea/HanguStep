@@ -18,12 +18,19 @@ public struct HangulText: View {
     }
 
     public var body: some View {
+        // Never limit lines: a limited multi-line Text drops whole lines of a long
+        // prompt (Phase 9 QA finding). Callers pick a smaller style for long text.
         Text(text)
             .font(font)
-            .minimumScaleFactor(style == .display ? 0.7 : 1)
-            .lineLimit(style == .display ? 2 : nil)
+            .fixedSize(horizontal: false, vertical: true)
             .foregroundStyle(HSColor.textPrimary)
-            .accessibilityLabel(Text(AttributedString.korean(text)))
+            .accessibilityLabel(Text(AttributedString.korean(Self.spokenForm(of: text))))
+    }
+
+    /// Fill-in prompts mark the gap with underscores, which VoiceOver reads one by
+    /// one. Each run of two or more becomes "빈칸" (blank), spoken by the Korean voice.
+    static func spokenForm(of text: String) -> String {
+        text.replacingOccurrences(of: "_{2,}", with: "빈칸", options: .regularExpression)
     }
 
     private var font: Font {

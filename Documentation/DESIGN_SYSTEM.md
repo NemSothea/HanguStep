@@ -62,26 +62,26 @@ Semantic tokens only. Defined in `Colors.xcassets` with light and dark variants,
 |---|---|---|---|
 | `HSColor.accent` | teal 700 `#0F766E` | teal 400 `#2DD4BF` | Primary actions, selection, links |
 | `HSColor.accentSoft` | teal 50 `#F0FDFA` | teal 900 at 40 % | Selected row background |
-| `HSColor.success` | green 600 `#16A34A` | green 400 `#4ADE80` | Correct answer |
-| `HSColor.danger` | red 600 `#DC2626` | red 400 `#F87171` | Incorrect answer, destructive |
+| `HSColor.success` | green 700 `#15803D` | green 400 `#4ADE80` | Correct answer (darkened in Phase 9: used as text) |
+| `HSColor.danger` | red 700 `#B91C1C` | red 400 `#F87171` | Incorrect answer, destructive (darkened in Phase 9) |
 | `HSColor.warning` | amber 600 `#D97706` | amber 400 `#FBBF24` | Due items, sync warnings |
 | `HSColor.background` | system grouped background | same | Screen background |
 | `HSColor.surface` | system background | secondary system background | Cards |
 | `HSColor.surfaceElevated` | white | tertiary system background | Modals, popovers |
 | `HSColor.textPrimary` | label | label | |
-| `HSColor.textSecondary` | secondary label | secondary label | Gloss, metadata |
+| `HSColor.textSecondary` | `#55555E` | `#A6A6AF` | Gloss, metadata. Own asset since Phase 9: the system secondary label fell under 4.5:1 on the grouped background |
 | `HSColor.separator` | separator | separator | |
 
-TOPIK level colors, used only in `LevelBadge`:
+TOPIK level colors, used in `LevelBadge` and the Learn filter chips (light values darkened in Phase 9 for 4.5:1 with white text and as chip text on the grouped background; text on dark variants uses `HSColor.onTint`):
 
 | Level | Light | Dark |
 |---|---|---|
-| 1 | `#16A34A` | `#4ADE80` |
-| 2 | `#65A30D` | `#A3E635` |
-| 3 | `#CA8A04` | `#FACC15` |
-| 4 | `#EA580C` | `#FB923C` |
-| 5 | `#DC2626` | `#F87171` |
-| 6 | `#7C3AED` | `#A78BFA` |
+| 1 | `#166534` | `#4ADE80` |
+| 2 | `#3F6212` | `#A3E635` |
+| 3 | `#854D0E` | `#FACC15` |
+| 4 | `#C2410C` | `#FB923C` |
+| 5 | `#B91C1C` | `#F87171` |
+| 6 | `#6D28D9` | `#A78BFA` |
 
 Rule: color never carries meaning alone. Correct and incorrect also use icons (`checkmark.circle.fill`, `xmark.circle.fill`) and text.
 
@@ -243,3 +243,18 @@ Not in Phase 2: real data for S2 to S9 (Phase 4 and 5), charts (Phase 5), TTS (P
 - Global tint set to `HSColor.accent` in `RootView`.
 - Speech language: SwiftUI has no public speech-language modifier. `HangulText` and `GlossText` tag labels with `languageIdentifier`. Whether VoiceOver switches voice must be verified on device in Phase 9; fallback is `UIAccessibilitySpeechAttributeLanguage` through a UIKit bridge.
 - Deferred to Phase 4/5: `SearchField` wrapper (plain `.searchable` is enough so far), charts, keyboard shortcuts on Mac.
+
+## 10. Phase 9 accessibility audit changes
+
+`AccessibilityUITests` runs Xcode's accessibility audit on ten screens at `AccessibilityXXXL`. Findings fixed on 2026-11-04:
+
+- **Secondary text contrast.** `HSColor.textSecondary` moved from `Color.secondary` to an asset (`#55555E` light, `#A6A6AF` dark), about 6.5:1 on the grouped backgrounds.
+- **Level tints.** Light variants darkened so white text reaches 4.5:1: L1 `#15803D`, L2 `#4D7C0F`, L3 `#A16207`, L4 `#C2410C`, L5 `#B91C1C`, L6 `#6D28D9`. Dark variants unchanged (pale), so text on a tint now uses `HSColor.onTint` (white in light, `#1C1C1E` in dark) in `LevelBadge` and the Learn filter chips.
+- **Tile grids.** `Layout.tileColumns(for:)` returns one column at accessibility sizes; `StatTile` stacks icon above title and `GoalTile` stacks the ring above the numbers, so "0/20" no longer wraps per character.
+- **Hero text.** `HangulText` no longer limits lines; the quiz uses the title size for sentence, grammar and reading prompts (`QuizFlowView.promptStyle`). A two-line limit had dropped the first line of three-line prompts.
+- **Quiz sheet.** Inline navigation title mode removes the empty large-title band above the progress bar.
+- **Status colours as text.** `success` and `danger` light values darkened (`#15803D`, `#B91C1C`) because "Correct", "Incorrect" and "Perfect round" are drawn in them.
+- **Option rows.** Dimmed rows use `textSecondary` instead of 50 % opacity; the index number is `textPrimary` when idle; at accessibility sizes the number sits above the text.
+- **Disabled buttons.** `HSButtonStyle` swaps to `surfaceElevated` + `textSecondary` instead of fading to 45 % opacity.
+- **Settings language picker.** Inline style at accessibility sizes; the menu style clipped its value.
+- **Audit exemptions (documented in `AccessibilityUITests`).** Dynamic Type on navigation-bar items (system behaviour) and contrast on text scrolled under the translucent bottom bars (sampling artifact).

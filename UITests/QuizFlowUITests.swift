@@ -101,7 +101,7 @@ final class QuizFlowUITests: XCTestCase {
     /// practice from a word and start it. Offline: the mock provider needs no key.
     func testAssistantExplainsAndGeneratesPractice() throws {
         XCTAssertTrue(app.staticTexts["Home"].waitForExistence(timeout: 15))
-        app.buttons["Settings"].firstMatch.tap()
+        app.buttons["settings"].firstMatch.tap()
         let toggle = app.switches["assistant.enabled"].firstMatch
         XCTAssertTrue(toggle.waitForExistence(timeout: 5), "assistant toggle did not appear")
         toggle.tap()

@@ -10,7 +10,11 @@ public enum HSColor {
     public static let warning = Color("warning", bundle: .module)
 
     public static let textPrimary = Color.primary
-    public static let textSecondary = Color.secondary
+    /// Not `Color.secondary`: the system secondary label sits under 4.5:1 on the
+    /// grouped background and fails the accessibility audit for caption text.
+    public static let textSecondary = Color("textSecondary", bundle: .module)
+    /// Text drawn on top of `level(_:)`, `accent` or `success` fills.
+    public static let onTint = Color("onTint", bundle: .module)
 
     #if canImport(UIKit)
     public static let background = Color(uiColor: .systemGroupedBackground)

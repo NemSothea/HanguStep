@@ -7,16 +7,35 @@ struct SettingsView: View {
     @Environment(LearnerPreferences.self) private var preferences
     @Environment(SyncStatusModel.self) private var syncStatus
     @Environment(AssistantModel.self) private var assistant
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var errorMessage: String?
     @State private var claudeKeyDraft = ""
     @State private var generatedCount: Int?
 
     var body: some View {
         Form {
+            if dynamicTypeSize.isAccessibilitySize {
+                // The menu picker clips its value at accessibility sizes, and the inline
+                // picker's own label row does not scale, so the label is a section header.
+                Section {
+                    Picker("Show meanings first in", selection: binding(\.glossLanguage)) {
+                        Text("English").tag(GlossLanguage.english)
+                        Text("Khmer · ខ្មែរ").tag(GlossLanguage.khmer)
+                    }
+                    .pickerStyle(.inline)
+                    .labelsHidden()
+                } header: {
+                    // The default header grey is about 3:1 on the grouped background.
+                    Text("Show meanings first in")
+                        .foregroundStyle(HSColor.textSecondary)
+                }
+            }
             Section("Learning") {
-                Picker("Show meanings first in", selection: binding(\.glossLanguage)) {
-                    Text("English").tag(GlossLanguage.english)
-                    Text("Khmer · ខ្មែរ").tag(GlossLanguage.khmer)
+                if !dynamicTypeSize.isAccessibilitySize {
+                    Picker("Show meanings first in", selection: binding(\.glossLanguage)) {
+                        Text("English").tag(GlossLanguage.english)
+                        Text("Khmer · ខ្មែរ").tag(GlossLanguage.khmer)
+                    }
                 }
                 Stepper("Daily goal: \(preferences.settings.dailyGoal) questions", value: binding(\.dailyGoal), in: 5...200, step: 5)
                 Stepper("Review limit: \(preferences.settings.reviewLimit)", value: binding(\.reviewLimit), in: 10...200, step: 10)
@@ -61,7 +80,7 @@ struct SettingsView: View {
             }
             #endif
             Section("About") {
-                LabeledContent("Version", value: "0.1.0")
+                LabeledContent("Version", value: Self.appVersion)
             }
             if let errorMessage {
                 Section { Text(errorMessage).foregroundStyle(HSColor.danger) }
@@ -119,6 +138,14 @@ struct SettingsView: View {
                  : "Explains answers and writes extra practice questions. The built-in assistant works offline using the bundled examples.")
                 .font(Typography.caption)
         }
+    }
+
+    /// Marketing version and build from the app bundle; "dev" in previews and tests.
+    static var appVersion: String {
+        let info = Bundle.main.infoDictionary ?? [:]
+        guard let version = info["CFBundleShortVersionString"] as? String else { return "dev" }
+        let build = info["CFBundleVersion"] as? String
+        return build.map { "\(version) (\($0))" } ?? version
     }
 
     /// Writes through `LearnerPreferences`, which persists via the save use case.

@@ -13,7 +13,7 @@ public struct LevelBadge: View {
             .monospacedDigit()
             .padding(.horizontal, Spacing.sm)
             .padding(.vertical, Spacing.xxs)
-            .foregroundStyle(.white)
+            .foregroundStyle(HSColor.onTint)
             .background(HSColor.level(level), in: RoundedRectangle(cornerRadius: Radius.sm, style: .continuous))
             .accessibilityLabel("TOPIK level \(level)")
     }

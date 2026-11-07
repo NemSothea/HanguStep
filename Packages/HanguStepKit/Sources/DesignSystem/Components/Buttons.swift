@@ -24,16 +24,18 @@ public struct HSButtonStyle: ButtonStyle {
             .overlay {
                 if variant == .secondary {
                     RoundedRectangle(cornerRadius: Radius.md, style: .continuous)
-                        .strokeBorder(HSColor.accent, lineWidth: 1.5)
+                        .strokeBorder(isEnabled ? HSColor.accent : HSColor.separator, lineWidth: 1.5)
                 }
             }
-            .opacity(isEnabled ? 1 : 0.45)
             .scaleEffect(configuration.isPressed ? 0.98 : 1)
             .animation(.easeOut(duration: 0.12), value: configuration.isPressed)
             .contentShape(Rectangle())
     }
 
+    // Disabled buttons swap colours instead of fading, so the label keeps
+    // readable contrast (Phase 9 audit).
     private var foreground: Color {
+        guard isEnabled else { return HSColor.textSecondary }
         switch variant {
         case .primary, .destructive: return .white
         case .secondary: return HSColor.accent
@@ -41,6 +43,7 @@ public struct HSButtonStyle: ButtonStyle {
     }
 
     private var background: Color {
+        guard isEnabled else { return variant == .secondary ? .clear : HSColor.surfaceElevated }
         switch variant {
         case .primary: return HSColor.accent
         case .destructive: return HSColor.danger
