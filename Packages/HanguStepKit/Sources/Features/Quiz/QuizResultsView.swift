@@ -6,6 +6,7 @@ struct QuizResultsView: View {
     let result: QuizResult
     let done: () -> Void
     @Environment(LearnerPreferences.self) private var preferences
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         ScrollView {
@@ -26,7 +27,7 @@ struct QuizResultsView: View {
                     Text("\(result.total - result.answered) questions skipped").font(Typography.caption).foregroundStyle(HSColor.textSecondary)
                 }
 
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 120), spacing: Spacing.md)], spacing: Spacing.md) {
+                LazyVGrid(columns: Layout.tileColumns(for: dynamicTypeSize, minimum: 120), spacing: Spacing.md) {
                     StatTile(title: "Correct", value: result.correct.formatted(), systemImage: "checkmark.circle", tint: HSColor.success)
                     StatTile(title: "Incorrect", value: (result.answered - result.correct).formatted(), systemImage: "xmark.circle", tint: HSColor.danger)
                     StatTile(title: "Avg. time", value: result.averageResponseTime.formatted(.number.precision(.fractionLength(1))) + "s", systemImage: "timer")

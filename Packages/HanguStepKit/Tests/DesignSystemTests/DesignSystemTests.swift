@@ -22,4 +22,10 @@ final class DesignSystemTests: XCTestCase {
         XCTAssertEqual(Script.hangul.lineSpacing, 0)
         XCTAssertEqual(Script.latin.lineSpacing, 0)
     }
+
+    func testBlankInPromptIsSpokenAsWord() {
+        XCTAssertEqual(HangulText.spokenForm(of: "다리가 아파서 ______ 걸어요."), "다리가 아파서 빈칸 걸어요.")
+        XCTAssertEqual(HangulText.spokenForm(of: "학교_에"), "학교_에")
+        XCTAssertEqual(HangulText.spokenForm(of: "학교"), "학교")
+    }
 }

@@ -18,6 +18,9 @@ struct QuizFlowView: View {
         NavigationStack {
             content
                 .background(HSColor.background)
+                #if os(iOS)
+                .navigationBarTitleDisplayMode(.inline)
+                #endif
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Close") {
@@ -57,7 +60,7 @@ struct QuizFlowView: View {
             ProgressView(value: viewModel.progress)
                 .tint(HSColor.accent)
                 .padding(.horizontal, Spacing.md)
-                .accessibilityLabel("Quiz progress")
+                .accessibilityHidden(true)   // "1 of 10" in the toolbar already says it
             ScrollView {
                 VStack(alignment: .leading, spacing: Spacing.lg) {
                     if viewModel.shortfallNoticeShown, let snapshot = viewModel.snapshot {
@@ -69,7 +72,7 @@ struct QuizFlowView: View {
                         if let passage = question.passage {
                             HSCard { HangulText(passage, style: .body) }
                         }
-                        HangulText(question.prompt, style: question.kind == .readingComprehension ? .title : .display)
+                        HangulText(question.prompt, style: Self.promptStyle(for: question))
                             .frame(maxWidth: .infinity, alignment: .leading)
                         VStack(spacing: Spacing.sm) {
                             ForEach(Array(question.options.enumerated()), id: \.element.id) { index, option in
@@ -89,6 +92,15 @@ struct QuizFlowView: View {
                 .frame(maxWidth: .infinity)
             }
             bottomBar
+        }
+    }
+
+    /// Hero size only for short word prompts; sentences and reading questions
+    /// use the title size so they wrap into a few readable lines.
+    static func promptStyle(for question: Question) -> HangulText.Style {
+        switch question.kind {
+        case .vocabularyMeaning where question.prompt.count <= 24: return .display
+        case .meaningToWord, .vocabularyMeaning, .grammarFillIn, .sentenceCompletion, .readingComprehension: return .title
         }
     }
 

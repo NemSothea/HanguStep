@@ -38,3 +38,20 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             | xcpretty || true
           test ${PIPESTATUS[0]} -eq 0
+
+  app-macos:
+    name: App build (macOS)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+      - name: Build
+        run: |
+          xcodebuild build \
+            -project HanguStep.xcodeproj \
+            -scheme HanguStep \
+            -destination 'platform=macOS' \
+            CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=NO \
+            | xcpretty || true
+          test ${PIPESTATUS[0]} -eq 0

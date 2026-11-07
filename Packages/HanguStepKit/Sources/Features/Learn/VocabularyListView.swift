@@ -62,20 +62,27 @@ struct VocabularyListView: View {
 struct VocabularyRow: View {
     let item: VocabularyItem
     let glossLanguage: GlossLanguage
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: Spacing.md) {
+        // At accessibility sizes three columns leave a few characters per line, so the
+        // row stacks: word, romanization, meaning, then the level badge.
+        let stacked = dynamicTypeSize.isAccessibilitySize
+        let layout = stacked
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: Spacing.xs))
+            : AnyLayout(HStackLayout(alignment: .firstTextBaseline, spacing: Spacing.md))
+        layout {
             VStack(alignment: .leading, spacing: Spacing.xxs) {
                 HangulText(item.hangul, style: .title)
                 Text(item.romanization)
                     .font(Typography.caption)
                     .foregroundStyle(HSColor.textSecondary)
             }
-            Spacer()
+            if !stacked { Spacer() }
             Text(item.meaning.text(in: glossLanguage))
                 .font(Typography.body)
                 .foregroundStyle(HSColor.textSecondary)
-                .multilineTextAlignment(.trailing)
+                .multilineTextAlignment(stacked ? .leading : .trailing)
                 .scriptSpacing(glossLanguage == .khmer ? .khmer : .latin)
             LevelBadge(level: item.level.rawValue)
         }
@@ -109,7 +116,10 @@ struct FilterChipLabel: View {
             .font(.caption.weight(.semibold))
             .padding(.horizontal, Spacing.sm + Spacing.xs)
             .padding(.vertical, Spacing.xs + Spacing.xxs)
-            .foregroundStyle(isOn ? Color.white : tint)
-            .background(isOn ? tint : tint.opacity(0.12), in: Capsule())
+            .foregroundStyle(isOn ? HSColor.onTint : tint)
+            // Off state: tint text on the plain surface with a tint border. A tinted
+            // fill pulled the amber and orange levels under 4.5:1 (Phase 9 audit).
+            .background(isOn ? tint : HSColor.surface, in: Capsule())
+            .overlay { Capsule().strokeBorder(tint, lineWidth: isOn ? 0 : 1) }
     }
 }

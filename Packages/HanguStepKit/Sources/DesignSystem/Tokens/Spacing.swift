@@ -24,3 +24,13 @@ public enum Layout {
     public static let minimumTapTarget: CGFloat = 44
     public static let optionRowHeight: CGFloat = 56
 }
+
+public extension Layout {
+    /// Tile grids collapse to one column at accessibility text sizes so values
+    /// such as "0/20" never wrap character by character (Phase 9 QA).
+    static func tileColumns(for size: DynamicTypeSize, minimum: CGFloat = 150) -> [GridItem] {
+        size.isAccessibilitySize
+            ? [GridItem(.flexible(), spacing: Spacing.md)]
+            : [GridItem(.adaptive(minimum: minimum), spacing: Spacing.md)]
+    }
+}

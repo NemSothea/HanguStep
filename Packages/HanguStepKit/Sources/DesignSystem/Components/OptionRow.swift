@@ -31,16 +31,27 @@ public struct OptionRow: View {
         self.action = action
     }
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     public var body: some View {
+        // Number beside the text normally; above it at accessibility sizes so
+        // neither gets squeezed out (Phase 9 audit).
+        let layout = dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: Spacing.xs))
+            : AnyLayout(HStackLayout(spacing: Spacing.md))
         Button(action: action) {
-            HStack(spacing: Spacing.md) {
+            layout {
                 Text(CircledNumber.label(for: index))
                     .font(.title3.weight(.semibold))
-                    .foregroundStyle(tint)
+                    // The status colour is carried by the symbol and border; the thin
+                    // circled glyph needs full-contrast text on the tinted fills.
+                    .foregroundStyle(state == .dimmed ? HSColor.textSecondary : HSColor.textPrimary)
+                    .fixedSize()
                 Text(text)
                     .font(Typography.hangulTitle)
-                    .foregroundStyle(HSColor.textPrimary)
+                    .foregroundStyle(state == .dimmed ? HSColor.textSecondary : HSColor.textPrimary)
                     .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let statusSymbol {
                     Image(systemName: statusSymbol)
@@ -49,13 +60,13 @@ public struct OptionRow: View {
                 }
             }
             .padding(.horizontal, Spacing.md)
+            .padding(.vertical, Spacing.sm)
             .frame(maxWidth: .infinity, minHeight: Layout.optionRowHeight)
             .background(background, in: RoundedRectangle(cornerRadius: Radius.md, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: Radius.md, style: .continuous)
                     .strokeBorder(borderColor, lineWidth: state == .idle ? 1 : 2)
             }
-            .opacity(state == .dimmed ? 0.5 : 1)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -67,7 +78,10 @@ public struct OptionRow: View {
 
     private var tint: Color {
         switch state {
-        case .idle, .dimmed: return HSColor.textSecondary
+        // Dimmed rows use the secondary colour instead of opacity so they keep
+        // 4.5:1 contrast (Phase 9 audit).
+        case .idle: return HSColor.textPrimary
+        case .dimmed: return HSColor.textSecondary
         case .selected: return HSColor.accent
         case .correct: return HSColor.success
         case .incorrect: return HSColor.danger
