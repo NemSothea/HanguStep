@@ -90,8 +90,11 @@ public enum ProgressStatistics {
     public static func summary(attempts: [Attempt], sessions: [StudySession], now: Date, calendar: Calendar) -> ProgressSummary {
         let today = calendar.startOfDay(for: now)
         var byDay: [Date: (answered: Int, correct: Int)] = [:]
+        var dayBuckets = DayBuckets(calendar: calendar)
+        var correctTotal = 0
         for attempt in attempts {
-            let day = calendar.startOfDay(for: attempt.answeredAt)
+            let day = dayBuckets.startOfDay(for: attempt.answeredAt)
+            if attempt.isCorrect { correctTotal += 1 }
             var entry = byDay[day] ?? (0, 0)
             entry.answered += 1
             if attempt.isCorrect { entry.correct += 1 }
@@ -101,7 +104,7 @@ public enum ProgressStatistics {
         let streaks = streaks(activeDays: Set(byDay.keys), today: today, calendar: calendar)
 
         return ProgressSummary(
-            totals: AttemptSummary(total: attempts.count, correct: attempts.filter(\.isCorrect).count),
+            totals: AttemptSummary(total: attempts.count, correct: correctTotal),
             answeredToday: todayEntry.answered,
             correctToday: todayEntry.correct,
             minutesToday: minutes(of: sessions, attempts: attempts, on: today, calendar: calendar),
@@ -179,5 +182,26 @@ public enum ProgressStatistics {
                 return total + max(0, end.timeIntervalSince(session.startedAt))
             }
         return Int((seconds / 60).rounded())
+    }
+}
+
+/// `Calendar.startOfDay` per attempt dominated the dashboard at 20 000 attempts
+/// (Phase 10). Attempts arrive sorted by time, so consecutive ones share a day:
+/// keep the last day's interval and ask the calendar only when a date leaves it.
+/// Order-independent and DST-safe, because the interval comes from the calendar.
+struct DayBuckets {
+    private let calendar: Calendar
+    private var current: DateInterval?
+
+    init(calendar: Calendar) { self.calendar = calendar }
+
+    mutating func startOfDay(for date: Date) -> Date {
+        if let current, current.start <= date, date < current.end { return current.start }
+        guard let interval = calendar.dateInterval(of: .day, for: date) else {
+            current = nil
+            return calendar.startOfDay(for: date)
+        }
+        current = interval
+        return interval.start
     }
 }

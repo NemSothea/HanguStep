@@ -43,6 +43,7 @@ public struct CoreDataAttemptRepository: AttemptRepository {
         try await context.perform {
             let request = NSFetchRequest<CDAttempt>(entityName: "CDAttempt")
             request.sortDescriptors = [NSSortDescriptor(key: "answeredAt", ascending: true)]
+            request.returnsObjectsAsFaults = false
             return try context.fetch(request).map(Self.map)
         }
     }

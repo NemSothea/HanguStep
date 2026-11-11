@@ -3,7 +3,11 @@ import Domain
 import Features
 import Foundation
 import Observation
+import os
 import Persistence
+#if canImport(UIKit)
+import UIKit
+#endif
 
 /// Composition root. The only place that knows concrete repository types.
 @MainActor
@@ -19,6 +23,10 @@ final class AppContainer {
     static let cloudKitContainerIdentifier = "iCloud.com.nemsothea.hangustep"
     private static let syncPreferenceKey = "sync.enabled"
 
+    /// Launch intervals for Instruments (Points of Interest / os_signpost, category `Launch`).
+    /// AC-13 is measured on a device from these; see PRODUCTION_READINESS.md.
+    private static let signposter = OSSignposter(subsystem: "com.nemsothea.hangustep", category: "Launch")
+
     private(set) var state: State = .starting
     private var monitor: SyncMonitor?
     private var monitorTask: Task<Void, Never>?
@@ -30,7 +38,15 @@ final class AppContainer {
         set { UserDefaults.standard.set(newValue, forKey: syncPreferenceKey) }
     }
 
-    private static var isUITesting: Bool { CommandLine.arguments.contains("--ui-testing") }
+    /// Debug builds only: a Release build ignores `--ui-testing`, so a launch argument can
+    /// never switch a learner's install to the in-memory secret store or disable sync.
+    private static var isUITesting: Bool {
+        #if DEBUG
+        return CommandLine.arguments.contains("--ui-testing")
+        #else
+        return false
+        #endif
+    }
 
     /// Opens the stores, imports bundled content if newer, loads settings and builds the
     /// dependency graph. Single-flight: concurrent callers await the same run.
@@ -56,19 +72,18 @@ final class AppContainer {
             let sync: PersistenceController.SyncOption = (Self.isSyncPreferred && !Self.isUITesting)
                 ? .cloudKit(containerIdentifier: Self.cloudKitContainerIdentifier)
                 : .off
-            let controller = try PersistenceController(mode: .onDisk(directory: Self.storeDirectory()), sync: sync)
+            let directory = try Self.storeDirectory()
+            // Store opening and content import run off the main actor so the launch
+            // screen stays responsive (Phase 10). Both are synchronous Core Data work.
+            let storesInterval = Self.signposter.beginInterval("OpenStores")
+            let controller = try await Task.detached(priority: .userInitiated) {
+                try PersistenceController(mode: .onDisk(directory: directory), sync: sync)
+            }.value
+            Self.signposter.endInterval("OpenStores", storesInterval)
             // Bundled JSON library, validated on load; applied only when newer than the installed version.
-            let library = try BundledContent.load()
-            _ = try await CoreDataContentStore(controller: controller).apply(library.package)
-            let contentInfo = ContentInfo(
-                version: library.package.version,
-                vocabularyCount: library.package.vocabulary.count,
-                grammarCount: library.package.grammar.count,
-                questionCount: library.package.questions.count,
-                sourceName: library.source.name,
-                license: library.source.license,
-                pendingReview: library.pendingReview
-            )
+            let contentInterval = Self.signposter.beginInterval("InstallContent")
+            let contentInfo = try await BundledContentInstaller.installIfNeeded(controller: controller)
+            Self.signposter.endInterval("InstallContent", contentInterval)
             let monitor = SyncMonitor(controller: controller)
             self.monitor = monitor
 
@@ -145,11 +160,14 @@ final class AppContainer {
         }
     }
 
+    /// Device class only ("iPhone", "iPad", "Mac"). The user-assigned device name and the
+    /// host name carry personal data and `ProcessInfo.hostName` can block on a DNS lookup,
+    /// so neither is stored in synced session history (SECURITY.md §5, data minimisation).
     private static var deviceName: String {
         #if os(macOS)
-        return Host.current().localizedName ?? "Mac"
+        return "Mac"
         #else
-        return ProcessInfo.processInfo.hostName
+        return UIDevice.current.model
         #endif
     }
 
@@ -157,7 +175,7 @@ final class AppContainer {
         let base = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         #if DEBUG
         // UI tests start from an empty learner store every run.
-        if CommandLine.arguments.contains("--ui-testing") {
+        if isUITesting {
             let scratch = base.appendingPathComponent("HanguStep-UITests", isDirectory: true)
             try? FileManager.default.removeItem(at: scratch)
             try FileManager.default.createDirectory(at: scratch, withIntermediateDirectories: true)
