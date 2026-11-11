@@ -35,6 +35,9 @@ targets:
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         # Only HTTPS through the system TLS stack: exempt from export documentation.
         ITSAppUsesNonExemptEncryption: false
+        # YES unless the build is unsigned (CLI `CODE_SIGNING_ALLOWED=NO`): an unsigned
+        # build has no CloudKit entitlement and CloudKit traps the process at startup.
+        HSCloudKitAvailable: $(HANGUSTEP_CLOUDKIT_AVAILABLE)
     dependencies:
       - package: HanguStepKit
         product: Domain
@@ -51,6 +54,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.nemsothea.hangustep
         PRODUCT_NAME: HanguStep
         MARKETING_VERSION: "1.0.0"
+        HANGUSTEP_CLOUDKIT_AVAILABLE: $(CODE_SIGNING_ALLOWED)
         CURRENT_PROJECT_VERSION: "1"
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES

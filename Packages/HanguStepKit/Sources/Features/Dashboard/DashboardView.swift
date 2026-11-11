@@ -115,25 +115,34 @@ struct GoalTile: View {
 
     var body: some View {
         HSCard {
-            // Ring beside the numbers normally; above them at accessibility sizes.
-            let layout = dynamicTypeSize.isAccessibilitySize
-                ? AnyLayout(VStackLayout(alignment: .leading, spacing: Spacing.sm))
-                : AnyLayout(HStackLayout(spacing: Spacing.md))
-            layout {
-                ProgressRing(progress: goal == 0 ? 0 : Double(answered) / Double(goal), lineWidth: 6, tint: reached ? HSColor.success : HSColor.accent) {
-                    Image(systemName: reached ? "checkmark" : "flag")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(reached ? HSColor.success : HSColor.accent)
+            // Same layout as `StatTile` so the value gets the full tile width; the ring
+            // sits in the corner (beside the numbers it squeezed "0/20" onto two lines).
+            VStack(alignment: .leading, spacing: Spacing.xs) {
+                HStack(alignment: .top) {
+                    Label {
+                        Text("Goal").foregroundStyle(HSColor.textSecondary)
+                    } icon: {
+                        Image(systemName: reached ? "checkmark.circle" : "flag")
+                            .foregroundStyle(reached ? HSColor.success : HSColor.accent)
+                    }
+                    .font(Typography.caption)
+                    Spacer(minLength: Spacing.xs)
+                    if !dynamicTypeSize.isAccessibilitySize {
+                        ProgressRing(progress: goal == 0 ? 0 : Double(answered) / Double(goal), lineWidth: 4, tint: reached ? HSColor.success : HSColor.accent) {
+                            EmptyView()
+                        }
+                        .frame(width: 24, height: 24)
+                    }
                 }
-                .frame(width: 44, height: 44)
-                VStack(alignment: .leading, spacing: Spacing.xxs) {
-                    Text("Goal").font(Typography.caption).foregroundStyle(HSColor.textSecondary)
-                    Text("\(answered)/\(goal)").font(Typography.statValue).foregroundStyle(HSColor.textPrimary).monospacedDigit()
-                    Text(reached ? "reached" : "questions today").font(Typography.caption).foregroundStyle(HSColor.textSecondary)
-                }
-                Spacer(minLength: 0)
+                Text("\(answered)/\(goal)")
+                    .font(Typography.statValue)
+                    .foregroundStyle(HSColor.textPrimary)
+                    .monospacedDigit()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+                Text(reached ? "reached" : "questions today").font(Typography.caption).foregroundStyle(HSColor.textSecondary)
             }
-            .frame(maxHeight: .infinity, alignment: .top)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(reached ? "Daily goal reached, \(answered) of \(goal) questions" : "Daily goal, \(answered) of \(goal) questions")

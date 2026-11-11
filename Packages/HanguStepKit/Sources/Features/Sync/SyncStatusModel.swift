@@ -12,13 +12,21 @@ public final class SyncStatusModel {
     /// The learner's preference. The container is rebuilt when it changes.
     public private(set) var isSyncPreferred: Bool
     public private(set) var isApplyingPreference = false
+    /// False when this build cannot use iCloud at all (no CloudKit entitlement, or a UI
+    /// test run). The switch is then shown off and disabled instead of contradicting
+    /// the "sync off" status.
+    public let isSyncAvailable: Bool
     private let applyPreference: @MainActor (Bool) async -> Void
 
-    public init(state: SyncState, isSyncPreferred: Bool, applyPreference: @escaping @MainActor (Bool) async -> Void) {
+    public init(state: SyncState, isSyncPreferred: Bool, isSyncAvailable: Bool = true, applyPreference: @escaping @MainActor (Bool) async -> Void) {
         self.state = state
         self.isSyncPreferred = isSyncPreferred
+        self.isSyncAvailable = isSyncAvailable
         self.applyPreference = applyPreference
     }
+
+    /// What the switch shows: the preference, unless sync cannot run in this build.
+    public var isSyncSwitchOn: Bool { isSyncAvailable && isSyncPreferred }
 
     /// Consumes state updates until the stream ends or the task is cancelled.
     public func observe(_ states: AsyncStream<SyncState>) async {
@@ -26,7 +34,7 @@ public final class SyncStatusModel {
     }
 
     public func setSyncPreferred(_ enabled: Bool) async {
-        guard enabled != isSyncPreferred, !isApplyingPreference else { return }
+        guard isSyncAvailable, enabled != isSyncPreferred, !isApplyingPreference else { return }
         isApplyingPreference = true
         isSyncPreferred = enabled
         await applyPreference(enabled)
@@ -35,6 +43,7 @@ public final class SyncStatusModel {
 
     /// What the badge shows (PRD FR-S5).
     public var badgeStatus: SyncStatus {
+        guard isSyncAvailable else { return .disabled }
         guard isSyncPreferred, state.isEnabled else {
             if isSyncPreferred, let error = state.lastError { return .error(error) }
             return .disabled

@@ -44,10 +44,15 @@ struct SettingsView: View {
             Section("iCloud") {
                 SyncStatusBadge(status: syncStatus.badgeStatus)
                 Toggle("Sync with iCloud", isOn: Binding(
-                    get: { syncStatus.isSyncPreferred },
+                    get: { syncStatus.isSyncSwitchOn },
                     set: { enabled in Task { await syncStatus.setSyncPreferred(enabled) } }
                 ))
-                .disabled(syncStatus.isApplyingPreference)
+                .disabled(syncStatus.isApplyingPreference || !syncStatus.isSyncAvailable)
+                if !syncStatus.isSyncAvailable {
+                    Text("iCloud isn't available in this build of the app.")
+                        .font(Typography.caption)
+                        .foregroundStyle(HSColor.textSecondary)
+                }
                 if syncStatus.isSyncPreferred, syncStatus.state.isEnabled {
                     if let imported = syncStatus.state.lastImportAt {
                         LabeledContent("Last import", value: imported.formatted(date: .abbreviated, time: .shortened))
