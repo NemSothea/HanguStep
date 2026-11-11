@@ -16,6 +16,9 @@ What is tested where, how it runs, and what is deliberately left to manual or de
 | Screens (navigation, quiz loop, learn, bookmarks, assistant flow) | `HanguStepUITests` | iPhone simulator, `--ui-testing` launch argument (fresh learner store, sync off, in-memory secrets) | XCUITest | Flows below pass; screenshots attached |
 | Accessibility (AC-11, NFR-8) | `AccessibilityUITests` | Same, at `UICTContentSizeCategoryAccessibilityXXXL` | `XCUIApplication.performAccessibilityAudit` on 10 screens | No audit issues |
 | Performance proxies (NFR-3) | `PerformanceTests` in `PersistenceTests` | 10 000 synthetic words in memory | XCTest timing | Search < 150 ms, feedback < 100 ms on the Mac host |
+| Dashboard scale (NFR-3, Phase 10) | `PerformanceTests.testDashboardOverTwentyThousandAttemptsStaysWithinBudget` | 20 000 attempts on disk | XCTest timing | < 400 ms in debug `swift test`, < 100 ms with `-c release` |
+| Launch proxy (AC-13, Phase 10) | `LaunchPerformanceTests` in `PersistenceTests` | Real bundled library, on-disk stores | XCTest timing | First launch < 1.5 s, warm < 250 ms on the Mac host; device numbers from `Launch` signposts |
+| Network hardening (Phase 10) | `URLSessionTransportTests` in `AssistantTests` | `URLProtocol` stub | Size cap, redirect refusal | Redirect never followed; reply over limit rejected |
 | Content (AC-10) | `BundledContentTests` + `content-lint` | The bundled JSON | XCTest + CLI | Zero validation issues, generated file not stale |
 
 Views themselves are not unit-tested: SwiftUI bodies carry layout only (CODING_STANDARDS §Layering), so UI tests and the accessibility audit cover them.

@@ -10,9 +10,18 @@ jobs:
     name: Package build and tests
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.2.app
+      - name: Guard against third-party dependencies (AC-14)
+        run: |
+          # Package.swift and project.yml may reference local packages only.
+          if grep -nE '\.package\(' Packages/HanguStepKit/Package.swift \
+             || grep -nE '^\s+(url|github):' project.yml \
+             || git ls-files | grep -E '(^|/)Package\.resolved$'; then
+            echo "::error::A remote package was added. Justify it in an ADR and update this check."
+            exit 1
+          fi
       - name: Test HanguStepKit
         working-directory: Packages/HanguStepKit
         run: swift test --parallel
@@ -26,7 +35,7 @@ jobs:
     name: App build (iOS Simulator)
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.2.app
       - name: Build
@@ -43,7 +52,7 @@ jobs:
     name: App build (macOS)
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.2.app
       - name: Build

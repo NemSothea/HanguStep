@@ -14,7 +14,7 @@ One phase at a time. A phase is done only when reviewed and approved.
 | 7 | TOPIK content system | JSON import, validated content library | Approved |
 | 8 | AI learning assistant | Mock provider, then real provider | Approved |
 | 9 | Quality assurance | QA report, release candidate | Approved (device checks open, see QA_REPORT.md §5) |
-| 10 | Security and optimization | Production-readiness report | Not started |
+| 10 | Security and optimization | Production-readiness report | Approved (device launch check open, see PRODUCTION_READINESS.md §6) |
 | 11 | Release and maintenance | App Store ready build | Not started |
 
 ## Release milestones

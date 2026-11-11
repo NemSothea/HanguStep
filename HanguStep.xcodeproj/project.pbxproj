@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DDDB489D81B8C989E0493F6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0736DD9B9534F6292C2C1A4A /* PrivacyInfo.xcprivacy */; };
 		7F0C8A9EDB8062C414B2F931 /* AccessibilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E320FB84ECFDBAE1C3D22F4C /* AccessibilityUITests.swift */; };
 		A7F1ADC3C144673F03AAA439 /* HanguStepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD04EC0413D84A1A867432 /* HanguStepApp.swift */; };
 		A80BDE2D0820EA5834307E5B /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 336D7E11C1CEF1A77B5A0DC7 /* Domain */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		059146A4DA0F5DB268DC8575 /* HanguStep.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HanguStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0736DD9B9534F6292C2C1A4A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		432A27091087C1CDC0EB0943 /* HanguStepKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HanguStepKit; path = Packages/HanguStepKit; sourceTree = SOURCE_ROOT; };
 		5AAD04EC0413D84A1A867432 /* HanguStepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanguStepApp.swift; sourceTree = "<group>"; };
 		65D6EC25BB9A5F3688EEDA3E /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				65D6EC25BB9A5F3688EEDA3E /* AppContainer.swift */,
 				5AAD04EC0413D84A1A867432 /* HanguStepApp.swift */,
+				0736DD9B9534F6292C2C1A4A /* PrivacyInfo.xcprivacy */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -117,6 +120,7 @@
 			buildConfigurationList = EE22B5092BF68ACDFF004344 /* Build configuration list for PBXNativeTarget "HanguStep" */;
 			buildPhases = (
 				3DE6F6B8CEAB5D4AEA21479B /* Sources */,
+				3048EA9218E78E4CF26223A8 /* Resources */,
 				69AC8897A4689E61C3F9BF47 /* Frameworks */,
 			);
 			buildRules = (
@@ -195,6 +199,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3048EA9218E78E4CF26223A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DDDB489D81B8C989E0493F6 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3DE6F6B8CEAB5D4AEA21479B /* Sources */ = {

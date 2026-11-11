@@ -123,6 +123,11 @@ public final class PersistenceController: Sendable {
         case let .onDisk(directory):
             description = NSPersistentStoreDescription(url: directory.appendingPathComponent("\(configuration).sqlite"))
             description.type = NSSQLiteStoreType
+            #if os(iOS)
+            // Encrypted at rest while the device is locked after a restart. Not `.complete`:
+            // CloudKit mirroring imports in the background while the device is locked (Phase 10).
+            description.setOption(FileProtectionType.completeUntilFirstUserAuthentication as NSObject, forKey: NSPersistentStoreFileProtectionKey)
+            #endif
         }
         description.configuration = configuration
         description.shouldMigrateStoreAutomatically = true

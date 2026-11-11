@@ -60,4 +60,60 @@ final class PerformanceTests: XCTestCase {
         print("PERF answer feedback worst case: \(String(format: "%.2f", worst * 1000)) ms")
         XCTAssertLessThan(worst, 0.100, "NFR-3: feedback under 100 ms")
     }
+
+    /// Phase 10: the dashboard reads every attempt (statistics are derived, AC-4).
+    /// 20 000 attempts is about two years at 30 answers a day.
+    func testDashboardOverTwentyThousandAttemptsStaysWithinBudget() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("dash-\(UUID().uuidString)", isDirectory: true)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let controller = try PersistenceController(mode: .onDisk(directory: directory))
+        _ = try await CoreDataContentStore(controller: controller).apply(SampleContent.package)
+
+        let context = controller.newBackgroundContext()
+        let questionIDs = SampleContent.questions.map(\.id.rawValue)
+        try await context.perform {
+            let start = Date(timeIntervalSinceNow: -730 * 86_400)
+            for n in 0..<20_000 {
+                let row = CDAttempt(context: context)
+                row.id = "perf-\(n)"
+                row.sessionID = "session-\(n / 20)"
+                row.questionID = questionIDs[n % questionIDs.count]
+                row.selectedOptionID = "o1"
+                row.isCorrect = n % 3 != 0
+                row.answeredAt = start.addingTimeInterval(Double(n) * 3_150)
+                row.responseTime = 4
+                row.targetKind = "vocabulary"
+                row.targetID = SampleContent.vocabulary[n % SampleContent.vocabulary.count].id.rawValue
+            }
+            try context.save()
+            context.reset()
+        }
+
+        let load = LoadDashboardSummary(
+            vocabulary: CoreDataVocabularyRepository(controller: controller),
+            grammar: CoreDataGrammarRepository(controller: controller),
+            attempts: CoreDataAttemptRepository(controller: controller),
+            sessions: CoreDataStudySessionRepository(controller: controller),
+            schedules: CoreDataReviewScheduleRepository(controller: controller),
+            settings: CoreDataLearnerSettingsRepository(controller: controller)
+        )
+        var worst: TimeInterval = 0
+        for _ in 0..<3 {
+            let clock = ContinuousClock.now
+            let summary = try await load.execute()
+            let elapsed = ContinuousClock.now - clock
+            XCTAssertEqual(summary.progress.totals.total, 20_000)
+            worst = max(worst, Double(elapsed.components.seconds) + Double(elapsed.components.attoseconds) / 1e18)
+        }
+        print("PERF dashboard over 20 000 attempts worst case: \(Int(worst * 1000)) ms")
+        // Unoptimised `swift test` builds run the statistics loop about 4x slower, and CI
+        // runs them in parallel. The release figure is the one PRODUCTION_READINESS.md records.
+        #if DEBUG
+        let budget = 0.400
+        #else
+        let budget = 0.100
+        #endif
+        XCTAssertLessThan(worst, budget, "NFR-3: dashboard over two years of history")
+    }
 }

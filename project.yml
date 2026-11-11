@@ -29,6 +29,12 @@ targets:
       path: App/Info.plist
       properties:
         UIBackgroundModes: [remote-notification]
+        # Written into App/Info.plist by XcodeGen; literal values there would win over
+        # the build settings, so point them at MARKETING_VERSION / CURRENT_PROJECT_VERSION.
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        # Only HTTPS through the system TLS stack: exempt from export documentation.
+        ITSAppUsesNonExemptEncryption: false
     dependencies:
       - package: HanguStepKit
         product: Domain
