@@ -251,6 +251,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HANGUSTEP_CLOUDKIT_AVAILABLE = "$(CODE_SIGNING_ALLOWED)";
 				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -349,6 +350,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HANGUSTEP_CLOUDKIT_AVAILABLE = "$(CODE_SIGNING_ALLOWED)";
 				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

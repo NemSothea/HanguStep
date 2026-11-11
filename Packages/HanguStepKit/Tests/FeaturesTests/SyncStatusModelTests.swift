@@ -46,4 +46,13 @@ final class SyncStatusModelTests: XCTestCase {
         private(set) var values: [Bool] = []
         func record(_ value: Bool) { values.append(value) }
     }
+
+    func testUnavailableBuildShowsSwitchOffAndIgnoresToggle() async {
+        let calls = Calls()
+        let model = SyncStatusModel(state: .disabled, isSyncPreferred: true, isSyncAvailable: false) { enabled in calls.record(enabled) }
+        XCTAssertFalse(model.isSyncSwitchOn, "switch must not say on while sync cannot run")
+        XCTAssertEqual(model.badgeStatus, .disabled)
+        await model.setSyncPreferred(false)
+        XCTAssertTrue(calls.values.isEmpty, "no container rebuild when sync is unavailable")
+    }
 }

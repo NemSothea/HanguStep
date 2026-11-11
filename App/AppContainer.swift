@@ -38,6 +38,15 @@ final class AppContainer {
         set { UserDefaults.standard.set(newValue, forKey: syncPreferenceKey) }
     }
 
+    /// Whether this build can talk to CloudKit at all. Set at build time from
+    /// `HSCloudKitAvailable` (Info.plist, project.yml): unsigned builds carry no
+    /// entitlement, and creating a CloudKit container there kills the app at launch.
+    private static var isCloudKitAvailable: Bool {
+        guard !isUITesting else { return false }
+        let value = Bundle.main.object(forInfoDictionaryKey: "HSCloudKitAvailable") as? String
+        return value?.uppercased() != "NO"
+    }
+
     /// Debug builds only: a Release build ignores `--ui-testing`, so a launch argument can
     /// never switch a learner's install to the in-memory secret store or disable sync.
     private static var isUITesting: Bool {
@@ -68,8 +77,8 @@ final class AppContainer {
         monitor?.stop()
         monitor = nil
         do {
-            // UI tests and the simulator have no iCloud entitlement; keep them local.
-            let sync: PersistenceController.SyncOption = (Self.isSyncPreferred && !Self.isUITesting)
+            // UI tests and unsigned builds have no iCloud entitlement; keep them local.
+            let sync: PersistenceController.SyncOption = (Self.isSyncPreferred && Self.isCloudKitAvailable)
                 ? .cloudKit(containerIdentifier: Self.cloudKitContainerIdentifier)
                 : .off
             let directory = try Self.storeDirectory()
@@ -140,7 +149,7 @@ final class AppContainer {
             let assistant = AssistantModel(store: assistantSettings, secrets: secrets)
             let settings = try await settingsRepository.load()
             let preferences = LearnerPreferences(settings: settings, save: saveSettings)
-            let syncStatus = SyncStatusModel(state: monitor.currentState, isSyncPreferred: Self.isSyncPreferred) { [weak self] enabled in
+            let syncStatus = SyncStatusModel(state: monitor.currentState, isSyncPreferred: Self.isSyncPreferred, isSyncAvailable: Self.isCloudKitAvailable) { [weak self] enabled in
                 guard let self else { return }
                 let previous = Self.isSyncPreferred
                 Self.isSyncPreferred = enabled
