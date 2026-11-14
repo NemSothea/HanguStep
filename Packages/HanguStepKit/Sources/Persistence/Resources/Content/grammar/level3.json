@@ -1,0 +1,606 @@
+{
+  "grammar": [
+    {
+      "id": "grammar.0301",
+      "pattern": "N에 대해(서) / N에 대한 N",
+      "level": 3,
+      "category": "expression",
+      "explanation": {
+        "en": "About, regarding. Shows the topic of speaking, thinking or writing. 에 대해(서) goes before a verb; 에 대한 goes before a noun.",
+        "km": "អំពី ទាក់ទងនឹង។ បង្ហាញប្រធានបទនៃការនិយាយ ការគិត ឬការសរសេរ។ 에 대해(서) ប្រើមុខកិរិយាស័ព្ទ ហើយ 에 대한 ប្រើមុខនាម។"
+      },
+      "formation": {
+        "en": "Noun + 에 대해(서) + verb; noun + 에 대한 + noun. The formal form 에 대하여 is common in writing.",
+        "km": "នាម + 에 대해(서) + កិរិយាស័ព្ទ; នាម + 에 대한 + នាម។ ទម្រង់ផ្លូវការ 에 대하여 ប្រើញឹកញាប់ក្នុងការសរសេរ។"
+      },
+      "examples": [
+        {
+          "ko": "오늘 수업에서 환경 문제에 대해 이야기했어요.",
+          "en": "In class today we talked about environmental problems.",
+          "km": "ក្នុងថ្នាក់ថ្ងៃនេះ យើងបាននិយាយអំពីបញ្ហាបរិស្ថាន។"
+        },
+        {
+          "ko": "한국 문화에 대한 책을 읽고 있어요.",
+          "en": "I am reading a book about Korean culture.",
+          "km": "ខ្ញុំកំពុងអានសៀវភៅអំពីវប្បធម៌កូរ៉េ។"
+        }
+      ],
+      "related": [
+        "grammar.0310"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0302",
+      "pattern": "-기 위해(서) / N을/를 위해(서)",
+      "level": 3,
+      "category": "purpose",
+      "explanation": {
+        "en": "In order to, for the sake of. Shows the purpose of an action. The subject of both clauses is the same.",
+        "km": "ដើម្បី សម្រាប់។ បង្ហាញគោលបំណងនៃសកម្មភាព។ ប្រធាននៃឃ្លាទាំងពីរគឺដូចគ្នា។"
+      },
+      "formation": {
+        "en": "Verb stem + 기 위해(서); noun + 을 위해(서) after a consonant, + 를 위해(서) after a vowel. Before a noun use 기 위한 / 을/를 위한. Not used with adjectives.",
+        "km": "ឫសកិរិយាស័ព្ទ + 기 위해(서); នាម + 을 위해(서) បន្ទាប់ពីព្យញ្ជនៈ, + 를 위해(서) បន្ទាប់ពីស្រៈ។ មុខនាមប្រើ 기 위한 / 을/를 위한។ មិនប្រើជាមួយគុណនាមទេ។"
+      },
+      "examples": [
+        {
+          "ko": "건강을 지키기 위해 매일 운동을 합니다.",
+          "en": "I exercise every day to stay healthy.",
+          "km": "ខ្ញុំហាត់ប្រាណរាល់ថ្ងៃ ដើម្បីថែរក្សាសុខភាព។"
+        },
+        {
+          "ko": "부모님은 가족을 위해 열심히 일하셨다.",
+          "en": "My parents worked hard for the family.",
+          "km": "ឪពុកម្តាយខ្ញុំបានធ្វើការយ៉ាងខ្លាំងដើម្បីគ្រួសារ។"
+        }
+      ],
+      "related": [
+        "grammar.0113",
+        "grammar.0316"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0303",
+      "pattern": "-기 때문에 / N 때문에",
+      "level": 3,
+      "category": "cause",
+      "explanation": {
+        "en": "Because, because of. Gives a clear reason. Common in explanations and writing. Not used before commands or suggestions.",
+        "km": "ដោយសារ ព្រោះតែ។ ផ្តល់មូលហេតុច្បាស់លាស់។ ប្រើញឹកញាប់ក្នុងការពន្យល់ និងការសរសេរ។ មិនប្រើមុនបញ្ជា ឬការស្នើទេ។"
+      },
+      "formation": {
+        "en": "Verb or adjective stem + 기 때문에; past: -았/었기 때문에. Noun + 때문에 (because of the noun). Noun + 이기 때문에 means 'because it is N'.",
+        "km": "ឫសកិរិយាស័ព្ទ ឬគុណនាម + 기 때문에; អតីតកាល: -았/었기 때문에។ នាម + 때문에 (ដោយសារនាមនោះ)។ នាម + 이기 때문에 មានន័យថា 'ព្រោះវាជា N'។"
+      },
+      "examples": [
+        {
+          "ko": "길이 많이 막히기 때문에 지하철을 타는 게 좋아요.",
+          "en": "The roads are very congested, so it is better to take the subway.",
+          "km": "ដោយសារផ្លូវកកស្ទះខ្លាំង ជិះរថភ្លើងក្រោមដីគឺល្អជាង។"
+        },
+        {
+          "ko": "비 때문에 행사가 취소되었습니다.",
+          "en": "The event was cancelled because of the rain.",
+          "km": "ព្រឹត្តិការណ៍ត្រូវបានលុបចោលដោយសារភ្លៀង។"
+        }
+      ],
+      "related": [
+        "grammar.0102",
+        "grammar.0103",
+        "grammar.0314"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0304",
+      "pattern": "-(으)ㄴ/는데",
+      "level": 3,
+      "category": "connective",
+      "explanation": {
+        "en": "Gives background for what follows, or shows contrast. Often translated as 'and', 'but' or 'so'.",
+        "km": "ផ្តល់ព័ត៌មានផ្ទៃខាងក្រោយសម្រាប់ឃ្លាបន្ទាប់ ឬបង្ហាញភាពផ្ទុយគ្នា។ ជារឿយៗបកប្រែថា 'ហើយ' 'ប៉ុន្តែ' ឬ 'ដូច្នេះ'។"
+      },
+      "formation": {
+        "en": "Verb stem + 는데 (also after 있다/없다); adjective stem + 은데 after a consonant, + ㄴ데 after a vowel; noun + 인데. Past for all: -았/었는데.",
+        "km": "ឫសកិរិយាស័ព្ទ + 는데 (ក៏ប្រើជាមួយ 있다/없다); ឫសគុណនាម + 은데 បន្ទាប់ពីព្យញ្ជនៈ, + ㄴ데 បន្ទាប់ពីស្រៈ; នាម + 인데។ អតីតកាល: -았/었는데។"
+      },
+      "examples": [
+        {
+          "ko": "밖에 비가 오는데 우산을 가져가세요.",
+          "en": "It is raining outside, so take an umbrella.",
+          "km": "ខាងក្រៅកំពុងភ្លៀង សូមយកឆ័ត្រទៅជាមួយ។"
+        },
+        {
+          "ko": "이 식당은 음식이 맛있는데 가격이 좀 비싸요.",
+          "en": "The food at this restaurant is tasty, but the prices are a bit high.",
+          "km": "ម្ហូបនៅភោជនីយដ្ឋាននេះឆ្ងាញ់ ប៉ុន្តែតម្លៃថ្លៃបន្តិច។"
+        }
+      ],
+      "related": [
+        "grammar.0017"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0305",
+      "pattern": "-다고/라고 하다",
+      "level": 3,
+      "category": "quotation",
+      "explanation": {
+        "en": "Indirect speech: reports what someone said or what is said. Used constantly in listening and reading.",
+        "km": "សម្តីដោយប្រយោល: រាយការណ៍ពីអ្វីដែលនរណាម្នាក់បាននិយាយ ឬអ្វីដែលគេនិយាយ។ ប្រើញឹកញាប់ណាស់ក្នុងការស្តាប់ និងការអាន។"
+      },
+      "formation": {
+        "en": "Statements: verb + ㄴ다고/는다고 하다, adjective + 다고 하다, noun + (이)라고 하다, past -았/었다고 하다. Questions: -(느)냐고 하다. Suggestions: -자고 하다. Commands: -(으)라고 하다. Short spoken forms: -대요, -(이)래요.",
+        "km": "ប្រយោគប្រាប់: កិរិយាស័ព្ទ + ㄴ다고/는다고 하다, គុណនាម + 다고 하다, នាម + (이)라고 하다, អតីតកាល -았/었다고 하다។ សំណួរ: -(느)냐고 하다។ ការស្នើ: -자고 하다។ បញ្ជា: -(으)라고 하다។ ទម្រង់និយាយខ្លី: -대요, -(이)래요។"
+      },
+      "examples": [
+        {
+          "ko": "친구가 내일 시간이 없다고 했어요.",
+          "en": "My friend said they have no time tomorrow.",
+          "km": "មិត្តខ្ញុំបាននិយាយថា ថ្ងៃស្អែកគាត់គ្មានពេលទេ។"
+        },
+        {
+          "ko": "선생님이 숙제를 꼭 내라고 하셨어요.",
+          "en": "The teacher told us to be sure to hand in the homework.",
+          "km": "លោកគ្រូបានប្រាប់ឱ្យយើងប្រគល់កិច្ចការផ្ទះឱ្យបាន។"
+        }
+      ],
+      "related": [
+        "grammar.0306"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0306",
+      "pattern": "-다는/라는 N",
+      "level": 3,
+      "category": "quotation",
+      "explanation": {
+        "en": "Describes a noun by its content: 'the news that...', 'the opinion that...'. Shortened from -다고 하는.",
+        "km": "ពិពណ៌នានាមតាមខ្លឹមសាររបស់វា: 'ព័ត៌មានថា...' 'មតិថា...'។ ជាទម្រង់ខ្លីនៃ -다고 하는។"
+      },
+      "formation": {
+        "en": "Verb + ㄴ다는/는다는 N, adjective + 다는 N, noun + (이)라는 N, past -았/었다는 N. Common nouns after it: 소식, 이야기, 말, 생각, 의견, 사실.",
+        "km": "កិរិយាស័ព្ទ + ㄴ다는/는다는 N, គុណនាម + 다는 N, នាម + (이)라는 N, អតីតកាល -았/었다는 N។ នាមដែលប្រើញឹកញាប់: 소식, 이야기, 말, 생각, 의견, 사실។"
+      },
+      "examples": [
+        {
+          "ko": "친구가 결혼한다는 소식을 들었어요.",
+          "en": "I heard the news that my friend is getting married.",
+          "km": "ខ្ញុំបានឮដំណឹងថាមិត្តខ្ញុំនឹងរៀបការ។"
+        },
+        {
+          "ko": "'한글'이라는 이름은 '큰 글'이라는 뜻이에요.",
+          "en": "The name 'Hangeul' means 'great script'.",
+          "km": "ឈ្មោះ 'ហាន់គ្លឺល' មានន័យថា 'អក្សរដ៏អស្ចារ្យ'។"
+        }
+      ],
+      "related": [
+        "grammar.0305",
+        "grammar.0109"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0307",
+      "pattern": "-는 데(에)",
+      "level": 3,
+      "category": "expression",
+      "explanation": {
+        "en": "In doing, for doing. Names an activity that something helps with, is needed for, or costs time or money for.",
+        "km": "ក្នុងការធ្វើ សម្រាប់ការធ្វើ។ បញ្ជាក់សកម្មភាពដែលអ្វីមួយជួយ ត្រូវការ ឬចំណាយពេល ឬលុយសម្រាប់។"
+      },
+      "formation": {
+        "en": "Verb stem + 는 데(에). Usually followed by 도움이 되다, 필요하다, 좋다, 쓰다, (시간이) 걸리다. Note the space: 데 here is a noun meaning 'situation'.",
+        "km": "ឫសកិរិយាស័ព្ទ + 는 데(에)។ ជាធម្មតាតាមដោយ 도움이 되다, 필요하다, 좋다, 쓰다, (시간이) 걸리다។ ចំណាំដកឃ្លា: 데 នៅទីនេះជានាមមានន័យថា 'ស្ថានភាព'។"
+      },
+      "examples": [
+        {
+          "ko": "이 앱은 단어를 외우는 데 도움이 돼요.",
+          "en": "This app helps with memorising words.",
+          "km": "កម្មវិធីនេះជួយក្នុងការទន្ទេញពាក្យ។"
+        },
+        {
+          "ko": "보고서를 쓰는 데 일주일이 걸렸어요.",
+          "en": "It took a week to write the report.",
+          "km": "វាចំណាយពេលមួយសប្តាហ៍ដើម្បីសរសេររបាយការណ៍។"
+        }
+      ],
+      "related": [
+        "grammar.0117"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0308",
+      "pattern": "-도록",
+      "level": 3,
+      "category": "purpose",
+      "explanation": {
+        "en": "So that, to the point that. Shows the goal or degree of an action. -도록 하다 also means 'make sure to' or 'have someone do'.",
+        "km": "ដើម្បីឱ្យ រហូតដល់។ បង្ហាញគោលដៅ ឬកម្រិតនៃសកម្មភាព។ -도록 하다 ក៏មានន័យថា 'ត្រូវប្រាកដថា' ឬ 'ឱ្យនរណាម្នាក់ធ្វើ'។"
+      },
+      "formation": {
+        "en": "Verb stem + 도록 (some adjectives too). Unlike -기 위해, the subject of the two clauses can differ.",
+        "km": "ឫសកិរិយាស័ព្ទ + 도록 (គុណនាមខ្លះក៏បាន)។ ខុសពី -기 위해 ប្រធាននៃឃ្លាទាំងពីរអាចខុសគ្នា។"
+      },
+      "examples": [
+        {
+          "ko": "뒤에 앉은 사람도 들을 수 있도록 크게 말해 주세요.",
+          "en": "Please speak loudly so that people sitting at the back can hear too.",
+          "km": "សូមនិយាយឱ្យខ្លាំង ដើម្បីឱ្យអ្នកអង្គុយខាងក្រោយក៏អាចស្តាប់ឮដែរ។"
+        },
+        {
+          "ko": "늦지 않도록 일찍 출발했어요.",
+          "en": "I left early so as not to be late.",
+          "km": "ខ្ញុំចេញដំណើរពីព្រលឹម ដើម្បីកុំឱ្យយឺត។"
+        }
+      ],
+      "related": [
+        "grammar.0302"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0309",
+      "pattern": "-(으)ㄴ/는지",
+      "level": 3,
+      "category": "connective",
+      "explanation": {
+        "en": "Whether, what, how. Turns a question into part of a sentence, often before 알다, 모르다, 궁금하다, 물어보다.",
+        "km": "ថាតើ អ្វី យ៉ាងដូចម្តេច។ បំប្លែងសំណួរឱ្យក្លាយជាផ្នែកនៃប្រយោគ ជាញឹកញាប់មុខ 알다, 모르다, 궁금하다, 물어보다។"
+      },
+      "formation": {
+        "en": "Verb stem + 는지 (also 있다/없다); adjective stem + 은지 after a consonant, + ㄴ지 after a vowel; noun + 인지. Past: -았/었는지. Future/guess: -(으)ㄹ지.",
+        "km": "ឫសកិរិយាស័ព្ទ + 는지 (ក៏ប្រើជាមួយ 있다/없다); ឫសគុណនាម + 은지 បន្ទាប់ពីព្យញ្ជនៈ, + ㄴ지 បន្ទាប់ពីស្រៈ; នាម + 인지។ អតីតកាល: -았/었는지។ អនាគត/ការស្មាន: -(으)ㄹ지។"
+      },
+      "examples": [
+        {
+          "ko": "회의가 몇 시에 시작하는지 알아요?",
+          "en": "Do you know what time the meeting starts?",
+          "km": "តើអ្នកដឹងទេថាការប្រជុំចាប់ផ្តើមម៉ោងប៉ុន្មាន?"
+        },
+        {
+          "ko": "이 옷이 나한테 어울리는지 잘 모르겠어요.",
+          "en": "I am not sure whether these clothes suit me.",
+          "km": "ខ្ញុំមិនច្បាស់ថាសម្លៀកបំពាក់នេះសមនឹងខ្ញុំឬអត់ទេ។"
+        }
+      ],
+      "related": [],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0310",
+      "pattern": "N을/를 통해(서)",
+      "level": 3,
+      "category": "expression",
+      "explanation": {
+        "en": "Through, by means of. Shows the channel, method or experience by which something happens.",
+        "km": "តាមរយៈ ដោយមធ្យោបាយ។ បង្ហាញផ្លូវ វិធីសាស្ត្រ ឬបទពិសោធន៍ដែលធ្វើឱ្យអ្វីមួយកើតឡើង។"
+      },
+      "formation": {
+        "en": "Noun + 을 통해(서) after a consonant, + 를 통해(서) after a vowel. Before a noun: 을/를 통한. Formal: 을/를 통하여.",
+        "km": "នាម + 을 통해(서) បន្ទាប់ពីព្យញ្ជនៈ, + 를 통해(서) បន្ទាប់ពីស្រៈ។ មុខនាម: 을/를 통한។ ផ្លូវការ: 을/를 통하여។"
+      },
+      "examples": [
+        {
+          "ko": "저는 인터넷을 통해 그 소식을 알게 되었어요.",
+          "en": "I learned the news through the internet.",
+          "km": "ខ្ញុំបានដឹងដំណឹងនោះតាមរយៈអ៊ីនធឺណិត។"
+        },
+        {
+          "ko": "여행을 통해서 다양한 문화를 경험할 수 있다.",
+          "en": "Through travel you can experience various cultures.",
+          "km": "តាមរយៈការធ្វើដំណើរ យើងអាចទទួលបទពិសោធន៍វប្បធម៌ផ្សេងៗ។"
+        }
+      ],
+      "related": [
+        "grammar.0301"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0311",
+      "pattern": "N에 따라(서) / N에 따르면",
+      "level": 3,
+      "category": "expression",
+      "explanation": {
+        "en": "에 따라(서): depending on, according to (something changes with N). 에 따르면: according to a source (news, survey), usually ending with -다고 하다.",
+        "km": "에 따라(서): អាស្រ័យលើ តាម (អ្វីមួយប្រែប្រួលតាម N)។ 에 따르면: យោងតាមប្រភព (ព័ត៌មាន ការស្ទង់មតិ) ជាធម្មតាបញ្ចប់ដោយ -다고 하다។"
+      },
+      "formation": {
+        "en": "Noun + 에 따라(서); noun + 에 따르면. Before a noun: 에 따른.",
+        "km": "នាម + 에 따라(서); នាម + 에 따르면។ មុខនាម: 에 따른។"
+      },
+      "examples": [
+        {
+          "ko": "사람에 따라 좋아하는 음식이 달라요.",
+          "en": "Favourite foods differ from person to person.",
+          "km": "ម្ហូបដែលចូលចិត្តខុសគ្នាអាស្រ័យលើមនុស្ស។"
+        },
+        {
+          "ko": "일기 예보에 따르면 내일 눈이 온다고 해요.",
+          "en": "According to the weather forecast, it will snow tomorrow.",
+          "km": "យោងតាមការព្យាករណ៍អាកាសធាតុ ថ្ងៃស្អែកនឹងមានធ្លាក់ព្រិល។"
+        }
+      ],
+      "related": [
+        "grammar.0305"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0312",
+      "pattern": "-(으)려면",
+      "level": 3,
+      "category": "condition",
+      "explanation": {
+        "en": "If you want to, if you intend to. States a goal, then what is needed to reach it.",
+        "km": "បើចង់ បើមានបំណង។ បញ្ជាក់គោលដៅ បន្ទាប់មកអ្វីដែលត្រូវការដើម្បីសម្រេចវា។"
+      },
+      "formation": {
+        "en": "Verb stem + 으려면 after a consonant, + 려면 after a vowel or ㄹ. Often followed by -아/어야 하다 or a command.",
+        "km": "ឫសកិរិយាស័ព្ទ + 으려면 បន្ទាប់ពីព្យញ្ជនៈ, + 려면 បន្ទាប់ពីស្រៈ ឬ ㄹ។ ជាញឹកញាប់តាមដោយ -아/어야 하다 ឬបញ្ជា។"
+      },
+      "examples": [
+        {
+          "ko": "시청에 가려면 2호선을 타세요.",
+          "en": "To get to City Hall, take Line 2.",
+          "km": "បើចង់ទៅសាលាក្រុង សូមជិះខ្សែទី២។"
+        },
+        {
+          "ko": "좋은 점수를 받으려면 매일 복습해야 해요.",
+          "en": "If you want a good score, you have to review every day.",
+          "km": "បើចង់បានពិន្ទុល្អ អ្នកត្រូវរំលឹកមេរៀនរាល់ថ្ងៃ។"
+        }
+      ],
+      "related": [
+        "grammar.0104",
+        "grammar.0113"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0313",
+      "pattern": "-다가",
+      "level": 3,
+      "category": "connective",
+      "explanation": {
+        "en": "While doing (then switched to something else). An action is interrupted or changes into another action.",
+        "km": "កំពុងធ្វើ (រួចប្តូរទៅអ្វីផ្សេង)។ សកម្មភាពមួយត្រូវរំខាន ឬប្តូរទៅជាសកម្មភាពមួយទៀត។"
+      },
+      "formation": {
+        "en": "Verb stem + 다가; the subject is the same. Past -았/었다가 means the first action was finished, then something else happened.",
+        "km": "ឫសកិរិយាស័ព្ទ + 다가; ប្រធានដូចគ្នា។ អតីតកាល -았/었다가 មានន័យថាសកម្មភាពទីមួយបានបញ្ចប់ រួចមានរឿងផ្សេងកើតឡើង។"
+      },
+      "examples": [
+        {
+          "ko": "공부하다가 잠이 들었어요.",
+          "en": "I fell asleep while studying.",
+          "km": "ខ្ញុំដេកលង់លក់ពេលកំពុងរៀន។"
+        },
+        {
+          "ko": "학교에 갔다가 바로 집에 왔어요.",
+          "en": "I went to school and then came straight home.",
+          "km": "ខ្ញុំបានទៅសាលា រួចត្រឡប់មកផ្ទះភ្លាម។"
+        }
+      ],
+      "related": [],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0314",
+      "pattern": "N(으)로 인해(서)",
+      "level": 3,
+      "category": "cause",
+      "explanation": {
+        "en": "Due to, because of. Formal cause, common in news, reports and reading passages, often for negative events.",
+        "km": "ដោយសារ បណ្តាលមកពី។ មូលហេតុក្នុងភាសាផ្លូវការ ប្រើញឹកញាប់ក្នុងព័ត៌មាន របាយការណ៍ និងអត្ថបទអាន ជាញឹកញាប់សម្រាប់ព្រឹត្តិការណ៍អវិជ្ជមាន។"
+      },
+      "formation": {
+        "en": "Noun + 으로 인해(서) after a consonant (except ㄹ), + 로 인해(서) after a vowel or ㄹ. Before a noun: (으)로 인한. Formal: (으)로 인하여.",
+        "km": "នាម + 으로 인해(서) បន្ទាប់ពីព្យញ្ជនៈ (លើកលែង ㄹ), + 로 인해(서) បន្ទាប់ពីស្រៈ ឬ ㄹ។ មុខនាម: (으)로 인한។ ផ្លូវការ: (으)로 인하여។"
+      },
+      "examples": [
+        {
+          "ko": "폭우로 인해 도로가 통제되었습니다.",
+          "en": "The road was closed due to heavy rain.",
+          "km": "ផ្លូវត្រូវបានបិទដោយសារភ្លៀងធ្លាក់ខ្លាំង។"
+        },
+        {
+          "ko": "스트레스로 인한 질병이 늘고 있다.",
+          "en": "Illnesses caused by stress are increasing.",
+          "km": "ជំងឺដែលបណ្តាលមកពីស្ត្រេសកំពុងកើនឡើង។"
+        }
+      ],
+      "related": [
+        "grammar.0303"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0315",
+      "pattern": "-(으)ㄹ 텐데",
+      "level": 3,
+      "category": "connective",
+      "explanation": {
+        "en": "Expresses the speaker's strong guess or expectation, then a related comment, worry or suggestion. Ending form: -(으)ㄹ 텐데요.",
+        "km": "បង្ហាញការស្មាន ឬការរំពឹងទុកយ៉ាងខ្លាំងរបស់អ្នកនិយាយ បន្ទាប់មកមតិ ការព្រួយបារម្ភ ឬការស្នើ។ ទម្រង់បញ្ចប់: -(으)ㄹ 텐데요។"
+      },
+      "formation": {
+        "en": "Verb or adjective stem + 을 텐데 after a consonant, + ㄹ 텐데 after a vowel; noun + 일 텐데. Past guess: -았/었을 텐데.",
+        "km": "ឫសកិរិយាស័ព្ទ ឬគុណនាម + 을 텐데 បន្ទាប់ពីព្យញ្ជនៈ, + ㄹ 텐데 បន្ទាប់ពីស្រៈ; នាម + 일 텐데។ ការស្មានអតីតកាល: -았/었을 텐데។"
+      },
+      "examples": [
+        {
+          "ko": "주말이라서 사람이 많을 텐데 일찍 가는 게 어때요?",
+          "en": "It is the weekend so it will probably be crowded; how about going early?",
+          "km": "ព្រោះជាចុងសប្តាហ៍ ប្រហែលជាមនុស្សច្រើន ចុះយើងទៅពីព្រលឹមយ៉ាងម៉េចដែរ?"
+        },
+        {
+          "ko": "많이 피곤할 텐데 좀 쉬세요.",
+          "en": "You must be very tired, so please rest a little.",
+          "km": "អ្នកប្រហែលជាហត់ខ្លាំង សូមសម្រាកបន្តិច។"
+        }
+      ],
+      "related": [
+        "grammar.0304"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0316",
+      "pattern": "-고자",
+      "level": 3,
+      "category": "purpose",
+      "explanation": {
+        "en": "In order to, with the intention of. A formal version of -(으)려고, used in speeches, announcements and writing.",
+        "km": "ដើម្បី ដោយមានបំណង។ ទម្រង់ផ្លូវការនៃ -(으)려고 ប្រើក្នុងសុន្ទរកថា សេចក្តីប្រកាស និងការសរសេរ។"
+      },
+      "formation": {
+        "en": "Verb stem + 고자. -고자 하다 means 'intend to'. The subject of both clauses is the same.",
+        "km": "ឫសកិរិយាស័ព្ទ + 고자។ -고자 하다 មានន័យថា 'មានបំណង'។ ប្រធាននៃឃ្លាទាំងពីរដូចគ្នា។"
+      },
+      "examples": [
+        {
+          "ko": "이 문제를 해결하고자 회의를 열었습니다.",
+          "en": "We held a meeting in order to solve this problem.",
+          "km": "យើងបានបើកកិច្ចប្រជុំ ដើម្បីដោះស្រាយបញ្ហានេះ។"
+        },
+        {
+          "ko": "저는 한국 회사에 취업하고자 합니다.",
+          "en": "I intend to get a job at a Korean company.",
+          "km": "ខ្ញុំមានបំណងស្វែងរកការងារនៅក្រុមហ៊ុនកូរ៉េ។"
+        }
+      ],
+      "related": [
+        "grammar.0113",
+        "grammar.0302"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0317",
+      "pattern": "-(으)ㄴ/는 편이다",
+      "level": 3,
+      "category": "expression",
+      "explanation": {
+        "en": "Tends to be, is rather. Describes a general tendency instead of a strong statement.",
+        "km": "មានទំនោរ ជាធម្មតា ច្រើនតែ។ ពិពណ៌នាទំនោរទូទៅ ជំនួសឱ្យការអះអាងខ្លាំង។"
+      },
+      "formation": {
+        "en": "Verb stem + 는 편이다; adjective stem + 은 편이다 after a consonant, + ㄴ 편이다 after a vowel. Past action: -(으)ㄴ 편이다 with a verb. Adverbs like 잘, 많이, 자주 often come before the verb.",
+        "km": "ឫសកិរិយាស័ព្ទ + 는 편이다; ឫសគុណនាម + 은 편이다 បន្ទាប់ពីព្យញ្ជនៈ, + ㄴ 편이다 បន្ទាប់ពីស្រៈ។ សកម្មភាពអតីតកាល: កិរិយាស័ព្ទ + -(으)ㄴ 편이다។ គុណកិរិយាដូចជា 잘, 많이, 자주 ជាញឹកញាប់នៅមុខកិរិយាស័ព្ទ។"
+      },
+      "examples": [
+        {
+          "ko": "저는 아침을 많이 먹는 편이에요.",
+          "en": "I tend to eat a big breakfast.",
+          "km": "ខ្ញុំច្រើនតែញ៉ាំអាហារពេលព្រឹកច្រើន។"
+        },
+        {
+          "ko": "이 동네는 교통이 편리한 편이다.",
+          "en": "Transport in this neighbourhood is fairly convenient.",
+          "km": "ការធ្វើដំណើរនៅសង្កាត់នេះងាយស្រួលគួរសម។"
+        }
+      ],
+      "related": [
+        "grammar.0109"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0318",
+      "pattern": "N에 비해(서)",
+      "level": 3,
+      "category": "comparison",
+      "explanation": {
+        "en": "Compared to. Compares N with the subject; often more formal than 보다.",
+        "km": "បើប្រៀបធៀបនឹង។ ប្រៀបធៀប N ជាមួយប្រធាន; ជាញឹកញាប់ផ្លូវការជាង 보다។"
+      },
+      "formation": {
+        "en": "Noun + 에 비해(서). Formal: 에 비하여. After a clause: -(으)ㄴ/는 것에 비해.",
+        "km": "នាម + 에 비해(서)។ ផ្លូវការ: 에 비하여។ បន្ទាប់ពីឃ្លា: -(으)ㄴ/는 것에 비해។"
+      },
+      "examples": [
+        {
+          "ko": "올해는 작년에 비해 비가 적게 왔다.",
+          "en": "This year it rained less compared to last year.",
+          "km": "ឆ្នាំនេះភ្លៀងតិចជាងឆ្នាំមុន។"
+        },
+        {
+          "ko": "이 휴대폰은 가격에 비해 성능이 좋아요.",
+          "en": "This phone performs well for its price.",
+          "km": "ទូរសព្ទនេះមានដំណើរការល្អ បើប្រៀបនឹងតម្លៃរបស់វា។"
+        }
+      ],
+      "related": [
+        "grammar.0116"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0319",
+      "pattern": "-(으)ㄹ수록",
+      "level": 3,
+      "category": "comparison",
+      "explanation": {
+        "en": "The more..., the more... One thing increases as another increases. Often -(으)면 -(으)ㄹ수록.",
+        "km": "កាន់តែ... កាន់តែ...។ អ្វីមួយកើនឡើងនៅពេលអ្វីមួយទៀតកើនឡើង។ ជាញឹកញាប់ -(으)면 -(으)ㄹ수록។"
+      },
+      "formation": {
+        "en": "Verb or adjective stem + 을수록 after a consonant, + ㄹ수록 after a vowel or ㄹ (ㄹ drops: 살다 → 살수록).",
+        "km": "ឫសកិរិយាស័ព្ទ ឬគុណនាម + 을수록 បន្ទាប់ពីព្យញ្ជនៈ, + ㄹ수록 បន្ទាប់ពីស្រៈ ឬ ㄹ (ㄹ ធ្លាក់: 살다 → 살수록)។"
+      },
+      "examples": [
+        {
+          "ko": "한국어는 공부할수록 재미있어요.",
+          "en": "The more I study Korean, the more interesting it gets.",
+          "km": "កាន់តែរៀនភាសាកូរ៉េ កាន់តែគួរឱ្យចាប់អារម្មណ៍។"
+        },
+        {
+          "ko": "나이가 들면 들수록 건강이 중요해진다.",
+          "en": "The older you get, the more important health becomes.",
+          "km": "កាន់តែចាស់ សុខភាពកាន់តែសំខាន់។"
+        }
+      ],
+      "related": [
+        "grammar.0104"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0320",
+      "pattern": "-더라도",
+      "level": 3,
+      "category": "condition",
+      "explanation": {
+        "en": "Even if. A stronger, more hypothetical version of -아/어도: the result does not change even if the condition happens.",
+        "km": "ទោះបីជា។ ទម្រង់ខ្លាំងជាង និងជាការសន្មតជាង -아/어도: លទ្ធផលមិនប្រែប្រួលទេ ទោះលក្ខខណ្ឌនោះកើតឡើងក៏ដោយ។"
+      },
+      "formation": {
+        "en": "Verb or adjective stem + 더라도; noun + (이)더라도. Past: -았/었더라도. Often with 아무리.",
+        "km": "ឫសកិរិយាស័ព្ទ ឬគុណនាម + 더라도; នាម + (이)더라도។ អតីតកាល: -았/었더라도។ ជាញឹកញាប់ប្រើជាមួយ 아무리។"
+      },
+      "examples": [
+        {
+          "ko": "아무리 바쁘더라도 아침은 꼭 드세요.",
+          "en": "No matter how busy you are, be sure to eat breakfast.",
+          "km": "ទោះបីរវល់យ៉ាងណាក៏ដោយ សូមញ៉ាំអាហារពេលព្រឹកជានិច្ច។"
+        },
+        {
+          "ko": "시험에 떨어지더라도 포기하지 않을 거예요.",
+          "en": "Even if I fail the exam, I will not give up.",
+          "km": "ទោះបីខ្ញុំធ្លាក់ការប្រឡងក៏ដោយ ខ្ញុំនឹងមិនបោះបង់ទេ។"
+        }
+      ],
+      "related": [
+        "grammar.0104"
+      ],
+      "review": "pending"
+    }
+  ]
+}

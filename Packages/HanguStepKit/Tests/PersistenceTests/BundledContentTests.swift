@@ -16,7 +16,7 @@ final class BundledContentTests: XCTestCase {
         XCTAssertFalse(result.source.name.isEmpty)
     }
 
-    func testEveryWordAndPatternIsCoveredByLevelOneAndTwoQuestions() throws {
+    func testEveryWordAndPatternIsCoveredByQuestions() throws {
         let package = try BundledContent.load().package
         let targets = Set(package.questions.compactMap(\.learningTarget))
         for item in package.vocabulary {
@@ -26,7 +26,7 @@ final class BundledContentTests: XCTestCase {
         for pattern in package.grammar {
             XCTAssertTrue(grammarTargets.contains(pattern.id), "\(pattern.id.rawValue) has no question")
         }
-        XCTAssertEqual(Set(package.vocabulary.map(\.level)), [.level1, .level2])
+        XCTAssertEqual(Set(package.vocabulary.map(\.level)), [.level1, .level2, .level3])
         for kind in [QuestionKind.vocabularyMeaning, .meaningToWord, .grammarFillIn, .sentenceCompletion, .readingComprehension] {
             XCTAssertTrue(package.questions.contains { $0.kind == kind }, "no \(kind) questions")
         }
@@ -37,6 +37,18 @@ final class BundledContentTests: XCTestCase {
         for item in package.vocabulary { XCTAssertFalse(item.source.license.isEmpty, item.id.rawValue) }
         for pattern in package.grammar { XCTAssertFalse(pattern.source.license.isEmpty, pattern.id.rawValue) }
         for question in package.questions { XCTAssertFalse(question.source.license.isEmpty, question.id.rawValue) }
+    }
+
+    /// ADR-010: Wiktionary meanings are CC BY-SA and must be attributed with a link.
+    func testImportedItemsAreAttributedWithLink() throws {
+        let package = try BundledContent.load().package
+        let imported = package.vocabulary.filter { $0.source.origin == .imported }
+        XCTAssertFalse(imported.isEmpty)
+        for item in imported {
+            XCTAssertEqual(item.source.license, "CC BY-SA 4.0", item.id.rawValue)
+            XCTAssertNotNil(item.source.url.flatMap(URL.init(string:)), item.id.rawValue)
+        }
+        XCTAssertEqual(package.importedCredits, ["Wiktionary (meaning); HanguStep (examples, Khmer) · CC BY-SA 4.0"])
     }
 
     func testBundledLibraryReplacesSampleDataAndKeepsAttempts() async throws {

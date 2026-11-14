@@ -15,6 +15,15 @@ public struct ContentPackage: Hashable, Sendable, Codable {
         self.questions = questions
     }
 
+    /// Attribution lines for third-party material (origin `imported`), one per
+    /// distinct source name and license, sorted. Licences such as CC BY-SA
+    /// require this to be shown to the learner.
+    public var importedCredits: [String] {
+        let sources = vocabulary.map(\.source) + grammar.map(\.source) + questions.map(\.source)
+        let lines = Set(sources.filter { $0.origin == .imported }.map { "\($0.name) · \($0.license)" })
+        return lines.sorted()
+    }
+
     /// Structural problems across the whole package. Empty means importable.
     public func validate() -> [ContentPackageIssue] {
         var issues: [ContentPackageIssue] = []

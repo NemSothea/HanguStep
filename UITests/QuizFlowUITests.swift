@@ -147,4 +147,31 @@ final class QuizFlowUITests: XCTestCase {
         XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 5), "results did not appear after ending the quiz")
         app.buttons["Done"].tap()
     }
+
+    /// TOPIK II batch 1 (ADR-010): level 3 words, Wiktionary attribution on the word and in Settings.
+    func testTopikTwoContentAndAttribution() throws {
+        XCTAssertTrue(app.staticTexts["Home"].waitForExistence(timeout: 15))
+        app.tabBars.buttons["Learn"].tap()
+        let levelThree = app.buttons["L3"].firstMatch
+        XCTAssertTrue(levelThree.waitForExistence(timeout: 5), "level 3 filter did not appear")
+        levelThree.tap()
+        snapshot("13-level3-list")
+        let search = app.searchFields.firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 5))
+        search.tap()
+        search.typeText("gyeongje")
+        XCTAssertTrue(row(startingWith: "경제").waitForExistence(timeout: 5), "경제 row did not appear")
+        row(startingWith: "경제").tap()
+        let source = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH 'Source: Wiktionary'")).firstMatch
+        XCTAssertTrue(source.waitForExistence(timeout: 5), "attribution line did not appear")
+        snapshot("14-level3-detail")
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["settings"].firstMatch.tap()
+        let credit = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH 'Includes material from Wiktionary'")).firstMatch
+        for _ in 0..<6 where !credit.exists { app.swipeUp() }
+        XCTAssertTrue(credit.waitForExistence(timeout: 5), "Settings credit did not appear")
+        snapshot("15-settings-credits")
+    }
 }
