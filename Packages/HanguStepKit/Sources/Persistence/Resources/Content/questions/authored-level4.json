@@ -2279,6 +2279,538 @@
       },
       "grammar": "grammar.0460",
       "review": "pending"
+    },
+    {
+      "id": "q.gf.0533",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "오늘은 요리하______ 밖에서 사 먹을까요?",
+      "options": [
+        "는 대신에",
+        "는 김에",
+        "는 바람에",
+        "는 탓에"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "요리하는 대신에 = instead of cooking, eat out. -는 김에 means while doing it anyway, which contradicts eating out.",
+        "km": "요리하는 대신에 = ជំនួសឱ្យការធ្វើម្ហូប ទៅញ៉ាំខាងក្រៅ។ -는 김에 មានន័យថាតាមដែលកំពុងធ្វើ ដែលផ្ទុយនឹងការញ៉ាំខាងក្រៅ។"
+      },
+      "grammar": "grammar.0461",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0534",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "이 가방은 값이 비싼 ______ 품질이 아주 좋아요.",
+      "options": [
+        "바람에",
+        "대신에",
+        "김에",
+        "탓에"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "비싼 대신에 = it is expensive, but in return the quality is good. 탓에 blames A for a bad result, but good quality is not a bad result.",
+        "km": "비싼 대신에 = ថ្លៃ ប៉ុន្តែជាថ្នូរវិញគុណភាពល្អ។ 탓에 បន្ទោស A ចំពោះលទ្ធផលអាក្រក់ ប៉ុន្តែគុណភាពល្អមិនមែនលទ្ធផលអាក្រក់ទេ។"
+      },
+      "grammar": "grammar.0461",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0535",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "돈을 모아 ______ 노트북을 샀어요.",
+      "options": [
+        "봤자",
+        "보니까",
+        "가지고",
+        "대고"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "모아 가지고 = saved money and then (with it) bought a laptop. -아/어 봤자 means even if, which does not fit a completed purchase.",
+        "km": "모아 가지고 = សន្សំលុយ ហើយ (ជាមួយវា) ទិញកុំព្យូទ័រ។ -아/어 봤자 មានន័យថាទោះបី ដែលមិនស្របនឹងការទិញរួចហើយ។"
+      },
+      "grammar": "grammar.0462",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0536",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "너무 배가 고파 ______ 아무것도 못 하겠어요.",
+      "options": [
+        "봤자",
+        "두고",
+        "놓고",
+        "가지고"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "고파 가지고 = because I'm so hungry (spoken cause). 고파 봤자 means even if hungry, which does not explain the result.",
+        "km": "고파 가지고 = ដោយសារឃ្លានខ្លាំង (មូលហេតុក្នុងការនិយាយ)។ 고파 봤자 មានន័យថាទោះបីឃ្លាន ដែលមិនពន្យល់លទ្ធផលទេ។"
+      },
+      "grammar": "grammar.0462",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0537",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "오늘이 금요일인 ______ 알았는데 목요일이네요.",
+      "options": [
+        "줄",
+        "적",
+        "척",
+        "체"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "금요일인 줄 알았다 = I thought it was Friday (wrongly). 척 means pretending, which does not go with 알다.",
+        "km": "금요일인 줄 알았다 = ខ្ញុំគិតថាថ្ងៃសុក្រ (ខុស)។ 척 មានន័យថាធ្វើពុត ដែលមិនទៅជាមួយ 알다 ទេ។"
+      },
+      "grammar": "grammar.0463",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0538",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "민지 씨가 결혼한 ______ 몰랐어요. 언제 했어요?",
+      "options": [
+        "적",
+        "줄",
+        "김에",
+        "대로"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "결혼한 줄 몰랐다 = I didn't know she had married. 결혼한 적 is about experience and needs 있다/없다, not 모르다.",
+        "km": "결혼한 줄 몰랐다 = ខ្ញុំមិនដឹងថាគាត់រៀបការហើយ។ 결혼한 적 និយាយពីបទពិសោធន៍ ហើយត្រូវការ 있다/없다 មិនមែន 모르다 ទេ។"
+      },
+      "grammar": "grammar.0463",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0539",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "약을 먹었______ 감기가 낫지 않아요.",
+      "options": [
+        "으니까",
+        "으면",
+        "는데도",
+        "어서"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "먹었는데도 = even though I took medicine, the cold isn't better (unexpected). 먹었으니까 gives a reason, which contradicts the result.",
+        "km": "먹었는데도 = ទោះបីលេបថ្នាំហើយ ផ្តាសាយនៅតែមិនជា (មិននឹកស្មាន)។ 먹었으니까 ផ្តល់ហេតុផល ដែលផ្ទុយនឹងលទ្ធផល។"
+      },
+      "grammar": "grammar.0464",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0540",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "열심히 공부하______ 시험에 떨어졌어요.",
+      "options": [
+        "니까",
+        "느라고",
+        "면",
+        "는데도"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "공부하는데도 = even though I studied hard, I failed. -느라고 gives studying as the cause of failing, which is illogical.",
+        "km": "공부하는데도 = ទោះបីរៀនខ្លាំង ក៏ធ្លាក់ប្រឡង។ -느라고 ធ្វើឱ្យការរៀនជាមូលហេតុនៃការធ្លាក់ ដែលមិនសមហេតុផល។"
+      },
+      "grammar": "grammar.0464",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0541",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "가: 한국어를 정말 잘하시네요. 나: 잘하______. 아직 많이 부족해요.",
+      "options": [
+        "기는요",
+        "잖아요",
+        "거든요",
+        "더라고요"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "잘하기는요 = not at all, a modest reply to a compliment. 잘하잖아요 would agree that the speaker is good.",
+        "km": "잘하기는요 = មិនពូកែទេ ជាចម្លើយសុភាពចំពោះការសរសើរ។ 잘하잖아요 នឹងយល់ព្រមថាខ្លួនពូកែ។"
+      },
+      "grammar": "grammar.0465",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0542",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "가: 어제 영화 재미있었어요? 나: 재미있______. 중간에 잠들었어요.",
+      "options": [
+        "더라고요",
+        "기는요",
+        "잖아요",
+        "네요"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "재미있기는요 = fun? Not at all, matching falling asleep. 재미있더라고요 would say it was fun.",
+        "km": "재미있기는요 = សប្បាយអី មិនសប្បាយទេ ស្របនឹងការដេកលក់។ 재미있더라고요 នឹងនិយាយថាវាសប្បាយ។"
+      },
+      "grammar": "grammar.0465",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0543",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "선생님은 학생들에게 매일 일기를 쓰______ 하셨어요.",
+      "options": [
+        "려고",
+        "러",
+        "게",
+        "면서"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "쓰게 하다 = make (the students) write. 쓰려고 하다 would mean the teacher intended to write.",
+        "km": "쓰게 하다 = ឱ្យ (សិស្ស) សរសេរ។ 쓰려고 하다 មានន័យថាគ្រូចង់សរសេរខ្លួនឯង។"
+      },
+      "grammar": "grammar.0466",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0544",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "엄마는 아이가 밤늦게 텔레비전을 보지 못하______ 했어요.",
+      "options": [
+        "려고",
+        "면서",
+        "니까",
+        "게"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "못하게 하다 = not let (the child) watch. 못하려고 하다 would mean the mother intends not to be able to, which makes no sense.",
+        "km": "못하게 하다 = មិនឱ្យ (កូន) មើល។ 못하려고 하다 មានន័យថាម្តាយចង់មិនអាច ដែលគ្មានន័យ។"
+      },
+      "grammar": "grammar.0466",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0545",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "바람 때문에 문이 저절로 닫______.",
+      "options": [
+        "혔어요",
+        "았어요",
+        "겼어요",
+        "렸어요"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "닫다 → 닫히다 (passive): the door closed by itself. 닫았어요 is active and needs someone who closes it.",
+        "km": "닫다 → 닫히다 (កម្មវាច្យ)៖ ទ្វារបិទដោយខ្លួនឯង។ 닫았어요 ជាកត្តុវាច្យ ហើយត្រូវការអ្នកបិទ។"
+      },
+      "grammar": "grammar.0467",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0546",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "창문을 여니까 멀리 산이 ______.",
+      "options": [
+        "봐요",
+        "보여요",
+        "보게 해요",
+        "볼게요"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "산이 보여요 = the mountain is visible (passive of 보다). 산이 봐요 would make the mountain the one looking.",
+        "km": "산이 보여요 = មើលឃើញភ្នំ (កម្មវាច្យនៃ 보다)។ 산이 봐요 នឹងធ្វើឱ្យភ្នំជាអ្នកមើល។"
+      },
+      "grammar": "grammar.0467",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0547",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "벌써 12월이라______! 시간이 정말 빨라요.",
+      "options": [
+        "거든요",
+        "더라고요",
+        "니요",
+        "서요"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "12월이라니요 = What? It's December already?! (surprise). 12월이라서요 gives a reason, which does not fit an exclamation.",
+        "km": "12월이라니요 = អី? ខែធ្នូហើយ?! (ភ្ញាក់ផ្អើល)។ 12월이라서요 ផ្តល់ហេតុផល ដែលមិនស្របនឹងការឧទាន។"
+      },
+      "grammar": "grammar.0468",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0548",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "그렇게 착한 사람이 거짓말을 했______. 믿을 수가 없어요.",
+      "options": [
+        "거든요",
+        "어서요",
+        "으면",
+        "다니요"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "했다니요 = He lied?! I can't believe it. 했거든요 explains a reason as known fact, which clashes with disbelief.",
+        "km": "했다니요 = គាត់កុហក?! ខ្ញុំមិនជឿទេ។ 했거든요 ពន្យល់ហេតុផលជាការពិតដែលដឹង ដែលផ្ទុយនឹងការមិនជឿ។"
+      },
+      "grammar": "grammar.0468",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0549",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "어제 늦게 자______ 오늘 너무 피곤해요.",
+      "options": [
+        "서 그런지",
+        "더라도",
+        "는 대신",
+        "자마자"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "자서 그런지 = maybe because I went to bed late, I'm tired. -더라도 (even if) contradicts the cause and effect.",
+        "km": "자서 그런지 = ប្រហែលដោយសារដេកយឺត ទើបហត់។ -더라도 (ទោះបី) ផ្ទុយនឹងហេតុ និងផល។"
+      },
+      "grammar": "grammar.0469",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0550",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "날씨가 추워______ 거리에 사람이 별로 없어요.",
+      "options": [
+        "도",
+        "서 그런지",
+        "야",
+        "봤자"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "추워서 그런지 = maybe because it's cold, the streets are empty. 추워도 (even though cold) would expect people to be out.",
+        "km": "추워서 그런지 = ប្រហែលដោយសារត្រជាក់ ផ្លូវស្ងាត់។ 추워도 (ទោះត្រជាក់) នឹងរំពឹងថាមានមនុស្សនៅខាងក្រៅ។"
+      },
+      "grammar": "grammar.0469",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0551",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "아무리 바쁘______ 밥은 꼭 챙겨 드세요.",
+      "options": [
+        "니까",
+        "면",
+        "다고 해도",
+        "던데"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "아무리 바쁘다고 해도 = no matter how busy you are. 아무리 needs a concessive form; 바쁘면 (if busy) does not fit.",
+        "km": "아무리 바쁘다고 해도 = ទោះរវល់យ៉ាងណាក៏ដោយ។ 아무리 ត្រូវការទម្រង់ទោះបី; 바쁘면 (បើរវល់) មិនស្រប។"
+      },
+      "grammar": "grammar.0470",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0552",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "그 사람이 사과______ 저는 용서하지 않을 거예요.",
+      "options": [
+        "했더니",
+        "하는 김에",
+        "하는 대로",
+        "한다고 해도"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "사과한다고 해도 = even if he apologises, I won't forgive him. 사과하는 대로 (as soon as he apologises) clashes with not forgiving.",
+        "km": "사과한다고 해도 = ទោះបីគាត់សុំទោស ខ្ញុំក៏មិនអភ័យទោស។ 사과하는 대로 (ភ្លាមពេលសុំទោស) ផ្ទុយនឹងការមិនអភ័យទោស។"
+      },
+      "grammar": "grammar.0470",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0553",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "이건 어렸을 때 제가 자주 읽______ 책이에요.",
+      "options": [
+        "던",
+        "을",
+        "는",
+        "다는"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "읽던 책 = the book I used to read (repeated in the past). 읽는 책 is the present, which clashes with 어렸을 때.",
+        "km": "읽던 책 = សៀវភៅដែលខ្ញុំធ្លាប់អាន (ម្តងហើយម្តងទៀតក្នុងអតីត)។ 읽는 책 ជាបច្ចុប្បន្ន ដែលផ្ទុយនឹង 어렸을 때។"
+      },
+      "grammar": "grammar.0471",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0554",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "아까 마시______ 커피를 어디에 두었지?",
+      "options": [
+        "는",
+        "던",
+        "을",
+        "기 위한"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "마시던 커피 = the coffee I was drinking (not finished). 마실 커피 is coffee to drink later, which clashes with 아까 (earlier).",
+        "km": "마시던 커피 = កាហ្វេដែលខ្ញុំកំពុងផឹក (មិនទាន់អស់)។ 마실 커피 ជាកាហ្វេសម្រាប់ផឹកពេលក្រោយ ដែលផ្ទុយនឹង 아까 (មុននេះ)។"
+      },
+      "grammar": "grammar.0471",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0555",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "밖이 시끄러워요. 무슨 일이 있______.",
+      "options": [
+        "을게요",
+        "거든요",
+        "나 봐요",
+        "잖아요"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "있나 봐요 = something seems to be happening (guess from the noise). 있잖아요 assumes the listener already knows.",
+        "km": "있나 봐요 = ហាក់មានរឿងអ្វីមួយ (ទាយពីសំឡេង)។ 있잖아요 សន្មតថាអ្នកស្តាប់ដឹងរួចហើយ។"
+      },
+      "grammar": "grammar.0472",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0556",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "민수 씨 얼굴이 빨개요. 많이 부끄러운______.",
+      "options": [
+        "데요",
+        "가요",
+        "지",
+        "가 봐요"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "부끄러운가 봐요 = he seems embarrassed (adjective + -(으)ㄴ가 보다, a guess about someone else). 부끄러운가요 is a question.",
+        "km": "부끄러운가 봐요 = គាត់ហាក់ខ្មាស (គុណនាម + -(으)ㄴ가 보다 ទាយពីអ្នកដទៃ)។ 부끄러운가요 ជាសំណួរ។"
+      },
+      "grammar": "grammar.0472",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0557",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "길이 막히면 조금 늦______ 있어요. 먼저 시작하세요.",
+      "options": [
+        "을 수도",
+        "을 리가",
+        "을 줄",
+        "을 뻔"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "늦을 수도 있다 = I might be late. 늦을 리가 있다 is a rhetorical how could I be late, the opposite of the warning.",
+        "km": "늦을 수도 있다 = ខ្ញុំអាចនឹងយឺត។ 늦을 리가 있다 ជាសំណួរវោហារ មិនអាចយឺតទេ ផ្ទុយនឹងការព្រមាន។"
+      },
+      "grammar": "grammar.0473",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0558",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "그 이야기는 사실이 아닐 ______ 있으니까 다시 확인해 보세요.",
+      "options": [
+        "리도",
+        "수도",
+        "줄도",
+        "뻔도"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "아닐 수도 있다 = it might not be true, so check again. 아닐 리도 있다 is not a natural form.",
+        "km": "아닐 수도 있다 = វាប្រហែលមិនពិត ដូច្នេះពិនិត្យម្តងទៀត។ 아닐 리도 있다 មិនមែនជាទម្រង់ធម្មជាតិទេ។"
+      },
+      "grammar": "grammar.0473",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0559",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "겨울에는 길이 미끄러워서 넘어지______.",
+      "options": [
+        "기로 해요",
+        "려고 해요",
+        "기 쉬워요",
+        "고 싶어요"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "넘어지기 쉽다 = it is easy to fall (likely). 넘어지려고 하다 would mean intending to fall.",
+        "km": "넘어지기 쉽다 = ងាយនឹងដួល។ 넘어지려고 하다 មានន័យថាចង់ដួល។"
+      },
+      "grammar": "grammar.0474",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0560",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "잠을 충분히 자지 않으면 감기에 걸리______.",
+      "options": [
+        "려고 해요",
+        "기로 했어요",
+        "고 싶어요",
+        "기 쉬워요"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "걸리기 쉽다 = you are likely to catch a cold. 걸리고 싶어요 (want to catch a cold) makes no sense here.",
+        "km": "걸리기 쉽다 = ងាយនឹងផ្តាសាយ។ 걸리고 싶어요 (ចង់ផ្តាសាយ) គ្មានន័យនៅទីនេះ។"
+      },
+      "grammar": "grammar.0474",
+      "review": "pending"
     }
   ]
 }

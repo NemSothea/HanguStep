@@ -1,0 +1,232 @@
+{
+  "questions": [
+    {
+      "id": "q.gf.0521",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "저는 운전______ 몰라요. 그래서 매일 버스를 타요.",
+      "options": [
+        "할 줄",
+        "하러",
+        "하면서",
+        "해서"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "운전할 줄 모르다 = not know how to drive, which explains taking the bus. 하러 needs a movement verb like 가다.",
+        "km": "운전할 줄 모르다 = មិនចេះបើកឡាន ដែលពន្យល់ពីការជិះឡានក្រុង។ 하러 ត្រូវការកិរិយាស័ព្ទចលនាដូចជា 가다។"
+      },
+      "grammar": "grammar.0119",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0522",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "저는 한국어를 읽을 ______ 알지만 쓰는 것은 아직 어려워요.",
+      "options": [
+        "때",
+        "줄",
+        "뻔",
+        "리"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "읽을 줄 알다 = know how to read, a skill. 읽을 때 알다 does not express a skill.",
+        "km": "읽을 줄 알다 = ចេះអាន ជាជំនាញ។ 읽을 때 알다 មិនបង្ហាញជំនាញទេ។"
+      },
+      "grammar": "grammar.0119",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0523",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "숙제를 다 하______ 게임을 해도 돼요.",
+      "options": [
+        "면서",
+        "러",
+        "고 나서",
+        "거나"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "다 하고 나서 = after finishing all of it. -면서 means at the same time, which clashes with 다 (completely).",
+        "km": "다 하고 나서 = បន្ទាប់ពីធ្វើរួចទាំងអស់។ -면서 មានន័យថាក្នុងពេលតែមួយ ដែលមិនត្រូវនឹង 다 (ទាំងស្រុង)។"
+      },
+      "grammar": "grammar.0120",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0524",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "밥을 먹______ 바로 이를 닦아요.",
+      "options": [
+        "으러",
+        "지만",
+        "으면서",
+        "고 나서"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "먹고 나서 = after eating, then brush teeth. 먹으면서 would mean brushing while eating.",
+        "km": "먹고 나서 = បន្ទាប់ពីញ៉ាំរួច ទើបដុសធ្មេញ។ 먹으면서 មានន័យថាដុសធ្មេញខណៈពេលញ៉ាំ។"
+      },
+      "grammar": "grammar.0120",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0525",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "저는 제주도에 가 본 ______ 있어요. 바다가 정말 예뻤어요.",
+      "options": [
+        "적이",
+        "줄이",
+        "것을",
+        "때에"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "가 본 적이 있다 = have been there. 줄 is for knowing how (줄 알다), not for experience.",
+        "km": "가 본 적이 있다 = ធ្លាប់ទៅ។ 줄 ប្រើសម្រាប់ការចេះ (줄 알다) មិនមែនបទពិសោធន៍ទេ។"
+      },
+      "grammar": "grammar.0121",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0526",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "한국 음식을 만들어 ______ 없어요. 오늘 처음 해 봐요.",
+      "options": [
+        "볼 줄",
+        "본 적이",
+        "보면서",
+        "보러"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "만들어 본 적이 없다 = have never made it, matching 처음 (first time). 볼 줄 없다 is not a form; it would be 볼 줄 모르다.",
+        "km": "만들어 본 적이 없다 = មិនដែលធ្វើ ស្របនឹង 처음 (លើកដំបូង)។ 볼 줄 없다 មិនមែនជាទម្រង់ត្រឹមត្រូវទេ; ត្រូវជា 볼 줄 모르다។"
+      },
+      "grammar": "grammar.0121",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0527",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "하늘이 어두워요. 곧 비가 ______ 것 같아요.",
+      "options": [
+        "온",
+        "오는",
+        "올",
+        "왔던"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "곧 (soon) points to the future, so the guess form 올 것 같다 is needed. 오는 것 같다 means it seems to be raining now.",
+        "km": "곧 (ឆាប់ៗ) ចង្អុលទៅអនាគត ដូច្នេះត្រូវប្រើទម្រង់ទាយ 올 것 같다។ 오는 것 같다 មានន័យថាហាក់កំពុងភ្លៀង។"
+      },
+      "grammar": "grammar.0122",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0528",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "민수 씨가 아까부터 웃고 있어요. 기분이 좋______ 같아요.",
+      "options": [
+        "으면",
+        "기 때문에",
+        "아서",
+        "은 것"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "좋다 is an adjective, so the present guess is 좋은 것 같다. 좋아서 같아요 is not a form.",
+        "km": "좋다 ជាគុណនាម ដូច្នេះការទាយបច្ចុប្បន្នគឺ 좋은 것 같다។ 좋아서 같아요 មិនមែនជាទម្រង់ត្រឹមត្រូវទេ។"
+      },
+      "grammar": "grammar.0122",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0529",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "오늘 피곤해 ______. 어제 잠을 못 잤어요?",
+      "options": [
+        "보여요",
+        "봐요",
+        "줘요",
+        "있어요"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "피곤해 보여요 = you look tired, judging by appearance. 피곤해 봐요 would mean try being tired.",
+        "km": "피곤해 보여요 = មើលទៅហត់ តាមរូបរាង។ 피곤해 봐요 មានន័យថា សាកល្បងហត់។"
+      },
+      "grammar": "grammar.0123",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0530",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "이 케이크가 정말 맛있______ 보여요.",
+      "options": [
+        "으면",
+        "어",
+        "으니까",
+        "지만"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "맛있어 보여요 = it looks delicious. 맛있으면 보여요 makes no sense as a condition.",
+        "km": "맛있어 보여요 = មើលទៅឆ្ងាញ់។ 맛있으면 보여요 គ្មានន័យជាលក្ខខណ្ឌទេ។"
+      },
+      "grammar": "grammar.0123",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0531",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "교실 문이 열려 ______. 누가 열었어요?",
+      "options": [
+        "가요",
+        "줘요",
+        "있어요",
+        "봐요"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "열려 있어요 = the door is (in the state of being) open. 열려 가요 would mean it is gradually opening.",
+        "km": "열려 있어요 = ទ្វារកំពុងបើក (ស្ថានភាព)។ 열려 가요 មានន័យថាកំពុងបើកបន្តិចម្តងៗ។"
+      },
+      "grammar": "grammar.0124",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0532",
+      "kind": "grammarFillIn",
+      "level": 2,
+      "prompt": "의자에 앉______ 있는 사람이 우리 선생님이에요.",
+      "options": [
+        "고",
+        "으러",
+        "으면",
+        "아"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "앉아 있다 = be seated, a state after sitting down. 앉고 있다 is wrong for this state; -고 있다 is for an ongoing action.",
+        "km": "앉아 있다 = កំពុងអង្គុយ ជាស្ថានភាពក្រោយពីអង្គុយ។ 앉고 있다 ខុសសម្រាប់ស្ថានភាពនេះ; -고 있다 ប្រើសម្រាប់សកម្មភាពកំពុងធ្វើ។"
+      },
+      "grammar": "grammar.0124",
+      "review": "pending"
+    }
+  ]
+}
