@@ -61,6 +61,26 @@ public struct ClaudeAssistantProvider: AssistantProvider {
         }
     }
 
+    public func reviewWriting(_ request: WritingReviewRequest) async throws -> WritingFeedback {
+        let body = MessagesRequest(
+            model: model,
+            maxTokens: 4096,
+            system: Prompts.writingSystem,
+            messages: [.init(role: "user", content: Prompts.writingUser(request))],
+            outputConfig: .init(effort: "medium", format: .init(type: "json_schema", schema: Prompts.writingSchema)),
+            fallbacks: "default"
+        )
+        let reply = try await send(body)
+        guard let text = reply.content.first(where: { $0.type == "text" })?.text, let data = text.data(using: .utf8) else {
+            throw AssistantError.invalidResponse("no JSON text block")
+        }
+        let graded: WritingEnvelope
+        do { graded = try JSONDecoder().decode(WritingEnvelope.self, from: data) } catch {
+            throw AssistantError.invalidResponse("could not decode feedback: \(error)")
+        }
+        return graded.feedback(maxScore: request.task.type.maxScore, language: request.language, providerName: name)
+    }
+
     // MARK: Transport
 
     private func send(_ body: MessagesRequest) async throws -> MessagesResponse {
@@ -159,6 +179,35 @@ public struct ClaudeAssistantProvider: AssistantProvider {
         }
         let questions: [Item]
     }
+
+    struct WritingEnvelope: Decodable {
+        struct Criterion: Decodable {
+            let name: String
+            let score: Int
+            let maxScore: Int
+            let comment: String
+            enum CodingKeys: String, CodingKey { case name, score, comment; case maxScore = "max_score" }
+        }
+        struct Correction: Decodable { let original: String; let suggestion: String; let reason: String }
+        let estimatedScore: Int
+        let criteria: [Criterion]
+        let corrections: [Correction]
+        let summary: String
+        enum CodingKeys: String, CodingKey { case criteria, corrections, summary; case estimatedScore = "estimated_score" }
+
+        /// Scores are clamped: a model's arithmetic is not trusted past the exam's limits.
+        func feedback(maxScore: Int, language: GlossLanguage, providerName: String) -> WritingFeedback {
+            WritingFeedback(
+                providerName: providerName,
+                estimatedScore: min(max(estimatedScore, 0), maxScore),
+                maxScore: maxScore,
+                criteria: criteria.map { .init(name: $0.name, score: min(max($0.score, 0), max($0.maxScore, 0)), maxScore: max($0.maxScore, 0), comment: $0.comment) },
+                corrections: corrections.prefix(12).map { .init(original: $0.original, suggestion: $0.suggestion, reason: $0.reason) },
+                summary: summary,
+                language: language
+            )
+        }
+    }
 }
 
 /// Minimal JSON tree for encoding the structured-output schema.
@@ -252,6 +301,67 @@ enum Prompts {
         return lines.joined(separator: "\n")
     }
 
+    static let writingSystem = """
+    You are an experienced TOPIK II writing (쓰기) grader helping a Cambodian learner preparing for level 3-4. \
+    Grade the answer the way official raters do and be honest: do not inflate scores. \
+    Criteria: questions 51-52 (10 points): content fits the blank and context (5), grammar and register match the text (5). \
+    Question 53 (30 points): content and task (7: covers the given data accurately), organisation (7), language use (16: vocabulary, grammar, 한다체, spelling). \
+    Question 54 (50 points): content and task (12: answers every guiding question, clear argument), organisation (12: introduction, body, conclusion, connectives), language use (26). \
+    Answers outside the required length lose points; a polite -요/-습니다 style in 53-54 loses language points. \
+    Corrections quote the learner's exact Korean in "original" and give the fixed Korean in "suggestion"; at most 12, most important first. \
+    Write comments, reasons and the summary in the requested language (English or Khmer), keep Korean in Hangul, summary under 80 words. \
+    Return only the JSON requested.
+    """
+
+    static func writingUser(_ request: WritingReviewRequest) -> String {
+        let task = request.task
+        var lines = ["Language for comments: \(request.language == .english ? "English" : "Khmer")"]
+        lines.append("Task type: \(task.type.title), worth \(task.type.maxScore) points")
+        lines.append("Instruction: \(task.prompt)")
+        lines.append("Material:\n\(task.material)")
+        if let range = task.lengthRange { lines.append("Required length: \(range.lowerBound)-\(range.upperBound) characters including spaces") }
+        lines.append("Learner's answer (\(WritingText.characterCount(request.answer)) characters):\n\(request.answer)")
+        lines.append("Reference model answer (one good answer, others are possible):\n\(task.modelAnswer)")
+        return lines.joined(separator: "\n")
+    }
+
+    static let writingSchema: JSONValue = .object([
+        ("type", .string("object")),
+        ("properties", .object([
+            ("estimated_score", .object([("type", .string("integer"))])),
+            ("criteria", .object([
+                ("type", .string("array")),
+                ("items", .object([
+                    ("type", .string("object")),
+                    ("properties", .object([
+                        ("name", .object([("type", .string("string"))])),
+                        ("score", .object([("type", .string("integer"))])),
+                        ("max_score", .object([("type", .string("integer"))])),
+                        ("comment", .object([("type", .string("string"))])),
+                    ])),
+                    ("required", .array(["name", "score", "max_score", "comment"].map { .string($0) })),
+                    ("additionalProperties", .bool(false)),
+                ])),
+            ])),
+            ("corrections", .object([
+                ("type", .string("array")),
+                ("items", .object([
+                    ("type", .string("object")),
+                    ("properties", .object([
+                        ("original", .object([("type", .string("string"))])),
+                        ("suggestion", .object([("type", .string("string"))])),
+                        ("reason", .object([("type", .string("string"))])),
+                    ])),
+                    ("required", .array(["original", "suggestion", "reason"].map { .string($0) })),
+                    ("additionalProperties", .bool(false)),
+                ])),
+            ])),
+            ("summary", .object([("type", .string("string"))])),
+        ])),
+        ("required", .array(["estimated_score", "criteria", "corrections", "summary"].map { .string($0) })),
+        ("additionalProperties", .bool(false)),
+    ])
+
     static let draftSchema: JSONValue = .object([
         ("type", .string("object")),
         ("properties", .object([
@@ -260,7 +370,7 @@ enum Prompts {
                 ("items", .object([
                     ("type", .string("object")),
                     ("properties", .object([
-                        ("kind", .object([("type", .string("string")), ("enum", .array(QuestionKind.allCases.map { .string($0.rawValue) }))])),
+                        ("kind", .object([("type", .string("string")), ("enum", .array(QuestionKind.allCases.filter { $0 != .listening }.map { .string($0.rawValue) }))])),
                         ("prompt", .object([("type", .string("string"))])),
                         ("passage", .object([("type", .array([.string("string"), .string("null")]))])),
                         ("options", .object([("type", .string("array")), ("items", .object([("type", .string("string"))]))])),

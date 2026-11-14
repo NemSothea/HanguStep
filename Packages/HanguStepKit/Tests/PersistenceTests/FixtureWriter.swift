@@ -22,6 +22,12 @@ final class FixtureWriter: XCTestCase {
             id: StudySessionID("fixture-session"), mode: .quiz, startedAt: Date(timeIntervalSince1970: 1_700_000_000),
             questionIDs: [QuestionID("question.sample.0001"), QuestionID("question.sample.0002")], deviceName: "fixture"
         ))
+        // v2: writing attempt with feedback (ADR-012).
+        try await CoreDataWritingAttemptRepository(controller: controller).save(WritingAttempt(
+            id: UUID(uuidString: "00000000-0000-0000-0000-000000000053")!, taskID: WritingTaskID("w.53.001"), text: "fixture 답안",
+            createdAt: Date(timeIntervalSince1970: 1_700_000_000),
+            feedback: WritingFeedback(providerName: "fixture", estimatedScore: 20, maxScore: 30, criteria: [], corrections: [], summary: "fixture", language: .english)
+        ))
         // Checkpoint the WAL so the fixture is a single file.
         let coordinator = controller.container.persistentStoreCoordinator
         for store in coordinator.persistentStores {

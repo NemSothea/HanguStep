@@ -69,7 +69,9 @@ struct QuizFlowView: View {
                             .foregroundStyle(HSColor.textSecondary)
                     }
                     if let question = viewModel.currentQuestion {
-                        if let passage = question.passage {
+                        if viewModel.isListening {
+                            ListeningCard(script: viewModel.revealedScript) { viewModel.playListening() }
+                        } else if let passage = question.passage {
                             HSCard { HangulText(passage, style: .body) }
                         }
                         HangulText(question.prompt, style: Self.promptStyle(for: question))
@@ -100,7 +102,7 @@ struct QuizFlowView: View {
     static func promptStyle(for question: Question) -> HangulText.Style {
         switch question.kind {
         case .vocabularyMeaning where question.prompt.count <= 24: return .display
-        case .meaningToWord, .vocabularyMeaning, .grammarFillIn, .sentenceCompletion, .readingComprehension: return .title
+        case .meaningToWord, .vocabularyMeaning, .grammarFillIn, .sentenceCompletion, .readingComprehension, .listening: return .title
         }
     }
 
@@ -189,5 +191,42 @@ struct QuizFlowView: View {
         .frame(maxWidth: Layout.readableWidth)
         .frame(maxWidth: .infinity)
         .background(.bar)
+    }
+}
+
+/// Play/replay control for a listening question. The script appears after answering.
+struct ListeningCard: View {
+    let script: ListeningScript?
+    let play: () -> Void
+
+    var body: some View {
+        HSCard {
+            VStack(alignment: .leading, spacing: Spacing.sm) {
+                HStack(spacing: Spacing.sm) {
+                    Image(systemName: "headphones").foregroundStyle(HSColor.accent).accessibilityHidden(true)
+                    Text(script == nil ? "Listen, then choose the answer." : "Script")
+                        .font(Typography.headline)
+                }
+                HSButton("Play audio", systemImage: "play.fill", variant: .secondary, action: play)
+                    .accessibilityIdentifier("listening.play")
+                    .accessibilityHint("Speaks the Korean audio for this question")
+                if let script {
+                    VStack(alignment: .leading, spacing: Spacing.xs) {
+                        ForEach(Array(script.lines.enumerated()), id: \.offset) { _, line in
+                            HangulText(Self.label(for: line), style: .body)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                    .accessibilityIdentifier("listening.script")
+                }
+            }
+        }
+    }
+
+    static func label(for line: ListeningScript.Line) -> String {
+        switch line.speaker {
+        case .man, .woman: return "\(line.speaker.rawValue): \(line.text)"
+        case .narrator: return line.text
+        }
     }
 }

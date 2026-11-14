@@ -3,6 +3,8 @@ import Foundation
 public enum QuizPool: Hashable, Sendable, Codable {
     case vocabulary
     case grammar
+    /// TOPIK II-style listening questions, spoken with on-device TTS.
+    case listening
     case mixed
     /// Questions attached to the learner's current mistakes.
     case mistakes
@@ -15,7 +17,10 @@ public enum QuizPool: Hashable, Sendable, Codable {
         switch self {
         case .vocabulary: return [.vocabularyMeaning, .meaningToWord]
         case .grammar: return [.grammarFillIn, .sentenceCompletion]
-        case .mixed, .mistakes, .review, .questions: return []
+        case .listening: return [.listening]
+        // Audio never starts unasked: listening has its own pool.
+        case .mixed: return Set(QuestionKind.allCases).subtracting([.listening])
+        case .mistakes, .review, .questions: return []
         }
     }
 

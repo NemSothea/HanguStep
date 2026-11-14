@@ -5,7 +5,7 @@ import Persistence
 /// Content authoring tool.
 ///
 ///   swift run content-lint [path]                      validate and summarise
-///   swift run content-lint generate-questions [path]   write questions/generated-meaning.json
+///   swift run content-lint generate-questions [path]   write questions/generated-meaning.json and summary.json
 ///
 /// `path` defaults to the bundled content directory in the source tree.
 let arguments = Array(CommandLine.arguments.dropFirst())
@@ -39,7 +39,19 @@ func summarise(_ result: ContentFile.LoadResult) {
 switch command {
 case "lint":
     do {
-        summarise(try BundledContent.load(directory: root))
+        let result = try BundledContent.load(directory: root)
+        summarise(result)
+        guard BundledContent.summary(directory: root) == result.info else {
+            fail("FAIL \(BundledContent.summaryFile) is missing or stale: run `swift run content-lint generate-questions`")
+        }
+        let audio = BundledListeningAudio(contentDirectory: root)
+        let silent = result.package.questions.filter { $0.kind == .listening && audio.audioURL(for: $0.id) == nil }
+        guard silent.isEmpty else {
+            fail("FAIL listening questions without a recording in \(BundledListeningAudio.directory): " + silent.map(\.id.rawValue).joined(separator: ", "))
+        }
+        let writing = try BundledWritingTasks(contentDirectory: root).load()
+        let byType = Dictionary(grouping: writing, by: \.type)
+        print("writing tasks \(writing.count): " + WritingTaskType.allCases.map { "\($0.rawValue) \(byType[$0]?.count ?? 0)" }.joined(separator: " · "))
         print("OK")
     } catch {
         fail("FAIL \(error)")
@@ -63,7 +75,10 @@ case "generate-questions":
     do {
         try encoder.encode(ContentFile.Part(questions: generated)).write(to: output)
         print("wrote \(generated.count) questions to \(output.path)")
-        summarise(try BundledContent.load(directory: root))
+        let result = try BundledContent.load(directory: root)
+        try BundledContent.writeSummary(result.info, directory: root)
+        print("wrote \(BundledContent.summaryFile)")
+        summarise(result)
     } catch {
         fail("FAIL \(error)")
     }

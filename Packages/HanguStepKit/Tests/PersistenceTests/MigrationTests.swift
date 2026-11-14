@@ -43,5 +43,26 @@ final class MigrationTests: XCTestCase {
         XCTAssertEqual(settings.dailyGoal, 25)
         let session = try await CoreDataStudySessionRepository(controller: controller).session(id: StudySessionID("fixture-session"))
         XCTAssertEqual(session?.questionIDs.map(\.rawValue), ["question.sample.0001", "question.sample.0002"])
+        // v2 added CDWritingAttempt (ADR-012): usable straight after migrating a v1 store.
+        let writing = CoreDataWritingAttemptRepository(controller: controller)
+        try await writing.save(WritingAttempt(taskID: WritingTaskID("w.54.001"), text: "마이그레이션 후", createdAt: .now))
+        let saved = try await writing.allAttempts()
+        XCTAssertEqual(saved.count, 1)
+    }
+
+    func testLearnerFixtureV2OpensWithCurrentModel() async throws {
+        guard let fixture = Bundle.module.url(forResource: "Learner-v2", withExtension: "sqlite", subdirectory: "Fixtures") else {
+            return XCTFail("missing fixture Learner-v2.sqlite")
+        }
+        let directory = try temporaryDirectory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+        try FileManager.default.copyItem(at: fixture, to: directory.appendingPathComponent("Learner.sqlite"))
+
+        let controller = try PersistenceController(mode: .onDisk(directory: directory))
+        let bookmarks = try await CoreDataBookmarkRepository(controller: controller).all()
+        XCTAssertEqual(bookmarks.map(\.id.rawValue), ["fixture-bookmark"])
+        let attempts = try await CoreDataWritingAttemptRepository(controller: controller).attempts(for: WritingTaskID("w.53.001"))
+        XCTAssertEqual(attempts.map(\.text), ["fixture 답안"])
+        XCTAssertEqual(attempts.first?.feedback?.estimatedScore, 20)
     }
 }

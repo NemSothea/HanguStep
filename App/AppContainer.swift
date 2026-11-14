@@ -118,6 +118,8 @@ final class AppContainer {
                 }
             }
             let generatedQuestions = CoreDataGeneratedQuestionStore(controller: controller)
+            // Writing practice (ADR-012): prompts read from the bundle, answers in the learner store.
+            let writingAttempts = CoreDataWritingAttemptRepository(controller: controller)
 
             let saveSettings = SaveSettings(repository: settingsRepository)
             let dependencies = AppDependencies(
@@ -144,7 +146,12 @@ final class AppContainer {
                 contentInfo: contentInfo,
                 explainAnswer: ExplainAnswer(providers: providers, vocabulary: vocabulary, grammar: grammar),
                 generatePractice: GeneratePracticeQuestions(providers: providers, vocabulary: vocabulary, grammar: grammar, store: generatedQuestions),
-                generatedQuestions: generatedQuestions
+                generatedQuestions: generatedQuestions,
+                listWritingTasks: ListWritingTasks(tasks: BundledWritingTasks(), attempts: writingAttempts),
+                saveWritingAttempt: SaveWritingAttempt(attempts: writingAttempts, dates: SystemDateProvider()),
+                reviewWriting: ReviewWriting(providers: providers, attempts: writingAttempts),
+                writingAttempts: writingAttempts,
+                listeningAudio: BundledListeningAudio()
             )
             let assistant = AssistantModel(store: assistantSettings, secrets: secrets)
             let settings = try await settingsRepository.load()

@@ -9,7 +9,9 @@ Defines the JSON library that ships inside the app and the tooling that validate
 ```
 Packages/HanguStepKit/Sources/Persistence/Resources/Content/
 ├── package.json                      # format version, library version, default source
+├── summary.json                      # output of `content-lint generate-questions`, do not edit
 ├── vocabulary/*.json                 # part files, any number
+├── writing/*.json                    # TOPIK II writing prompts (not part of the package, see below)
 ├── grammar/*.json
 └── questions/
     ├── authored.json                 # hand-written grammar, sentence and reading questions
@@ -68,9 +70,9 @@ Shared rules: `id` is ASCII letters, digits, `.`, `-`, `_`; `level` is 1 to 6 (T
   "explanation": { "en": "...", "km": "..." }, "grammar": "grammar.0001", "vocabulary": "vocab.0006", "review": "pending" }
 ```
 
-`kind` is a `QuestionKind` raw value: `vocabularyMeaning`, `meaningToWord`, `grammarFillIn`, `sentenceCompletion`, `readingComprehension`. `options` holds 2 to 4 distinct strings; `answer` is the zero-based index of the correct one. Option ids `o1`, `o2`, ... are derived from position, so **never reorder options of a shipped question**: learner attempts store the option id. Change the id of the question instead. `vocabulary` and `grammar` link the question to a learning target and must exist; a question needs at least one of them to count toward progress. `passage` is only used by `readingComprehension`.
+`kind` is a `QuestionKind` raw value: `vocabularyMeaning`, `meaningToWord`, `grammarFillIn`, `sentenceCompletion`, `readingComprehension`, `listening`. `options` holds 2 to 4 distinct strings; `answer` is the zero-based index of the correct one. Option ids `o1`, `o2`, ... are derived from position, so **never reorder options of a shipped question**: learner attempts store the option id. Change the id of the question instead. `vocabulary` and `grammar` link the question to a learning target and must exist; a question needs at least one of them to count toward progress. `passage` is used by `readingComprehension` (the text to read) and `listening` (the script, required). A listening script has one line per turn, starting `남자: ` or `여자: `; other lines are narration. The app speaks it with on-device TTS (one voice per speaker) and shows it only after the learner answers. Listening questions carry no `vocabulary` or `grammar` link, so they never enter the review queue: audio only plays in the Listening pool. Every listening question needs a recording at `Resources/Audio/listening/<id>.m4a` (generated with `Tools/listening-audio`); `content-lint` fails without one. Re-render a question's file whenever its script changes.
 
-Id conventions: `vocab.NNNN`, `grammar.NNNN` (level 1 from 0001, level 2 from 0101, level 3 from 0301, level 4 from 0401; TOPIK II vocabulary uses `vocab.3NNN` for level 3 and `vocab.4NNN` for level 4), `q.gf.NNNN` grammar fill-in, `q.sc.NNNN` sentence completion, `q.rc.NNNN` reading, `q.vm.<vocab id>` and `q.mw.<vocab id>` generated meaning questions.
+Id conventions: `vocab.NNNN`, `grammar.NNNN` (level 1 from 0001, level 2 from 0101, level 3 from 0301, level 4 from 0401; TOPIK II vocabulary uses `vocab.3NNN` for level 3 and `vocab.4NNN` for level 4), `q.gf.NNNN` grammar fill-in, `q.sc.NNNN` sentence completion, `q.rc.NNNN` reading, `q.ls.NNNN` listening, `q.vm.<vocab id>` and `q.mw.<vocab id>` generated meaning questions.
 
 ## 4. Validation
 
@@ -87,11 +89,13 @@ Any issue throws `ContentFile.Error.invalid([ContentPackageIssue])`. The app doe
 ```
 cd Packages/HanguStepKit
 swift run content-lint                       # validate the bundled library, print counts per level and pending review
-swift run content-lint generate-questions    # rewrite questions/generated-meaning.json from the vocabulary
+swift run content-lint generate-questions    # rewrite questions/generated-meaning.json and summary.json
 swift run content-lint /path/to/other/dir    # validate any directory with the same layout
 ```
 
-`generate-questions` builds two questions per word (Korean to meaning, meaning to Korean) with `MeaningQuestionGenerator`. Distractors prefer the same part of speech and level, never repeat a hangul or meaning, and the shuffle is seeded from the question id, so re-running on unchanged vocabulary produces an identical file and option order stays stable. Re-run it after every vocabulary change and commit the output; CI runs the lint and fails on a diff.
+`generate-questions` builds two questions per word (Korean to meaning, meaning to Korean) with `MeaningQuestionGenerator`. Distractors prefer the same part of speech and level, never repeat a hangul or meaning, and the shuffle is seeded from the question id, so re-running on unchanged vocabulary produces an identical file and option order stays stable. Re-run it after every content change and commit the output; CI runs the lint and fails on a diff.
+
+`summary.json` holds the counts, pending-review total and credits that Settings shows. On a warm launch the app reads only this file and `package.json`'s version: when the store already holds that version, the multi-megabyte library is not decoded. `content-lint` fails when the summary is missing or stale, and a bundled-content test checks it against the full library.
 
 ## 6. Shipping a content update
 
@@ -107,3 +111,20 @@ Every item ships with `review: pending` until a native Khmer reviewer confirms t
 ## 8. Not yet covered
 
 Levels 3 to 6 (TOPIK II), listening content, audio assets, and importing packages from outside the bundle (download or file import). The format and loader already accept any directory, so these are content and transport work, not format changes.
+
+## Writing prompts (ADR-012)
+
+`writing/*.json` holds `{"tasks": [...]}`. They are read straight from the bundle (no Core Data import, no version bump needed) and validated by `content-lint`.
+
+```json
+{ "id": "w.53.001", "type": "describeData", "level": 4,
+  "prompt": "다음을 참고하여 '...'에 대한 내용을 200~300자의 글로 쓰십시오. ...",
+  "material": "조사 기관: ...\n1위 운동 42%\n...", "minLength": 200, "maxLength": 300,
+  "modelAnswer": "...", "tips": { "en": "...", "km": "..." }, "review": "pending" }
+```
+
+- `type`: `shortAnswer` (51-52: `material` has `( ㉠ )` and `( ㉡ )`, `modelAnswer` has a `㉠ ...` and a `㉡ ...` line, no length), `describeData` (53), `essay` (54). 53 and 54 need `minLength`/`maxLength`, and the model answer must fall inside it.
+- Length counts characters including spaces, excluding line breaks (`WritingText.characterCount`), like the TOPIK answer sheet.
+- Survey data in 53 is invented and must name fictional organisations, never a real agency or company.
+- Ids: `w.51.NNN`, `w.52.NNN`, `w.53.NNN`, `w.54.NNN`. Learner answers store the id, so never reuse one for a different prompt.
+

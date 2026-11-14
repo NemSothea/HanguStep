@@ -27,6 +27,11 @@ public struct AppDependencies: Sendable {
     public let explainAnswer: any ExplainAnswerUseCase
     public let generatePractice: any GeneratePracticeQuestionsUseCase
     public let generatedQuestions: any GeneratedQuestionStore
+    public let listWritingTasks: any ListWritingTasksUseCase
+    public let saveWritingAttempt: any SaveWritingAttemptUseCase
+    public let reviewWriting: any ReviewWritingUseCase
+    public let writingAttempts: any WritingAttemptRepository
+    public let listeningAudio: any ListeningAudioSource
 
     public init(
         loadDashboardSummary: any LoadDashboardSummaryUseCase,
@@ -52,7 +57,12 @@ public struct AppDependencies: Sendable {
         contentInfo: ContentInfo = .unknown,
         explainAnswer: any ExplainAnswerUseCase = UnavailableAssistant(),
         generatePractice: any GeneratePracticeQuestionsUseCase = UnavailableAssistant(),
-        generatedQuestions: any GeneratedQuestionStore = NoGeneratedQuestions()
+        generatedQuestions: any GeneratedQuestionStore = NoGeneratedQuestions(),
+        listWritingTasks: any ListWritingTasksUseCase = NoWriting(),
+        saveWritingAttempt: any SaveWritingAttemptUseCase = NoWriting(),
+        reviewWriting: any ReviewWritingUseCase = UnavailableAssistant(),
+        writingAttempts: any WritingAttemptRepository = NoWriting(),
+        listeningAudio: any ListeningAudioSource = NoListeningAudio()
     ) {
         self.loadDashboardSummary = loadDashboardSummary
         self.loadProgressReport = loadProgressReport
@@ -78,11 +88,16 @@ public struct AppDependencies: Sendable {
         self.explainAnswer = explainAnswer
         self.generatePractice = generatePractice
         self.generatedQuestions = generatedQuestions
+        self.listWritingTasks = listWritingTasks
+        self.saveWritingAttempt = saveWritingAttempt
+        self.reviewWriting = reviewWriting
+        self.writingAttempts = writingAttempts
+        self.listeningAudio = listeningAudio
     }
 }
 
 /// Default for tests and previews that do not exercise the assistant.
-public struct UnavailableAssistant: ExplainAnswerUseCase, GeneratePracticeQuestionsUseCase {
+public struct UnavailableAssistant: ExplainAnswerUseCase, GeneratePracticeQuestionsUseCase, ReviewWritingUseCase {
     public init() {}
     public func execute(question: Question, selectedOptionID: OptionID, language: GlossLanguage) async throws -> AssistantExplanation {
         throw AssistantError.disabled
@@ -90,6 +105,21 @@ public struct UnavailableAssistant: ExplainAnswerUseCase, GeneratePracticeQuesti
     public func execute(target: LearningTarget, count: Int) async throws -> [Question] {
         throw AssistantError.disabled
     }
+    public func execute(attempt: WritingAttempt, task: WritingTask, language: GlossLanguage) async throws -> WritingAttempt {
+        throw AssistantError.disabled
+    }
+}
+
+/// Writing practice not wired (tests, previews).
+public struct NoWriting: ListWritingTasksUseCase, SaveWritingAttemptUseCase, WritingAttemptRepository {
+    public init() {}
+    public func execute() async throws -> [WritingTaskSummary] { [] }
+    public func execute(taskID: WritingTaskID, text: String) async throws -> WritingAttempt {
+        throw DomainError.storage(description: "writing practice is not available")
+    }
+    public func save(_ attempt: WritingAttempt) async throws {}
+    public func attempts(for taskID: WritingTaskID) async throws -> [WritingAttempt] { [] }
+    public func allAttempts() async throws -> [WritingAttempt] { [] }
 }
 
 public struct NoGeneratedQuestions: GeneratedQuestionStore {
