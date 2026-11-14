@@ -11,3 +11,6 @@ DerivedData/
 # Local signing (team ID). See Configs/Signing.xcconfig.
 Configs/Signing.local.xcconfig
 ContentSources/
+
+# Personal Apple team ID for Tools/install-iphone.sh (ADR-013).
+Configs/personal-team.local
