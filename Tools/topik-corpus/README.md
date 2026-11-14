@@ -44,7 +44,8 @@ python3 -m venv /tmp/kiwi && /tmp/kiwi/bin/pip install -r Tools/topik-corpus/req
 - Batch 2 (2026-11-14): next 300 candidates after dropping 이렇게, 이때, 시키다, 감사하다; 253 level 4 + 47 level 2 words, 20 level 4 grammar patterns.
 - Batch 3 (2026-11-14): next 300 candidates; 256 level 4 + 44 level 2 words, 20 level 4 grammar patterns (common intermediate endings such as -는 바람에, -기 마련이다).
 - Batch 4 (2026-11-14): next 300 candidates (all words in 4 of 12 exams, then the top of the 3-exam group), dropping 그렇게; 258 level 4 + 42 level 2 words, 20 level 4 grammar patterns.
+- Batch 5 (2026-11-14): next 300 candidates (3-exam group), dropping analyser artefacts and variants (합리하다, 주되다, 이뤄지다, 그럼, 톡톡, 유명, 건조); 254 level 4 + 46 level 2 words, 14 level 4 + 6 missing level 2 grammar patterns.
 
-## Corpus used for batches 1-4 (2026-11-14)
+## Corpus used for batches 1-5 (2026-11-14)
 
 TOPIK II: exams 35, 36, 37, 41, 47, 52, 60, 64, 83, 91, 96, 102 (reading, listening transcript, writing where available). TOPIK I: exams 64, 83, 91, 96, 102 (reading, listening transcript). 1,640 candidates appear in 3 or more of the 12 exams.

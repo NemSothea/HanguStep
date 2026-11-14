@@ -1,0 +1,185 @@
+{
+  "grammar": [
+    {
+      "id": "grammar.0119",
+      "pattern": "-(으)ㄹ 줄 알다/모르다",
+      "level": 2,
+      "category": "modality",
+      "explanation": {
+        "en": "Know (or not know) how to do something: a learned skill. For simple possibility use -(으)ㄹ 수 있다.",
+        "km": "ដឹង (ឬមិនដឹង) ពីរបៀបធ្វើអ្វីមួយ៖ ជំនាញដែលបានរៀន។ សម្រាប់លទ្ធភាពធម្មតា ប្រើ -(으)ㄹ 수 있다។"
+      },
+      "formation": {
+        "en": "Verb stem + ㄹ 줄 알다/모르다 after a vowel, + 을 줄 알다/모르다 after a consonant.",
+        "km": "ដើមកិរិយាស័ព្ទ + ㄹ 줄 알다/모르다 ក្រោយស្រៈ, + 을 줄 알다/모르다 ក្រោយព្យញ្ជនៈ។"
+      },
+      "examples": [
+        {
+          "ko": "저는 수영할 줄 알아요.",
+          "en": "I know how to swim.",
+          "km": "ខ្ញុំចេះហែលទឹក។"
+        },
+        {
+          "ko": "할머니는 스마트폰을 쓸 줄 모르세요.",
+          "en": "My grandmother doesn't know how to use a smartphone.",
+          "km": "យាយខ្ញុំមិនចេះប្រើស្មាតហ្វូនទេ។"
+        }
+      ],
+      "related": [
+        "grammar.0105"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0120",
+      "pattern": "-고 나서",
+      "level": 2,
+      "category": "connective",
+      "explanation": {
+        "en": "After finishing one action, then the next. Stresses that the first action is completed.",
+        "km": "បន្ទាប់ពីធ្វើសកម្មភាពមួយចប់ ទើបធ្វើសកម្មភាពបន្ទាប់។ សង្កត់ធ្ងន់ថាសកម្មភាពទីមួយបានបញ្ចប់។"
+      },
+      "formation": {
+        "en": "Verb stem + 고 나서. The tense goes on the last verb only.",
+        "km": "ដើមកិរិយាស័ព្ទ + 고 나서។ កាលវេលាដាក់តែលើកិរិយាស័ព្ទចុងក្រោយ។"
+      },
+      "examples": [
+        {
+          "ko": "숙제를 하고 나서 친구를 만났어요.",
+          "en": "I met my friend after doing my homework.",
+          "km": "ខ្ញុំបានជួបមិត្តភក្តិ បន្ទាប់ពីធ្វើកិច្ចការផ្ទះរួច។"
+        },
+        {
+          "ko": "영화가 끝나고 나서 저녁을 먹어요.",
+          "en": "We'll eat dinner after the movie ends.",
+          "km": "យើងញ៉ាំអាហារពេលល្ងាច បន្ទាប់ពីកុនចប់។"
+        }
+      ],
+      "related": [
+        "grammar.0112",
+        "grammar.0016"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0121",
+      "pattern": "-(으)ㄴ 적이 있다/없다",
+      "level": 2,
+      "category": "expression",
+      "explanation": {
+        "en": "Have (or have never) had an experience. Often used with -아/어 보다: 가 본 적이 있다.",
+        "km": "ធ្លាប់ (ឬមិនធ្លាប់) មានបទពិសោធន៍។ ច្រើនប្រើជាមួយ -아/어 보다៖ 가 본 적이 있다។"
+      },
+      "formation": {
+        "en": "Verb stem + ㄴ 적이 있다/없다 after a vowel, + 은 적이 있다/없다 after a consonant.",
+        "km": "ដើមកិរិយាស័ព្ទ + ㄴ 적이 있다/없다 ក្រោយស្រៈ, + 은 적이 있다/없다 ក្រោយព្យញ្ជនៈ។"
+      },
+      "examples": [
+        {
+          "ko": "한국에 가 본 적이 있어요.",
+          "en": "I have been to Korea.",
+          "km": "ខ្ញុំធ្លាប់ទៅប្រទេសកូរ៉េ។"
+        },
+        {
+          "ko": "저는 김치를 먹은 적이 없어요.",
+          "en": "I have never eaten kimchi.",
+          "km": "ខ្ញុំមិនដែលញ៉ាំគីមឈីទេ។"
+        }
+      ],
+      "related": [
+        "grammar.0111"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0122",
+      "pattern": "-는 것 같다 / -(으)ㄴ 것 같다 / -(으)ㄹ 것 같다",
+      "level": 2,
+      "category": "modality",
+      "explanation": {
+        "en": "It seems that, I think that. -는 for what seems to be happening now, -(으)ㄴ for the past (verbs) or the present (adjectives), -(으)ㄹ for a guess about the future.",
+        "km": "ហាក់ដូចជា, ខ្ញុំគិតថា។ -는 សម្រាប់អ្វីដែលហាក់កំពុងកើតឡើង, -(으)ㄴ សម្រាប់អតីតកាល (កិរិយាស័ព្ទ) ឬបច្ចុប្បន្ន (គុណនាម), -(으)ㄹ សម្រាប់ការទស្សន៍ទាយអនាគត។"
+      },
+      "formation": {
+        "en": "Verb + 는 것 같다 (now), verb + (으)ㄴ 것 같다 (past), adjective + (으)ㄴ 것 같다 (now), verb/adjective + (으)ㄹ 것 같다 (guess).",
+        "km": "កិរិយាស័ព្ទ + 는 것 같다 (ឥឡូវ), កិរិយាស័ព្ទ + (으)ㄴ 것 같다 (អតីត), គុណនាម + (으)ㄴ 것 같다 (ឥឡូវ), កិរិយាស័ព្ទ/គុណនាម + (으)ㄹ 것 같다 (ទស្សន៍ទាយ)។"
+      },
+      "examples": [
+        {
+          "ko": "밖에 비가 오는 것 같아요.",
+          "en": "It seems to be raining outside.",
+          "km": "ហាក់ដូចជាភ្លៀងនៅខាងក្រៅ។"
+        },
+        {
+          "ko": "내일은 날씨가 추울 것 같아요.",
+          "en": "I think it will be cold tomorrow.",
+          "km": "ខ្ញុំគិតថាថ្ងៃស្អែកអាកាសធាតុនឹងត្រជាក់។"
+        }
+      ],
+      "related": [
+        "grammar.0109"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0123",
+      "pattern": "-아/어 보이다",
+      "level": 2,
+      "category": "expression",
+      "explanation": {
+        "en": "Look, seem (judging by appearance). Used with adjectives: 피곤해 보여요 = you look tired.",
+        "km": "មើលទៅ, ហាក់ដូចជា (តាមរូបរាង)។ ប្រើជាមួយគុណនាម៖ 피곤해 보여요 = មើលទៅអ្នកហត់។"
+      },
+      "formation": {
+        "en": "Adjective stem + 아 보이다 (after ㅏ/ㅗ), + 어 보이다 (other vowels), 하다 → 해 보이다.",
+        "km": "ដើមគុណនាម + 아 보이다 (ក្រោយ ㅏ/ㅗ), + 어 보이다 (ស្រៈផ្សេង), 하다 → 해 보이다។"
+      },
+      "examples": [
+        {
+          "ko": "오늘 기분이 좋아 보여요.",
+          "en": "You look happy today.",
+          "km": "ថ្ងៃនេះអ្នកមើលទៅសប្បាយចិត្ត។"
+        },
+        {
+          "ko": "이 옷을 입으니까 젊어 보여요.",
+          "en": "You look young in these clothes.",
+          "km": "ពាក់អាវនេះ អ្នកមើលទៅក្មេង។"
+        }
+      ],
+      "related": [
+        "grammar.0420"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0124",
+      "pattern": "-아/어 있다",
+      "level": 2,
+      "category": "expression",
+      "explanation": {
+        "en": "A state that continues after an action is finished: the door is open, he is sitting. Compare -고 있다, which is an action in progress.",
+        "km": "ស្ថានភាពដែលនៅបន្តបន្ទាប់ពីសកម្មភាពចប់៖ ទ្វារកំពុងបើក, គាត់កំពុងអង្គុយ។ ប្រៀបធៀប -고 있다 ដែលជាសកម្មភាពកំពុងធ្វើ។"
+      },
+      "formation": {
+        "en": "Intransitive or passive verb stem + 아/어 있다: 앉다 → 앉아 있다, 열리다 → 열려 있다.",
+        "km": "ដើមកិរិយាស័ព្ទអកម្ម ឬកម្មវាច្យ + 아/어 있다៖ 앉다 → 앉아 있다, 열리다 → 열려 있다។"
+      },
+      "examples": [
+        {
+          "ko": "창문이 열려 있어요.",
+          "en": "The window is open.",
+          "km": "បង្អួចកំពុងបើក។"
+        },
+        {
+          "ko": "동생이 소파에 앉아 있어요.",
+          "en": "My younger sibling is sitting on the sofa.",
+          "km": "ប្អូនខ្ញុំកំពុងអង្គុយលើសាឡុង។"
+        }
+      ],
+      "related": [
+        "grammar.0108"
+      ],
+      "review": "pending"
+    }
+  ]
+}

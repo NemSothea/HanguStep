@@ -1793,6 +1793,431 @@
         "grammar.0315"
       ],
       "review": "pending"
+    },
+    {
+      "id": "grammar.0461",
+      "pattern": "-는 대신(에)",
+      "level": 4,
+      "category": "connective",
+      "explanation": {
+        "en": "Instead of doing A, do B; or A, but in return B (a trade-off). With adjectives use -(으)ㄴ 대신(에).",
+        "km": "ជំនួសឱ្យការធ្វើ A ធ្វើ B; ឬ A ប៉ុន្តែជាថ្នូរវិញ B។ ជាមួយគុណនាម ប្រើ -(으)ㄴ 대신(에)។"
+      },
+      "formation": {
+        "en": "Verb stem + 는 대신(에); adjective + (으)ㄴ 대신(에); noun + 대신(에).",
+        "km": "ដើមកិរិយាស័ព្ទ + 는 대신(에); គុណនាម + (으)ㄴ 대신(에); នាម + 대신(에)។"
+      },
+      "examples": [
+        {
+          "ko": "주말에 쉬는 대신에 평일에 일을 더 해요.",
+          "en": "I work more on weekdays in return for resting on weekends.",
+          "km": "ខ្ញុំធ្វើការច្រើនជាងនៅថ្ងៃធ្វើការ ជាថ្នូរនឹងការសម្រាកនៅចុងសប្តាហ៍។"
+        },
+        {
+          "ko": "이 집은 좁은 대신 역에서 가까워요.",
+          "en": "This house is small, but it is close to the station.",
+          "km": "ផ្ទះនេះតូច ប៉ុន្តែនៅជិតស្ថានីយ៍។"
+        }
+      ],
+      "related": [
+        "grammar.0419"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0462",
+      "pattern": "-아/어 가지고",
+      "level": 4,
+      "category": "connective",
+      "explanation": {
+        "en": "Spoken form with two uses: do A and then (with its result) B, or because of A. Close to -아/어서 but more casual.",
+        "km": "ទម្រង់និយាយ មានពីរន័យ៖ ធ្វើ A ហើយ (ជាមួយលទ្ធផល) B, ឬ ដោយសារ A។ ជិតនឹង -아/어서 ប៉ុន្តែមិនផ្លូវការ។"
+      },
+      "formation": {
+        "en": "Verb/adjective stem + 아/어 가지고; 하다 → 해 가지고.",
+        "km": "ដើមកិរិយាស័ព្ទ/គុណនាម + 아/어 가지고; 하다 → 해 가지고។"
+      },
+      "examples": [
+        {
+          "ko": "김밥을 만들어 가지고 소풍을 갔어요.",
+          "en": "I made gimbap and took it on a picnic.",
+          "km": "ខ្ញុំធ្វើគីមបាប ហើយយកទៅដើរលេង។"
+        },
+        {
+          "ko": "길이 너무 막혀 가지고 늦었어요.",
+          "en": "The traffic was so bad that I was late.",
+          "km": "ផ្លូវកកស្ទះខ្លាំង ធ្វើឱ្យខ្ញុំយឺត។"
+        }
+      ],
+      "related": [
+        "grammar.0102"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0463",
+      "pattern": "-는 줄 알았다/몰랐다",
+      "level": 4,
+      "category": "expression",
+      "explanation": {
+        "en": "I thought (wrongly) that ..., or I didn't know that .... Usually the belief turns out to be wrong.",
+        "km": "ខ្ញុំគិត (ខុស) ថា ... ឬ ខ្ញុំមិនដឹងថា ...។ ជាធម្មតាជំនឿនោះប្រែជាខុស។"
+      },
+      "formation": {
+        "en": "Verb + 는 줄 (now), verb + (으)ㄴ 줄 (past), adjective + (으)ㄴ 줄, noun + 인 줄, + 알았다/몰랐다.",
+        "km": "កិរិយាស័ព្ទ + 는 줄 (ឥឡូវ), កិរិយាស័ព្ទ + (으)ㄴ 줄 (អតីត), គុណនាម + (으)ㄴ 줄, នាម + 인 줄, + 알았다/몰랐다។"
+      },
+      "examples": [
+        {
+          "ko": "수진 씨가 학생인 줄 알았어요. 선생님이었군요.",
+          "en": "I thought Sujin was a student. She was a teacher.",
+          "km": "ខ្ញុំគិតថាស៊ូជីនជាសិស្ស។ តាមពិតគាត់ជាគ្រូ។"
+        },
+        {
+          "ko": "오늘 시험이 있는 줄 몰랐어요.",
+          "en": "I didn't know there was a test today.",
+          "km": "ខ្ញុំមិនដឹងថាថ្ងៃនេះមានការប្រឡងទេ។"
+        }
+      ],
+      "related": [
+        "grammar.0119"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0464",
+      "pattern": "-(으)ㄴ/는데도",
+      "level": 4,
+      "category": "connective",
+      "explanation": {
+        "en": "Even though A, B (unexpected result). Stronger than -지만; close to -아/어도 but A is a real fact.",
+        "km": "ទោះបីជា A ក៏ B (លទ្ធផលមិននឹកស្មាន)។ ខ្លាំងជាង -지만; ជិតនឹង -아/어도 ប៉ុន្តែ A ជាការពិត។"
+      },
+      "formation": {
+        "en": "Verb + 는데도; adjective + (으)ㄴ데도; past -았/었는데도; noun + 인데도.",
+        "km": "កិរិយាស័ព្ទ + 는데도; គុណនាម + (으)ㄴ데도; អតីត -았/었는데도; នាម + 인데도។"
+      },
+      "examples": [
+        {
+          "ko": "비가 오는데도 사람들이 많이 왔어요.",
+          "en": "Even though it was raining, many people came.",
+          "km": "ទោះបីភ្លៀងក៏ដោយ មានមនុស្សមកច្រើន។"
+        },
+        {
+          "ko": "열심히 연습했는데도 실수를 했어요.",
+          "en": "Even though I practised hard, I made a mistake.",
+          "km": "ទោះបីខ្ញុំហាត់យ៉ាងខ្លាំង ក៏ខ្ញុំធ្វើខុស។"
+        }
+      ],
+      "related": [
+        "grammar.0304",
+        "grammar.0413"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0465",
+      "pattern": "-기는(요)",
+      "level": 4,
+      "category": "sentence ending",
+      "explanation": {
+        "en": "Spoken reply that politely denies or plays down what the other person said, e.g. to a compliment. Short form -긴(요).",
+        "km": "ចម្លើយនិយាយ ដែលបដិសេធ ឬបន្ថយអ្វីដែលអ្នកម្ខាងទៀតនិយាយដោយគួរសម ឧ. ចំពោះការសរសើរ។ ទម្រង់ខ្លី -긴(요)។"
+      },
+      "formation": {
+        "en": "Verb/adjective stem + 기는(요): 잘하다 → 잘하기는요.",
+        "km": "ដើមកិរិយាស័ព្ទ/គុណនាម + 기는(요)៖ 잘하다 → 잘하기는요។"
+      },
+      "examples": [
+        {
+          "ko": "가: 요리를 잘하시네요. 나: 잘하기는요. 아직 배우고 있어요.",
+          "en": "A: You cook well. B: Not at all. I'm still learning.",
+          "km": "ក៖ អ្នកធ្វើម្ហូបពូកែណាស់។ ខ៖ មិនពូកែទេ។ ខ្ញុំនៅកំពុងរៀន។"
+        },
+        {
+          "ko": "가: 시험 쉬웠어요? 나: 쉽기는요. 정말 어려웠어요.",
+          "en": "A: Was the test easy? B: Easy? No way. It was really hard.",
+          "km": "ក៖ ការប្រឡងងាយទេ? ខ៖ ងាយអី។ ពិបាកណាស់។"
+        }
+      ],
+      "related": [
+        "grammar.0423"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0466",
+      "pattern": "-게 하다",
+      "level": 4,
+      "category": "expression",
+      "explanation": {
+        "en": "Make or let someone do something (causative). The person made to act takes 을/를 or 에게.",
+        "km": "ធ្វើឱ្យ ឬអនុញ្ញាតឱ្យនរណាម្នាក់ធ្វើអ្វីមួយ (បុព្វហេតុ)។ អ្នកដែលត្រូវធ្វើ ប្រើ 을/를 ឬ 에게។"
+      },
+      "formation": {
+        "en": "Verb/adjective stem + 게 하다.",
+        "km": "ដើមកិរិយាស័ព្ទ/គុណនាម + 게 하다។"
+      },
+      "examples": [
+        {
+          "ko": "엄마가 동생에게 방을 청소하게 했어요.",
+          "en": "Mom made my younger sibling clean the room.",
+          "km": "ម្តាយបានឱ្យប្អូនខ្ញុំសម្អាតបន្ទប់។"
+        },
+        {
+          "ko": "그 영화는 사람들을 웃게 해요.",
+          "en": "That movie makes people laugh.",
+          "km": "កុននោះធ្វើឱ្យមនុស្សសើច។"
+        }
+      ],
+      "related": [
+        "grammar.0428",
+        "grammar.0438"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0467",
+      "pattern": "Passive -이/히/리/기-",
+      "level": 4,
+      "category": "expression",
+      "explanation": {
+        "en": "Passive verbs: the subject receives the action. 보다 → 보이다, 닫다 → 닫히다, 열다 → 열리다, 안다 → 안기다. Each verb takes a fixed suffix; learn them as words.",
+        "km": "កិរិយាស័ព្ទកម្មវាច្យ៖ ប្រធានទទួលសកម្មភាព។ 보다 → 보이다, 닫다 → 닫히다, 열다 → 열리다, 안다 → 안기다។ កិរិយាស័ព្ទនីមួយៗមានបច្ច័យថេរ; រៀនវាជាពាក្យ។"
+      },
+      "formation": {
+        "en": "Verb stem + 이, 히, 리 or 기 (fixed per verb) + endings. The doer, if shown, takes 에게.",
+        "km": "ដើមកិរិយាស័ព្ទ + 이, 히, 리 ឬ 기 (ថេរតាមកិរិយាស័ព្ទ) + ចុង។ អ្នកធ្វើ បើបង្ហាញ ប្រើ 에게។"
+      },
+      "examples": [
+        {
+          "ko": "바람 때문에 문이 닫혔어요.",
+          "en": "The door closed because of the wind.",
+          "km": "ទ្វារបានបិទដោយសារខ្យល់។"
+        },
+        {
+          "ko": "여기에서 바다가 잘 보여요.",
+          "en": "You can see the sea well from here.",
+          "km": "ពីទីនេះ អាចមើលឃើញសមុទ្របានច្បាស់។"
+        }
+      ],
+      "related": [
+        "grammar.0420"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0468",
+      "pattern": "-다니(요)",
+      "level": 4,
+      "category": "sentence ending",
+      "explanation": {
+        "en": "Expresses surprise or disbelief at something just heard or found out: What? ... ?! Noun + (이)라니(요).",
+        "km": "បង្ហាញការភ្ញាក់ផ្អើល ឬមិនជឿ ចំពោះអ្វីដែលទើបឮ ឬដឹង៖ អី? ...?! នាម + (이)라니(요)។"
+      },
+      "formation": {
+        "en": "Verb/adjective + 다니(요) (present verbs often ㄴ/는다니요), past -았/었다니요, noun + (이)라니요.",
+        "km": "កិរិយាស័ព្ទ/គុណនាម + 다니(요) (កិរិយាស័ព្ទបច្ចុប្បន្ន ច្រើន ㄴ/는다니요), អតីត -았/었다니요, នាម + (이)라니요។"
+      },
+      "examples": [
+        {
+          "ko": "벌써 퇴근한다니요? 아직 세 시예요.",
+          "en": "You're leaving work already? It's only three o'clock.",
+          "km": "ចេញពីការងារហើយឬ? ទើបតែម៉ោងបី។"
+        },
+        {
+          "ko": "그 가게가 문을 닫았다니 정말 아쉬워요.",
+          "en": "I can't believe that shop closed. What a pity.",
+          "km": "មិនគួរជឿថាហាងនោះបិទហើយ។ គួរឱ្យស្តាយណាស់។"
+        }
+      ],
+      "related": [
+        "grammar.0305"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0469",
+      "pattern": "-아/어서 그런지",
+      "level": 4,
+      "category": "cause",
+      "explanation": {
+        "en": "Maybe because A, B. A guessed reason, less certain than -아/어서.",
+        "km": "ប្រហែលដោយសារ A ទើប B។ ហេតុផលដែលទាយ មិនច្បាស់ដូច -아/어서 ទេ។"
+      },
+      "formation": {
+        "en": "Verb/adjective stem + 아/어서 그런지; noun + (이)라서 그런지.",
+        "km": "ដើមកិរិយាស័ព្ទ/គុណនាម + 아/어서 그런지; នាម + (이)라서 그런지។"
+      },
+      "examples": [
+        {
+          "ko": "커피를 많이 마셔서 그런지 잠이 안 와요.",
+          "en": "Maybe because I drank a lot of coffee, I can't sleep.",
+          "km": "ប្រហែលដោយសារខ្ញុំផឹកកាហ្វេច្រើន ទើបដេកមិនលក់។"
+        },
+        {
+          "ko": "주말이라서 그런지 공원에 사람이 많아요.",
+          "en": "Maybe because it's the weekend, the park is crowded.",
+          "km": "ប្រហែលដោយសារជាចុងសប្តាហ៍ ទើបមានមនុស្សច្រើននៅសួន។"
+        }
+      ],
+      "related": [
+        "grammar.0102",
+        "grammar.0303"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0470",
+      "pattern": "-다고 해도",
+      "level": 4,
+      "category": "condition",
+      "explanation": {
+        "en": "Even if (it is said that) A, B does not change. Stronger and more hypothetical than -아/어도.",
+        "km": "ទោះបីជា (គេថា) A ក៏ B មិនផ្លាស់ប្តូរ។ ខ្លាំង និងជាការសន្មតជាង -아/어도។"
+      },
+      "formation": {
+        "en": "Verb + ㄴ/는다고 해도; adjective + 다고 해도; noun + (이)라고 해도.",
+        "km": "កិរិយាស័ព្ទ + ㄴ/는다고 해도; គុណនាម + 다고 해도; នាម + (이)라고 해도។"
+      },
+      "examples": [
+        {
+          "ko": "아무리 바쁘다고 해도 건강은 챙겨야 해요.",
+          "en": "No matter how busy you are, you must look after your health.",
+          "km": "ទោះរវល់យ៉ាងណាក៏ដោយ ត្រូវតែថែរក្សាសុខភាព។"
+        },
+        {
+          "ko": "돈이 많다고 해도 행복한 것은 아니에요.",
+          "en": "Even if you have a lot of money, it doesn't mean you are happy.",
+          "km": "ទោះមានលុយច្រើនក៏ដោយ មិនមែនមានន័យថាសប្បាយទេ។"
+        }
+      ],
+      "related": [
+        "grammar.0413",
+        "grammar.0320"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0471",
+      "pattern": "-던",
+      "level": 4,
+      "category": "modifier",
+      "explanation": {
+        "en": "Modifier for a past action that was repeated or not finished: the book I used to read, the coffee I was drinking.",
+        "km": "ពាក្យកែលម្អសម្រាប់សកម្មភាពអតីតកាលដែលធ្វើម្តងហើយម្តងទៀត ឬមិនទាន់ចប់៖ សៀវភៅដែលខ្ញុំធ្លាប់អាន, កាហ្វេដែលខ្ញុំកំពុងផឹក។"
+      },
+      "formation": {
+        "en": "Verb/adjective stem + 던 + noun. -았/었던 stresses that the past state is over.",
+        "km": "ដើមកិរិយាស័ព្ទ/គុណនាម + 던 + នាម។ -았/었던 សង្កត់ថាស្ថានភាពអតីតបានចប់ហើយ។"
+      },
+      "examples": [
+        {
+          "ko": "이건 제가 어릴 때 자주 가던 식당이에요.",
+          "en": "This is the restaurant I often went to as a child.",
+          "km": "នេះជាភោជនីយដ្ឋានដែលខ្ញុំធ្លាប់ទៅញឹកញាប់កាលនៅក្មេង។"
+        },
+        {
+          "ko": "읽던 책을 책상 위에 두었어요.",
+          "en": "I left the book I was reading on the desk.",
+          "km": "ខ្ញុំទុកសៀវភៅដែលកំពុងអាននៅលើតុ។"
+        }
+      ],
+      "related": [
+        "grammar.0109"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0472",
+      "pattern": "-나 보다 / -(으)ㄴ가 보다",
+      "level": 4,
+      "category": "modality",
+      "explanation": {
+        "en": "It seems (a guess from what the speaker sees or hears). Verbs take -나 보다, adjectives -(으)ㄴ가 보다. Not used about the speaker.",
+        "km": "ហាក់ដូចជា (ការទាយពីអ្វីដែលអ្នកនិយាយឃើញ ឬឮ)។ កិរិយាស័ព្ទ ប្រើ -나 보다, គុណនាម ប្រើ -(으)ㄴ가 보다។ មិនប្រើអំពីខ្លួនអ្នកនិយាយទេ។"
+      },
+      "formation": {
+        "en": "Verb stem + 나 보다 (past -았/었나 보다); adjective + (으)ㄴ가 보다; noun + 인가 보다.",
+        "km": "ដើមកិរិយាស័ព្ទ + 나 보다 (អតីត -았/었나 보다); គុណនាម + (으)ㄴ가 보다; នាម + 인가 보다។"
+      },
+      "examples": [
+        {
+          "ko": "불이 꺼져 있어요. 다들 퇴근했나 봐요.",
+          "en": "The lights are off. Everyone seems to have gone home.",
+          "km": "ភ្លើងបានបិទ។ ហាក់ដូចជាគ្រប់គ្នាត្រឡប់ទៅផ្ទះហើយ។"
+        },
+        {
+          "ko": "사람들이 줄을 서 있네요. 저 식당이 유명한가 봐요.",
+          "en": "People are lining up. That restaurant must be famous.",
+          "km": "មនុស្សតម្រង់ជួរ។ ភោជនីយដ្ឋាននោះប្រហែលល្បី។"
+        }
+      ],
+      "related": [
+        "grammar.0455",
+        "grammar.0454"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0473",
+      "pattern": "-(으)ㄹ 수도 있다",
+      "level": 4,
+      "category": "modality",
+      "explanation": {
+        "en": "Might, could possibly. Adds 도 to -(으)ㄹ 수 있다 to show one possibility among others.",
+        "km": "ប្រហែល, អាចនឹង។ បន្ថែម 도 លើ -(으)ㄹ 수 있다 ដើម្បីបង្ហាញលទ្ធភាពមួយក្នុងចំណោមលទ្ធភាពផ្សេងៗ។"
+      },
+      "formation": {
+        "en": "Verb/adjective stem + ㄹ 수도 있다 after a vowel, + 을 수도 있다 after a consonant.",
+        "km": "ដើមកិរិយាស័ព្ទ/គុណនាម + ㄹ 수도 있다 ក្រោយស្រៈ, + 을 수도 있다 ក្រោយព្យញ្ជនៈ។"
+      },
+      "examples": [
+        {
+          "ko": "오후에 비가 올 수도 있으니까 우산을 가져가세요.",
+          "en": "It might rain this afternoon, so take an umbrella.",
+          "km": "អាចនឹងភ្លៀងពេលរសៀល ដូច្នេះយកឆ័ត្រទៅ។"
+        },
+        {
+          "ko": "누구나 실수할 수도 있어요.",
+          "en": "Anyone can make a mistake.",
+          "km": "នរណាក៏អាចធ្វើខុសដែរ។"
+        }
+      ],
+      "related": [
+        "grammar.0105"
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "grammar.0474",
+      "pattern": "-기 쉽다",
+      "level": 4,
+      "category": "expression",
+      "explanation": {
+        "en": "Likely to, tend to (often something bad). Opposite -기 어렵다 = hard to, unlikely to.",
+        "km": "ងាយនឹង, ទំនងនឹង (ច្រើនជារឿងអាក្រក់)។ ផ្ទុយ -기 어렵다 = ពិបាក, មិនសូវ។"
+      },
+      "formation": {
+        "en": "Verb stem + 기 쉽다.",
+        "km": "ដើមកិរិយាស័ព្ទ + 기 쉽다។"
+      },
+      "examples": [
+        {
+          "ko": "피곤하면 실수하기 쉬워요.",
+          "en": "When you are tired, you are likely to make mistakes.",
+          "km": "ពេលហត់ អ្នកងាយនឹងធ្វើខុស។"
+        },
+        {
+          "ko": "겨울에는 감기에 걸리기 쉬워요.",
+          "en": "In winter it is easy to catch a cold.",
+          "km": "នៅរដូវរងា ងាយនឹងផ្តាសាយ។"
+        }
+      ],
+      "related": [
+        "grammar.0432"
+      ],
+      "review": "pending"
     }
   ]
 }
