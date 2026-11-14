@@ -80,4 +80,29 @@ final class BundledContentTests: XCTestCase {
         let again = try await store.apply(library.package)
         XCTAssertTrue(again.skipped, "same version is not re-imported")
     }
+
+    // MARK: Warm launch (summary.json)
+
+    func testSummaryMatchesTheFullLibrary() throws {
+        let summary = try XCTUnwrap(BundledContent.summary(), "summary.json missing: run content-lint generate-questions")
+        XCTAssertEqual(summary, try BundledContent.load().info, "summary.json is stale: run content-lint generate-questions")
+    }
+
+    func testWarmLaunchUsesSummaryAndStaleStoreStillImports() async throws {
+        let controller = try PersistenceController(mode: .inMemory)
+        let first = try await BundledContentInstaller.installIfNeeded(controller: controller)
+        let installedVersion = try await CoreDataContentStore(controller: controller).installedContentVersion()
+        XCTAssertEqual(installedVersion, first.version)
+        let warm = try await BundledContentInstaller.installIfNeeded(controller: controller)
+        XCTAssertEqual(warm, first, "warm launch reports the same library")
+
+        // A store holding an older library is brought up to date, never skipped.
+        let older = try PersistenceController(mode: .inMemory)
+        _ = try await CoreDataContentStore(controller: older).apply(SampleContent.package)
+        let upgraded = try await BundledContentInstaller.installIfNeeded(controller: older)
+        XCTAssertEqual(upgraded.version, first.version)
+        let upgradedVersion = try await CoreDataContentStore(controller: older).installedContentVersion()
+        XCTAssertEqual(upgradedVersion, first.version)
+    }
 }
+

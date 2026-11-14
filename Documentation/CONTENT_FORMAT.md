@@ -9,6 +9,7 @@ Defines the JSON library that ships inside the app and the tooling that validate
 ```
 Packages/HanguStepKit/Sources/Persistence/Resources/Content/
 ├── package.json                      # format version, library version, default source
+├── summary.json                      # output of `content-lint generate-questions`, do not edit
 ├── vocabulary/*.json                 # part files, any number
 ├── writing/*.json                    # TOPIK II writing prompts (not part of the package, see below)
 ├── grammar/*.json
@@ -88,11 +89,13 @@ Any issue throws `ContentFile.Error.invalid([ContentPackageIssue])`. The app doe
 ```
 cd Packages/HanguStepKit
 swift run content-lint                       # validate the bundled library, print counts per level and pending review
-swift run content-lint generate-questions    # rewrite questions/generated-meaning.json from the vocabulary
+swift run content-lint generate-questions    # rewrite questions/generated-meaning.json and summary.json
 swift run content-lint /path/to/other/dir    # validate any directory with the same layout
 ```
 
-`generate-questions` builds two questions per word (Korean to meaning, meaning to Korean) with `MeaningQuestionGenerator`. Distractors prefer the same part of speech and level, never repeat a hangul or meaning, and the shuffle is seeded from the question id, so re-running on unchanged vocabulary produces an identical file and option order stays stable. Re-run it after every vocabulary change and commit the output; CI runs the lint and fails on a diff.
+`generate-questions` builds two questions per word (Korean to meaning, meaning to Korean) with `MeaningQuestionGenerator`. Distractors prefer the same part of speech and level, never repeat a hangul or meaning, and the shuffle is seeded from the question id, so re-running on unchanged vocabulary produces an identical file and option order stays stable. Re-run it after every content change and commit the output; CI runs the lint and fails on a diff.
+
+`summary.json` holds the counts, pending-review total and credits that Settings shows. On a warm launch the app reads only this file and `package.json`'s version: when the store already holds that version, the multi-megabyte library is not decoded. `content-lint` fails when the summary is missing or stale, and a bundled-content test checks it against the full library.
 
 ## 6. Shipping a content update
 
