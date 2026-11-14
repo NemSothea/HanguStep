@@ -1,31 +1,38 @@
+import DesignSystem
 import Domain
 import Foundation
 import Observation
 
+public struct DashboardContent: Equatable, Sendable {
+    public let summary: DashboardSummary
+    public let unfinished: QuizSessionSnapshot?
+}
+
 @MainActor
 @Observable
 public final class DashboardViewModel {
-    public enum State: Equatable {
-        case idle
-        case loading
-        case loaded(DashboardSummary)
-        case failed(message: String)
-    }
-
-    public private(set) var state: State = .idle
+    public private(set) var state: ViewState<DashboardContent> = .idle
 
     private let loadSummary: any LoadDashboardSummaryUseCase
+    private let resume: any ResumeQuizSessionUseCase
 
-    public init(loadSummary: any LoadDashboardSummaryUseCase) {
+    public init(loadSummary: any LoadDashboardSummaryUseCase, resume: any ResumeQuizSessionUseCase) {
         self.loadSummary = loadSummary
+        self.resume = resume
     }
 
     public func load() async {
-        state = .loading
+        if state.value == nil { state = .loading }
         do {
-            state = .loaded(try await loadSummary.execute())
+            async let summary = loadSummary.execute()
+            async let unfinished = resume.execute()
+            state = .loaded(DashboardContent(summary: try await summary, unfinished: try await unfinished))
         } catch {
             state = .failed(message: error.localizedDescription)
         }
+    }
+
+    public func discardUnfinished() async {
+        do { try await resume.discardUnfinished(); await load() } catch { state = .failed(message: error.localizedDescription) }
     }
 }

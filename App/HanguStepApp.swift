@@ -1,13 +1,35 @@
+import DesignSystem
 import Features
 import SwiftUI
 
 @main
 struct HanguStepApp: App {
-    private let container = AppContainer()
+    @State private var container = AppContainer()
 
     var body: some Scene {
         WindowGroup {
-            RootView(dependencies: container.dependencies)
+            #if DEBUG
+            if CommandLine.arguments.contains("--component-gallery") {
+                NavigationStack { ComponentGalleryView() }
+            } else {
+                root
+            }
+            #else
+            root
+            #endif
+        }
+    }
+
+    @ViewBuilder
+    private var root: some View {
+        switch container.state {
+        case .starting:
+            ProgressView("Preparing your library")
+                .task { await container.bootstrap() }
+        case let .ready(dependencies, preferences, syncStatus, assistant):
+            RootView(dependencies: dependencies, preferences: preferences, syncStatus: syncStatus, assistant: assistant)
+        case let .failed(message):
+            ErrorStateView(message: message)
         }
     }
 }

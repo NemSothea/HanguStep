@@ -1,21 +1,37 @@
 import DesignSystem
+import Domain
 import SwiftUI
 
 /// Adaptive navigation shell. One `NavigationStack` per section so each tab
 /// keeps its own back stack; sidebar on regular widths.
 public struct RootView: View {
     private let dependencies: AppDependencies
+    private let preferences: LearnerPreferences
+    private let syncStatus: SyncStatusModel
+    private let assistant: AssistantModel
     @State private var selection: AppSection? = .home
 
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     #endif
 
-    public init(dependencies: AppDependencies) {
+    public init(dependencies: AppDependencies, preferences: LearnerPreferences, syncStatus: SyncStatusModel? = nil, assistant: AssistantModel? = nil) {
         self.dependencies = dependencies
+        self.preferences = preferences
+        self.syncStatus = syncStatus ?? SyncStatusModel(state: .disabled, isSyncPreferred: false) { _ in }
+        self.assistant = assistant ?? AssistantModel.disabled()
     }
 
     public var body: some View {
+        shell
+            .tint(HSColor.accent)
+            .environment(preferences)
+            .environment(syncStatus)
+            .environment(assistant)
+    }
+
+    @ViewBuilder
+    private var shell: some View {
         #if os(iOS)
         if horizontalSizeClass == .compact {
             tabLayout
@@ -28,16 +44,11 @@ public struct RootView: View {
     }
 
     private var tabLayout: some View {
-        TabView(selection: Binding(
-            get: { selection ?? .home },
-            set: { selection = $0 }
-        )) {
+        TabView(selection: Binding(get: { selection ?? .home }, set: { selection = $0 })) {
             ForEach(AppSection.allCases) { section in
-                NavigationStack {
-                    destination(for: section)
-                }
-                .tabItem { Label(section.title, systemImage: section.systemImage) }
-                .tag(section)
+                destination(for: section)
+                    .tabItem { Label(section.title, systemImage: section.systemImage) }
+                    .tag(section)
             }
         }
     }
@@ -45,14 +56,11 @@ public struct RootView: View {
     private var splitLayout: some View {
         NavigationSplitView {
             List(AppSection.allCases, selection: $selection) { section in
-                Label(section.title, systemImage: section.systemImage)
-                    .tag(section)
+                Label(section.title, systemImage: section.systemImage).tag(section)
             }
             .navigationTitle("HanguStep")
         } detail: {
-            NavigationStack {
-                destination(for: selection ?? .home)
-            }
+            destination(for: selection ?? .home)
         }
     }
 
@@ -60,9 +68,17 @@ public struct RootView: View {
     private func destination(for section: AppSection) -> some View {
         switch section {
         case .home:
-            DashboardView(viewModel: DashboardViewModel(loadSummary: dependencies.loadDashboardSummary))
-        case .learn, .quiz, .review, .progress:
-            PlaceholderView(section: section)
+            NavigationStack {
+                DashboardView(viewModel: DashboardViewModel(loadSummary: dependencies.loadDashboardSummary, resume: dependencies.resumeQuiz), dependencies: dependencies)
+            }
+        case .learn:
+            LearnView(dependencies: dependencies)
+        case .quiz:
+            QuizSetupView(dependencies: dependencies)
+        case .review:
+            MistakesView(dependencies: dependencies)
+        case .progress:
+            ProgressScreen(dependencies: dependencies)
         }
     }
 }

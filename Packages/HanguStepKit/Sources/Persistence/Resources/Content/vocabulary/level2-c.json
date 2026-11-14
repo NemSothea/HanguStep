@@ -1,0 +1,1166 @@
+{
+  "vocabulary": [
+    {
+      "id": "vocab.0318",
+      "hangul": "안전하다",
+      "romanization": "anjeonhada",
+      "hanja": "安全하다",
+      "pos": "adjective",
+      "level": 2,
+      "category": "description",
+      "meaning": {
+        "en": "to be safe",
+        "km": "មានសុវត្ថិភាព"
+      },
+      "examples": [
+        {
+          "ko": "이 길은 밤에도 안전해요.",
+          "en": "This road is safe even at night.",
+          "km": "ផ្លូវនេះមានសុវត្ថិភាព សូម្បីតែពេលយប់។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/안전하다"
+      }
+    },
+    {
+      "id": "vocab.0319",
+      "hangul": "서두르다",
+      "romanization": "seodureuda",
+      "pos": "verb",
+      "level": 2,
+      "category": "movement",
+      "meaning": {
+        "en": "to hurry, to rush",
+        "km": "ប្រញាប់"
+      },
+      "examples": [
+        {
+          "ko": "늦었으니까 서둘러요.",
+          "en": "We're late, so hurry.",
+          "km": "យើងយឺតហើយ ដូច្នេះប្រញាប់ឡើង។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/서두르다"
+      }
+    },
+    {
+      "id": "vocab.0320",
+      "hangul": "가슴",
+      "romanization": "gaseum",
+      "pos": "noun",
+      "level": 2,
+      "category": "body",
+      "meaning": {
+        "en": "chest, heart (feelings)",
+        "km": "ទ្រូង, បេះដូង (អារម្មណ៍)"
+      },
+      "examples": [
+        {
+          "ko": "그 영화를 보고 가슴이 아팠어요.",
+          "en": "My heart ached after watching that movie.",
+          "km": "ក្រោយមើលភាពយន្តនោះ ខ្ញុំឈឺចាប់ក្នុងចិត្ត។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/가슴"
+      }
+    },
+    {
+      "id": "vocab.0321",
+      "hangul": "대중교통",
+      "romanization": "daejunggyotong",
+      "hanja": "大衆交通",
+      "pos": "noun",
+      "level": 2,
+      "category": "transport",
+      "meaning": {
+        "en": "public transport",
+        "km": "មធ្យោបាយដឹកជញ្ជូនសាធារណៈ"
+      },
+      "examples": [
+        {
+          "ko": "저는 보통 대중교통을 이용해요.",
+          "en": "I usually use public transport.",
+          "km": "ជាធម្មតាខ្ញុំប្រើមធ្យោបាយដឹកជញ្ជូនសាធារណៈ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/대중교통"
+      }
+    },
+    {
+      "id": "vocab.0322",
+      "hangul": "남성",
+      "romanization": "namseong",
+      "hanja": "男性",
+      "pos": "noun",
+      "level": 2,
+      "category": "people",
+      "meaning": {
+        "en": "male, men",
+        "km": "បុរស, ភេទប្រុស"
+      },
+      "examples": [
+        {
+          "ko": "이 옷은 남성에게 인기가 많아요.",
+          "en": "These clothes are popular with men.",
+          "km": "សម្លៀកបំពាក់នេះពេញនិយមក្នុងចំណោមបុរស។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/남성"
+      }
+    },
+    {
+      "id": "vocab.0323",
+      "hangul": "관광객",
+      "romanization": "gwangwanggaek",
+      "hanja": "觀光客",
+      "pos": "noun",
+      "level": 2,
+      "category": "travel",
+      "meaning": {
+        "en": "tourist, sightseer",
+        "km": "ភ្ញៀវទេសចរ"
+      },
+      "examples": [
+        {
+          "ko": "제주도에는 관광객이 많아요.",
+          "en": "There are many tourists on Jeju Island.",
+          "km": "នៅកោះជេជូមានភ្ញៀវទេសចរច្រើន។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/관광객"
+      }
+    },
+    {
+      "id": "vocab.0324",
+      "hangul": "면접",
+      "romanization": "myeonjeop",
+      "hanja": "面接",
+      "pos": "noun",
+      "level": 2,
+      "category": "work",
+      "meaning": {
+        "en": "interview (job)",
+        "km": "ការសម្ភាសន៍"
+      },
+      "examples": [
+        {
+          "ko": "내일 회사 면접이 있어요.",
+          "en": "I have a job interview tomorrow.",
+          "km": "ថ្ងៃស្អែកខ្ញុំមានការសម្ភាសន៍ការងារនៅក្រុមហ៊ុន។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/면접"
+      }
+    },
+    {
+      "id": "vocab.0325",
+      "hangul": "지난번",
+      "romanization": "jinanbeon",
+      "pos": "noun",
+      "level": 2,
+      "category": "time",
+      "meaning": {
+        "en": "last time",
+        "km": "លើកមុន"
+      },
+      "examples": [
+        {
+          "ko": "지난번에 빌린 책을 돌려줄게요.",
+          "en": "I'll return the book I borrowed last time.",
+          "km": "ខ្ញុំនឹងសងសៀវភៅដែលខ្ចីលើកមុនវិញ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/지난번"
+      }
+    },
+    {
+      "id": "vocab.0326",
+      "hangul": "아기",
+      "romanization": "agi",
+      "pos": "noun",
+      "level": 2,
+      "category": "family",
+      "meaning": {
+        "en": "baby",
+        "km": "ទារក"
+      },
+      "examples": [
+        {
+          "ko": "아기가 자고 있어요.",
+          "en": "The baby is sleeping.",
+          "km": "ទារកកំពុងដេក។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/아기"
+      }
+    },
+    {
+      "id": "vocab.0327",
+      "hangul": "미술",
+      "romanization": "misul",
+      "hanja": "美術",
+      "pos": "noun",
+      "level": 2,
+      "category": "culture",
+      "meaning": {
+        "en": "fine art, visual art",
+        "km": "សិល្បៈ (គំនូរ, ចម្លាក់)"
+      },
+      "examples": [
+        {
+          "ko": "저는 미술 시간을 좋아해요.",
+          "en": "I like art class.",
+          "km": "ខ្ញុំចូលចិត្តម៉ោងសិល្បៈ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/미술"
+      }
+    },
+    {
+      "id": "vocab.0328",
+      "hangul": "학기",
+      "romanization": "hakgi",
+      "hanja": "學期",
+      "pos": "noun",
+      "level": 2,
+      "category": "school",
+      "meaning": {
+        "en": "semester, term",
+        "km": "ឆមាស"
+      },
+      "examples": [
+        {
+          "ko": "다음 학기에 한국어 수업을 들을 거예요.",
+          "en": "I'll take a Korean class next semester.",
+          "km": "ឆមាសក្រោយ ខ្ញុំនឹងរៀនថ្នាក់ភាសាកូរ៉េ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/학기"
+      }
+    },
+    {
+      "id": "vocab.0329",
+      "hangul": "그동안",
+      "romanization": "geudongan",
+      "pos": "adverb",
+      "level": 2,
+      "category": "time",
+      "meaning": {
+        "en": "meanwhile, all this time",
+        "km": "កន្លងមក, ក្នុងរយៈពេលនោះ"
+      },
+      "examples": [
+        {
+          "ko": "그동안 잘 지냈어요?",
+          "en": "How have you been all this time?",
+          "km": "កន្លងមកសុខសប្បាយទេ?"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/그동안"
+      }
+    },
+    {
+      "id": "vocab.0330",
+      "hangul": "소설",
+      "romanization": "soseol",
+      "hanja": "小說",
+      "pos": "noun",
+      "level": 2,
+      "category": "culture",
+      "meaning": {
+        "en": "novel, fiction",
+        "km": "ប្រលោមលោក"
+      },
+      "examples": [
+        {
+          "ko": "저는 자기 전에 소설을 읽어요.",
+          "en": "I read novels before going to bed.",
+          "km": "ខ្ញុំអានប្រលោមលោកមុនចូលគេង។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/소설"
+      }
+    },
+    {
+      "id": "vocab.0331",
+      "hangul": "선배",
+      "romanization": "seonbae",
+      "hanja": "先輩",
+      "pos": "noun",
+      "level": 2,
+      "category": "people",
+      "meaning": {
+        "en": "senior (at school or work)",
+        "km": "បងច្បង (នៅសាលា ឬការងារ)"
+      },
+      "examples": [
+        {
+          "ko": "선배가 공부하는 방법을 알려 줬어요.",
+          "en": "My senior told me how to study.",
+          "km": "បងច្បងបានប្រាប់ខ្ញុំពីរបៀបរៀន។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/선배"
+      }
+    },
+    {
+      "id": "vocab.0332",
+      "hangul": "교수",
+      "romanization": "gyosu",
+      "hanja": "敎授",
+      "pos": "noun",
+      "level": 2,
+      "category": "school",
+      "meaning": {
+        "en": "professor",
+        "km": "សាស្ត្រាចារ្យ"
+      },
+      "examples": [
+        {
+          "ko": "우리 교수님은 아주 친절하세요.",
+          "en": "Our professor is very kind.",
+          "km": "សាស្ត្រាចារ្យរបស់យើងចិត្តល្អណាស់។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/교수"
+      }
+    },
+    {
+      "id": "vocab.0333",
+      "hangul": "놓다",
+      "romanization": "nota",
+      "pos": "verb",
+      "level": 2,
+      "category": "daily",
+      "meaning": {
+        "en": "to put, to place",
+        "km": "ដាក់"
+      },
+      "examples": [
+        {
+          "ko": "가방을 의자 위에 놓으세요.",
+          "en": "Please put your bag on the chair.",
+          "km": "សូមដាក់កាបូបលើកៅអី។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/놓다"
+      }
+    },
+    {
+      "id": "vocab.0334",
+      "hangul": "겨울",
+      "romanization": "gyeoul",
+      "pos": "noun",
+      "level": 2,
+      "category": "time",
+      "meaning": {
+        "en": "winter",
+        "km": "រដូវរងា"
+      },
+      "examples": [
+        {
+          "ko": "한국의 겨울은 아주 추워요.",
+          "en": "Winter in Korea is very cold.",
+          "km": "រដូវរងានៅប្រទេសកូរ៉េត្រជាក់ណាស់។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/겨울"
+      }
+    },
+    {
+      "id": "vocab.0335",
+      "hangul": "기계",
+      "romanization": "gigye",
+      "hanja": "機械",
+      "pos": "noun",
+      "level": 2,
+      "category": "things",
+      "meaning": {
+        "en": "machine, machinery",
+        "km": "ម៉ាស៊ីន"
+      },
+      "examples": [
+        {
+          "ko": "이 기계는 사용하기 쉬워요.",
+          "en": "This machine is easy to use.",
+          "km": "ម៉ាស៊ីននេះងាយស្រួលប្រើ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/기계"
+      }
+    },
+    {
+      "id": "vocab.0336",
+      "hangul": "뉴스",
+      "romanization": "nyuseu",
+      "pos": "noun",
+      "level": 2,
+      "category": "media",
+      "meaning": {
+        "en": "news (broadcast)",
+        "km": "ព័ត៌មាន"
+      },
+      "examples": [
+        {
+          "ko": "저는 매일 아침 뉴스를 봐요.",
+          "en": "I watch the news every morning.",
+          "km": "ខ្ញុំមើលព័ត៌មានរៀងរាល់ព្រឹក។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/뉴스"
+      }
+    },
+    {
+      "id": "vocab.0337",
+      "hangul": "계단",
+      "romanization": "gyedan",
+      "hanja": "階段",
+      "pos": "noun",
+      "level": 2,
+      "category": "house",
+      "meaning": {
+        "en": "stairs, staircase",
+        "km": "ជណ្ដើរ"
+      },
+      "examples": [
+        {
+          "ko": "엘리베이터가 고장 나서 계단으로 올라갔어요.",
+          "en": "The elevator was broken, so I went up the stairs.",
+          "km": "ជណ្ដើរយន្តខូច ដូច្នេះខ្ញុំឡើងតាមជណ្ដើរ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/계단"
+      }
+    },
+    {
+      "id": "vocab.0338",
+      "hangul": "어울리다",
+      "romanization": "eoullida",
+      "pos": "verb",
+      "level": 2,
+      "category": "description",
+      "meaning": {
+        "en": "to suit; to get along",
+        "km": "សម; ចុះសម្រុង"
+      },
+      "examples": [
+        {
+          "ko": "그 옷이 정말 잘 어울려요.",
+          "en": "Those clothes really suit you.",
+          "km": "សម្លៀកបំពាក់នោះសមនឹងអ្នកណាស់។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/어울리다"
+      }
+    },
+    {
+      "id": "vocab.0339",
+      "hangul": "가운데",
+      "romanization": "gaunde",
+      "pos": "noun",
+      "level": 2,
+      "category": "place",
+      "meaning": {
+        "en": "middle; among",
+        "km": "កណ្ដាល; ក្នុងចំណោម"
+      },
+      "examples": [
+        {
+          "ko": "사진 가운데에 있는 사람이 제 동생이에요.",
+          "en": "The person in the middle of the photo is my younger sibling.",
+          "km": "មនុស្សនៅកណ្ដាលរូបថតគឺប្អូនរបស់ខ្ញុំ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/가운데"
+      }
+    },
+    {
+      "id": "vocab.0340",
+      "hangul": "죽다",
+      "romanization": "jukda",
+      "pos": "verb",
+      "level": 2,
+      "category": "health",
+      "meaning": {
+        "en": "to die",
+        "km": "ស្លាប់"
+      },
+      "examples": [
+        {
+          "ko": "제가 키우던 꽃이 죽었어요.",
+          "en": "The flower I was growing died.",
+          "km": "ផ្កាដែលខ្ញុំដាំបានស្លាប់។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/죽다"
+      }
+    },
+    {
+      "id": "vocab.0341",
+      "hangul": "내려가다",
+      "romanization": "naeryeogada",
+      "pos": "verb",
+      "level": 2,
+      "category": "movement",
+      "meaning": {
+        "en": "to go down",
+        "km": "ចុះទៅ"
+      },
+      "examples": [
+        {
+          "ko": "계단으로 1층에 내려가요.",
+          "en": "I go down to the first floor by the stairs.",
+          "km": "ខ្ញុំចុះទៅជាន់ទីមួយតាមជណ្ដើរ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/내려가다"
+      }
+    },
+    {
+      "id": "vocab.0342",
+      "hangul": "올라오다",
+      "romanization": "ollaoda",
+      "pos": "verb",
+      "level": 2,
+      "category": "movement",
+      "meaning": {
+        "en": "to come up",
+        "km": "ឡើងមក"
+      },
+      "examples": [
+        {
+          "ko": "친구가 2층으로 올라왔어요.",
+          "en": "My friend came up to the second floor.",
+          "km": "មិត្តខ្ញុំបានឡើងមកជាន់ទីពីរ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/올라오다"
+      }
+    },
+    {
+      "id": "vocab.0343",
+      "hangul": "연락처",
+      "romanization": "yeollakcheo",
+      "hanja": "連絡處",
+      "pos": "noun",
+      "level": 2,
+      "category": "communication",
+      "meaning": {
+        "en": "contact details",
+        "km": "ព័ត៌មានទំនាក់ទំនង"
+      },
+      "examples": [
+        {
+          "ko": "연락처를 여기에 써 주세요.",
+          "en": "Please write your contact details here.",
+          "km": "សូមសរសេរព័ត៌មានទំនាក់ទំនងរបស់អ្នកនៅទីនេះ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/연락처"
+      }
+    },
+    {
+      "id": "vocab.0344",
+      "hangul": "지난달",
+      "romanization": "jinandal",
+      "pos": "noun",
+      "level": 2,
+      "category": "time",
+      "meaning": {
+        "en": "last month",
+        "km": "ខែមុន"
+      },
+      "examples": [
+        {
+          "ko": "지난달에 부산에 다녀왔어요.",
+          "en": "I went to Busan last month.",
+          "km": "ខែមុន ខ្ញុំបានទៅប៊ូសាន។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/지난달"
+      }
+    },
+    {
+      "id": "vocab.0345",
+      "hangul": "매달",
+      "romanization": "maedal",
+      "hanja": "每달",
+      "pos": "adverb",
+      "level": 2,
+      "category": "time",
+      "meaning": {
+        "en": "every month, monthly",
+        "km": "រៀងរាល់ខែ"
+      },
+      "examples": [
+        {
+          "ko": "저는 매달 부모님께 용돈을 드려요.",
+          "en": "I give my parents pocket money every month.",
+          "km": "ខ្ញុំឲ្យប្រាក់ដល់ឪពុកម្ដាយរៀងរាល់ខែ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/매달"
+      }
+    },
+    {
+      "id": "vocab.0346",
+      "hangul": "드시다",
+      "romanization": "deusida",
+      "pos": "verb",
+      "level": 2,
+      "category": "food",
+      "meaning": {
+        "en": "to eat, to drink (honorific)",
+        "km": "ពិសា (ពាក្យគួរសម)"
+      },
+      "examples": [
+        {
+          "ko": "할머니, 점심 드셨어요?",
+          "en": "Grandma, did you have lunch?",
+          "km": "លោកយាយ តើលោកយាយពិសាបាយថ្ងៃត្រង់ហើយឬនៅ?"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/드시다"
+      }
+    },
+    {
+      "id": "vocab.0347",
+      "hangul": "찾아가다",
+      "romanization": "chajagada",
+      "pos": "verb",
+      "level": 2,
+      "category": "movement",
+      "meaning": {
+        "en": "to go and visit, to go to see",
+        "km": "ទៅជួប, ទៅលេង"
+      },
+      "examples": [
+        {
+          "ko": "주말에 고향에 계신 할머니를 찾아갔어요.",
+          "en": "At the weekend I went to see my grandmother in my hometown.",
+          "km": "នៅចុងសប្តាហ៍ ខ្ញុំបានទៅជួបលោកយាយនៅស្រុកកំណើត។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/찾아가다"
+      }
+    },
+    {
+      "id": "vocab.0348",
+      "hangul": "저렴하다",
+      "romanization": "jeoryeomhada",
+      "hanja": "低廉하다",
+      "pos": "adjective",
+      "level": 2,
+      "category": "shopping",
+      "meaning": {
+        "en": "cheap, inexpensive",
+        "km": "ថោក"
+      },
+      "examples": [
+        {
+          "ko": "이 식당은 음식이 맛있고 가격도 저렴해요.",
+          "en": "This restaurant has tasty food and low prices.",
+          "km": "ភោជនីយដ្ឋាននេះម្ហូបឆ្ងាញ់ ហើយតម្លៃក៏ថោកដែរ។"
+        }
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "vocab.0349",
+      "hangul": "광고",
+      "romanization": "gwanggo",
+      "hanja": "廣告",
+      "pos": "noun",
+      "level": 2,
+      "category": "media",
+      "meaning": {
+        "en": "advertisement",
+        "km": "ការផ្សាយពាណិជ្ជកម្ម"
+      },
+      "examples": [
+        {
+          "ko": "텔레비전에서 새 휴대폰 광고를 봤어요.",
+          "en": "I saw an ad for a new phone on TV.",
+          "km": "ខ្ញុំបានឃើញការផ្សាយពាណិជ្ជកម្មទូរសព្ទថ្មីនៅលើទូរទស្សន៍។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/광고"
+      }
+    },
+    {
+      "id": "vocab.0350",
+      "hangul": "계산",
+      "romanization": "gyesan",
+      "hanja": "計算",
+      "pos": "noun",
+      "level": 2,
+      "category": "shopping",
+      "meaning": {
+        "en": "calculation, paying the bill",
+        "km": "ការគណនា, ការគិតលុយ"
+      },
+      "examples": [
+        {
+          "ko": "계산은 제가 할게요.",
+          "en": "I'll pay the bill.",
+          "km": "ខ្ញុំនឹងគិតលុយ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/계산"
+      }
+    },
+    {
+      "id": "vocab.0351",
+      "hangul": "카메라",
+      "romanization": "kamera",
+      "pos": "noun",
+      "level": 2,
+      "category": "things",
+      "meaning": {
+        "en": "camera",
+        "km": "កាមេរ៉ា"
+      },
+      "examples": [
+        {
+          "ko": "새 카메라로 사진을 찍었어요.",
+          "en": "I took photos with my new camera.",
+          "km": "ខ្ញុំបានថតរូបជាមួយកាមេរ៉ាថ្មី។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/카메라"
+      }
+    },
+    {
+      "id": "vocab.0352",
+      "hangul": "청년",
+      "romanization": "cheongnyeon",
+      "hanja": "靑年",
+      "pos": "noun",
+      "level": 2,
+      "category": "people",
+      "meaning": {
+        "en": "young person, youth",
+        "km": "យុវជន"
+      },
+      "examples": [
+        {
+          "ko": "요즘 청년들은 취업 때문에 걱정이 많아요.",
+          "en": "Young people these days worry a lot about getting jobs.",
+          "km": "យុវជនសព្វថ្ងៃព្រួយបារម្ភច្រើនអំពីការរកការងារ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/청년"
+      }
+    },
+    {
+      "id": "vocab.0353",
+      "hangul": "기자",
+      "romanization": "gija",
+      "hanja": "記者",
+      "pos": "noun",
+      "level": 2,
+      "category": "media",
+      "meaning": {
+        "en": "reporter, journalist",
+        "km": "អ្នកកាសែត"
+      },
+      "examples": [
+        {
+          "ko": "기자가 사고 현장에서 뉴스를 전하고 있어요.",
+          "en": "A reporter is delivering the news from the accident scene.",
+          "km": "អ្នកកាសែតកំពុងរាយការណ៍ព័ត៌មាន ពីកន្លែងកើតហេតុ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/기자"
+      }
+    },
+    {
+      "id": "vocab.0354",
+      "hangul": "직장인",
+      "romanization": "jikjangin",
+      "hanja": "職場人",
+      "pos": "noun",
+      "level": 2,
+      "category": "people",
+      "meaning": {
+        "en": "salaried worker, working person",
+        "km": "បុគ្គលិកការិយាល័យ"
+      },
+      "examples": [
+        {
+          "ko": "많은 직장인들이 지하철로 출근해요.",
+          "en": "Many office workers commute by subway.",
+          "km": "បុគ្គលិកការិយាល័យជាច្រើន ទៅធ្វើការតាមរថភ្លើងក្រោមដី។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/직장인"
+      }
+    },
+    {
+      "id": "vocab.0355",
+      "hangul": "콘서트",
+      "romanization": "konseoteu",
+      "pos": "noun",
+      "level": 2,
+      "category": "hobby",
+      "meaning": {
+        "en": "concert",
+        "km": "ការប្រគុំតន្ត្រី"
+      },
+      "examples": [
+        {
+          "ko": "주말에 친구와 콘서트에 갔어요.",
+          "en": "I went to a concert with a friend at the weekend.",
+          "km": "ខ្ញុំបានទៅមើលការប្រគុំតន្ត្រីជាមួយមិត្តភក្តិនៅចុងសប្តាហ៍។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/콘서트"
+      }
+    },
+    {
+      "id": "vocab.0356",
+      "hangul": "캠핑",
+      "romanization": "kaemping",
+      "pos": "noun",
+      "level": 2,
+      "category": "hobby",
+      "meaning": {
+        "en": "camping",
+        "km": "ការបោះតង់"
+      },
+      "examples": [
+        {
+          "ko": "여름 방학에 가족과 캠핑을 갔어요.",
+          "en": "I went camping with my family in the summer holidays.",
+          "km": "ខ្ញុំបានទៅបោះតង់ជាមួយគ្រួសារ នៅថ្ងៃឈប់សម្រាករដូវក្តៅ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/캠핑"
+      }
+    },
+    {
+      "id": "vocab.0357",
+      "hangul": "숫자",
+      "romanization": "sutja",
+      "hanja": "數字",
+      "pos": "noun",
+      "level": 2,
+      "category": "number",
+      "meaning": {
+        "en": "number, numeral",
+        "km": "លេខ"
+      },
+      "examples": [
+        {
+          "ko": "이 숫자를 큰 소리로 읽어 보세요.",
+          "en": "Please read this number out loud.",
+          "km": "សូមអានលេខនេះឱ្យខ្លាំងៗ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/숫자"
+      }
+    },
+    {
+      "id": "vocab.0358",
+      "hangul": "독서",
+      "romanization": "dokseo",
+      "hanja": "讀書",
+      "pos": "noun",
+      "level": 2,
+      "category": "hobby",
+      "meaning": {
+        "en": "reading (books)",
+        "km": "ការអានសៀវភៅ"
+      },
+      "examples": [
+        {
+          "ko": "제 취미는 독서예요.",
+          "en": "My hobby is reading.",
+          "km": "ចំណូលចិត្តរបស់ខ្ញុំគឺការអានសៀវភៅ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/독서"
+      }
+    },
+    {
+      "id": "vocab.0359",
+      "hangul": "요금",
+      "romanization": "yogeum",
+      "hanja": "料金",
+      "pos": "noun",
+      "level": 2,
+      "category": "shopping",
+      "meaning": {
+        "en": "fee, charge, fare",
+        "km": "ថ្លៃសេវា"
+      },
+      "examples": [
+        {
+          "ko": "버스 요금이 올랐어요.",
+          "en": "Bus fares have gone up.",
+          "km": "ថ្លៃឡានក្រុងបានឡើងថ្លៃ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/요금"
+      }
+    },
+    {
+      "id": "vocab.0360",
+      "hangul": "휴식",
+      "romanization": "hyusik",
+      "hanja": "休息",
+      "pos": "noun",
+      "level": 2,
+      "category": "daily",
+      "meaning": {
+        "en": "rest, break",
+        "km": "ការសម្រាក"
+      },
+      "examples": [
+        {
+          "ko": "일하다가 잠깐 휴식을 했어요.",
+          "en": "I took a short break from work.",
+          "km": "ខ្ញុំបានសម្រាកបន្តិច ពេលកំពុងធ្វើការ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/휴식"
+      }
+    },
+    {
+      "id": "vocab.0361",
+      "hangul": "엄마",
+      "romanization": "eomma",
+      "pos": "noun",
+      "level": 2,
+      "category": "family",
+      "meaning": {
+        "en": "mom, mum",
+        "km": "ម៉ាក់"
+      },
+      "examples": [
+        {
+          "ko": "엄마가 맛있는 김치찌개를 만들어 주셨어요.",
+          "en": "Mom made me delicious kimchi stew.",
+          "km": "ម៉ាក់បានធ្វើស៊ុបគីមឈីឆ្ងាញ់ឱ្យខ្ញុំ។"
+        }
+      ],
+      "review": "pending",
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/엄마"
+      }
+    }
+  ]
+}

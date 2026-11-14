@@ -1,0 +1,7 @@
+// Signing defaults shared by every configuration. Do not put a team ID here.
+// Create Configs/Signing.local.xcconfig (git-ignored) with:
+//   DEVELOPMENT_TEAM = ABCDE12345
+// then run `xcodegen generate`. CloudKit and push entitlements need a real team.
+CODE_SIGN_STYLE = Automatic
+DEVELOPMENT_TEAM =
+#include? "Signing.local.xcconfig"

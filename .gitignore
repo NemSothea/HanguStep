@@ -7,3 +7,7 @@ DerivedData/
 *.xcscmblueprint
 *.ipa
 *.dSYM.zip
+
+# Local signing (team ID). See Configs/Signing.xcconfig.
+Configs/Signing.local.xcconfig
+ContentSources/

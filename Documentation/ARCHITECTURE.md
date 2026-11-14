@@ -45,10 +45,12 @@ flowchart TB
 graph LR
     App --> Features
     App --> Persistence
+    App --> Assistant
     App --> Domain
     Features --> Domain
     Features --> DesignSystem
     Persistence --> Domain
+    Assistant --> Domain
 ```
 
 | Target | May import | Must never import | Contains |
@@ -56,7 +58,8 @@ graph LR
 | Domain | Foundation | SwiftUI, CoreData, CloudKit, any other target | Entities, repository protocols, use cases, `DomainError`, `DateProvider` |
 | Persistence | Domain, Foundation, CoreData, CloudKit | SwiftUI, Features | Repository implementations, Core Data stack, content importer, sample data |
 | DesignSystem | SwiftUI | Domain, Features | Tokens and reusable components, no business types |
-| Features | Domain, DesignSystem, SwiftUI | Persistence | Views, view models, navigation |
+| Features | Domain, DesignSystem, SwiftUI | Persistence, Assistant | Views, view models, navigation, device-local assistant settings and Keychain store |
+| Assistant | Domain, Foundation | SwiftUI, Features, Persistence | Network-backed `AssistantProvider` implementations (Claude over raw HTTP) |
 | App | everything | — | `@main`, `AppContainer` |
 
 Why not thirty modules: four targets already give compiler-checked layering. Splitting Features per screen only pays off when build times or team size demand it.
@@ -73,6 +76,8 @@ HanguStep/
 │   ├── Sources/
 │   │   ├── Domain/
 │   │   │   ├── Entities/         # VocabularyItem, GrammarPattern, Question, Attempt, ...
+│   │   │   ├── Content/          # Phase 7: ContentFile (JSON format), MeaningQuestionGenerator, ContentInfo
+│   │   │   ├── Assistant/        # Phase 8: AssistantProvider, MockAssistantProvider, ExplainAnswer, GeneratePracticeQuestions
 │   │   │   ├── Repositories/     # protocols only
 │   │   │   ├── UseCases/         # one file per use case
 │   │   │   ├── Identifiers.swift # typed IDs
@@ -81,11 +86,17 @@ HanguStep/
 │   │   ├── Persistence/
 │   │   │   ├── InMemory/         # previews, tests, Phase 1 skeleton
 │   │   │   ├── CoreData/         # Phase 3
-│   │   │   └── SampleContent.swift
+│   │   │   ├── Resources/Content/ # Phase 7: bundled JSON library (see CONTENT_FORMAT.md)
+│   │   │   ├── BundledContent.swift
+│   │   │   └── SampleContent.swift # test and preview fixture only
+│   │   ├── ContentLint/          # `swift run content-lint`: validates and generates content
+│   │   ├── Assistant/            # Phase 8: ClaudeAssistantProvider over raw HTTP; composed by App, never imported by Features
 │   │   ├── DesignSystem/         # Phase 2 fills this
 │   │   └── Features/
 │   │       ├── Navigation/       # AppSection, RootView
 │   │       ├── Dashboard/        # one folder per feature: View + ViewModel
+│   │       ├── Assistant/        # AssistantModel, device-local settings, provider source
+│   │       ├── Services/         # SpeechPronouncer, KeychainSecretStore
 │   │       └── Placeholders/
 │   └── Tests/
 │       ├── DomainTests/
@@ -101,7 +112,7 @@ HanguStep/
 
 Three bounded contexts share one Domain target but never share identity:
 
-- **Content** (read-only, bundled): `VocabularyItem`, `GrammarPattern`, `Question`. Identified by authored string IDs such as `vocab.topik1.0001`. Never written by the learner, never synced.
+- **Content** (read-only, bundled): `VocabularyItem`, `GrammarPattern`, `Question`. Identified by authored string IDs such as `vocab.0001`. Never written by the learner, never synced.
 - **Learner** (read-write, synced): `Attempt`, `Bookmark`, `ReviewSchedule`, later `StudySession`, `LearnerNote`, `Settings`. Reference content only through `LearningTarget` or a content ID value. No object graph edges cross from Learner to Content.
 - **Statistics** (derived): `AttemptSummary`, `DashboardSummary`. Always computed from Learner records, never persisted.
 
@@ -125,7 +136,31 @@ Declared in `Sources/Domain/Repositories`. All are `Sendable` protocols with `as
 | `BookmarkRepository` | Learner | `add`, `remove(target:)`, `contains(target:)`, `all()` |
 | `ReviewScheduleRepository` | Learner | `schedule(for:)`, `upsert`, `due(onOrBefore:limit:)` |
 
-Phase 3 adds `StudySessionRepository` and `ContentImporter`. Phase 5 adds `LearnerSettingsRepository`.
+Phase 3 added `StudySessionRepository`, `LearnerNoteRepository`, `LearnerSettingsRepository` and the `ContentStore` write side. All are implemented twice: in memory (previews, tests) and Core Data (app).
+
+### Use cases (Phase 4)
+
+| Area | Use cases |
+|---|---|
+| Library | `BrowseVocabulary`, `GetVocabularyDetail`, `BrowseGrammar`, `GetGrammarDetail`, `ToggleBookmark`, `ListBookmarks`, `SaveNote` |
+| Quiz | `StartQuizSession`, `ResumeQuizSession`, `SubmitAnswer`, `FinishQuizSession` (+ `QuizScoring`) |
+| Review | `ListMistakes` (+ pure `MistakeDerivation`), `ListQuizHistory` |
+| Settings | `LoadSettings`, `SaveSettings` |
+
+### Use cases (Phase 5)
+
+| Area | Use cases |
+|---|---|
+| Spaced repetition | pure `SM2` + `ReviewQuality`; schedule update inside `SubmitAnswer`; `QuizPool.review` in `StartQuizSession`; `ListReviewQueue` |
+| Progress | pure `ProgressStatistics` (totals, today, 7/30-day activity, streaks, weak items); `LoadDashboardSummary` (extended), `LoadProgressReport` |
+
+Rules for quality mapping, due dates, mastery and streaks are in ADR-006.
+
+### Sync (Phase 6)
+
+`SyncState` and `LearnerChangeSource` live in Domain. Persistence adds `PersistenceController.SyncOption`, `SyncMonitor` (CloudKit events, account status, debounced change stream, dedupe trigger) and `LearnerDeduplicator`. Features adds `SyncStatusModel` (main-actor mirror for Settings) and `reloadOnLearnerChange`. The composition root decides the sync option from a device-local preference. See `CLOUDKIT_SYNC.md`. `ReviewScheduleRepository.all()` was added so due and mastered counts derive from rows rather than a cached counter.
+
+Each is a protocol plus a default struct. Randomness (`Shuffler`), ids (`IDGenerator`) and time (`DateProvider`) are injected so every use case is deterministic under test.
 
 ## 6. Dependency injection
 
@@ -145,6 +180,9 @@ Trade-off: `AppDependencies` grows one field per use case. Accepted; it stays a 
 - iPad regular width and macOS: `NavigationSplitView` with a sidebar `List` bound to the same `AppSection` selection.
 - In-feature navigation (Phase 4 onward): each feature defines a `Hashable` route enum and uses `navigationDestination(for:)` inside its own stack. Deep links map to `(AppSection, [Route])`.
 - No global router object. Routes are values; the stack owns the path.
+- The quiz runs in a modal sheet (`quizSheet`) with interactive dismissal disabled. Closing early finishes the session and keeps answered questions; the view model owns the state machine (`loading → answering → feedback → finished`).
+- `LearnerPreferences` (`@Observable`, main actor) is injected through the environment and is the single reader of settings for gloss order and pronunciation.
+- Phase 5 screens: `DashboardView` (streak, due tile → `ReviewQueueView`, goal ring, 7-day Swift Charts strip, Start review), `ProgressScreen` (stat grid, 30-day chart, goal card, weak words and grammar, link to `HistoryView`). Charts carry an accessibility label and a plain-text summary.
 
 ## 8. Concurrency
 
@@ -173,13 +211,14 @@ Rules: no `DispatchQueue`, no `Task.detached` without a written reason, no manag
 
 ```
 cd Packages/HanguStepKit && swift test
+cd Packages/HanguStepKit && swift run content-lint      # validates the bundled JSON library
 xcodegen generate
 xcodebuild build -project HanguStep.xcodeproj -scheme HanguStep -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO
 xcodebuild build -project HanguStep.xcodeproj -scheme HanguStep -destination 'platform=macOS' CODE_SIGN_IDENTITY=-
 ```
 
-CI runs the first and third on every pull request.
+CI runs the first, second and fourth on every pull request.
 
 ## 11. Decision log
 
-See `ADR/`. Current: ADR-001 architecture and modularization, ADR-002 persistence, ADR-003 cloud sync, ADR-004 concurrency, ADR-005 navigation and DI.
+See `ADR/`. Current: ADR-001 architecture and modularization, ADR-002 persistence, ADR-003 cloud sync, ADR-004 concurrency, ADR-005 navigation and DI, ADR-006 spaced repetition, ADR-007 content format and import, ADR-008 AI assistant.

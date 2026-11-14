@@ -1,6 +1,6 @@
 # ADR-003: NSPersistentCloudKitContainer for learner data sync
 
-Status: Accepted · 2026-11-02 (implementation in Phase 6)
+Status: Accepted · 2026-11-02 · Implemented 2026-11-03 (device verification pending)
 
 ## Context
 
@@ -25,3 +25,11 @@ The learner wants progress to follow them across iPhone, iPad and Mac without a 
 - Eventual consistency. The UI must never assume a change is on another device yet.
 - Schema design is constrained from Phase 3 onward (see ADR-002).
 - Real-device testing is mandatory before Phase 6 is accepted.
+
+## Implementation notes (Phase 6)
+
+- `PersistenceController(mode:sync:)` with `SyncOption.off | .cloudKit(containerIdentifier:)`. Fallback to `.off` with `syncFallbackError` when the Learner store cannot open in CloudKit mode.
+- History tracking and remote-change notifications are on for the Learner store in every on-disk configuration, not only when CloudKit is on.
+- `SyncMonitor` publishes `SyncState` and a debounced change stream; `LearnerDeduplicator` applies the per-entity policy after imports.
+- The sync preference is device-local (`UserDefaults`), default on; changing it rebuilds the container.
+- Details, tables and the device checklist: `Documentation/CLOUDKIT_SYNC.md`.

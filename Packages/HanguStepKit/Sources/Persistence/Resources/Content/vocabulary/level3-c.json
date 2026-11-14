@@ -1,0 +1,2646 @@
+{
+  "vocabulary": [
+    {
+      "id": "vocab.3201",
+      "hangul": "구성",
+      "romanization": "guseong",
+      "hanja": "構成",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "composition, structure",
+        "km": "ការរៀបចំ, សមាសភាព"
+      },
+      "examples": [
+        {
+          "ko": "이 책은 다섯 개의 장으로 구성되어 있다.",
+          "en": "This book is made up of five chapters.",
+          "km": "សៀវភៅនេះត្រូវបានរៀបចំជាប្រាំជំពូក។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/구성"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3202",
+      "hangul": "담기다",
+      "romanization": "damgida",
+      "pos": "verb",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "to be put in, to be contained",
+        "km": "ត្រូវបានដាក់ចូល, មានផ្ទុក"
+      },
+      "examples": [
+        {
+          "ko": "이 노래에는 엄마의 사랑이 담겨 있다.",
+          "en": "This song is filled with a mother's love.",
+          "km": "ក្នុងបទចម្រៀងនេះមានផ្ទុកក្តីស្រឡាញ់របស់ម្តាយ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/담기다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3203",
+      "hangul": "높아지다",
+      "romanization": "nopajida",
+      "pos": "verb",
+      "level": 3,
+      "category": "quantity",
+      "meaning": {
+        "en": "to become higher, to rise",
+        "km": "កើនឡើង, ខ្ពស់ឡើង"
+      },
+      "examples": [
+        {
+          "ko": "요즘 환경에 대한 관심이 높아졌다.",
+          "en": "Interest in the environment has risen recently.",
+          "km": "ថ្មីៗនេះ ការចាប់អារម្មណ៍លើបរិស្ថានបានកើនឡើង។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/높아지다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3204",
+      "hangul": "따뜻하다",
+      "romanization": "ttatteuthada",
+      "pos": "adjective",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "warm",
+        "km": "កក់ក្តៅ"
+      },
+      "examples": [
+        {
+          "ko": "봄이 되니 날씨가 따뜻해졌어요.",
+          "en": "Now that it's spring, the weather has become warm.",
+          "km": "ដល់រដូវផ្ការីកហើយ អាកាសធាតុបានក្លាយជាកក់ក្តៅ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/따뜻하다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3205",
+      "hangul": "사업",
+      "romanization": "sa-eop",
+      "hanja": "事業",
+      "pos": "noun",
+      "level": 3,
+      "category": "economy",
+      "meaning": {
+        "en": "business, project",
+        "km": "អាជីវកម្ម, គម្រោង"
+      },
+      "examples": [
+        {
+          "ko": "형은 작년에 작은 사업을 시작했다.",
+          "en": "My older brother started a small business last year.",
+          "km": "បងប្រុសខ្ញុំបានចាប់ផ្តើមអាជីវកម្មតូចមួយកាលពីឆ្នាំមុន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/사업"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3206",
+      "hangul": "식물",
+      "romanization": "singmul",
+      "hanja": "植物",
+      "pos": "noun",
+      "level": 3,
+      "category": "environment",
+      "meaning": {
+        "en": "plant",
+        "km": "រុក្ខជាតិ"
+      },
+      "examples": [
+        {
+          "ko": "식물은 햇빛과 물이 있어야 자란다.",
+          "en": "Plants need sunlight and water to grow.",
+          "km": "រុក្ខជាតិត្រូវការពន្លឺថ្ងៃ និងទឹក ទើបអាចលូតលាស់បាន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/식물"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3207",
+      "hangul": "소비자",
+      "romanization": "sobija",
+      "hanja": "消費者",
+      "pos": "noun",
+      "level": 3,
+      "category": "economy",
+      "meaning": {
+        "en": "consumer",
+        "km": "អ្នកប្រើប្រាស់"
+      },
+      "examples": [
+        {
+          "ko": "소비자들은 가격이 싼 제품을 선호한다.",
+          "en": "Consumers prefer cheaper products.",
+          "km": "អ្នកប្រើប្រាស់ចូលចិត្តផលិតផលដែលមានតម្លៃថោក។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/소비자"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3208",
+      "hangul": "국민",
+      "romanization": "gungmin",
+      "hanja": "國民",
+      "pos": "noun",
+      "level": 3,
+      "category": "politics",
+      "meaning": {
+        "en": "people of a nation, citizens",
+        "km": "ប្រជាជន, ពលរដ្ឋ"
+      },
+      "examples": [
+        {
+          "ko": "정부는 국민의 의견을 들어야 한다.",
+          "en": "The government must listen to the people's opinions.",
+          "km": "រដ្ឋាភិបាលត្រូវតែស្តាប់មតិរបស់ប្រជាជន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/국민"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3209",
+      "hangul": "관계",
+      "romanization": "gwangye",
+      "hanja": "關係",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "relationship, connection",
+        "km": "ទំនាក់ទំនង"
+      },
+      "examples": [
+        {
+          "ko": "친구와의 관계가 예전보다 가까워졌다.",
+          "en": "My relationship with my friend has become closer than before.",
+          "km": "ទំនាក់ទំនងជាមួយមិត្តភក្តិខ្ញុំកាន់តែជិតស្និទ្ធជាងមុន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/관계"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3210",
+      "hangul": "기회",
+      "romanization": "gihoe",
+      "hanja": "機會",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "opportunity, chance",
+        "km": "ឱកាស"
+      },
+      "examples": [
+        {
+          "ko": "이번 기회에 한국어 공부를 열심히 하고 싶어요.",
+          "en": "I want to take this opportunity to study Korean hard.",
+          "km": "ខ្ញុំចង់ឆ្លៀតឱកាសនេះរៀនភាសាកូរ៉េឱ្យខ្លាំង។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/기회"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3211",
+      "hangul": "설치",
+      "romanization": "seolchi",
+      "hanja": "設置",
+      "pos": "noun",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "installation, setting up",
+        "km": "ការដំឡើង, ការតំឡើង"
+      },
+      "examples": [
+        {
+          "ko": "공원에 운동 기구를 설치했다.",
+          "en": "They installed exercise equipment in the park.",
+          "km": "គេបានដំឡើងឧបករណ៍ហាត់ប្រាណនៅក្នុងសួនច្បារ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/설치"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3212",
+      "hangul": "기능",
+      "romanization": "gineung",
+      "hanja": "機能",
+      "pos": "noun",
+      "level": 3,
+      "category": "science",
+      "meaning": {
+        "en": "function, feature",
+        "km": "មុខងារ"
+      },
+      "examples": [
+        {
+          "ko": "이 휴대폰에는 다양한 기능이 있다.",
+          "en": "This mobile phone has a variety of features.",
+          "km": "ទូរស័ព្ទនេះមានមុខងារច្រើនយ៉ាង។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/기능"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3213",
+      "hangul": "전문",
+      "romanization": "jeonmun",
+      "hanja": "專門",
+      "pos": "noun",
+      "level": 3,
+      "category": "work",
+      "meaning": {
+        "en": "speciality, expertise",
+        "km": "ជំនាញ, ឯកទេស"
+      },
+      "examples": [
+        {
+          "ko": "그는 법률을 전문으로 하는 변호사이다.",
+          "en": "He is a lawyer who specialises in law.",
+          "km": "គាត់ជាមេធាវីដែលមានជំនាញខាងច្បាប់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/전문"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3214",
+      "hangul": "기준",
+      "romanization": "gijun",
+      "hanja": "基準",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "standard, criterion",
+        "km": "ស្តង់ដារ, លក្ខណៈវិនិច្ឆ័យ"
+      },
+      "examples": [
+        {
+          "ko": "회사는 새로운 기준에 따라 직원을 뽑았다.",
+          "en": "The company hired staff according to new criteria.",
+          "km": "ក្រុមហ៊ុនបានជ្រើសរើសបុគ្គលិកតាមលក្ខណៈវិនិច្ឆ័យថ្មី។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/기준"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3215",
+      "hangul": "사실",
+      "romanization": "sasil",
+      "hanja": "事實",
+      "pos": "adverb",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "in fact, actually",
+        "km": "តាមពិត, ការពិត"
+      },
+      "examples": [
+        {
+          "ko": "사실 저는 매운 음식을 잘 못 먹어요.",
+          "en": "Actually, I can't really eat spicy food.",
+          "km": "តាមពិត ខ្ញុំមិនសូវអាចញ៉ាំម្ហូបហឹរបានទេ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/사실"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3216",
+      "hangul": "생산",
+      "romanization": "saengsan",
+      "hanja": "生産",
+      "pos": "noun",
+      "level": 3,
+      "category": "economy",
+      "meaning": {
+        "en": "production",
+        "km": "ការផលិត"
+      },
+      "examples": [
+        {
+          "ko": "이 공장에서는 자동차 부품을 생산한다.",
+          "en": "This factory produces car parts.",
+          "km": "រោងចក្រនេះផលិតគ្រឿងបន្លាស់រថយន្ត។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/생산"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3217",
+      "hangul": "목적",
+      "romanization": "mokjeok",
+      "hanja": "目的",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "purpose, goal",
+        "km": "គោលបំណង"
+      },
+      "examples": [
+        {
+          "ko": "여행의 목적이 무엇입니까?",
+          "en": "What is the purpose of your trip?",
+          "km": "តើគោលបំណងនៃការធ្វើដំណើររបស់អ្នកជាអ្វី?"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/목적"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3218",
+      "hangul": "사회적",
+      "romanization": "sahoejeok",
+      "hanja": "社會的",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "social",
+        "km": "ផ្នែកសង្គម, ជាលក្ខណៈសង្គម"
+      },
+      "examples": [
+        {
+          "ko": "환경 오염은 큰 사회적 문제가 되었다.",
+          "en": "Environmental pollution has become a big social problem.",
+          "km": "ការបំពុលបរិស្ថានបានក្លាយជាបញ្ហាសង្គមដ៏ធំមួយ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/사회적"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3219",
+      "hangul": "업무",
+      "romanization": "eommu",
+      "hanja": "業務",
+      "pos": "noun",
+      "level": 3,
+      "category": "work",
+      "meaning": {
+        "en": "work, duties, task",
+        "km": "ការងារ, ភារកិច្ច"
+      },
+      "examples": [
+        {
+          "ko": "오늘은 업무가 많아서 늦게 퇴근했다.",
+          "en": "I left work late today because I had a lot of work.",
+          "km": "ថ្ងៃនេះមានការងារច្រើន ទើបខ្ញុំចេញពីធ្វើការយឺត។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/업무"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3220",
+      "hangul": "제작",
+      "romanization": "jejak",
+      "hanja": "製作",
+      "pos": "noun",
+      "level": 3,
+      "category": "culture",
+      "meaning": {
+        "en": "production, making",
+        "km": "ការផលិត, ការបង្កើត"
+      },
+      "examples": [
+        {
+          "ko": "이 영화는 제작 기간이 3년이나 걸렸다.",
+          "en": "This film took as long as three years to produce.",
+          "km": "ខ្សែភាពយន្តនេះចំណាយពេលផលិតរហូតដល់បីឆ្នាំ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/제작"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3221",
+      "hangul": "끌다",
+      "romanization": "kkeulda",
+      "pos": "verb",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "to pull, to attract (attention)",
+        "km": "ទាញ, ទាក់ទាញ"
+      },
+      "examples": [
+        {
+          "ko": "그 가수의 새 노래가 많은 관심을 끌고 있다.",
+          "en": "That singer's new song is attracting a lot of attention.",
+          "km": "បទចម្រៀងថ្មីរបស់អ្នកចម្រៀងនោះកំពុងទាក់ទាញការចាប់អារម្មណ៍យ៉ាងច្រើន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/끌다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3222",
+      "hangul": "치료",
+      "romanization": "chiryo",
+      "hanja": "治療",
+      "pos": "noun",
+      "level": 3,
+      "category": "health",
+      "meaning": {
+        "en": "treatment, therapy",
+        "km": "ការព្យាបាល"
+      },
+      "examples": [
+        {
+          "ko": "그는 병원에서 다리를 치료받았다.",
+          "en": "He received treatment for his leg at the hospital.",
+          "km": "គាត់បានទទួលការព្យាបាលជើងនៅមន្ទីរពេទ្យ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/치료"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3223",
+      "hangul": "구하다",
+      "romanization": "guhada",
+      "hanja": "求하다",
+      "pos": "verb",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "to look for, to obtain",
+        "km": "ស្វែងរក, រកបាន"
+      },
+      "examples": [
+        {
+          "ko": "방학 동안 아르바이트를 구하고 있어요.",
+          "en": "I'm looking for a part-time job during the vacation.",
+          "km": "ខ្ញុំកំពុងស្វែងរកការងារក្រៅម៉ោងក្នុងអំឡុងពេលវិស្សមកាល។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/구하다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3224",
+      "hangul": "현장",
+      "romanization": "hyeonjang",
+      "hanja": "現場",
+      "pos": "noun",
+      "level": 3,
+      "category": "work",
+      "meaning": {
+        "en": "site, scene",
+        "km": "ទីកន្លែងកើតហេតុ, ការដ្ឋាន"
+      },
+      "examples": [
+        {
+          "ko": "기자가 사고 현장에서 소식을 전했다.",
+          "en": "A reporter delivered the news from the scene of the accident.",
+          "km": "អ្នកកាសែតបានរាយការណ៍ព័ត៌មានពីកន្លែងកើតគ្រោះថ្នាក់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/현장"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3225",
+      "hangul": "원하다",
+      "romanization": "wonhada",
+      "hanja": "願하다",
+      "pos": "verb",
+      "level": 3,
+      "category": "emotion",
+      "meaning": {
+        "en": "to want, to wish",
+        "km": "ចង់បាន, ប្រាថ្នា"
+      },
+      "examples": [
+        {
+          "ko": "원하는 대학에 합격해서 정말 기뻐요.",
+          "en": "I'm really happy that I got into the university I wanted.",
+          "km": "ខ្ញុំពិតជារីករាយណាស់ដែលបានប្រឡងជាប់សាកលវិទ្យាល័យដែលខ្ញុំចង់បាន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/원하다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3226",
+      "hangul": "기관",
+      "romanization": "gigwan",
+      "hanja": "機關",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "institution, agency",
+        "km": "ស្ថាប័ន, ភ្នាក់ងារ"
+      },
+      "examples": [
+        {
+          "ko": "정부 기관에서 새로운 정책을 발표했다.",
+          "en": "A government agency announced a new policy.",
+          "km": "ស្ថាប័នរដ្ឋាភិបាលបានប្រកាសគោលនយោបាយថ្មីមួយ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/기관"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3227",
+      "hangul": "위험",
+      "romanization": "wiheom",
+      "hanja": "危險",
+      "pos": "noun",
+      "level": 3,
+      "category": "health",
+      "meaning": {
+        "en": "danger, risk",
+        "km": "គ្រោះថ្នាក់, ហានិភ័យ"
+      },
+      "examples": [
+        {
+          "ko": "비가 많이 와서 산에 가는 것은 위험하다.",
+          "en": "It's dangerous to go up the mountain because it's raining a lot.",
+          "km": "ភ្លៀងខ្លាំង ដូច្នេះការឡើងភ្នំគឺមានគ្រោះថ្នាក់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/위험"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3228",
+      "hangul": "이루다",
+      "romanization": "iruda",
+      "pos": "verb",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "to achieve, to accomplish",
+        "km": "សម្រេចបាន"
+      },
+      "examples": [
+        {
+          "ko": "그는 오랜 노력 끝에 꿈을 이루었다.",
+          "en": "After long effort, he achieved his dream.",
+          "km": "បន្ទាប់ពីការខិតខំប្រឹងប្រែងយ៉ាងយូរ គាត់បានសម្រេចក្តីស្រមៃរបស់គាត់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/이루다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3229",
+      "hangul": "사라지다",
+      "romanization": "sarajida",
+      "pos": "verb",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "to disappear, to vanish",
+        "km": "បាត់, រលាយបាត់"
+      },
+      "examples": [
+        {
+          "ko": "옛날 시장이 하나둘 사라지고 있다.",
+          "en": "Old markets are disappearing one by one.",
+          "km": "ផ្សារចាស់ៗកំពុងបាត់បង់បន្តិចម្តងៗ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/사라지다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3230",
+      "hangul": "주변",
+      "romanization": "jubyeon",
+      "hanja": "周邊",
+      "pos": "noun",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "surroundings, vicinity",
+        "km": "តំបន់ជុំវិញ, ជុំវិញ"
+      },
+      "examples": [
+        {
+          "ko": "학교 주변에 편의점이 많다.",
+          "en": "There are many convenience stores around the school.",
+          "km": "មានហាងលក់ទំនិញច្រើននៅជុំវិញសាលារៀន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/주변"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3231",
+      "hangul": "대화",
+      "romanization": "daehwa",
+      "hanja": "對話",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "conversation, dialogue",
+        "km": "ការសន្ទនា"
+      },
+      "examples": [
+        {
+          "ko": "부모님과 대화하는 시간을 늘리고 싶다.",
+          "en": "I want to spend more time talking with my parents.",
+          "km": "ខ្ញុំចង់បង្កើនពេលវេលាសន្ទនាជាមួយឪពុកម្តាយ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/대화"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3232",
+      "hangul": "집중",
+      "romanization": "jipjung",
+      "hanja": "集中",
+      "pos": "noun",
+      "level": 3,
+      "category": "education",
+      "meaning": {
+        "en": "concentration, focus",
+        "km": "ការផ្តោតអារម្មណ៍"
+      },
+      "examples": [
+        {
+          "ko": "시끄러워서 공부에 집중할 수 없어요.",
+          "en": "It's noisy, so I can't concentrate on studying.",
+          "km": "វាអ៊ូអរខ្លាំង ដូច្នេះខ្ញុំមិនអាចផ្តោតអារម្មណ៍លើការសិក្សាបានទេ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/집중"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3233",
+      "hangul": "판단",
+      "romanization": "pandan",
+      "hanja": "判斷",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "judgement, decision",
+        "km": "ការវិនិច្ឆ័យ, ការសម្រេចចិត្ត"
+      },
+      "examples": [
+        {
+          "ko": "정확한 정보가 있어야 올바르게 판단할 수 있다.",
+          "en": "You need accurate information to judge correctly.",
+          "km": "ត្រូវមានព័ត៌មានត្រឹមត្រូវ ទើបអាចវិនិច្ឆ័យបានត្រឹមត្រូវ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/판단"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3234",
+      "hangul": "비율",
+      "romanization": "biyul",
+      "hanja": "比率",
+      "pos": "noun",
+      "level": 3,
+      "category": "quantity",
+      "meaning": {
+        "en": "ratio, proportion, rate",
+        "km": "អត្រា, សមាមាត្រ"
+      },
+      "examples": [
+        {
+          "ko": "혼자 사는 사람의 비율이 늘고 있다.",
+          "en": "The proportion of people living alone is increasing.",
+          "km": "អត្រាមនុស្សដែលរស់នៅម្នាក់ឯងកំពុងកើនឡើង។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/비율"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3235",
+      "hangul": "빠지다",
+      "romanization": "ppajida",
+      "pos": "verb",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "to fall into, to be missing, to come out",
+        "km": "ធ្លាក់ចូល, ខ្វះ, ជ្រុះ"
+      },
+      "examples": [
+        {
+          "ko": "제 이름이 명단에서 빠졌어요.",
+          "en": "My name was left off the list.",
+          "km": "ឈ្មោះរបស់ខ្ញុំមិនមាននៅក្នុងបញ្ជីទេ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/빠지다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3236",
+      "hangul": "미래",
+      "romanization": "mirae",
+      "hanja": "未來",
+      "pos": "noun",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "future",
+        "km": "អនាគត"
+      },
+      "examples": [
+        {
+          "ko": "미래에는 로봇이 많은 일을 할 것이다.",
+          "en": "In the future, robots will do a lot of work.",
+          "km": "នៅពេលអនាគត មនុស្សយន្តនឹងធ្វើការងារជាច្រើន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/미래"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3237",
+      "hangul": "지구",
+      "romanization": "jigu",
+      "hanja": "地球",
+      "pos": "noun",
+      "level": 3,
+      "category": "environment",
+      "meaning": {
+        "en": "the Earth",
+        "km": "ផែនដី"
+      },
+      "examples": [
+        {
+          "ko": "지구를 지키기 위해 플라스틱 사용을 줄여야 한다.",
+          "en": "We must reduce plastic use to protect the Earth.",
+          "km": "យើងត្រូវកាត់បន្ថយការប្រើប្រាស់ប្លាស្ទិក ដើម្បីការពារផែនដី។"
+        }
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3238",
+      "hangul": "덕분",
+      "romanization": "deokbun",
+      "hanja": "德分",
+      "pos": "noun",
+      "level": 3,
+      "category": "emotion",
+      "meaning": {
+        "en": "thanks to, owing to",
+        "km": "អរគុណដល់, ដោយសារ"
+      },
+      "examples": [
+        {
+          "ko": "선생님 덕분에 시험에 합격했어요.",
+          "en": "I passed the exam thanks to my teacher.",
+          "km": "អរគុណលោកគ្រូ ខ្ញុំបានប្រឡងជាប់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/덕분"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3239",
+      "hangul": "매우",
+      "romanization": "maeu",
+      "pos": "adverb",
+      "level": 3,
+      "category": "quantity",
+      "meaning": {
+        "en": "very, extremely",
+        "km": "ខ្លាំងណាស់, ណាស់"
+      },
+      "examples": [
+        {
+          "ko": "이 문제는 매우 중요하다.",
+          "en": "This problem is very important.",
+          "km": "បញ្ហានេះសំខាន់ខ្លាំងណាស់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/매우"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3240",
+      "hangul": "특징",
+      "romanization": "teukjing",
+      "hanja": "特徵",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "characteristic, feature",
+        "km": "លក្ខណៈពិសេស"
+      },
+      "examples": [
+        {
+          "ko": "이 지역 음식의 특징은 맵다는 것이다.",
+          "en": "The characteristic of this region's food is that it is spicy.",
+          "km": "លក្ខណៈពិសេសនៃម្ហូបតំបន់នេះគឺហឹរ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/특징"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3241",
+      "hangul": "등장",
+      "romanization": "deungjang",
+      "hanja": "登場",
+      "pos": "noun",
+      "level": 3,
+      "category": "culture",
+      "meaning": {
+        "en": "appearance, emergence",
+        "km": "ការលេចឡើង, ការចេញមុខ"
+      },
+      "examples": [
+        {
+          "ko": "스마트폰의 등장으로 생활이 많이 바뀌었다.",
+          "en": "Life has changed a lot with the arrival of smartphones.",
+          "km": "ជីវិតបានផ្លាស់ប្តូរច្រើន ដោយសារការលេចឡើងនៃស្មាតហ្វូន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/등장"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3242",
+      "hangul": "보관",
+      "romanization": "bogwan",
+      "hanja": "保管",
+      "pos": "noun",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "storage, keeping",
+        "km": "ការរក្សាទុក"
+      },
+      "examples": [
+        {
+          "ko": "이 약은 시원한 곳에 보관하세요.",
+          "en": "Keep this medicine in a cool place.",
+          "km": "សូមរក្សាទុកថ្នាំនេះនៅកន្លែងត្រជាក់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/보관"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3243",
+      "hangul": "이동",
+      "romanization": "idong",
+      "hanja": "移動",
+      "pos": "noun",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "movement, moving",
+        "km": "ការផ្លាស់ទី, ការធ្វើដំណើរ"
+      },
+      "examples": [
+        {
+          "ko": "지하철로 이동하면 시간이 덜 걸려요.",
+          "en": "It takes less time if you travel by subway.",
+          "km": "បើធ្វើដំណើរតាមរថភ្លើងក្រោមដី នឹងចំណាយពេលតិចជាង។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/이동"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3244",
+      "hangul": "관람",
+      "romanization": "gwallam",
+      "hanja": "觀覽",
+      "pos": "noun",
+      "level": 3,
+      "category": "culture",
+      "meaning": {
+        "en": "viewing, watching (a show, exhibition)",
+        "km": "ការទស្សនា"
+      },
+      "examples": [
+        {
+          "ko": "박물관 관람 시간은 오후 6시까지입니다.",
+          "en": "Museum viewing hours are until 6 p.m.",
+          "km": "ម៉ោងទស្សនាសារមន្ទីររហូតដល់ម៉ោង៦ល្ងាច។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/관람"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3245",
+      "hangul": "순간",
+      "romanization": "sungan",
+      "hanja": "瞬間",
+      "pos": "noun",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "moment, instant",
+        "km": "មួយភ្លែត, ពេលនោះ"
+      },
+      "examples": [
+        {
+          "ko": "그 사람을 처음 본 순간 사랑에 빠졌다.",
+          "en": "I fell in love the moment I first saw that person.",
+          "km": "ពេលដែលខ្ញុំឃើញមនុស្សនោះលើកដំបូង ខ្ញុំបានលង់ស្នេហ៍។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/순간"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3246",
+      "hangul": "짧다",
+      "romanization": "jjalda",
+      "pos": "adjective",
+      "level": 3,
+      "category": "quantity",
+      "meaning": {
+        "en": "short",
+        "km": "ខ្លី"
+      },
+      "examples": [
+        {
+          "ko": "방학이 너무 짧아서 아쉬워요.",
+          "en": "It's a shame the vacation is so short.",
+          "km": "គួរឱ្យស្តាយ ព្រោះវិស្សមកាលខ្លីពេក។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/짧다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3247",
+      "hangul": "제기",
+      "romanization": "jegi",
+      "hanja": "提起",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "raising (an issue), bringing up",
+        "km": "ការលើកឡើង (បញ្ហា)"
+      },
+      "examples": [
+        {
+          "ko": "주민들이 소음 문제를 제기했다.",
+          "en": "Residents raised the issue of noise.",
+          "km": "អ្នកស្រុកបានលើកឡើងពីបញ្ហាសំឡេងរំខាន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/제기"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3248",
+      "hangul": "서다",
+      "romanization": "seoda",
+      "pos": "verb",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "to stand, to stop",
+        "km": "ឈរ, ឈប់"
+      },
+      "examples": [
+        {
+          "ko": "버스가 정류장에 서자 사람들이 내렸다.",
+          "en": "When the bus stopped at the stop, people got off.",
+          "km": "ពេលឡានក្រុងឈប់នៅចំណត ប្រជាជនបានចុះ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/서다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3249",
+      "hangul": "구체적",
+      "romanization": "guchejeok",
+      "hanja": "具體的",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "concrete, specific",
+        "km": "ជាក់លាក់, លម្អិត"
+      },
+      "examples": [
+        {
+          "ko": "계획을 좀 더 구체적으로 설명해 주세요.",
+          "en": "Please explain the plan more specifically.",
+          "km": "សូមពន្យល់ផែនការឱ្យកាន់តែជាក់លាក់បន្តិច។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/구체적"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3250",
+      "hangul": "생태",
+      "romanization": "saengtae",
+      "hanja": "生態",
+      "pos": "noun",
+      "level": 3,
+      "category": "environment",
+      "meaning": {
+        "en": "ecology",
+        "km": "អេកូឡូស៊ី, ប្រព័ន្ធអេកូឡូស៊ី"
+      },
+      "examples": [
+        {
+          "ko": "공장 폐수가 강의 생태를 파괴했다.",
+          "en": "Factory wastewater destroyed the river's ecology.",
+          "km": "ទឹកកខ្វក់ពីរោងចក្របានបំផ្លាញប្រព័ន្ធអេកូឡូស៊ីនៃទន្លេ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/생태"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3251",
+      "hangul": "밝다",
+      "romanization": "bakda",
+      "pos": "adjective",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "bright, cheerful",
+        "km": "ភ្លឺ, រីករាយ"
+      },
+      "examples": [
+        {
+          "ko": "그 아이는 성격이 밝아서 친구가 많다.",
+          "en": "That child has a cheerful personality, so they have many friends.",
+          "km": "ក្មេងនោះមានចរិតរីករាយ ដូច្នេះមានមិត្តភក្តិច្រើន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/밝다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3252",
+      "hangul": "작성",
+      "romanization": "jakseong",
+      "hanja": "作成",
+      "pos": "noun",
+      "level": 3,
+      "category": "work",
+      "meaning": {
+        "en": "writing, drawing up (a document)",
+        "km": "ការសរសេរ, ការរៀបចំ (ឯកសារ)"
+      },
+      "examples": [
+        {
+          "ko": "신청서를 작성해서 내일까지 내세요.",
+          "en": "Fill out the application form and submit it by tomorrow.",
+          "km": "សូមបំពេញពាក្យស្នើសុំ ហើយដាក់ជូនត្រឹមថ្ងៃស្អែក។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/작성"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3253",
+      "hangul": "실시",
+      "romanization": "silsi",
+      "hanja": "實施",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "implementation, carrying out",
+        "km": "ការអនុវត្ត"
+      },
+      "examples": [
+        {
+          "ko": "다음 달부터 새 제도를 실시한다.",
+          "en": "The new system will be implemented from next month.",
+          "km": "ប្រព័ន្ធថ្មីនឹងត្រូវអនុវត្តចាប់ពីខែក្រោយ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/실시"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3254",
+      "hangul": "움직임",
+      "romanization": "umjigim",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "movement, motion",
+        "km": "ចលនា"
+      },
+      "examples": [
+        {
+          "ko": "환경을 보호하려는 움직임이 커지고 있다.",
+          "en": "The movement to protect the environment is growing.",
+          "km": "ចលនាការពារបរិស្ថានកំពុងរីកធំឡើង។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/움직임"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3255",
+      "hangul": "조건",
+      "romanization": "jogeon",
+      "hanja": "條件",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "condition, terms",
+        "km": "លក្ខខណ្ឌ"
+      },
+      "examples": [
+        {
+          "ko": "이 회사는 근무 조건이 좋다.",
+          "en": "This company has good working conditions.",
+          "km": "ក្រុមហ៊ុននេះមានលក្ខខណ្ឌការងារល្អ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/조건"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3256",
+      "hangul": "반복",
+      "romanization": "banbok",
+      "hanja": "反復",
+      "pos": "noun",
+      "level": 3,
+      "category": "education",
+      "meaning": {
+        "en": "repetition",
+        "km": "ការធ្វើម្តងហើយម្តងទៀត"
+      },
+      "examples": [
+        {
+          "ko": "단어는 반복해서 외워야 잊어버리지 않는다.",
+          "en": "You have to memorise words repeatedly so you don't forget them.",
+          "km": "ពាក្យត្រូវទន្ទេញម្តងហើយម្តងទៀត ទើបមិនភ្លេច។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/반복"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3257",
+      "hangul": "소재",
+      "romanization": "sojae",
+      "hanja": "素材",
+      "pos": "noun",
+      "level": 3,
+      "category": "culture",
+      "meaning": {
+        "en": "material, subject matter",
+        "km": "សម្ភារៈ, ប្រធានបទ"
+      },
+      "examples": [
+        {
+          "ko": "이 소설은 가족을 소재로 한 이야기이다.",
+          "en": "This novel is a story with family as its subject.",
+          "km": "ប្រលោមលោកនេះជារឿងដែលយកគ្រួសារជាប្រធានបទ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/소재"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3258",
+      "hangul": "이미",
+      "romanization": "imi",
+      "pos": "adverb",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "already, by now",
+        "km": "រួចហើយ"
+      },
+      "examples": [
+        {
+          "ko": "제가 도착했을 때 영화는 이미 시작했어요.",
+          "en": "When I arrived, the movie had already started.",
+          "km": "ពេលខ្ញុំមកដល់ ភាពយន្តបានចាប់ផ្តើមរួចហើយ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/이미"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3259",
+      "hangul": "안정",
+      "romanization": "anjeong",
+      "hanja": "安定",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "stability",
+        "km": "ស្ថិរភាព"
+      },
+      "examples": [
+        {
+          "ko": "물가가 안정되어야 국민들이 편하게 산다.",
+          "en": "Prices must be stable for people to live comfortably.",
+          "km": "តម្លៃទំនិញត្រូវមានស្ថិរភាព ទើបប្រជាជនរស់នៅស្រួល។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/안정"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3260",
+      "hangul": "올라가다",
+      "romanization": "ollagada",
+      "pos": "verb",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "to go up, to rise",
+        "km": "ឡើង, កើនឡើង"
+      },
+      "examples": [
+        {
+          "ko": "엘리베이터를 타고 10층으로 올라갔다.",
+          "en": "I took the elevator up to the 10th floor.",
+          "km": "ខ្ញុំជិះជណ្តើរយន្តឡើងទៅជាន់ទី១០។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/올라가다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3261",
+      "hangul": "하루",
+      "romanization": "haru",
+      "pos": "noun",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "a day",
+        "km": "មួយថ្ងៃ"
+      },
+      "examples": [
+        {
+          "ko": "하루에 물을 2리터 정도 마시는 것이 좋다.",
+          "en": "It's good to drink about 2 litres of water a day.",
+          "km": "ការផឹកទឹកប្រហែល២លីត្រក្នុងមួយថ្ងៃគឺល្អ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/하루"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3262",
+      "hangul": "초기",
+      "romanization": "chogi",
+      "hanja": "初期",
+      "pos": "noun",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "early stage, beginning",
+        "km": "ដំណាក់កាលដំបូង"
+      },
+      "examples": [
+        {
+          "ko": "병은 초기에 치료하는 것이 중요하다.",
+          "en": "It's important to treat an illness at an early stage.",
+          "km": "ការព្យាបាលជំងឺនៅដំណាក់កាលដំបូងគឺសំខាន់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/초기"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3263",
+      "hangul": "예측",
+      "romanization": "yecheuk",
+      "hanja": "豫測",
+      "pos": "noun",
+      "level": 3,
+      "category": "science",
+      "meaning": {
+        "en": "prediction, forecast",
+        "km": "ការព្យាករណ៍"
+      },
+      "examples": [
+        {
+          "ko": "내일 날씨를 정확하게 예측하기는 어렵다.",
+          "en": "It's difficult to predict tomorrow's weather accurately.",
+          "km": "វាពិបាកក្នុងការព្យាករណ៍អាកាសធាតុថ្ងៃស្អែកឱ្យបានត្រឹមត្រូវ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/예측"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3264",
+      "hangul": "이전",
+      "romanization": "ijeon",
+      "hanja": "以前",
+      "pos": "noun",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "before, the past",
+        "km": "មុន, កាលពីមុន"
+      },
+      "examples": [
+        {
+          "ko": "이전에 살던 집보다 지금 집이 더 넓다.",
+          "en": "My current house is bigger than the one I lived in before.",
+          "km": "ផ្ទះបច្ចុប្បន្នធំជាងផ្ទះដែលខ្ញុំធ្លាប់រស់នៅពីមុន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/이전"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3265",
+      "hangul": "방지",
+      "romanization": "bangji",
+      "hanja": "防止",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "prevention (of harm), blocking",
+        "km": "ការការពារ, ការទប់ស្កាត់"
+      },
+      "examples": [
+        {
+          "ko": "사고 방지를 위해 속도를 줄여 주세요.",
+          "en": "Please slow down to prevent accidents.",
+          "km": "សូមបន្ថយល្បឿន ដើម្បីទប់ស្កាត់គ្រោះថ្នាក់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/방지"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3266",
+      "hangul": "심각하다",
+      "romanization": "simgakhada",
+      "hanja": "深刻하다",
+      "pos": "adjective",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "serious, severe",
+        "km": "ធ្ងន់ធ្ងរ"
+      },
+      "examples": [
+        {
+          "ko": "대기 오염 문제가 점점 심각해지고 있다.",
+          "en": "The air pollution problem is getting more and more serious.",
+          "km": "បញ្ហាបំពុលខ្យល់កំពុងកាន់តែធ្ងន់ធ្ងរឡើងៗ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/심각하다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3267",
+      "hangul": "활성화",
+      "romanization": "hwalseonghwa",
+      "hanja": "活性化",
+      "pos": "noun",
+      "level": 3,
+      "category": "economy",
+      "meaning": {
+        "en": "revitalisation, activation",
+        "km": "ការជំរុញ, ការធ្វើឱ្យរស់រវើក"
+      },
+      "examples": [
+        {
+          "ko": "정부는 지역 경제 활성화를 위해 노력하고 있다.",
+          "en": "The government is working to revitalise the local economy.",
+          "km": "រដ្ឋាភិបាលកំពុងខិតខំជំរុញសេដ្ឋកិច្ចមូលដ្ឋាន។"
+        }
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3268",
+      "hangul": "주제",
+      "romanization": "juje",
+      "hanja": "主題",
+      "pos": "noun",
+      "level": 3,
+      "category": "education",
+      "meaning": {
+        "en": "topic, theme",
+        "km": "ប្រធានបទ"
+      },
+      "examples": [
+        {
+          "ko": "발표 주제를 아직 정하지 못했어요.",
+          "en": "I haven't decided on my presentation topic yet.",
+          "km": "ខ្ញុំមិនទាន់សម្រេចប្រធានបទបទបង្ហាញនៅឡើយទេ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/주제"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3269",
+      "hangul": "화면",
+      "romanization": "hwamyeon",
+      "hanja": "畫面",
+      "pos": "noun",
+      "level": 3,
+      "category": "media",
+      "meaning": {
+        "en": "screen",
+        "km": "អេក្រង់"
+      },
+      "examples": [
+        {
+          "ko": "휴대폰 화면이 깨져서 수리를 맡겼다.",
+          "en": "My phone screen broke, so I left it for repair.",
+          "km": "អេក្រង់ទូរស័ព្ទខ្ញុំបែក ដូច្នេះខ្ញុំបានយកទៅជួសជុល។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/화면"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3270",
+      "hangul": "유도",
+      "romanization": "yudo",
+      "hanja": "誘導",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "inducement, guiding (someone to do something)",
+        "km": "ការជំរុញ, ការដឹកនាំ"
+      },
+      "examples": [
+        {
+          "ko": "이 광고는 소비자의 구매를 유도한다.",
+          "en": "This advertisement encourages consumers to buy.",
+          "km": "ការផ្សាយពាណិជ្ជកម្មនេះជំរុញឱ្យអ្នកប្រើប្រាស់ទិញ។"
+        }
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3271",
+      "hangul": "이메일",
+      "romanization": "imeil",
+      "pos": "noun",
+      "level": 3,
+      "category": "media",
+      "meaning": {
+        "en": "email",
+        "km": "អ៊ីមែល"
+      },
+      "examples": [
+        {
+          "ko": "자세한 내용은 이메일로 보내 드리겠습니다.",
+          "en": "I will send you the details by email.",
+          "km": "ខ្ញុំនឹងផ្ញើព័ត៌មានលម្អិតជូនតាមអ៊ីមែល។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/이메일"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3272",
+      "hangul": "유사하다",
+      "romanization": "yusahada",
+      "hanja": "類似하다",
+      "pos": "adjective",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "similar",
+        "km": "ស្រដៀងគ្នា"
+      },
+      "examples": [
+        {
+          "ko": "두 나라의 문화는 유사한 점이 많다.",
+          "en": "The cultures of the two countries have many similarities.",
+          "km": "វប្បធម៌នៃប្រទេសទាំងពីរមានចំណុចស្រដៀងគ្នាច្រើន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/유사하다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3273",
+      "hangul": "벗어나다",
+      "romanization": "beoseonada",
+      "pos": "verb",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "to get out of, to escape from",
+        "km": "ចាកចេញពី, រួចផុតពី"
+      },
+      "examples": [
+        {
+          "ko": "도시를 벗어나 시골에서 살고 싶다.",
+          "en": "I want to get out of the city and live in the countryside.",
+          "km": "ខ្ញុំចង់ចាកចេញពីទីក្រុង ហើយរស់នៅជនបទ។"
+        }
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3274",
+      "hangul": "적절하다",
+      "romanization": "jeokjeolhada",
+      "hanja": "適切하다",
+      "pos": "adjective",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "appropriate, suitable",
+        "km": "សមរម្យ, សមស្រប"
+      },
+      "examples": [
+        {
+          "ko": "상황에 적절한 표현을 사용해야 한다.",
+          "en": "You should use expressions appropriate to the situation.",
+          "km": "ត្រូវប្រើពាក្យសម្តីដែលសមស្របនឹងស្ថានភាព។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/적절하다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3275",
+      "hangul": "얼마나",
+      "romanization": "eolmana",
+      "pos": "adverb",
+      "level": 3,
+      "category": "quantity",
+      "meaning": {
+        "en": "how much, how (long, many)",
+        "km": "ប៉ុន្មាន, ប៉ុណ្ណា"
+      },
+      "examples": [
+        {
+          "ko": "여기에서 공항까지 얼마나 걸려요?",
+          "en": "How long does it take from here to the airport?",
+          "km": "ពីទីនេះទៅព្រលានយន្តហោះ ចំណាយពេលប៉ុន្មាន?"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/얼마나"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3276",
+      "hangul": "지나치다",
+      "romanization": "jinachida",
+      "pos": "adjective",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "excessive, too much",
+        "km": "ហួសហេតុ, លើសលប់"
+      },
+      "examples": [
+        {
+          "ko": "지나친 운동은 오히려 건강에 해롭다.",
+          "en": "Excessive exercise is actually harmful to your health.",
+          "km": "ការហាត់ប្រាណហួសហេតុពិតជាធ្វើឱ្យខូចសុខភាពទៅវិញ។"
+        }
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3277",
+      "hangul": "붙이다",
+      "romanization": "buchida",
+      "pos": "verb",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "to stick, to attach",
+        "km": "បិទភ្ជាប់, ភ្ជាប់"
+      },
+      "examples": [
+        {
+          "ko": "게시판에 공지를 붙였어요.",
+          "en": "I put a notice up on the bulletin board.",
+          "km": "ខ្ញុំបានបិទសេចក្តីជូនដំណឹងនៅលើក្តារព័ត៌មាន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/붙이다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3278",
+      "hangul": "여전히",
+      "romanization": "yeojeonhi",
+      "hanja": "如前히",
+      "pos": "adverb",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "still, as before",
+        "km": "នៅតែ, ដដែល"
+      },
+      "examples": [
+        {
+          "ko": "10년이 지났지만 그는 여전히 친절하다.",
+          "en": "Ten years have passed, but he is still kind.",
+          "km": "១០ឆ្នាំបានកន្លងផុតទៅ ប៉ុន្តែគាត់នៅតែចិត្តល្អដដែល។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/여전히"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3279",
+      "hangul": "모시다",
+      "romanization": "mosida",
+      "pos": "verb",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "to accompany, to serve (honorific)",
+        "km": "នាំ, បម្រើ (ពាក្យគោរព)"
+      },
+      "examples": [
+        {
+          "ko": "주말에 부모님을 모시고 여행을 갔다.",
+          "en": "At the weekend I took my parents on a trip.",
+          "km": "ចុងសប្តាហ៍ខ្ញុំបាននាំឪពុកម្តាយទៅដើរលេង។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/모시다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3280",
+      "hangul": "결국",
+      "romanization": "gyeolguk",
+      "hanja": "結局",
+      "pos": "adverb",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "in the end, eventually",
+        "km": "ទីបំផុត, នៅទីបញ្ចប់"
+      },
+      "examples": [
+        {
+          "ko": "오래 고민했지만 결국 회사를 그만두었다.",
+          "en": "I thought about it for a long time, but in the end I quit the company.",
+          "km": "ខ្ញុំគិតយូរ ប៉ុន្តែទីបំផុតខ្ញុំបានលាឈប់ពីក្រុមហ៊ុន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/결국"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3281",
+      "hangul": "붙다",
+      "romanization": "butda",
+      "pos": "verb",
+      "level": 3,
+      "category": "daily",
+      "meaning": {
+        "en": "to stick, to pass (an exam)",
+        "km": "ជាប់, ប្រឡងជាប់"
+      },
+      "examples": [
+        {
+          "ko": "드디어 시험에 붙었어요!",
+          "en": "I finally passed the exam!",
+          "km": "ទីបំផុតខ្ញុំបានប្រឡងជាប់ហើយ!"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/붙다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3282",
+      "hangul": "절약",
+      "romanization": "jeoryak",
+      "hanja": "節約",
+      "pos": "noun",
+      "level": 3,
+      "category": "economy",
+      "meaning": {
+        "en": "saving, economising",
+        "km": "ការសន្សំ"
+      },
+      "examples": [
+        {
+          "ko": "전기를 절약하기 위해 불을 껐다.",
+          "en": "I turned off the light to save electricity.",
+          "km": "ខ្ញុំបានបិទភ្លើង ដើម្បីសន្សំអគ្គិសនី។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/절약"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3283",
+      "hangul": "충분하다",
+      "romanization": "chungbunhada",
+      "hanja": "充分하다",
+      "pos": "adjective",
+      "level": 3,
+      "category": "quantity",
+      "meaning": {
+        "en": "enough, sufficient",
+        "km": "គ្រប់គ្រាន់"
+      },
+      "examples": [
+        {
+          "ko": "시간이 충분하니까 천천히 하세요.",
+          "en": "There's enough time, so take it slowly.",
+          "km": "មានពេលគ្រប់គ្រាន់ ដូច្នេះធ្វើយឺតៗទៅ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/충분하다"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3284",
+      "hangul": "산업",
+      "romanization": "saneop",
+      "hanja": "産業",
+      "pos": "noun",
+      "level": 3,
+      "category": "economy",
+      "meaning": {
+        "en": "industry",
+        "km": "ឧស្សាហកម្ម"
+      },
+      "examples": [
+        {
+          "ko": "관광 산업이 빠르게 성장하고 있다.",
+          "en": "The tourism industry is growing fast.",
+          "km": "ឧស្សាហកម្មទេសចរណ៍កំពុងរីកចម្រើនយ៉ាងឆាប់រហ័ស។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/산업"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3285",
+      "hangul": "강연",
+      "romanization": "gangyeon",
+      "hanja": "講演",
+      "pos": "noun",
+      "level": 3,
+      "category": "education",
+      "meaning": {
+        "en": "lecture, talk",
+        "km": "ការបង្រៀន, ការថ្លែងសុន្ទរកថា"
+      },
+      "examples": [
+        {
+          "ko": "유명한 작가의 강연을 들으러 갔다.",
+          "en": "I went to hear a lecture by a famous author.",
+          "km": "ខ្ញុំបានទៅស្តាប់ការថ្លែងរបស់អ្នកនិពន្ធល្បីម្នាក់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/강연"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3286",
+      "hangul": "해외",
+      "romanization": "haeoe",
+      "hanja": "海外",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "overseas, abroad",
+        "km": "បរទេស, ក្រៅប្រទេស"
+      },
+      "examples": [
+        {
+          "ko": "해외 여행을 가려면 여권이 필요하다.",
+          "en": "You need a passport to travel abroad.",
+          "km": "បើចង់ធ្វើដំណើរទៅក្រៅប្រទេស ត្រូវការលិខិតឆ្លងដែន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/해외"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3287",
+      "hangul": "식품",
+      "romanization": "sikpum",
+      "hanja": "食品",
+      "pos": "noun",
+      "level": 3,
+      "category": "health",
+      "meaning": {
+        "en": "food, foodstuffs",
+        "km": "ម្ហូបអាហារ, ចំណីអាហារ"
+      },
+      "examples": [
+        {
+          "ko": "유통 기한이 지난 식품은 먹지 마세요.",
+          "en": "Don't eat food that is past its expiry date.",
+          "km": "កុំញ៉ាំចំណីអាហារដែលផុតកំណត់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/식품"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3288",
+      "hangul": "자원",
+      "romanization": "jawon",
+      "hanja": "資源",
+      "pos": "noun",
+      "level": 3,
+      "category": "environment",
+      "meaning": {
+        "en": "resources",
+        "km": "ធនធាន"
+      },
+      "examples": [
+        {
+          "ko": "자원을 아껴 써야 한다.",
+          "en": "We must use resources sparingly.",
+          "km": "យើងត្រូវប្រើប្រាស់ធនធានដោយសន្សំសំចៃ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/자원"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3289",
+      "hangul": "상태",
+      "romanization": "sangtae",
+      "hanja": "狀態",
+      "pos": "noun",
+      "level": 3,
+      "category": "health",
+      "meaning": {
+        "en": "condition, state",
+        "km": "ស្ថានភាព"
+      },
+      "examples": [
+        {
+          "ko": "환자의 상태가 많이 좋아졌다.",
+          "en": "The patient's condition has improved a lot.",
+          "km": "ស្ថានភាពរបស់អ្នកជំងឺបានប្រសើរឡើងច្រើន។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/상태"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3290",
+      "hangul": "현대",
+      "romanization": "hyeondae",
+      "hanja": "現代",
+      "pos": "noun",
+      "level": 3,
+      "category": "time",
+      "meaning": {
+        "en": "modern times, the present age",
+        "km": "សម័យទំនើប, បច្ចុប្បន្ន"
+      },
+      "examples": [
+        {
+          "ko": "현대 사회에서는 인터넷이 꼭 필요하다.",
+          "en": "In modern society, the internet is essential.",
+          "km": "ក្នុងសង្គមសម័យទំនើប អ៊ីនធឺណិតគឺចាំបាច់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/현대"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3291",
+      "hangul": "대담",
+      "romanization": "daedam",
+      "hanja": "對談",
+      "pos": "noun",
+      "level": 3,
+      "category": "media",
+      "meaning": {
+        "en": "talk, interview, dialogue",
+        "km": "ការសន្ទនា, បទសម្ភាសន៍"
+      },
+      "examples": [
+        {
+          "ko": "라디오에서 의사와의 대담을 들었다.",
+          "en": "I heard a talk with a doctor on the radio.",
+          "km": "ខ្ញុំបានស្តាប់ការសន្ទនាជាមួយវេជ្ជបណ្ឌិតតាមវិទ្យុ។"
+        }
+      ],
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3292",
+      "hangul": "도입",
+      "romanization": "doip",
+      "hanja": "導入",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "introduction, adoption (of a system)",
+        "km": "ការណែនាំ, ការនាំចូលមកប្រើ"
+      },
+      "examples": [
+        {
+          "ko": "새로운 시스템을 도입한 후 일이 편해졌다.",
+          "en": "Work became easier after we introduced the new system.",
+          "km": "ការងារកាន់តែស្រួល បន្ទាប់ពីយើងបានណែនាំប្រព័ន្ធថ្មីមកប្រើ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/도입"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3293",
+      "hangul": "소통",
+      "romanization": "sotong",
+      "hanja": "疏通",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "communication",
+        "km": "ការប្រាស្រ័យទាក់ទង"
+      },
+      "examples": [
+        {
+          "ko": "세대 간 소통이 부족하면 갈등이 생긴다.",
+          "en": "Conflict arises when there is a lack of communication between generations.",
+          "km": "បើខ្វះការប្រាស្រ័យទាក់ទងរវាងជំនាន់ នឹងកើតមានជម្លោះ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/소통"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3294",
+      "hangul": "대책",
+      "romanization": "daechaek",
+      "hanja": "對策",
+      "pos": "noun",
+      "level": 3,
+      "category": "politics",
+      "meaning": {
+        "en": "measure, countermeasure",
+        "km": "វិធានការ"
+      },
+      "examples": [
+        {
+          "ko": "정부는 미세 먼지 대책을 발표했다.",
+          "en": "The government announced measures against fine dust.",
+          "km": "រដ្ឋាភិបាលបានប្រកាសវិធានការទប់ស្កាត់ធូលីល្អិត។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/대책"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3295",
+      "hangul": "문자",
+      "romanization": "munja",
+      "hanja": "文字",
+      "pos": "noun",
+      "level": 3,
+      "category": "media",
+      "meaning": {
+        "en": "text message, letter (character)",
+        "km": "សារ, អក្សរ"
+      },
+      "examples": [
+        {
+          "ko": "도착하면 문자 보내 주세요.",
+          "en": "Please send me a text when you arrive.",
+          "km": "ពេលមកដល់ សូមផ្ញើសារមកខ្ញុំ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/문자"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3296",
+      "hangul": "단체",
+      "romanization": "danche",
+      "hanja": "團體",
+      "pos": "noun",
+      "level": 3,
+      "category": "society",
+      "meaning": {
+        "en": "group, organisation",
+        "km": "ក្រុម, អង្គការ"
+      },
+      "examples": [
+        {
+          "ko": "환경 단체가 나무 심기 행사를 열었다.",
+          "en": "An environmental group held a tree-planting event.",
+          "km": "អង្គការបរិស្ថានបានរៀបចំកម្មវិធីដាំដើមឈើ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/단체"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3297",
+      "hangul": "형태",
+      "romanization": "hyeongtae",
+      "hanja": "形態",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "form, shape",
+        "km": "ទម្រង់, រូបរាង"
+      },
+      "examples": [
+        {
+          "ko": "가족의 형태가 다양해지고 있다.",
+          "en": "Family forms are becoming more diverse.",
+          "km": "ទម្រង់គ្រួសារកំពុងកាន់តែមានភាពចម្រុះ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/형태"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3298",
+      "hangul": "중요성",
+      "romanization": "jungyoseong",
+      "hanja": "重要性",
+      "pos": "noun",
+      "level": 3,
+      "category": "abstract",
+      "meaning": {
+        "en": "importance",
+        "km": "សារៈសំខាន់"
+      },
+      "examples": [
+        {
+          "ko": "건강의 중요성을 잊으면 안 된다.",
+          "en": "You must not forget the importance of health.",
+          "km": "មិនត្រូវភ្លេចសារៈសំខាន់នៃសុខភាពទេ។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/중요성"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3299",
+      "hangul": "사무실",
+      "romanization": "samusil",
+      "hanja": "事務室",
+      "pos": "noun",
+      "level": 3,
+      "category": "work",
+      "meaning": {
+        "en": "office",
+        "km": "ការិយាល័យ"
+      },
+      "examples": [
+        {
+          "ko": "회의는 3층 사무실에서 합니다.",
+          "en": "The meeting is in the third-floor office.",
+          "km": "ការប្រជុំធ្វើនៅការិយាល័យជាន់ទី៣។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/사무실"
+      },
+      "review": "pending"
+    },
+    {
+      "id": "vocab.3300",
+      "hangul": "보존",
+      "romanization": "bojon",
+      "hanja": "保存",
+      "pos": "noun",
+      "level": 3,
+      "category": "culture",
+      "meaning": {
+        "en": "preservation, conservation",
+        "km": "ការថែរក្សា, ការអភិរក្ស"
+      },
+      "examples": [
+        {
+          "ko": "전통 문화를 보존하는 것이 중요하다.",
+          "en": "It is important to preserve traditional culture.",
+          "km": "ការអភិរក្សវប្បធម៌ប្រពៃណីគឺសំខាន់។"
+        }
+      ],
+      "source": {
+        "origin": "imported",
+        "name": "Wiktionary (meaning); HanguStep (examples, Khmer)",
+        "license": "CC BY-SA 4.0",
+        "url": "https://en.wiktionary.org/wiki/보존"
+      },
+      "review": "pending"
+    }
+  ]
+}
