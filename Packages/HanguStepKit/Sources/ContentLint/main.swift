@@ -44,6 +44,11 @@ case "lint":
         guard BundledContent.summary(directory: root) == result.info else {
             fail("FAIL \(BundledContent.summaryFile) is missing or stale: run `swift run content-lint generate-questions`")
         }
+        let audio = BundledListeningAudio(contentDirectory: root)
+        let silent = result.package.questions.filter { $0.kind == .listening && audio.audioURL(for: $0.id) == nil }
+        guard silent.isEmpty else {
+            fail("FAIL listening questions without a recording in \(BundledListeningAudio.directory): " + silent.map(\.id.rawValue).joined(separator: ", "))
+        }
         let writing = try BundledWritingTasks(contentDirectory: root).load()
         let byType = Dictionary(grouping: writing, by: \.type)
         print("writing tasks \(writing.count): " + WritingTaskType.allCases.map { "\($0.rawValue) \(byType[$0]?.count ?? 0)" }.joined(separator: " · "))

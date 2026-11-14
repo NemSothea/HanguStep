@@ -31,6 +31,7 @@ public struct AppDependencies: Sendable {
     public let saveWritingAttempt: any SaveWritingAttemptUseCase
     public let reviewWriting: any ReviewWritingUseCase
     public let writingAttempts: any WritingAttemptRepository
+    public let listeningAudio: any ListeningAudioSource
 
     public init(
         loadDashboardSummary: any LoadDashboardSummaryUseCase,
@@ -60,7 +61,8 @@ public struct AppDependencies: Sendable {
         listWritingTasks: any ListWritingTasksUseCase = NoWriting(),
         saveWritingAttempt: any SaveWritingAttemptUseCase = NoWriting(),
         reviewWriting: any ReviewWritingUseCase = UnavailableAssistant(),
-        writingAttempts: any WritingAttemptRepository = NoWriting()
+        writingAttempts: any WritingAttemptRepository = NoWriting(),
+        listeningAudio: any ListeningAudioSource = NoListeningAudio()
     ) {
         self.loadDashboardSummary = loadDashboardSummary
         self.loadProgressReport = loadProgressReport
@@ -90,6 +92,7 @@ public struct AppDependencies: Sendable {
         self.saveWritingAttempt = saveWritingAttempt
         self.reviewWriting = reviewWriting
         self.writingAttempts = writingAttempts
+        self.listeningAudio = listeningAudio
     }
 }
 

@@ -150,7 +150,8 @@ final class AppContainer {
                 listWritingTasks: ListWritingTasks(tasks: BundledWritingTasks(), attempts: writingAttempts),
                 saveWritingAttempt: SaveWritingAttempt(attempts: writingAttempts, dates: SystemDateProvider()),
                 reviewWriting: ReviewWriting(providers: providers, attempts: writingAttempts),
-                writingAttempts: writingAttempts
+                writingAttempts: writingAttempts,
+                listeningAudio: BundledListeningAudio()
             )
             let assistant = AssistantModel(store: assistantSettings, secrets: secrets)
             let settings = try await settingsRepository.load()

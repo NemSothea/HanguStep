@@ -15,7 +15,7 @@ final class QuizSessionViewModelTests: XCTestCase {
         (dependencies, attempts, sessions) = Self.makeDependencies(questions: SampleContent.questions, pronouncer: SilentPronouncer())
     }
 
-    private nonisolated static func makeDependencies(questions allQuestions: [Question], pronouncer: any Pronouncer) -> (AppDependencies, InMemoryAttemptRepository, InMemoryStudySessionRepository) {
+    private nonisolated static func makeDependencies(questions allQuestions: [Question], pronouncer: any Pronouncer, audio: any ListeningAudioSource = NoListeningAudio()) -> (AppDependencies, InMemoryAttemptRepository, InMemoryStudySessionRepository) {
         let questions = InMemoryQuestionRepository(questions: allQuestions)
         let attempts = InMemoryAttemptRepository()
         let sessions = InMemoryStudySessionRepository()
@@ -44,7 +44,8 @@ final class QuizSessionViewModelTests: XCTestCase {
             listHistory: ListQuizHistory(sessions: sessions, attempts: attempts),
             loadSettings: LoadSettings(repository: settings),
             saveSettings: SaveSettings(repository: settings),
-            pronouncer: pronouncer
+            pronouncer: pronouncer,
+            listeningAudio: audio
         )
         return (dependencies, attempts, sessions)
     }
@@ -178,6 +179,18 @@ final class QuizSessionViewModelTests: XCTestCase {
         XCTAssertEqual(events.last, "script 2", "the next listening question plays")
     }
 
+    func testListeningPrefersBundledRecording() async throws {
+        let spy = SpyPronouncer()
+        (dependencies, attempts, sessions) = Self.makeDependencies(
+            questions: [Self.listeningQuestion(1)], pronouncer: spy, audio: StubAudio(withRecording: [QuestionID("q.ls.test.1")])
+        )
+        let viewModel = QuizSessionViewModel(launch: QuizLaunch(configuration: QuizConfiguration(pool: .listening, count: 1)), dependencies: dependencies)
+        await viewModel.load()
+        try await spy.waitForEvents(1)
+        let events = await spy.events
+        XCTAssertEqual(events, ["audio q.ls.test.1.m4a"], "the recording plays instead of TTS")
+    }
+
     func testMixedPoolNeverIncludesListening() async throws {
         (dependencies, attempts, sessions) = Self.makeDependencies(questions: [Self.listeningQuestion(1)] + SampleContent.questions, pronouncer: SilentPronouncer())
         let viewModel = QuizSessionViewModel(launch: QuizLaunch(configuration: QuizConfiguration(pool: .mixed, count: 40)), dependencies: dependencies)
@@ -194,9 +207,18 @@ actor SpyPronouncer: Pronouncer {
 
     func speak(_ text: String) { events.append("text") }
     func speak(_ script: ListeningScript) { events.append("script \(script.lines.count)") }
+    func play(_ audio: URL) { events.append("audio \(audio.lastPathComponent)") }
     func stop() { events.append("stop") }
 
     func waitForEvents(_ count: Int) async throws {
         for _ in 0..<100 where events.count < count { try await Task.sleep(for: .milliseconds(10)) }
     }
 }
+
+private struct StubAudio: ListeningAudioSource {
+    let withRecording: Set<QuestionID>
+    func audioURL(for question: QuestionID) -> URL? {
+        withRecording.contains(question) ? URL(fileURLWithPath: "/tmp/\(question.rawValue).m4a") : nil
+    }
+}
+

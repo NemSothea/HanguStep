@@ -6,6 +6,7 @@ import Foundation
 /// Lives in Features because it is a platform presentation service, not persistence.
 public actor SpeechPronouncer: Pronouncer {
     private let synthesizer = AVSpeechSynthesizer()
+    private var player: AVAudioPlayer?
     /// Best installed Korean voice: premium or enhanced when the learner downloaded one.
     private let voice = SpeechPronouncer.koreanVoices().first ?? AVSpeechSynthesisVoice(language: "ko-KR")
 
@@ -36,8 +37,22 @@ public actor SpeechPronouncer: Pronouncer {
         }
     }
 
+    /// Plays a bundled recording. Listening practice uses these when present (ADR-011).
+    public func play(_ audio: URL) {
+        stop()
+        #if os(iOS)
+        // Spoken audio the learner asked for: plays with the ring switch on silent.
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        #endif
+        player = try? AVAudioPlayer(contentsOf: audio)
+        player?.play()
+    }
+
     public func stop() {
         synthesizer.stopSpeaking(at: .immediate)
+        player?.stop()
+        player = nil
     }
 
     /// False when the device has no Korean voice installed.
