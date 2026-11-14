@@ -213,7 +213,7 @@ Each requirement is testable and traceable to user stories.
 
 - AI assistant: generated questions, explanations, writing feedback (Phase 8)
 - Listening practice with recorded audio clips (TTS listening practice shipped 2026-11, ADR-011)
-- Writing practice (TOPIK II 쓰기) with self-assessment or AI feedback
+- Writing practice (TOPIK II 쓰기) with self-assessment or AI feedback (shipped 2026-11, ADR-012)
 - Reading passages with timed mode
 - Khmer UI localization
 - Handwriting or typing input for recall-type questions
@@ -352,7 +352,7 @@ The following were assumed to keep Phase 0 moving. Confirm or change before Phas
 | Q1 | Your current level and target? | Intermediate, target TOPIK II level 3 to 4. Content priority: levels 1 to 4 first. |
 | Q2 | UI language? | English UI in MVP. Khmer UI later. Khmer always present in content. |
 | Q3 | Pronunciation: on-device TTS or recorded audio? | TTS (AVSpeechSynthesizer ko-KR). No audio files in MVP. |
-| Q4 | Listening and writing sections in MVP? | Originally no. Revised 2026-11-14 (ADR-011): TTS listening practice added before release; writing practice planned next. |
+| Q4 | Listening and writing sections in MVP? | Originally no. Revised 2026-11-14 (ADR-011): TTS listening practice added before release (ADR-011), then writing practice with model answers and optional AI feedback (ADR-012). |
 | Q5 | Who writes Khmer translations? | You, with AI-assisted drafts reviewed by you. Each entry tagged with reviewer status. |
 | Q6 | Question type for MVP: multiple choice only? | Yes. Typed recall is future. |
 | Q7 | Single learner per Apple Account? | Yes. No profiles. |

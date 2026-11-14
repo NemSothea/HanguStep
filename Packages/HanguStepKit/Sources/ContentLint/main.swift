@@ -40,6 +40,9 @@ switch command {
 case "lint":
     do {
         summarise(try BundledContent.load(directory: root))
+        let writing = try BundledWritingTasks(contentDirectory: root).load()
+        let byType = Dictionary(grouping: writing, by: \.type)
+        print("writing tasks \(writing.count): " + WritingTaskType.allCases.map { "\($0.rawValue) \(byType[$0]?.count ?? 0)" }.joined(separator: " · "))
         print("OK")
     } catch {
         fail("FAIL \(error)")

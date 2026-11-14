@@ -8,6 +8,7 @@ public enum DomainError: Error, Sendable, Equatable {
     case invalidPackage(issues: [String])
     case duplicateSubmission(questionID: QuestionID)
     case emptyPool
+    case emptyAnswer
     case storage(description: String)
 }
 
@@ -24,6 +25,8 @@ extension DomainError: LocalizedError {
             return "Content package is invalid: \(issues.joined(separator: "; "))"
         case .emptyPool:
             return "No questions match the selected filters."
+        case .emptyAnswer:
+            return "Write an answer first."
         case let .storage(description):
             return "Storage error: \(description)"
         }

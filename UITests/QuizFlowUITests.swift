@@ -204,5 +204,33 @@ final class QuizFlowUITests: XCTestCase {
         let end = app.buttons["End quiz"]
         if end.waitForExistence(timeout: 3) { end.tap() }
     }
+
+    /// Writing practice (ADR-012): open a task, write, save, see the model answer.
+    func testWritingPracticeSavesAnswer() throws {
+        XCTAssertTrue(app.staticTexts["Home"].waitForExistence(timeout: 15))
+        app.tabBars.buttons["Quiz"].tap()
+        let open = app.buttons["writing.open"]
+        for _ in 0..<4 where !open.isHittable { app.swipeUp() }
+        XCTAssertTrue(open.waitForExistence(timeout: 5), "writing entry missing")
+        open.tap()
+        XCTAssertTrue(app.staticTexts["공지"].firstMatch.waitForExistence(timeout: 5), "writing tasks did not load")
+        snapshot("18-writing-list")
+        // First 51 task (writing/tasks.json w.51.001); `cells.firstMatch` is not the row in a sectioned List.
+        app.staticTexts["공지"].firstMatch.tap()
+
+        let editor = app.textViews["writing.editor"].exists ? app.textViews["writing.editor"] : app.textViews.firstMatch
+        XCTAssertTrue(editor.waitForExistence(timeout: 5))
+        editor.tap()
+        editor.typeText("Practice answer")
+        let counter = app.staticTexts["writing.counter"]
+        XCTAssertTrue((counter.label as NSString).hasPrefix("15 characters"), "counter shows \(counter.label)")
+        snapshot("19-writing-task")
+        if app.buttons["Done"].exists { app.buttons["Done"].tap() }
+        app.buttons["writing.save"].tap()
+        let attempt = app.descendants(matching: .any)["writing.attempt"]
+        for _ in 0..<4 where !attempt.exists { app.swipeUp() }
+        XCTAssertTrue(attempt.waitForExistence(timeout: 5), "saved answer not shown")
+        snapshot("20-writing-saved")
+    }
 }
 

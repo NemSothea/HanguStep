@@ -113,6 +113,13 @@ public final class PersistenceController: Sendable {
         return model
     }
 
+    /// One version from the compiled model (`HanguStep v1`, `HanguStep v2`), for migration tests.
+    static func loadModel(version: String) -> NSManagedObjectModel? {
+        Bundle.module.url(forResource: "HanguStep", withExtension: "momd")
+            .map { $0.appendingPathComponent("\(version).mom") }
+            .flatMap(NSManagedObjectModel.init(contentsOf:))
+    }
+
     static func description(for configuration: String, mode: Mode) -> NSPersistentStoreDescription {
         let description: NSPersistentStoreDescription
         switch mode {

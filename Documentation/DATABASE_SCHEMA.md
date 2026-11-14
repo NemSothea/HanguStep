@@ -135,6 +135,13 @@ erDiagram
         string text
         date modifiedAt
     }
+    CDWritingAttempt {
+        string id PK
+        string taskID
+        string text
+        date createdAt
+        string feedbackJSON
+    }
     CDLearnerSettings {
         string id PK
         string glossLanguage
@@ -194,6 +201,7 @@ Managed objects never leave the Persistence target. Each repository maps rows to
 | `StudySession` (new in this phase) | `CDStudySession` |
 | `LearnerNote` (new) | `CDLearnerNote` |
 | `LearnerSettings` (new) | `CDLearnerSettings` |
+| `WritingAttempt` (v2, ADR-012) | `CDWritingAttempt` (feedback stored as JSON text: shown, never queried) |
 | `ContentSource` | `sourceName`, `sourceLicense` columns |
 
 New domain types added in Phase 3: `StudySession`, `StudyMode`, `LearnerNote`, `LearnerSettings`, plus `StudySessionRepository`, `LearnerNoteRepository`, `LearnerSettingsRepository` protocols.
@@ -219,6 +227,7 @@ Content import: at launch `BundledContent.load()` decodes and validates the bund
 - Every schema change adds a new model version. Lightweight migration only (`shouldMigrateStoreAutomatically`, `shouldInferMappingModelAutomatically`). If a change cannot be lightweight, we write a mapping model and a migration test before merging.
 - **Content store migration is skipped entirely**: on model version change the content store file is deleted and re-imported from the bundle. Cheap, and it has no user data.
 - **Learner store** always migrates. CloudKit-mirrored entities may only add optional or defaulted attributes and new entities. Never rename or delete attributes after Phase 6 ships (CloudKit schema is additive forever).
+- `HanguStep v2` (2026-11-14, ADR-012): adds `CDWritingAttempt` to the Learner configuration. Additive only, so lightweight migration; `MigrationTests` opens the v1 fixture with v2 and writes a writing attempt, and `Learner-v2.sqlite` is the new fixture.
 - Migration tests: `Tests/PersistenceTests/Fixtures/` keeps a copy of `Learner.sqlite` written by each released model version. A test opens each fixture with the current model and asserts row counts and a sample record. CI runs it on every pull request.
 
 ## 8. Test plan for Phase 3
