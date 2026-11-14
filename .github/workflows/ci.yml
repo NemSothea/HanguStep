@@ -27,11 +27,12 @@ jobs:
           fi
       - name: Test HanguStepKit
         working-directory: Packages/HanguStepKit
-        run: swift test --parallel
+        # swiftbuild compiles the Core Data model (.xcdatamodeld to .momd); the native build only copies it.
+        run: swift test --parallel --build-system swiftbuild
       - name: Lint bundled content
         working-directory: Packages/HanguStepKit
         run: |
-          swift run content-lint generate-questions
+          swift run --build-system swiftbuild content-lint generate-questions
           git diff --exit-code -- Sources/Persistence/Resources/Content
 
   app:
