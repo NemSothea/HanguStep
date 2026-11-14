@@ -52,6 +52,7 @@ struct QuizSetupView: View {
                         Text("Mixed").tag(QuizPool.mixed)
                         Text("Vocabulary").tag(QuizPool.vocabulary)
                         Text("Grammar").tag(QuizPool.grammar)
+                        Text("Listening").tag(QuizPool.listening)
                         Text("Mistakes").tag(QuizPool.mistakes)
                     }
                     .pickerStyle(.segmented)

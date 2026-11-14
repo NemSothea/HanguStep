@@ -79,7 +79,7 @@ public struct StartQuizSession: StartQuizSessionUseCase {
             }
         case .review:
             return try await reviewCandidates()
-        case .vocabulary, .grammar, .mixed:
+        case .vocabulary, .grammar, .listening, .mixed:
             let filter = QuestionFilter(levels: configuration.levels, kinds: configuration.pool.kinds)
             return try await questions.questions(matching: filter)
         }

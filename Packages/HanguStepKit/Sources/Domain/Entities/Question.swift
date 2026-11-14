@@ -6,6 +6,8 @@ public enum QuestionKind: String, Sendable, Codable, CaseIterable {
     case grammarFillIn
     case sentenceCompletion
     case readingComprehension
+    /// Spoken with on-device TTS; `passage` holds the script, hidden until answered.
+    case listening
 }
 
 public struct QuestionOption: Identifiable, Hashable, Sendable, Codable {
@@ -26,6 +28,7 @@ public enum ContentValidationIssue: Sendable, Equatable, CustomStringConvertible
     case duplicateOptionID
     case correctOptionMissing
     case emptyExplanation(GlossLanguage)
+    case missingListeningScript
 
     public var description: String {
         switch self {
@@ -36,6 +39,7 @@ public enum ContentValidationIssue: Sendable, Equatable, CustomStringConvertible
         case .duplicateOptionID: return "duplicate option id"
         case .correctOptionMissing: return "correct option not among options"
         case let .emptyExplanation(language): return "empty \(language.rawValue) explanation"
+        case .missingListeningScript: return "listening question without a script"
         }
     }
 }
@@ -92,6 +96,9 @@ public struct Question: Identifiable, Hashable, Sendable, Codable {
         var issues: [ContentValidationIssue] = []
         if prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             issues.append(.emptyPrompt)
+        }
+        if kind == .listening, ListeningScript(passage ?? "").lines.isEmpty {
+            issues.append(.missingListeningScript)
         }
         if options.count < Self.minimumOptions {
             issues.append(.tooFewOptions(count: options.count))

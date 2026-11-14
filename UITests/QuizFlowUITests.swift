@@ -180,4 +180,29 @@ final class QuizFlowUITests: XCTestCase {
         XCTAssertTrue(credit.waitForExistence(timeout: 5), "Settings credit did not appear")
         snapshot("15-settings-credits")
     }
+
+    /// Listening pool (ADR-011): audio control first, script only after answering.
+    func testListeningQuestionHidesScriptUntilAnswered() throws {
+        XCTAssertTrue(app.staticTexts["Home"].waitForExistence(timeout: 15))
+        app.tabBars.buttons["Quiz"].tap()
+        XCTAssertTrue(app.buttons["Start quiz"].waitForExistence(timeout: 5))
+        app.segmentedControls.buttons["Listening"].firstMatch.tap()
+        app.segmentedControls.buttons["5"].firstMatch.tap()
+        app.buttons["Start quiz"].tap()
+
+        let play = app.buttons["listening.play"]
+        XCTAssertTrue(play.waitForExistence(timeout: 5), "listening controls did not appear")
+        XCTAssertFalse(app.descendants(matching: .any)["listening.script"].exists, "script visible before answering")
+        snapshot("16-listening-question")
+        app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Option 1'")).firstMatch.tap()
+        app.buttons["Check"].tap()
+        let script = app.descendants(matching: .any)["listening.script"]
+        for _ in 0..<4 where !script.exists { app.swipeUp() }
+        XCTAssertTrue(script.waitForExistence(timeout: 5), "script did not appear after answering")
+        snapshot("17-listening-feedback")
+        app.buttons["Close"].tap()
+        let end = app.buttons["End quiz"]
+        if end.waitForExistence(timeout: 3) { end.tap() }
+    }
 }
+

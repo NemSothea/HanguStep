@@ -12,16 +12,20 @@ final class QuizSessionViewModelTests: XCTestCase {
     private var sessions: InMemoryStudySessionRepository!
 
     override func setUp() {
-        let questions = InMemoryQuestionRepository(questions: SampleContent.questions)
-        attempts = InMemoryAttemptRepository()
-        sessions = InMemoryStudySessionRepository()
+        (dependencies, attempts, sessions) = Self.makeDependencies(questions: SampleContent.questions, pronouncer: SilentPronouncer())
+    }
+
+    private nonisolated static func makeDependencies(questions allQuestions: [Question], pronouncer: any Pronouncer) -> (AppDependencies, InMemoryAttemptRepository, InMemoryStudySessionRepository) {
+        let questions = InMemoryQuestionRepository(questions: allQuestions)
+        let attempts = InMemoryAttemptRepository()
+        let sessions = InMemoryStudySessionRepository()
         let vocabulary = InMemoryVocabularyRepository(items: SampleContent.vocabulary)
         let grammar = InMemoryGrammarRepository(patterns: SampleContent.grammar)
         let bookmarks = InMemoryBookmarkRepository()
         let notes = InMemoryLearnerNoteRepository()
         let settings = InMemoryLearnerSettingsRepository()
         let schedules = InMemoryReviewScheduleRepository()
-        dependencies = AppDependencies(
+        let dependencies = AppDependencies(
             loadDashboardSummary: LoadDashboardSummary(vocabulary: vocabulary, grammar: grammar, attempts: attempts, sessions: sessions, schedules: schedules, settings: settings),
             loadProgressReport: LoadProgressReport(attempts: attempts, sessions: sessions, schedules: schedules, settings: settings, vocabulary: vocabulary, grammar: grammar),
             listReviewQueue: ListReviewQueue(schedules: schedules, settings: settings, vocabulary: vocabulary, grammar: grammar),
@@ -40,8 +44,9 @@ final class QuizSessionViewModelTests: XCTestCase {
             listHistory: ListQuizHistory(sessions: sessions, attempts: attempts),
             loadSettings: LoadSettings(repository: settings),
             saveSettings: SaveSettings(repository: settings),
-            pronouncer: SilentPronouncer()
+            pronouncer: pronouncer
         )
+        return (dependencies, attempts, sessions)
     }
 
     func testFullRunThroughTwoQuestions() async throws {
@@ -132,5 +137,66 @@ final class QuizSessionViewModelTests: XCTestCase {
         viewModel.toggle(level: .level3)
         try await Task.sleep(for: .milliseconds(400))
         XCTAssertEqual(viewModel.state.value?.count, 2)
+    }
+
+    // MARK: Listening (TOPIK II 듣기)
+
+    private static func listeningQuestion(_ number: Int) -> Question {
+        Question(
+            id: QuestionID("q.ls.test.\(number)"), kind: .listening, level: .level3,
+            prompt: "다음을 듣고 이어질 수 있는 말을 고르십시오.",
+            passage: "남자: 표 두 장 주세요.\n여자: 몇 시 영화로 드릴까요?",
+            options: [QuestionOption(id: OptionID("a"), text: "7시요."), QuestionOption(id: OptionID("b"), text: "두 명이요.")],
+            correctOptionID: OptionID("a"), explanation: Gloss(english: "Asked for a time.", khmer: "សួរម៉ោង។"),
+            source: SampleContent.source, contentVersion: 1
+        )
+    }
+
+    func testListeningPlaysOnShowRevealsScriptAfterAnswerAndStopsOnNext() async throws {
+        let spy = SpyPronouncer()
+        (dependencies, attempts, sessions) = Self.makeDependencies(questions: SampleContent.questions + [Self.listeningQuestion(1), Self.listeningQuestion(2)], pronouncer: spy)
+        let viewModel = QuizSessionViewModel(launch: QuizLaunch(configuration: QuizConfiguration(pool: .listening, count: 2)), dependencies: dependencies)
+        await viewModel.load()
+
+        XCTAssertTrue(viewModel.isListening)
+        XCTAssertNil(viewModel.revealedScript, "script stays hidden while answering")
+        try await spy.waitForEvents(1)
+        let firstEvents = await spy.events
+        XCTAssertEqual(firstEvents, ["script 2"], "audio starts when the question appears")
+
+        let question = try XCTUnwrap(viewModel.currentQuestion)
+        viewModel.select(question.correctOptionID)
+        await viewModel.check()
+        XCTAssertEqual(viewModel.revealedScript?.lines.map(\.speaker), [.man, .woman])
+
+        viewModel.playListening()
+        await viewModel.next()
+        try await spy.waitForEvents(4)
+        let events = await spy.events
+        XCTAssertEqual(Array(events.prefix(2)), ["script 2", "script 2"], "replay speaks the script again")
+        XCTAssertTrue(events.contains("stop"), "moving on stops the audio")
+        XCTAssertEqual(events.last, "script 2", "the next listening question plays")
+    }
+
+    func testMixedPoolNeverIncludesListening() async throws {
+        (dependencies, attempts, sessions) = Self.makeDependencies(questions: [Self.listeningQuestion(1)] + SampleContent.questions, pronouncer: SilentPronouncer())
+        let viewModel = QuizSessionViewModel(launch: QuizLaunch(configuration: QuizConfiguration(pool: .mixed, count: 40)), dependencies: dependencies)
+        await viewModel.load()
+        let questions = try XCTUnwrap(viewModel.snapshot?.questions)
+        XCTAssertFalse(questions.contains { $0.kind == .listening })
+        XCTAssertFalse(viewModel.isListening)
+    }
+}
+
+/// Records what the quiz asked the speech service to do.
+actor SpyPronouncer: Pronouncer {
+    private(set) var events: [String] = []
+
+    func speak(_ text: String) { events.append("text") }
+    func speak(_ script: ListeningScript) { events.append("script \(script.lines.count)") }
+    func stop() { events.append("stop") }
+
+    func waitForEvents(_ count: Int) async throws {
+        for _ in 0..<100 where events.count < count { try await Task.sleep(for: .milliseconds(10)) }
     }
 }
