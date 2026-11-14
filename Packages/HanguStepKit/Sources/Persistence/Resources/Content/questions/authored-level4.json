@@ -1519,6 +1519,766 @@
       },
       "grammar": "grammar.0440",
       "review": "pending"
+    },
+    {
+      "id": "q.gf.0481",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "수업이 ______ 학생들이 교실 밖으로 뛰어나갔다.",
+      "options": [
+        "끝나더니",
+        "끝나는 동안",
+        "끝나자마자",
+        "끝나도록"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The students ran out right after class ended, so -자마자 (as soon as) fits. -는 동안 means 'while', but they left after class, not during it.",
+        "km": "សិស្សរត់ចេញភ្លាមក្រោយម៉ោងរៀនចប់ ដូច្នេះ -자마자 (ភ្លាមៗពេល) ត្រឹមត្រូវ។ -는 동안 មានន័យថា 'ក្នុងពេល' ប៉ុន្តែពួកគេចេញក្រោយម៉ោងរៀន។"
+      },
+      "grammar": "grammar.0441",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0482",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "아침에 눈을 ______ 휴대폰부터 확인하는 사람이 많다.",
+      "options": [
+        "뜨자마자",
+        "뜨는 한",
+        "뜨더니",
+        "뜰 겸"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Checking the phone happens immediately after waking, so -자마자. -더니 reports a change the speaker observed in someone else.",
+        "km": "ការពិនិត្យទូរស័ព្ទកើតឡើងភ្លាមក្រោយភ្ញាក់ ដូច្នេះ -자마자។ -더니 រាយការណ៍ការផ្លាស់ប្តូរដែលអ្នកនិយាយបានឃើញលើអ្នកដទៃ។"
+      },
+      "grammar": "grammar.0441",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0483",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "엄마가 장을 ______ 아이는 차 안에서 기다렸다.",
+      "options": [
+        "보자마자",
+        "보는 김에",
+        "보다시피",
+        "보는 동안"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The child waited for the whole time the mother shopped, so -는 동안. -자마자 would mean the child waited only after she finished.",
+        "km": "កូនរង់ចាំពេញមួយរយៈពេលដែលម្តាយទិញឥវ៉ាន់ ដូច្នេះ -는 동안។ -자마자 មានន័យថាកូនរង់ចាំក្រោយម្តាយទិញរួច។"
+      },
+      "grammar": "grammar.0442",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0484",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "외국에서 ______ 한국 음식이 가장 그리웠다.",
+      "options": [
+        "살자마자",
+        "사는 동안",
+        "사는 김에",
+        "살 테니까"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Missing Korean food lasted through the time of living abroad, so -는 동안. -는 김에 means doing something extra while already doing another thing.",
+        "km": "ការនឹកម្ហូបកូរ៉េកើតឡើងពេញរយៈពេលរស់នៅបរទេស ដូច្នេះ -는 동안។ -는 김에 មានន័យថាធ្វើរឿងបន្ថែមខណៈកំពុងធ្វើរឿងមួយទៀត។"
+      },
+      "grammar": "grammar.0442",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0485",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "대학생 때는 시험이 끝나면 친구들과 바다에 ______.",
+      "options": [
+        "가고 말았다",
+        "가곤 했다",
+        "갈 뻔했다",
+        "가는 셈이다"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A repeated habit in student days ('used to go') needs -곤 했다. -고 말았다 describes one result that finally happened, often regretfully.",
+        "km": "ទម្លាប់ដដែលៗកាលនៅជានិស្សិត ('ធ្លាប់ទៅ') ត្រូវប្រើ -곤 했다។ -고 말았다 ពិពណ៌នាលទ្ធផលតែមួយដែលទីបំផុតកើតឡើង ច្រើនតែគួរឲ្យស្តាយ។"
+      },
+      "grammar": "grammar.0443",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0486",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "아버지는 퇴근 후에 신문을 읽으며 차를 ______.",
+      "options": [
+        "마실 뻔하셨다",
+        "마시는 척하셨다",
+        "마셔 버리셨다",
+        "마시곤 하셨다"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The sentence describes father's regular evening habit, so -곤 하셨다. -는 척하다 means pretending, which does not fit.",
+        "km": "ប្រយោគនេះពិពណ៌នាទម្លាប់ប្រចាំល្ងាចរបស់ឪពុក ដូច្នេះ -곤 하셨다។ -는 척하다 មានន័យថាធ្វើពុត ដែលមិនសម។"
+      },
+      "grammar": "grammar.0443",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0487",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "열심히 뛰었지만 결국 기차를 ______.",
+      "options": [
+        "놓치고 말았다",
+        "놓치곤 했다",
+        "놓칠 리가 없었다",
+        "놓치는 척했다"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Despite running, the unwanted result happened once: -고 말았다. -곤 했다 describes a repeated habit, not one event.",
+        "km": "ទោះរត់ខ្លាំង លទ្ធផលមិនចង់បានក៏កើតឡើង៖ -고 말았다។ -곤 했다 ពិពណ៌នាទម្លាប់ដដែលៗ មិនមែនព្រឹត្តិការណ៍តែមួយទេ។"
+      },
+      "grammar": "grammar.0444",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0488",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "이번 대회에서는 반드시 ______.",
+      "options": [
+        "우승할 뻔했다",
+        "우승한 척했다",
+        "우승하고 말겠다",
+        "우승하는 셈이다"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "반드시 (by all means) with a future goal shows determination: -고 말겠다. -(으)ㄹ 뻔했다 means it almost happened but did not.",
+        "km": "반드시 (ដាច់ខាត) ជាមួយគោលដៅអនាគត បង្ហាញការប្តេជ្ញា៖ -고 말겠다។ -(으)ㄹ 뻔했다 មានន័យថាស្ទើរតែកើតឡើង តែមិនបានកើត។"
+      },
+      "grammar": "grammar.0444",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0489",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "어제는 날씨가 ______ 오늘은 갑자기 추워졌다.",
+      "options": [
+        "따뜻했더니",
+        "따뜻하자마자",
+        "따뜻하더니",
+        "따뜻하기에"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The speaker recalls yesterday's weather and then gives a contrast, so -더니. -았/었더니 is for the speaker's own action followed by what they found.",
+        "km": "អ្នកនិយាយរំលឹកអាកាសធាតុម្សិលមិញ ហើយបន្ទាប់មកជាការផ្ទុយ ដូច្នេះ -더니។ -았/었더니 ប្រើសម្រាប់សកម្មភាពរបស់អ្នកនិយាយផ្ទាល់ និងអ្វីដែលគេរកឃើញ។"
+      },
+      "grammar": "grammar.0445",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0490",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "민수 씨가 매일 운동을 ______ 건강해졌어요.",
+      "options": [
+        "하더니",
+        "했더니",
+        "하자마자",
+        "하는 한"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The speaker watched another person's repeated action and its result: -더니. -았/었더니 needs the speaker as the subject.",
+        "km": "អ្នកនិយាយបានឃើញសកម្មភាពដដែលៗរបស់អ្នកដទៃ និងលទ្ធផលរបស់វា៖ -더니។ -았/었더니 ត្រូវការអ្នកនិយាយជាប្រធាន។"
+      },
+      "grammar": "grammar.0445",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0491",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "어젯밤에 커피를 많이 ______ 잠이 안 왔어요.",
+      "options": [
+        "마시더니",
+        "마시자마자",
+        "마실 겸",
+        "마셨더니"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "I drank coffee, and the result was that I couldn't sleep: -았/었더니. -더니 is for something the speaker observed in others.",
+        "km": "ខ្ញុំផឹកកាហ្វេ ហើយលទ្ធផលគឺដេកមិនលក់៖ -았/었더니។ -더니 ប្រើសម្រាប់រឿងដែលអ្នកនិយាយឃើញលើអ្នកដទៃ។"
+      },
+      "grammar": "grammar.0446",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0492",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "가게에 ______ 문이 닫혀 있었다.",
+      "options": [
+        "가더니",
+        "갔더니",
+        "가는 동안",
+        "가 봤자"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The speaker went and discovered the shop was closed, so -았/었더니. -더니 would describe someone else going.",
+        "km": "អ្នកនិយាយបានទៅ ហើយរកឃើញថាហាងបិទ ដូច្នេះ -았/었더니។ -더니 នឹងពិពណ៌នាអ្នកដទៃដែលទៅ។"
+      },
+      "grammar": "grammar.0446",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0493",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "가: 그 영화 어땠어요? 나: 생각보다 ______.",
+      "options": [
+        "재미있을걸요",
+        "재미있던데요",
+        "재미있나요",
+        "재미있을 테니까요"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The speaker saw the film and reports what they experienced: -던데요. -(으)ㄹ걸요 is only a guess, but the speaker has seen it.",
+        "km": "អ្នកនិយាយបានមើលភាពយន្ត ហើយរាយការណ៍អ្វីដែលបានជួប៖ -던데요។ -(으)ㄹ걸요 គ្រាន់តែជាការទស្សន៍ទាយ តែអ្នកនិយាយបានមើលហើយ។"
+      },
+      "grammar": "grammar.0447",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0494",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "민지 씨가 아까 많이 피곤해 ______ 무슨 일 있어요?",
+      "options": [
+        "보일 테니까",
+        "보이자마자",
+        "보이는 한",
+        "보이던데"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "A past observation serves as background for the question, so -던데. -(으)ㄹ 테니까 gives a reason for a request, not an observation.",
+        "km": "ការសង្កេតពីមុនជាផ្ទៃខាងក្រោយសម្រាប់សំណួរ ដូច្នេះ -던데។ -(으)ㄹ 테니까 ផ្តល់ហេតុផលសម្រាប់សំណើ មិនមែនការសង្កេតទេ។"
+      },
+      "grammar": "grammar.0447",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0495",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "점심은 제가 ______ 커피는 민수 씨가 사세요.",
+      "options": [
+        "살 테니까",
+        "살 텐데",
+        "사더니",
+        "사는 바람에"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The speaker's intention is the reason for the request, so -(으)ㄹ 테니까. -(으)ㄹ 텐데 shows a guess or regret, not 'I will do X, so you do Y'.",
+        "km": "ចេតនារបស់អ្នកនិយាយជាហេតុផលសម្រាប់សំណើ ដូច្នេះ -(으)ㄹ 테니까។ -(으)ㄹ 텐데 បង្ហាញការទស្សន៍ទាយ ឬការស្តាយ មិនមែន 'ខ្ញុំនឹងធ្វើ X ដូច្នេះអ្នកធ្វើ Y' ទេ។"
+      },
+      "grammar": "grammar.0448",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0496",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "주말에는 사람이 ______ 평일에 가는 게 좋겠어요.",
+      "options": [
+        "많더니",
+        "많았더니",
+        "많을 테니까",
+        "많자마자"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "A guess about the weekend is the reason for the suggestion: -(으)ㄹ 테니까. -더니 reports something already observed.",
+        "km": "ការទស្សន៍ទាយអំពីចុងសប្តាហ៍ជាហេតុផលសម្រាប់ការណែនាំ៖ -(으)ㄹ 테니까។ -더니 រាយការណ៍រឿងដែលបានឃើញរួចហើយ។"
+      },
+      "grammar": "grammar.0448",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0497",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "한국어 연습도 ______ 한국 드라마를 자주 본다.",
+      "options": [
+        "하는 김에",
+        "하자마자",
+        "할 겸",
+        "했더니"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Watching dramas also serves the purpose of practice, so -(으)ㄹ 겸. -는 김에 means using a chance while already doing something else.",
+        "km": "ការមើលរឿងភាគក៏ជាគោលបំណងហាត់រៀនផង ដូច្នេះ -(으)ㄹ 겸។ -는 김에 មានន័យថាឆ្លៀតឱកាសខណៈកំពុងធ្វើរឿងផ្សេង។"
+      },
+      "grammar": "grammar.0449",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0498",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "친구도 만나고 쇼핑도 ______ 시내에 나갔다.",
+      "options": [
+        "할 겸",
+        "하는 동안",
+        "하더니",
+        "해 봤자"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Going downtown has two purposes (meeting a friend and shopping), so -(으)ㄹ 겸. -는 동안 means 'while', which gives no purpose.",
+        "km": "ការទៅក្រុងមានគោលបំណងពីរ (ជួបមិត្ត និងទិញឥវ៉ាន់) ដូច្នេះ -(으)ㄹ 겸។ -는 동안 មានន័យថា 'ក្នុងពេល' ដែលមិនបង្ហាញគោលបំណង។"
+      },
+      "grammar": "grammar.0449",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0499",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "규칙을 ______ 누구나 이 시설을 이용할 수 있다.",
+      "options": [
+        "지키자마자",
+        "지키는 바람에",
+        "지키더니",
+        "지키는 한"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Keeping the rules is the condition for using the facility ('as long as'), so -는 한. -는 바람에 gives an unexpected cause of a past result.",
+        "km": "ការគោរពច្បាប់ជាលក្ខខណ្ឌសម្រាប់ប្រើប្រាស់កន្លែងនេះ ('ដរាបណា') ដូច្នេះ -는 한។ -는 바람에 ផ្តល់មូលហេតុមិនបានរំពឹងនៃលទ្ធផលអតីតកាល។"
+      },
+      "grammar": "grammar.0450",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0500",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "특별한 일이 ______ 내일 회의에 참석하겠습니다.",
+      "options": [
+        "없더니",
+        "없는 한",
+        "없는 바람에",
+        "없을 겸"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "'Unless something special comes up' sets a condition, so -는 한. -더니 reports a past observation, not a condition.",
+        "km": "'លុះត្រាតែគ្មានរឿងពិសេស' កំណត់លក្ខខណ្ឌ ដូច្នេះ -는 한។ -더니 រាយការណ៍ការសង្កេតពីមុន មិនមែនលក្ខខណ្ឌទេ។"
+      },
+      "grammar": "grammar.0450",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0501",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "가격이 너무 ______ 두 개를 샀다.",
+      "options": [
+        "싸더라도",
+        "싸기에",
+        "싸든지",
+        "싸 봤자"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The low price is the reason the speaker bought two, so -기에. -더라도 means 'even if', which contradicts the reason.",
+        "km": "តម្លៃថោកជាហេតុផលដែលអ្នកនិយាយទិញពីរ ដូច្នេះ -기에។ -더라도 មានន័យថា 'ទោះបីជា' ដែលផ្ទុយនឹងហេតុផល។"
+      },
+      "grammar": "grammar.0451",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0502",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "문 앞에 택배가 ______ 안으로 들여놓았어요.",
+      "options": [
+        "있더라도",
+        "있는 한",
+        "있을 정도로",
+        "있기에"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Seeing the parcel is why the speaker brought it in, so -기에. -는 한 sets a condition ('as long as'), not a reason.",
+        "km": "ការឃើញកញ្ចប់ឥវ៉ាន់ជាហេតុផលដែលអ្នកនិយាយយកវាចូល ដូច្នេះ -기에។ -는 한 កំណត់លក្ខខណ្ឌ ('ដរាបណា') មិនមែនហេតុផលទេ។"
+      },
+      "grammar": "grammar.0451",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0503",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "하루에 세 시간밖에 못 자니까 거의 안 ______.",
+      "options": [
+        "자는 셈이다",
+        "자는 척한다",
+        "잘 뻔했다",
+        "자곤 했다"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Three hours is so little that it practically amounts to not sleeping: -는 셈이다. -는 척하다 means pretending to sleep.",
+        "km": "បីម៉ោងតិចពេក ស្ទើរតែដូចមិនបានគេង៖ -는 셈이다។ -는 척하다 មានន័យថាធ្វើពុតគេង។"
+      },
+      "grammar": "grammar.0452",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0504",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "100문제 중에 98문제를 맞혔으니 거의 다 ______.",
+      "options": [
+        "맞힐 뻔했다",
+        "맞히는 척했다",
+        "맞힌 셈이다",
+        "맞히곤 했다"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "98 out of 100 is as good as all of them, so -(으)ㄴ 셈이다. -(으)ㄹ 뻔했다 means it almost happened but did not.",
+        "km": "៩៨ ក្នុងចំណោម ១០០ ប្រៀបដូចត្រូវទាំងអស់ ដូច្នេះ -(으)ㄴ 셈이다។ -(으)ㄹ 뻔했다 មានន័យថាស្ទើរតែកើតឡើង តែមិនបានកើត។"
+      },
+      "grammar": "grammar.0452",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0505",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "열심히 준비한 사람이 좋은 결과를 ______.",
+      "options": [
+        "얻을 뻔했다",
+        "얻는 척한다",
+        "얻는 법이다",
+        "얻고 말았다"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "This is a general truth about effort and results, so -는 법이다. -고 말았다 describes one result that happened, not a general rule.",
+        "km": "នេះជាការពិតទូទៅអំពីការខិតខំ និងលទ្ធផល ដូច្នេះ -는 법이다។ -고 말았다 ពិពណ៌នាលទ្ធផលតែមួយដែលបានកើត មិនមែនច្បាប់ទូទៅទេ។"
+      },
+      "grammar": "grammar.0453",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0506",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "아무리 친한 사이라도 지켜야 할 예의가 ______.",
+      "options": [
+        "있는 법이다",
+        "있을 뻔했다",
+        "있는 척한다",
+        "있곤 했다"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "A rule that holds in every relationship is a general truth: -는 법이다. -곤 했다 describes a past habit.",
+        "km": "ច្បាប់ដែលអនុវត្តក្នុងគ្រប់ទំនាក់ទំនងជាការពិតទូទៅ៖ -는 법이다។ -곤 했다 ពិពណ៌នាទម្លាប់ពីអតីតកាល។"
+      },
+      "grammar": "grammar.0453",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0507",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "창문이 젖어 있는 걸 보니 밤사이 비가 ______.",
+      "options": [
+        "올 뻔했다",
+        "오는 척했다",
+        "오곤 했다",
+        "온 듯하다"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "A guess based on evidence (the wet window) needs -(으)ㄴ 듯하다. -(으)ㄹ 뻔했다 would mean it almost rained, which contradicts the wet window.",
+        "km": "ការទស្សន៍ទាយផ្អែកលើភស្តុតាង (បង្អួចសើម) ត្រូវប្រើ -(으)ㄴ 듯하다។ -(으)ㄹ 뻔했다 មានន័យថាស្ទើរតែភ្លៀង ដែលផ្ទុយនឹងបង្អួចសើម។"
+      },
+      "grammar": "grammar.0454",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0508",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "표정을 보니 시험 결과가 ______.",
+      "options": [
+        "좋을 뻔하다",
+        "좋은 듯하다",
+        "좋은 척한다",
+        "좋곤 하다"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Guessing from someone's face: -(으)ㄴ 듯하다. -(으)ㄴ 척하다 means pretending, not guessing.",
+        "km": "ទស្សន៍ទាយពីទឹកមុខ៖ -(으)ㄴ 듯하다។ -(으)ㄴ 척하다 មានន័យថាធ្វើពុត មិនមែនទស្សន៍ទាយទេ។"
+      },
+      "grammar": "grammar.0454",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0509",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "사무실 불이 다 꺼져 있는 걸 보니 다들 ______.",
+      "options": [
+        "퇴근할 뻔했어요",
+        "퇴근한 모양이에요",
+        "퇴근한 척해요",
+        "퇴근하곤 해요"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The lights being off is evidence for a guess, so -(으)ㄴ 모양이에요. -(으)ㄴ 척하다 means pretending to have left.",
+        "km": "ភ្លើងបិទជាភស្តុតាងសម្រាប់ការទស្សន៍ទាយ ដូច្នេះ -(으)ㄴ 모양이에요។ -(으)ㄴ 척하다 មានន័យថាធ្វើពុតថាចេញទៅហើយ។"
+      },
+      "grammar": "grammar.0455",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0510",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "아이가 계속 하품을 하는 걸 보니 ______.",
+      "options": [
+        "졸릴 리가 없다",
+        "졸린 척했다",
+        "졸리고 말았다",
+        "졸린 모양이다"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Yawning is evidence that the child is sleepy: -(으)ㄴ 모양이다. -(으)ㄹ 리가 없다 says it's impossible, which contradicts the evidence.",
+        "km": "ការស្រងាំងជាភស្តុតាងថាកូនងងុយគេង៖ -(으)ㄴ 모양이다។ -(으)ㄹ 리가 없다 និយាយថាមិនអាចទៅរួច ដែលផ្ទុយនឹងភស្តុតាង។"
+      },
+      "grammar": "grammar.0455",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0511",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "내가 잠깐 한눈을 ______ 아이가 사라졌다.",
+      "options": [
+        "판 사이에",
+        "팔 겸",
+        "판다면",
+        "팔 테니까"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Something happened during a brief unguarded moment, so -(으)ㄴ 사이에. -(으)ㄹ 겸 gives a purpose, which makes no sense here.",
+        "km": "រឿងមួយកើតឡើងក្នុងពេលខ្លីដែលមិនបានប្រុងប្រយ័ត្ន ដូច្នេះ -(으)ㄴ 사이에។ -(으)ㄹ 겸 ផ្តល់គោលបំណង ដែលមិនសមនៅទីនេះ។"
+      },
+      "grammar": "grammar.0456",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0512",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "가족들이 모두 ______ 엄마의 생일 케이크를 준비했다.",
+      "options": [
+        "잘 테니까",
+        "자더니",
+        "자는 사이에",
+        "잔다면"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The cake was prepared secretly while the family slept, so -는 사이에. -더니 reports an earlier observation and a contrast.",
+        "km": "នំខួបកំណើតត្រូវបានរៀបចំដោយសម្ងាត់ខណៈគ្រួសារកំពុងគេង ដូច្នេះ -는 사이에។ -더니 រាយការណ៍ការសង្កេតពីមុន និងការផ្ទុយ។"
+      },
+      "grammar": "grammar.0456",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0513",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "지금 ______ 기차를 놓칠 거예요.",
+      "options": [
+        "뛰기에",
+        "뛰는 한",
+        "뛰어 봤자",
+        "뛰자마자"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Running now will not help (you'll miss the train anyway), so -아/어 봤자. -기에 gives a reason, not a useless effort.",
+        "km": "ការរត់ឥឡូវមិនជួយទេ (នៅតែខកខានរថភ្លើង) ដូច្នេះ -아/어 봤자។ -기에 ផ្តល់ហេតុផល មិនមែនការខិតខំគ្មានប្រយោជន៍ទេ។"
+      },
+      "grammar": "grammar.0457",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0514",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "이미 지난 일을 ______ 소용없어요.",
+      "options": [
+        "후회해 봤자",
+        "후회하기에",
+        "후회하자마자",
+        "후회할 겸"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "소용없다 (no use) goes with -아/어 봤자. -자마자 means 'as soon as' and does not express uselessness.",
+        "km": "소용없다 (គ្មានប្រយោជន៍) ទៅជាមួយ -아/어 봤자។ -자마자 មានន័យថា 'ភ្លាមៗពេល' ហើយមិនបង្ហាញភាពគ្មានប្រយោជន៍ទេ។"
+      },
+      "grammar": "grammar.0457",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0515",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "여러분도 ______ 올해는 경제 상황이 좋지 않습니다.",
+      "options": [
+        "아시자마자",
+        "아시는 바람에",
+        "아실 겸",
+        "아시다시피"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "'As you all know' introduces shared knowledge: -다시피. -는 바람에 gives an unexpected cause, not shared knowledge.",
+        "km": "'ដូចដែលអ្នកទាំងអស់គ្នាដឹង' ណែនាំចំណេះដឹងរួម៖ -다시피។ -는 바람에 ផ្តល់មូលហេតុមិនបានរំពឹង មិនមែនចំណេះដឹងរួមទេ។"
+      },
+      "grammar": "grammar.0458",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0516",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "시험 기간에는 거의 도서관에서 ______ 했다.",
+      "options": [
+        "살자마자",
+        "살다시피",
+        "살더니",
+        "살 겸"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "'Practically lived in the library' is -다시피 하다. -(으)ㄹ 겸 gives a purpose and cannot come before 했다 like this.",
+        "km": "'ស្ទើរតែរស់នៅបណ្ណាល័យ' គឺ -다시피 하다។ -(으)ㄹ 겸 ផ្តល់គោលបំណង ហើយមិនអាចនៅមុខ 했다 បែបនេះបានទេ។"
+      },
+      "grammar": "grammar.0458",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0517",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "이 앱은 사용하기 ______ 가격도 무료라서 인기가 많다.",
+      "options": [
+        "편하더라도",
+        "편할 뿐만 아니라",
+        "편할 테니까",
+        "편한 척하고"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Two merits are listed (easy to use, and free), so -(으)ㄹ 뿐만 아니라. -더라도 concedes a point ('even if'), but both facts are positive.",
+        "km": "គុណសម្បត្តិពីរត្រូវបានរាយ (ងាយប្រើ និងឥតគិតថ្លៃ) ដូច្នេះ -(으)ㄹ 뿐만 아니라។ -더라도 ទទួលស្គាល់ ('ទោះបីជា') តែការពិតទាំងពីរសុទ្ធតែវិជ្ជមាន។"
+      },
+      "grammar": "grammar.0459",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0518",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "운동은 건강에 ______ 스트레스 해소에도 도움이 된다.",
+      "options": [
+        "좋더라도",
+        "좋더니",
+        "좋을 테니까",
+        "좋을 뿐만 아니라"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Exercise has two benefits, and 에도 marks the added one: -(으)ㄹ 뿐만 아니라. -(으)ㄹ 테니까 gives a reason for a request.",
+        "km": "ការហាត់ប្រាណមានអត្ថប្រយោជន៍ពីរ ហើយ 에도 សម្គាល់ចំណុចបន្ថែម៖ -(으)ㄹ 뿐만 아니라។ -(으)ㄹ 테니까 ផ្តល់ហេតុផលសម្រាប់សំណើ។"
+      },
+      "grammar": "grammar.0459",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0519",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "가: 도서관이 지금 열려 있을까요? 나: 일요일이라서 아마 ______.",
+      "options": [
+        "닫혔을걸요",
+        "닫혔잖아요",
+        "닫힐 뻔했어요",
+        "닫혀 버렸어요"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "아마 (probably) with a guess calls for -(으)ㄹ걸요. -잖아요 assumes the listener already knows, but the listener just asked.",
+        "km": "아마 (ប្រហែលជា) ជាមួយការទស្សន៍ទាយត្រូវប្រើ -(으)ㄹ걸요។ -잖아요 សន្មតថាអ្នកស្តាប់ដឹងរួចហើយ តែអ្នកស្តាប់ទើបតែសួរ។"
+      },
+      "grammar": "grammar.0460",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0520",
+      "kind": "grammarFillIn",
+      "level": 4,
+      "prompt": "비가 이렇게 많이 올 줄 알았으면 우산을 ______.",
+      "options": [
+        "가져오곤 했다",
+        "가져오고 말았다",
+        "가져올걸",
+        "가져올 뻔했다"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Regret about not bringing an umbrella: -(으)ㄹ걸 (I should have). -고 말았다 means it happened in the end, which is the opposite.",
+        "km": "ការស្តាយក្រោយដែលមិនបានយកឆ័ត្រ៖ -(으)ㄹ걸 (គួរតែ)។ -고 말았다 មានន័យថាទីបំផុតបានកើតឡើង ដែលផ្ទុយពីនេះ។"
+      },
+      "grammar": "grammar.0460",
+      "review": "pending"
     }
   ]
 }
