@@ -1,4 +1,4 @@
-import CoreData
+@preconcurrency import CoreData
 
 @objc(CDStudySession)
 final class CDStudySession: NSManagedObject {
