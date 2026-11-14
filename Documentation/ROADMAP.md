@@ -15,11 +15,17 @@ One phase at a time. A phase is done only when reviewed and approved.
 | 8 | AI learning assistant | Mock provider, then real provider | Approved |
 | 9 | Quality assurance | QA report, release candidate | Approved (device checks open, see QA_REPORT.md §5) |
 | 10 | Security and optimization | Production-readiness report | Approved (device launch check open, see PRODUCTION_READINESS.md §6) |
-| 11 | Release and maintenance | App Store ready build | Not started |
+| 11 | Release and maintenance | Personal release 1.0 (iPhone + Mac, free signing); App Store deferred (ADR-013) | In review |
 
 ## Release milestones
 
 - **M1 Offline MVP** — Phases 0 to 5. Usable daily on one device.
 - **M2 Sync** — Phase 6 plus 7. Multi-device, full TOPIK I/II content.
 - **M3 Assistant** — Phase 8.
-- **M4 Store** — Phases 9 to 11. TestFlight, then App Store.
+- **M4 Store** — Phases 9 to 11. TestFlight, then App Store. **Deferred** (ADR-013): needs a paid Apple Developer account. Personal release 1.0 shipped instead.
+
+## After 1.0 (outside the original 12 phases, approved 2026-11-14)
+
+- TOPIK II content batches 1-5 (ADR-010): 1,500 exam-frequency words, grammar to 140 patterns.
+- Listening practice with bundled recordings (ADR-011).
+- Writing practice with model answers and optional AI feedback (ADR-012).
