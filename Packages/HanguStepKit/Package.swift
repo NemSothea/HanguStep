@@ -19,7 +19,7 @@ let package = Package(
         .target(
             name: "Persistence",
             dependencies: ["Domain"],
-            resources: [.process("Resources/HanguStep.xcdatamodeld"), .copy("Resources/Content")]
+            resources: [.process("Resources/HanguStep.xcdatamodeld"), .copy("Resources/Content"), .copy("Resources/Audio")]
         ),
         // Tokens and reusable SwiftUI components. No domain knowledge.
         .target(name: "DesignSystem", resources: [.process("Resources")]),

@@ -15,8 +15,17 @@ TOPIK II gives listening (듣기) a third of the score (100 of 300 points). The 
 5. The AI assistant never generates listening questions (excluded from its schema): a script has to be checked for speech quality by a person.
 6. Content: 100 original questions (`q.ls.0001`-`0100`, levels 3-4) modelled on TOPIK II question types. No exam text is copied.
 
+## Amendment (2026-11-14): bundled recordings
+
+On the learner's iPhone 13 the on-device voice was "terrible", even with the man's pitch drop reduced. No cloud TTS account was available (Azure was preferred but could not be created).
+
+7. Each listening question now ships a recording, `Audio/listening/<question id>.m4a`, rendered offline on the developer's Mac with MeloTTS (Korean, code and weights MIT). One voice; the man's lines are pitch- and formant-shifted (`Tools/listening-audio`). Mono AAC 48 kbps, about 9 MB for 100 questions.
+8. `QuizSessionViewModel` plays the recording through `Pronouncer.play(_:)` (AVAudioPlayer, `.playback`/`.spokenAudio` on iOS so it plays with the ring switch on silent). If a file is missing it falls back to on-device TTS.
+9. `content-lint` and `BundledContentTests` fail when a listening question has no recording. Changing a script means re-rendering its file.
+
 ## Consequences
 
-- Works fully offline, no bundle growth.
-- TTS sounds less natural than exam recordings and voice availability varies by device. The app trains comprehension; learners should still practise with official past-paper audio.
+- Works fully offline. Bundle grows by about 9 MB.
+- One synthetic voice family: clearer than the iPhone voice, still less natural than exam recordings. Learners should still practise with official past-paper audio.
 - Speed is fixed near normal rate; a speed setting can come later.
+- The generator needs a Python 3.11 environment with local patches (see the tool's README); it is a developer tool, never shipped.

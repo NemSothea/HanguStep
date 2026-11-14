@@ -104,5 +104,14 @@ final class BundledContentTests: XCTestCase {
         let upgradedVersion = try await CoreDataContentStore(controller: older).installedContentVersion()
         XCTAssertEqual(upgradedVersion, first.version)
     }
+
+    func testEveryListeningQuestionHasARecording() throws {
+        let audio = BundledListeningAudio()
+        let listening = try BundledContent.load().package.questions.filter { $0.kind == .listening }
+        XCTAssertFalse(listening.isEmpty)
+        for question in listening {
+            XCTAssertNotNil(audio.audioURL(for: question.id), "\(question.id.rawValue) has no recording")
+        }
+    }
 }
 

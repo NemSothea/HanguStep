@@ -28,6 +28,7 @@ public final class QuizSessionViewModel {
     private let finish: any FinishQuizSessionUseCase
     private let explain: any ExplainAnswerUseCase
     private let pronouncer: any Pronouncer
+    private let listeningAudio: any ListeningAudioSource
     private var questionShownAt = Date()
 
     init(launch: QuizLaunch, dependencies: AppDependencies) {
@@ -37,6 +38,7 @@ public final class QuizSessionViewModel {
         finish = dependencies.finishQuiz
         explain = dependencies.explainAnswer
         pronouncer = dependencies.pronouncer
+        listeningAudio = dependencies.listeningAudio
     }
 
     public var currentQuestion: Question? {
@@ -58,12 +60,17 @@ public final class QuizSessionViewModel {
         return ListeningScript(question.passage ?? "")
     }
 
-    /// Plays (or replays) the current listening question's audio.
+    /// Plays (or replays) the current listening question: the bundled recording when
+    /// there is one, otherwise the script through on-device TTS.
     public func playListening() {
         guard let question = currentQuestion, question.kind == .listening else { return }
-        let script = ListeningScript(question.passage ?? "")
         let pronouncer = pronouncer
-        Task { await pronouncer.speak(script) }
+        if let recording = listeningAudio.audioURL(for: question.id) {
+            Task { await pronouncer.play(recording) }
+        } else {
+            let script = ListeningScript(question.passage ?? "")
+            Task { await pronouncer.speak(script) }
+        }
     }
 
     public var progressText: String {
