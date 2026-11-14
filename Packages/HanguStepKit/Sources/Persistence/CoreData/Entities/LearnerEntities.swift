@@ -65,3 +65,12 @@ final class CDLearnerSettings: NSManagedObject {
     @NSManaged var pronunciationEnabled: Bool
     @NSManaged var modifiedAt: Date?
 }
+
+@objc(CDWritingAttempt)
+final class CDWritingAttempt: NSManagedObject {
+    @NSManaged var id: String
+    @NSManaged var taskID: String
+    @NSManaged var text: String
+    @NSManaged var createdAt: Date?
+    @NSManaged var feedbackJSON: String?
+}

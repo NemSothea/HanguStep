@@ -77,6 +77,25 @@ struct QuizSetupView: View {
                         launch = QuizLaunch(configuration: viewModel.configuration)
                     }
                     .padding(.top, Spacing.md)
+
+                    SectionHeader("Writing")
+                    NavigationLink {
+                        WritingListView(dependencies: dependencies)
+                    } label: {
+                        HSCard {
+                            HStack(spacing: Spacing.sm) {
+                                Image(systemName: "pencil.line").foregroundStyle(HSColor.accent).accessibilityHidden(true)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Writing practice").font(Typography.headline)
+                                    Text("TOPIK II questions 51-54 with model answers").font(Typography.caption).foregroundStyle(HSColor.textSecondary)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right").foregroundStyle(HSColor.textSecondary).accessibilityHidden(true)
+                            }
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("writing.open")
                 }
                 .padding(Spacing.md)
                 .frame(maxWidth: Layout.readableWidth)

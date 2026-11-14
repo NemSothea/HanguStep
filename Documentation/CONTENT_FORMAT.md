@@ -11,6 +11,7 @@ Packages/HanguStepKit/Sources/Persistence/Resources/Content/
 ├── package.json                      # format version, library version, default source
 ├── summary.json                      # output of `content-lint generate-questions`, do not edit
 ├── vocabulary/*.json                 # part files, any number
+├── writing/*.json                    # TOPIK II writing prompts (not part of the package, see below)
 ├── grammar/*.json
 └── questions/
     ├── authored.json                 # hand-written grammar, sentence and reading questions
@@ -110,3 +111,20 @@ Every item ships with `review: pending` until a native Khmer reviewer confirms t
 ## 8. Not yet covered
 
 Levels 3 to 6 (TOPIK II), listening content, audio assets, and importing packages from outside the bundle (download or file import). The format and loader already accept any directory, so these are content and transport work, not format changes.
+
+## Writing prompts (ADR-012)
+
+`writing/*.json` holds `{"tasks": [...]}`. They are read straight from the bundle (no Core Data import, no version bump needed) and validated by `content-lint`.
+
+```json
+{ "id": "w.53.001", "type": "describeData", "level": 4,
+  "prompt": "다음을 참고하여 '...'에 대한 내용을 200~300자의 글로 쓰십시오. ...",
+  "material": "조사 기관: ...\n1위 운동 42%\n...", "minLength": 200, "maxLength": 300,
+  "modelAnswer": "...", "tips": { "en": "...", "km": "..." }, "review": "pending" }
+```
+
+- `type`: `shortAnswer` (51-52: `material` has `( ㉠ )` and `( ㉡ )`, `modelAnswer` has a `㉠ ...` and a `㉡ ...` line, no length), `describeData` (53), `essay` (54). 53 and 54 need `minLength`/`maxLength`, and the model answer must fall inside it.
+- Length counts characters including spaces, excluding line breaks (`WritingText.characterCount`), like the TOPIK answer sheet.
+- Survey data in 53 is invented and must name fictional organisations, never a real agency or company.
+- Ids: `w.51.NNN`, `w.52.NNN`, `w.53.NNN`, `w.54.NNN`. Learner answers store the id, so never reuse one for a different prompt.
+

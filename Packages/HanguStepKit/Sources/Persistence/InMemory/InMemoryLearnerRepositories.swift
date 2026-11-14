@@ -109,3 +109,17 @@ public actor InMemoryLearnerSettingsRepository: LearnerSettingsRepository {
     public func load() async throws -> LearnerSettings { settings }
     public func save(_ settings: LearnerSettings) async throws { self.settings = settings }
 }
+
+public actor InMemoryWritingAttemptRepository: WritingAttemptRepository {
+    private var stored: [UUID: WritingAttempt] = [:]
+
+    public init() {}
+
+    public func save(_ attempt: WritingAttempt) async throws { stored[attempt.id] = attempt }
+    public func attempts(for taskID: WritingTaskID) async throws -> [WritingAttempt] {
+        stored.values.filter { $0.taskID == taskID }.sorted { $0.createdAt > $1.createdAt }
+    }
+    public func allAttempts() async throws -> [WritingAttempt] {
+        stored.values.sorted { $0.createdAt > $1.createdAt }
+    }
+}

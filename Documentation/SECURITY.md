@@ -23,6 +23,7 @@ The key is read on each assistant request by `ConfiguredAssistantProviderSource`
 | Destination | When | Payload | Not sent |
 |-------------|------|---------|----------|
 | `https://api.anthropic.com/v1/messages` | Only when the assistant is enabled, the provider is Claude and a key is saved | Question prompt, passage, options, the learner's chosen option, the related word or grammar pattern with its curated examples, the preferred explanation language; for generation also sibling words or patterns used as distractors and prompts already generated for that item | Attempts, scores, streaks, schedules, notes, bookmarks, device name, iCloud identity, any identifier of the learner |
+| `https://api.anthropic.com/v1/messages` (writing review, ADR-012) | Only when the learner taps "Get feedback" on a saved writing answer, with the Claude provider and a key | The writing task (instruction, material, model answer, length) and the learner's answer text | Other answers, scores, any identifier of the learner |
 | CloudKit (`iCloud.com.nemsothea.hangustep`) | When iCloud sync is on | Learner store records (ADR-003) | Content library, assistant settings, API key |
 
 Transport (`URLSessionTransport`, Phase 10):
@@ -67,9 +68,9 @@ Jailbreak and debugger decision (T6): no jailbreak detection or anti-debugging. 
 
 - `NSPrivacyTracking` false, no tracking domains.
 - `NSPrivacyCollectedDataTypes` empty.
-- Required-reason APIs: `UserDefaults`, reason `CA92.1` (the app's own settings: sync preference in `AppContainer`, assistant settings in `AssistantModel`). No file timestamp, system boot time, disk space or keyboard APIs are used in our code.
+- Required-reason APIs: `UserDefaults`, reason `CA92.1` (the app's own settings: sync preference in `AppContainer`, assistant settings in `AssistantModel`, unsaved writing drafts in `WritingTaskViewModel`). No file timestamp, system boot time, disk space or keyboard APIs are used in our code.
 
-App Store privacy label: **Data Not Collected** (product decision, 2026-11-11). Reasoning: the developer runs no server and receives nothing; progress lives on the device and in the learner's own iCloud. The Anthropic request is optional, off by default, made at the learner's request with the learner's own key, and sends no identifier. If a proxy is ever added (ADR-009), the developer would receive user content and the label must change to declare it.
+App Store privacy label: **Data Not Collected** (product decision, 2026-11-11). Reasoning: the developer runs no server and receives nothing; progress lives on the device and in the learner's own iCloud. The Anthropic request is optional, off by default, made at the learner's request with the learner's own key, and sends no identifier. Writing feedback sends the learner's own answer text the same way, only when they tap "Get feedback". If a proxy is ever added (ADR-009), the developer would receive user content and the label must change to declare it.
 
 ## 7. Release checklist
 

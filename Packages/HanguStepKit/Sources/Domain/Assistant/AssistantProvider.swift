@@ -6,6 +6,14 @@ public protocol AssistantProvider: Sendable {
     var name: String { get }
     func explain(_ request: ExplanationRequest) async throws -> AssistantExplanation
     func generate(_ request: PracticeRequest) async throws -> [DraftQuestion]
+    /// Grades a TOPIK writing answer (ADR-012).
+    func reviewWriting(_ request: WritingReviewRequest) async throws -> WritingFeedback
+}
+
+public extension AssistantProvider {
+    func reviewWriting(_ request: WritingReviewRequest) async throws -> WritingFeedback {
+        throw AssistantError.unavailable("\(name) cannot review writing")
+    }
 }
 
 /// Resolves the provider the learner currently has configured. Checked on every
