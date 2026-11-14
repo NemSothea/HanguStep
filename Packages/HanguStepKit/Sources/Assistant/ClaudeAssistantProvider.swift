@@ -260,7 +260,7 @@ enum Prompts {
                 ("items", .object([
                     ("type", .string("object")),
                     ("properties", .object([
-                        ("kind", .object([("type", .string("string")), ("enum", .array(QuestionKind.allCases.map { .string($0.rawValue) }))])),
+                        ("kind", .object([("type", .string("string")), ("enum", .array(QuestionKind.allCases.filter { $0 != .listening }.map { .string($0.rawValue) }))])),
                         ("prompt", .object([("type", .string("string"))])),
                         ("passage", .object([("type", .array([.string("string"), .string("null")]))])),
                         ("options", .object([("type", .string("array")), ("items", .object([("type", .string("string"))]))])),

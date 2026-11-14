@@ -27,6 +27,7 @@ public final class QuizSessionViewModel {
     private let submit: any SubmitAnswerUseCase
     private let finish: any FinishQuizSessionUseCase
     private let explain: any ExplainAnswerUseCase
+    private let pronouncer: any Pronouncer
     private var questionShownAt = Date()
 
     init(launch: QuizLaunch, dependencies: AppDependencies) {
@@ -35,6 +36,7 @@ public final class QuizSessionViewModel {
         submit = dependencies.submitAnswer
         finish = dependencies.finishQuiz
         explain = dependencies.explainAnswer
+        pronouncer = dependencies.pronouncer
     }
 
     public var currentQuestion: Question? {
@@ -45,6 +47,23 @@ public final class QuizSessionViewModel {
         default:
             return nil
         }
+    }
+
+    /// True for TOPIK II-style listening questions: audio first, script after answering.
+    public var isListening: Bool { currentQuestion?.kind == .listening }
+
+    /// The script is revealed only once the question is answered.
+    public var revealedScript: ListeningScript? {
+        guard let question = currentQuestion, question.kind == .listening, case .feedback = phase else { return nil }
+        return ListeningScript(question.passage ?? "")
+    }
+
+    /// Plays (or replays) the current listening question's audio.
+    public func playListening() {
+        guard let question = currentQuestion, question.kind == .listening else { return }
+        let script = ListeningScript(question.passage ?? "")
+        let pronouncer = pronouncer
+        Task { await pronouncer.speak(script) }
     }
 
     public var progressText: String {
@@ -134,6 +153,7 @@ public final class QuizSessionViewModel {
 
     public func next() async {
         guard case let .feedback(index, _) = phase, let snapshot else { return }
+        stopAudio()
         if index + 1 >= snapshot.questions.count {
             await finishSession()
         } else {
@@ -155,6 +175,7 @@ public final class QuizSessionViewModel {
 
     /// Ends the session early. Answered questions are kept (PRD FR-Q4).
     public func close() async {
+        stopAudio()
         await finishSession()
     }
 
@@ -181,6 +202,12 @@ public final class QuizSessionViewModel {
         assistantExplanation = .idle
         questionShownAt = Date()
         phase = .answering(index: index)
+        if snapshot.questions[index].kind == .listening { playListening() }
+    }
+
+    private func stopAudio() {
+        let pronouncer = pronouncer
+        Task { await pronouncer.stop() }
     }
 
     private func finishSession() async {
