@@ -5,7 +5,7 @@ import Persistence
 /// Content authoring tool.
 ///
 ///   swift run content-lint [path]                      validate and summarise
-///   swift run content-lint generate-questions [path]   write questions/generated-meaning.json
+///   swift run content-lint generate-questions [path]   write questions/generated-meaning.json and summary.json
 ///
 /// `path` defaults to the bundled content directory in the source tree.
 let arguments = Array(CommandLine.arguments.dropFirst())
@@ -39,7 +39,11 @@ func summarise(_ result: ContentFile.LoadResult) {
 switch command {
 case "lint":
     do {
-        summarise(try BundledContent.load(directory: root))
+        let result = try BundledContent.load(directory: root)
+        summarise(result)
+        guard BundledContent.summary(directory: root) == result.info else {
+            fail("FAIL \(BundledContent.summaryFile) is missing or stale: run `swift run content-lint generate-questions`")
+        }
         print("OK")
     } catch {
         fail("FAIL \(error)")
@@ -63,7 +67,10 @@ case "generate-questions":
     do {
         try encoder.encode(ContentFile.Part(questions: generated)).write(to: output)
         print("wrote \(generated.count) questions to \(output.path)")
-        summarise(try BundledContent.load(directory: root))
+        let result = try BundledContent.load(directory: root)
+        try BundledContent.writeSummary(result.info, directory: root)
+        print("wrote \(BundledContent.summaryFile)")
+        summarise(result)
     } catch {
         fail("FAIL \(error)")
     }

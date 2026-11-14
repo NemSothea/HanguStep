@@ -1,7 +1,7 @@
 import Foundation
 
 /// What the Settings screen shows about the installed library (PRD FR-C3).
-public struct ContentInfo: Hashable, Sendable {
+public struct ContentInfo: Hashable, Sendable, Codable {
     public let version: Int
     public let vocabularyCount: Int
     public let grammarCount: Int

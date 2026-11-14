@@ -5,6 +5,9 @@ import Foundation
 /// files under `Content/vocabulary`, `Content/grammar`, `Content/questions`.
 public enum BundledContent {
     public static let directory = "Content"
+    /// Precomputed `ContentInfo` for the bundled library, written by
+    /// `content-lint generate-questions`. Lets a warm launch skip decoding the library.
+    public static let summaryFile = "summary.json"
 
     /// Loads, merges and validates the bundled library (AC-10). Throws rather than
     /// returning a partial package so a broken bundle fails loudly at launch.
@@ -17,6 +20,29 @@ public enum BundledContent {
             throw ContentFile.Error.malformed(file: "\(directory)/", detail: "missing from bundle")
         }
         return try load(directory: root)
+    }
+
+    /// The precomputed summary of the library shipped in this module.
+    public static func summary() -> ContentInfo? {
+        summary(from: .module)
+    }
+
+    /// The precomputed summary, or nil when the bundle has none.
+    public static func summary(from bundle: Bundle) -> ContentInfo? {
+        bundle.url(forResource: directory, withExtension: nil).flatMap { summary(directory: $0) }
+    }
+
+    /// The summary stored in a library directory on disk, or nil.
+    public static func summary(directory root: URL) -> ContentInfo? {
+        guard let data = try? Data(contentsOf: root.appendingPathComponent(summaryFile)) else { return nil }
+        return try? JSONDecoder().decode(ContentInfo.self, from: data)
+    }
+
+    /// Writes `summary.json` for a library directory on disk (`content-lint`).
+    public static func writeSummary(_ info: ContentInfo, directory root: URL) throws {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        try (encoder.encode(info) + Data("\n".utf8)).write(to: root.appendingPathComponent(summaryFile))
     }
 
     /// Same, from any directory on disk. Used by `content-lint` on the source tree.
@@ -34,5 +60,21 @@ public enum BundledContent {
             }
         }
         return try ContentFile.load(package: packageData, parts: parts)
+    }
+}
+
+public extension ContentFile.LoadResult {
+    /// What Settings shows about this library.
+    var info: ContentInfo {
+        ContentInfo(
+            version: package.version,
+            vocabularyCount: package.vocabulary.count,
+            grammarCount: package.grammar.count,
+            questionCount: package.questions.count,
+            sourceName: source.name,
+            license: source.license,
+            pendingReview: pendingReview,
+            credits: package.importedCredits
+        )
     }
 }
