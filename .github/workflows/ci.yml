@@ -8,11 +8,14 @@ on:
 jobs:
   package:
     name: Package build and tests
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+        run: |
+          # Newest stable Xcode on the runner (the app is built with Xcode 26+ locally).
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_*.app | grep -vi beta | sort -V | tail -1)"
+          xcodebuild -version
       - name: Guard against third-party dependencies (AC-14)
         run: |
           # Package.swift and project.yml may reference local packages only.
@@ -24,20 +27,24 @@ jobs:
           fi
       - name: Test HanguStepKit
         working-directory: Packages/HanguStepKit
-        run: swift test --parallel
+        # swiftbuild compiles the Core Data model (.xcdatamodeld to .momd); the native build only copies it.
+        run: swift test --parallel --build-system swiftbuild
       - name: Lint bundled content
         working-directory: Packages/HanguStepKit
         run: |
-          swift run content-lint generate-questions
+          swift run --build-system swiftbuild content-lint generate-questions
           git diff --exit-code -- Sources/Persistence/Resources/Content
 
   app:
     name: App build (iOS Simulator)
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+        run: |
+          # Newest stable Xcode on the runner (the app is built with Xcode 26+ locally).
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_*.app | grep -vi beta | sort -V | tail -1)"
+          xcodebuild -version
       - name: Build
         run: |
           xcodebuild build \
@@ -50,11 +57,14 @@ jobs:
 
   app-macos:
     name: App build (macOS)
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+        run: |
+          # Newest stable Xcode on the runner (the app is built with Xcode 26+ locally).
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_*.app | grep -vi beta | sort -V | tail -1)"
+          xcodebuild -version
       - name: Build
         run: |
           xcodebuild build \

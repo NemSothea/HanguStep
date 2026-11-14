@@ -1,5 +1,5 @@
 import CloudKit
-import CoreData
+@preconcurrency import CoreData
 import Domain
 import Foundation
 
