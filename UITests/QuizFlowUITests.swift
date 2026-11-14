@@ -156,6 +156,12 @@ final class QuizFlowUITests: XCTestCase {
         XCTAssertTrue(levelThree.waitForExistence(timeout: 5), "level 3 filter did not appear")
         levelThree.tap()
         snapshot("13-level3-list")
+        levelThree.tap()
+        let levelFour = app.buttons["L4"].firstMatch
+        levelFour.tap()
+        XCTAssertTrue(row(startingWith: "가득").waitForExistence(timeout: 5), "level 4 word 가득 did not appear")
+        snapshot("13b-level4-list")
+        levelFour.tap()
         let search = app.searchFields.firstMatch
         XCTAssertTrue(search.waitForExistence(timeout: 5))
         search.tap()

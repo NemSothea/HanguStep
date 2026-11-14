@@ -36,8 +36,13 @@ python3 -m venv /tmp/kiwi && /tmp/kiwi/bin/pip install -r Tools/topik-corpus/req
 - Rank by number of exams the word appears in, then total count.
 - Suffix merge: noun + 적/화 is one word (긍정적, 활성화). Noun + 하다 adjective is one word (필요하다).
 - Exam-instruction words (중략, 물음, 밑줄 ...) are dropped. Verbs used mainly as grammar (위하다, 대하다, 통하다, 따르다, 인하다, 의하다, 비하다) are taught as grammar patterns, not vocabulary.
-- Level: batch 1 (most frequent) is level 3. Later, less frequent batches are level 4. TOPIK publishes no per-level word list, so this split is a judgement.
+- Level: batch 1 (most frequent) is level 3. Later, less frequent batches are level 4; basic words missing from levels 1-2 are tagged level 2. TOPIK publishes no per-level word list, so this split is a judgement.
 
-## Corpus used for batch 1 (2026-11-14)
+## Batches
+
+- Batch 1 (2026-11-14): 300 words (level 3), 20 grammar patterns.
+- Batch 2 (2026-11-14): next 300 candidates after dropping 이렇게, 이때, 시키다, 감사하다; 253 level 4 + 47 level 2 words, 20 level 4 grammar patterns.
+
+## Corpus used for batches 1-2 (2026-11-14)
 
 TOPIK II: exams 35, 36, 37, 41, 47, 52, 60, 64, 83, 91, 96, 102 (reading, listening transcript, writing where available). TOPIK I: exams 64, 83, 91, 96, 102 (reading, listening transcript). 1,640 candidates appear in 3 or more of the 12 exams.

@@ -70,7 +70,7 @@ Shared rules: `id` is ASCII letters, digits, `.`, `-`, `_`; `level` is 1 to 6 (T
 
 `kind` is a `QuestionKind` raw value: `vocabularyMeaning`, `meaningToWord`, `grammarFillIn`, `sentenceCompletion`, `readingComprehension`. `options` holds 2 to 4 distinct strings; `answer` is the zero-based index of the correct one. Option ids `o1`, `o2`, ... are derived from position, so **never reorder options of a shipped question**: learner attempts store the option id. Change the id of the question instead. `vocabulary` and `grammar` link the question to a learning target and must exist; a question needs at least one of them to count toward progress. `passage` is only used by `readingComprehension`.
 
-Id conventions: `vocab.NNNN`, `grammar.NNNN` (level 1 from 0001, level 2 from 0101), `q.gf.NNNN` grammar fill-in, `q.sc.NNNN` sentence completion, `q.rc.NNNN` reading, `q.vm.<vocab id>` and `q.mw.<vocab id>` generated meaning questions.
+Id conventions: `vocab.NNNN`, `grammar.NNNN` (level 1 from 0001, level 2 from 0101, level 3 from 0301, level 4 from 0401; TOPIK II vocabulary uses `vocab.3NNN` for level 3 and `vocab.4NNN` for level 4), `q.gf.NNNN` grammar fill-in, `q.sc.NNNN` sentence completion, `q.rc.NNNN` reading, `q.vm.<vocab id>` and `q.mw.<vocab id>` generated meaning questions.
 
 ## 4. Validation
 

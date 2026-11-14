@@ -26,7 +26,7 @@ final class BundledContentTests: XCTestCase {
         for pattern in package.grammar {
             XCTAssertTrue(grammarTargets.contains(pattern.id), "\(pattern.id.rawValue) has no question")
         }
-        XCTAssertEqual(Set(package.vocabulary.map(\.level)), [.level1, .level2, .level3])
+        XCTAssertEqual(Set(package.vocabulary.map(\.level)), [.level1, .level2, .level3, .level4])
         for kind in [QuestionKind.vocabularyMeaning, .meaningToWord, .grammarFillIn, .sentenceCompletion, .readingComprehension] {
             XCTAssertTrue(package.questions.contains { $0.kind == kind }, "no \(kind) questions")
         }
