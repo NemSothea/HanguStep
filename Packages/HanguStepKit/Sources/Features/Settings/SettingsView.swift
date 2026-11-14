@@ -73,6 +73,11 @@ struct SettingsView: View {
                 LabeledContent("Library", value: "\(dependencies.contentInfo.vocabularyCount) words · \(dependencies.contentInfo.grammarCount) patterns · \(dependencies.contentInfo.questionCount) questions")
                 LabeledContent("Source", value: dependencies.contentInfo.sourceName)
                 LabeledContent("License", value: dependencies.contentInfo.license)
+                ForEach(dependencies.contentInfo.credits, id: \.self) { credit in
+                    Text("Includes material from \(credit)")
+                        .font(Typography.caption)
+                        .foregroundStyle(HSColor.textSecondary)
+                }
                 if dependencies.contentInfo.pendingReview > 0 {
                     Text("\(dependencies.contentInfo.pendingReview) items await Khmer review.")
                         .font(Typography.caption)

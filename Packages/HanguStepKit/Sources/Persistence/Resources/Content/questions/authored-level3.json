@@ -1,0 +1,764 @@
+{
+  "questions": [
+    {
+      "id": "q.gf.0301",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "요즘 많은 사람들이 건강______ 관심이 많다.",
+      "options": [
+        "에 대한",
+        "을 위한",
+        "에 비한",
+        "에 대해"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "관심이 많다 is a predicate, so 에 대해 (about) is needed before it; 에 대한 must come before a noun.",
+        "km": "관심이 많다 ជាកិរិយាស័ព្ទ ដូច្នេះត្រូវប្រើ 에 대해 (អំពី); 에 대한 ត្រូវនៅមុខនាម។"
+      },
+      "grammar": "grammar.0301",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0302",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "이번 발표는 지역 경제______ 내용입니다.",
+      "options": [
+        "에 대해서",
+        "에 따라",
+        "에 대한",
+        "때문에"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "내용 is a noun, so the noun-modifying form 에 대한 is correct.",
+        "km": "내용 ជានាម ដូច្នេះប្រើទម្រង់មុខនាម 에 대한។"
+      },
+      "grammar": "grammar.0301",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0303",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "한국 대학에 입학하______ 매일 한국어를 공부하고 있어요.",
+      "options": [
+        "기 위해",
+        "는데",
+        "더라도",
+        "다가"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Studying is done for the purpose of entering university: -기 위해.",
+        "km": "ការរៀនគឺដើម្បីចូលសាកលវិទ្យាល័យ: -기 위해។"
+      },
+      "grammar": "grammar.0302",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0304",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "회사는 고객______ 새로운 서비스를 시작했다.",
+      "options": [
+        "에 따라",
+        "으로 인해",
+        "에 비해",
+        "을 위해"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The service was started for the sake of customers: N을 위해.",
+        "km": "សេវាថ្មីត្រូវបានចាប់ផ្តើមដើម្បីអតិថិជន: N을 위해។"
+      },
+      "grammar": "grammar.0302",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0305",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "어제 잠을 못 잤______ 오늘 너무 피곤해요.",
+      "options": [
+        "더라도",
+        "기 때문에",
+        "는지",
+        "고자"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Not sleeping is the reason for being tired: -았/었기 때문에.",
+        "km": "ការមិនបានគេងគឺជាមូលហេតុនៃការហត់: -았/었기 때문에។"
+      },
+      "grammar": "grammar.0303",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0306",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "갑자기 내린 눈______ 비행기가 출발하지 못했습니다.",
+      "options": [
+        "을 통해",
+        "에 대해",
+        "때문에",
+        "에 따라"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Snow is the cause: noun + 때문에.",
+        "km": "ព្រិលជាមូលហេតុ: នាម + 때문에។"
+      },
+      "grammar": "grammar.0303",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0307",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "어제 그 영화를 봤______ 생각보다 재미있었어요.",
+      "options": [
+        "는데",
+        "도록",
+        "으려면",
+        "고자"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The first clause gives background for the comment that follows: -았/었는데.",
+        "km": "ឃ្លាទីមួយផ្តល់ព័ត៌មានផ្ទៃខាងក្រោយសម្រាប់មតិបន្ទាប់: -았/었는데។"
+      },
+      "grammar": "grammar.0304",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0308",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "이 가방은 디자인은 예쁜______ 너무 무거워요.",
+      "options": [
+        "지",
+        "편",
+        "만큼",
+        "데"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Contrast between pretty design and heavy weight: adjective + ㄴ데.",
+        "km": "ភាពផ្ទុយគ្នារវាងការរចនាស្អាត និងទម្ងន់ធ្ងន់: គុណនាម + ㄴ데។"
+      },
+      "grammar": "grammar.0304",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0309",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "민수 씨가 다음 주에 고향에 돌아간______ 했어요.",
+      "options": [
+        "자고",
+        "냐고",
+        "라고",
+        "다고"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Reporting a statement with a verb: -ㄴ다고 하다 (돌아간다고).",
+        "km": "រាយការណ៍ប្រយោគប្រាប់ជាមួយកិរិយាស័ព្ទ: -ㄴ다고 하다 (돌아간다고)។"
+      },
+      "grammar": "grammar.0305",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0310",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "친구가 주말에 같이 등산을 가______ 했어요.",
+      "options": [
+        "냐고",
+        "라고",
+        "자고",
+        "다고"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "A reported suggestion ('let's go') uses -자고 하다.",
+        "km": "ការស្នើដែលរាយការណ៍ ('តោះទៅ') ប្រើ -자고 하다។"
+      },
+      "grammar": "grammar.0305",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0311",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "다음 달부터 버스 요금이 오른______ 소식을 들었어요.",
+      "options": [
+        "다는",
+        "는데",
+        "도록",
+        "다가"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The noun 소식 is described by its content: -다는 N.",
+        "km": "នាម 소식 ត្រូវបានពិពណ៌នាដោយខ្លឹមសាររបស់វា: -다는 N។"
+      },
+      "grammar": "grammar.0306",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0312",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "'정'______ 말은 외국어로 번역하기 어렵다.",
+      "options": [
+        "으로 인한",
+        "에 비한",
+        "을 위한",
+        "이라는"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The word itself is named before 말: noun + (이)라는 N.",
+        "km": "ពាក្យនោះត្រូវបានដាក់ឈ្មោះមុខ 말: នាម + (이)라는 N។"
+      },
+      "grammar": "grammar.0306",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0313",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "이 책은 한국 역사를 이해하______ 많은 도움이 됩니다.",
+      "options": [
+        "는데도",
+        "는 데",
+        "다가",
+        "는지"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "도움이 되다 names what the help is for: verb + 는 데.",
+        "km": "도움이 되다 បញ្ជាក់ថាជំនួយនោះសម្រាប់អ្វី: កិរិយាស័ព្ទ + 는 데។"
+      },
+      "grammar": "grammar.0307",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0314",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "새 집을 구하______ 생각보다 시간이 오래 걸렸다.",
+      "options": [
+        "더라도",
+        "고자",
+        "는 데",
+        "을수록"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "시간이 걸리다 says how long an activity takes: verb + 는 데.",
+        "km": "시간이 걸리다 និយាយពីរយៈពេលនៃសកម្មភាព: កិរិយាស័ព្ទ + 는 데។"
+      },
+      "grammar": "grammar.0307",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0315",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "아이들이 안전하게 길을 건널 수 있______ 신호등을 설치했다.",
+      "options": [
+        "도록",
+        "다가",
+        "는데",
+        "더라도"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Traffic lights were installed so that children can cross safely: -도록.",
+        "km": "ភ្លើងចរាចរណ៍ត្រូវបានដំឡើង ដើម្បីឱ្យកុមារអាចឆ្លងផ្លូវដោយសុវត្ថិភាព: -도록។"
+      },
+      "grammar": "grammar.0308",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0316",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "감기에 걸리지 않______ 손을 자주 씻으세요.",
+      "options": [
+        "는지",
+        "을 텐데",
+        "다가",
+        "도록"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The purpose is not catching a cold: -지 않도록.",
+        "km": "គោលបំណងគឺមិនឱ្យផ្តាសាយ: -지 않도록។"
+      },
+      "grammar": "grammar.0308",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0317",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "도서관이 몇 시까지 문을 여______ 알아요?",
+      "options": [
+        "도록",
+        "는 데",
+        "더라도",
+        "는지"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "An embedded question before 알다: verb + 는지.",
+        "km": "សំណួរបង្កប់មុខ 알다: កិរិយាស័ព្ទ + 는지។"
+      },
+      "grammar": "grammar.0309",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0318",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "그 사람이 누구______ 기억이 안 나요.",
+      "options": [
+        "인데",
+        "인지",
+        "라도",
+        "라는"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "An embedded question with a noun before 기억이 안 나다: noun + 인지.",
+        "km": "សំណួរបង្កប់ជាមួយនាមមុខ 기억이 안 나다: នាម + 인지។"
+      },
+      "grammar": "grammar.0309",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0319",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "요즘은 SNS______ 친구들의 소식을 쉽게 알 수 있다.",
+      "options": [
+        "에 비해",
+        "를 통해",
+        "로 인해",
+        "에 대해"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "SNS is the channel through which news is learned: N를 통해.",
+        "km": "SNS ជាមធ្យោបាយដែលធ្វើឱ្យដឹងដំណឹង: N를 통해។"
+      },
+      "grammar": "grammar.0310",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0320",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "저는 이번 봉사 활동______ 많은 것을 배웠어요.",
+      "options": [
+        "때문에",
+        "에 따라",
+        "을 위해",
+        "을 통해"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Learning came through the volunteer experience: N을 통해.",
+        "km": "ការរៀនសូត្របានមកតាមរយៈបទពិសោធន៍ស្ម័គ្រចិត្ត: N을 통해។"
+      },
+      "grammar": "grammar.0310",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0321",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "계절______ 이 공원의 풍경이 달라진다.",
+      "options": [
+        "에 따라",
+        "을 통해",
+        "에 대한",
+        "으로 인한"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The scenery changes depending on the season: N에 따라.",
+        "km": "ទេសភាពប្រែប្រួលអាស្រ័យលើរដូវ: N에 따라។"
+      },
+      "grammar": "grammar.0311",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0322",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "조사 결과______ 20대의 절반이 아침을 먹지 않는다고 한다.",
+      "options": [
+        "에 비해",
+        "에 따르면",
+        "을 위해",
+        "에 대해서"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Citing a source of information, ending with -다고 한다: N에 따르면.",
+        "km": "ដកស្រង់ប្រភពព័ត៌មាន បញ្ចប់ដោយ -다고 한다: N에 따르면។"
+      },
+      "grammar": "grammar.0311",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0323",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "그 공연을 보______ 미리 예매해야 해요.",
+      "options": [
+        "다가",
+        "려면",
+        "는데",
+        "도록"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Goal (seeing the show) followed by what is necessary: -려면 ... -아/어야 하다.",
+        "km": "គោលដៅ (មើលការសម្តែង) តាមដោយអ្វីដែលចាំបាច់: -려면 ... -아/어야 하다។"
+      },
+      "grammar": "grammar.0312",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0324",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "외국에서 일을 구하______ 그 나라 말을 잘해야 한다.",
+      "options": [
+        "더라도",
+        "을 텐데",
+        "는지",
+        "으려면"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "If you want to find work abroad, the condition is speaking the language: -(으)려면.",
+        "km": "បើចង់រកការងារនៅបរទេស លក្ខខណ្ឌគឺត្រូវនិយាយភាសាបានល្អ: -(으)려면។"
+      },
+      "grammar": "grammar.0312",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0325",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "길을 걷______ 우연히 옛날 친구를 만났어요.",
+      "options": [
+        "도록",
+        "고자",
+        "다가",
+        "는 데"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "While walking, something else happened: -다가.",
+        "km": "ពេលកំពុងដើរ មានរឿងផ្សេងកើតឡើង: -다가។"
+      },
+      "grammar": "grammar.0313",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0326",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "창문을 열었______ 너무 추워서 다시 닫았어요.",
+      "options": [
+        "다가",
+        "는지",
+        "더라도",
+        "는데도"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The first action was completed, then changed: -았/었다가.",
+        "km": "សកម្មភាពទីមួយបានបញ្ចប់ រួចប្តូរ: -았/었다가។"
+      },
+      "grammar": "grammar.0313",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0327",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "이번 태풍______ 많은 집이 피해를 입었습니다.",
+      "options": [
+        "을 위해",
+        "으로 인해",
+        "에 비해",
+        "을 통해"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Formal cause in news style, typhoon caused damage: N으로 인해.",
+        "km": "មូលហេតុក្នុងរចនាបថព័ត៌មាន ព្យុះទីហ្វុងបណ្តាលឱ្យខូចខាត: N으로 인해។"
+      },
+      "grammar": "grammar.0314",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0328",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "환경 오염______ 문제가 점점 심각해지고 있다.",
+      "options": [
+        "에 대한",
+        "을 위한",
+        "에 비한",
+        "으로 인한"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Problems caused by pollution, before a noun: N으로 인한.",
+        "km": "បញ្ហាដែលបណ្តាលមកពីការបំពុល នៅមុខនាម: N으로 인한។"
+      },
+      "grammar": "grammar.0314",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0329",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "지금 출발하면 길이 막힐______ 조금 이따가 가요.",
+      "options": [
+        "텐데",
+        "지",
+        "수록",
+        "도록"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "A guess (roads will be jammed) followed by a suggestion: -(으)ㄹ 텐데.",
+        "km": "ការស្មាន (ផ្លូវនឹងកកស្ទះ) តាមដោយការស្នើ: -(으)ㄹ 텐데។"
+      },
+      "grammar": "grammar.0315",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0330",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "그 일은 혼자 하기 힘들______ 제가 도와 드릴게요.",
+      "options": [
+        "다가",
+        "을 텐데",
+        "도록",
+        "다는"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The speaker expects it is hard, then offers help: -(으)ㄹ 텐데.",
+        "km": "អ្នកនិយាយរំពឹងថាវាពិបាក រួចផ្តល់ជំនួយ: -(으)ㄹ 텐데។"
+      },
+      "grammar": "grammar.0315",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0331",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "저희 회사는 더 좋은 제품을 만들______ 끊임없이 노력하고 있습니다.",
+      "options": [
+        "다가",
+        "는지",
+        "고자",
+        "더라도"
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Formal purpose in a company statement: -고자.",
+        "km": "គោលបំណងផ្លូវការក្នុងសេចក្តីថ្លែងការណ៍របស់ក្រុមហ៊ុន: -고자។"
+      },
+      "grammar": "grammar.0316",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0332",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "오늘은 우리 사회의 고령화 문제에 대해 말씀드리______ 합니다.",
+      "options": [
+        "는데",
+        "려면",
+        "다가",
+        "고자"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Formal speech opening, 'I intend to speak about': -고자 하다.",
+        "km": "ការចាប់ផ្តើមសុន្ទរកថាផ្លូវការ 'ខ្ញុំមានបំណងនិយាយអំពី': -고자 하다។"
+      },
+      "grammar": "grammar.0316",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0333",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "저는 다른 사람에 비해 말이 좀 빠른 ______이에요.",
+      "options": [
+        "데",
+        "지",
+        "탓",
+        "편"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Describing a tendency: adjective + ㄴ 편이다.",
+        "km": "ពិពណ៌នាទំនោរ: គុណនាម + ㄴ 편이다។"
+      },
+      "grammar": "grammar.0317",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0334",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "우리 가족은 주말에 외식을 자주 하______ 편이에요.",
+      "options": [
+        "던",
+        "는",
+        "기",
+        "은"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A present habit with a verb: verb stem + 는 편이다.",
+        "km": "ទម្លាប់បច្ចុប្បន្នជាមួយកិរិយាស័ព្ទ: ឫសកិរិយាស័ព្ទ + 는 편이다។"
+      },
+      "grammar": "grammar.0317",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0335",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "서울은 다른 도시______ 물가가 비싼 편이다.",
+      "options": [
+        "에 비해",
+        "에 대해",
+        "로 인해",
+        "을 통해"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Seoul is compared with other cities: N에 비해.",
+        "km": "សេអ៊ូលត្រូវបានប្រៀបធៀបជាមួយទីក្រុងផ្សេង: N에 비해។"
+      },
+      "grammar": "grammar.0318",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0336",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "그 학생은 나이______ 생각이 깊은 것 같아요.",
+      "options": [
+        "에 따라",
+        "를 위해",
+        "에 대한",
+        "에 비해"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Mature thinking compared to their age: N에 비해.",
+        "km": "ការគិតចាស់ទុំបើប្រៀបធៀបនឹងអាយុ: N에 비해។"
+      },
+      "grammar": "grammar.0318",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0337",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "외국어는 자주 사용할______ 실력이 늘어요.",
+      "options": [
+        "수록",
+        "텐데",
+        "지",
+        "데"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The more you use it, the more skill grows: -(으)ㄹ수록.",
+        "km": "កាន់តែប្រើ ជំនាញកាន់តែកើនឡើង: -(으)ㄹ수록។"
+      },
+      "grammar": "grammar.0319",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0338",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "그 사람은 만나면 만날______ 좋은 사람인 것 같아요.",
+      "options": [
+        "다가",
+        "수록",
+        "텐데",
+        "지"
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The repeated -(으)면 -(으)ㄹ수록 structure: the more I meet them, the better they seem.",
+        "km": "រចនាសម្ព័ន្ធ -(으)면 -(으)ㄹ수록: កាន់តែជួប កាន់តែឃើញថាជាមនុស្សល្អ។"
+      },
+      "grammar": "grammar.0319",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0339",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "아무리 힘들______ 끝까지 최선을 다하겠습니다.",
+      "options": [
+        "더라도",
+        "려면",
+        "는지",
+        "기 위해"
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "아무리 + -더라도: even if it is hard, the result does not change.",
+        "km": "아무리 + -더라도: ទោះបីពិបាកក៏ដោយ លទ្ធផលមិនប្រែប្រួល។"
+      },
+      "grammar": "grammar.0320",
+      "review": "pending"
+    },
+    {
+      "id": "q.gf.0340",
+      "kind": "grammarFillIn",
+      "level": 3,
+      "prompt": "내일 비가 오______ 행사는 예정대로 진행됩니다.",
+      "options": [
+        "다가",
+        "도록",
+        "는 데",
+        "더라도"
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The event goes ahead even if it rains: -더라도.",
+        "km": "ព្រឹត្តិការណ៍នៅតែប្រព្រឹត្តទៅ ទោះបីភ្លៀងក៏ដោយ: -더라도។"
+      },
+      "grammar": "grammar.0320",
+      "review": "pending"
+    }
+  ]
+}

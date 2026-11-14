@@ -14,7 +14,8 @@ public enum BundledContentInstaller {
             questionCount: library.package.questions.count,
             sourceName: library.source.name,
             license: library.source.license,
-            pendingReview: library.pendingReview
+            pendingReview: library.pendingReview,
+            credits: library.package.importedCredits
         )
     }
 }

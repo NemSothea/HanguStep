@@ -10,3 +10,4 @@ DerivedData/
 
 # Local signing (team ID). See Configs/Signing.xcconfig.
 Configs/Signing.local.xcconfig
+ContentSources/

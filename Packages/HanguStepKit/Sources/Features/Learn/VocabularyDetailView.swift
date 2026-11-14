@@ -20,6 +20,9 @@ struct VocabularyDetailView: View {
                 VStack(alignment: .leading, spacing: Spacing.lg) {
                     hero(detail.item)
                     HSCard { PreferredGlossText(gloss: detail.item.meaning) }
+                    if detail.item.source.origin == .imported {
+                        SourceNote(source: detail.item.source)
+                    }
                     if !detail.item.examples.isEmpty {
                         ExamplesCard(examples: detail.item.examples)
                     }
@@ -151,6 +154,22 @@ struct GeneratePracticeButton: View {
             if let error {
                 Text(error).font(Typography.caption).foregroundStyle(HSColor.danger)
             }
+        }
+    }
+}
+
+/// Attribution for third-party content (CC BY-SA requires it next to the material).
+struct SourceNote: View {
+    let source: ContentSource
+
+    var body: some View {
+        let text = Text("Source: \(source.name) · \(source.license)")
+            .font(Typography.caption)
+            .foregroundStyle(HSColor.textSecondary)
+        if let link = source.url.flatMap(URL.init(string:)) {
+            Link(destination: link) { text.underline() }
+        } else {
+            text
         }
     }
 }
