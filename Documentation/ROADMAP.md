@@ -15,7 +15,7 @@ One phase at a time. A phase is done only when reviewed and approved.
 | 8 | AI learning assistant | Mock provider, then real provider | Approved |
 | 9 | Quality assurance | QA report, release candidate | Approved (device checks open, see QA_REPORT.md §5) |
 | 10 | Security and optimization | Production-readiness report | Approved (device launch check open, see PRODUCTION_READINESS.md §6) |
-| 11 | Release and maintenance | Personal release 1.0 (iPhone + Mac, free signing); App Store deferred (ADR-013) | In review |
+| 11 | Release and maintenance | Personal release 1.0 (iPhone + Mac, free signing); App Store deferred (ADR-013) | Approved (v1.0.0, 2026-11-14) |
 
 ## Release milestones
 
