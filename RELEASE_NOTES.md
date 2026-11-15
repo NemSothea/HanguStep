@@ -1,5 +1,9 @@
 # HanguStep release notes
 
+## 1.0.1 (2026-11-15)
+
+- App icon: white 한 over three ascending steps on the teal accent, on iPhone, iPad and Mac (`Tools/app-icon`).
+
 ## 1.0.0 (2026-11-14), personal release
 
 Korean study app for TOPIK, offline, English and Khmer. Installed with free signing (ADR-013): iPhone via `Tools/install-iphone.sh` (renew weekly), Mac via `Tools/install-mac.sh`.
