@@ -95,6 +95,8 @@ Rule: color never carries meaning alone. Correct and incorrect also use icons (`
 
 SF Symbols only. Section icons fixed in `AppSection`. Consistent weight `.medium`.
 
+App icon: white 한 (Apple SD Gothic Neo Heavy) over three faint ascending steps ("Hangul" + "Step") on a teal 500 → 700 (`HSColor.accent`) → 900 diagonal gradient. Drawn in code by `Tools/app-icon/render.swift`; `Tools/app-icon/generate.sh` rewrites `App/Assets.xcassets/AppIcon.appiconset` (iOS single 1024 px, macOS 16–1024 px). Edit the script, never the PNGs.
+
 ## 3. Components
 
 All in `DesignSystem`, pure presentation, no Domain import. They take plain values (String, Int, Double, enum) so DesignSystem never depends on Domain types.
